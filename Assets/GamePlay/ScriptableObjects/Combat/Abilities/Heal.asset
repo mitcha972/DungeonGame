@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6830b01cb50ac44a91f7d8eec1964a, type: 3}
+  m_Name: Heal
+  m_EditorClassIdentifier: 
+  name: Heal
+  description: Ability Description
+  target: 0
+  particleEffect: {fileID: 100006, guid: a9ea6d1d5024f8d4c9210cbd677d3f75, type: 3}
+  cooldownTime: 10
+  modifier: 0
+  projectile: {fileID: 0}
+  damage: 0
+  range: 0
+  speed: 0
+  startAnimation: {fileID: -203655887218126122, guid: 2a6f699b92daee347bbac00ad9653dab,
+    type: 3}
+  castAnimation: {fileID: 0}

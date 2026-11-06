@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aba2028d2950264590c2b2a1776f37f, type: 3}
+  m_Name: Slash
+  m_EditorClassIdentifier: 
+  itemType: 3
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 13375
+  lightAttackClips:
+  - {fileID: 7400000, guid: 3dab0109f30a6ed4ea31fbceaf53762f, type: 2}
+  heavyAttackClips:
+  - {fileID: 7400000, guid: 5120b429988a80142bbc6b845e8caf77, type: 2}
+  projectile: {fileID: 8303955909878210039, guid: 69e78fa5097ee5941b337b31d83dd7d9,
+    type: 3}
+  range: 2
+  speed: 8
+  rangeEnd: 1
+  destroyOnCollide: 0

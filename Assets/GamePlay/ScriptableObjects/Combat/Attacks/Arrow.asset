@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aba2028d2950264590c2b2a1776f37f, type: 3}
+  m_Name: Arrow
+  m_EditorClassIdentifier: 
+  itemType: 4
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 13375
+  lightAttackClips:
+  - {fileID: 7400000, guid: cbcc2ac0d7332cf47857e7809fe426a7, type: 2}
+  heavyAttackClips: []
+  projectile: {fileID: 8303955909878210039, guid: 5588390f6f8ee324ea131269ed8c4529,
+    type: 3}
+  range: 10
+  speed: 35
+  rangeEnd: 0
+  destroyOnCollide: 1

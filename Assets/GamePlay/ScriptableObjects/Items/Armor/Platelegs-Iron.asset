@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066dbde51e011694ca419abdbc2d33a3, type: 3}
+  m_Name: Platelegs-Iron
+  m_EditorClassIdentifier: 
+  name: Iron Platelegs
+  icon: {fileID: 21300000, guid: 8cfc2d1fd03fbd64bb789d4378ee0a92, type: 3}
+  isDefaultItem: 0
+  ISN: 0
+  price: 0
+  itemType: 2
+  equipSlot: 2
+  mesh: {fileID: 137998090722751696, guid: c1a561539d717424684e29a30bfa26e6, type: 3}
+  coveredMeshRegions: 00000000
+  weight: 0
+  armorModifier: 3
+  damageModifier: 0
+  rangeModifier: 0
+  consumableScript: {fileID: 0}

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 066dbde51e011694ca419abdbc2d33a3, type: 3}
+  m_Name: Shield-Iron
+  m_EditorClassIdentifier: 
+  name: Iron Shield
+  description: Item Description
+  itemType: 6
+  icon: {fileID: 21300000, guid: 574e5371f1971444ea8aa16b1882d569, type: 3}
+  weight: 0
+  price: 0
+  armorModifier: 6
+  damageModifier: 0
+  rangeModifier: 0
+  modifier: 0
+  equipSlot: 5
+  mesh: {fileID: 137987841947565592, guid: ece117eedf8344750b6d243b16c548cd, type: 3}
+  coveredMeshRegions: 
