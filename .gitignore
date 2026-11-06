@@ -1,0 +1,75 @@
+
+# ==========================================
+# UNITY GENERATED FILES
+# ==========================================
+
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+[Rr]ecordings/
+
+# ==========================================
+# UNITY CACHE
+# ==========================================
+
+.vs/
+.idea/
+.gradle/
+ExportedObj/
+.consulo/
+sysinfo.txt
+
+# ==========================================
+# IGNORE PLUGINS FOLDER
+# ==========================================
+
+# Ignore everything inside Assets/Plugins
+
+# If your project has other plugin folders,
+# add them explicitly here.
+
+# ==========================================
+# VISUAL STUDIO / DEVELOPMENT FILES
+# ==========================================
+
+.vscode/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# ==========================================
+# OPERATING SYSTEM FILES
+# ==========================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ==========================================
+# BACKUP FILES
+# ==========================================
+
+*.bak
+*.tmp
+*.orig
+*.old
+
+# ==========================================
+# GIT LFS TEMPORARY FILES
+# ==========================================
+
+.lfsconfig
