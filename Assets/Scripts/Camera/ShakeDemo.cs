@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using EZCameraShake;
 
 public class ShakeDemo : MonoBehaviour 
@@ -13,9 +13,12 @@ public class ShakeDemo : MonoBehaviour
     public void Shake(float damageIntensity) // Get Shake based on damage amount done!
     {
         //Debug.Log("Damage Intensit - " + damageIntensity);
+        if (damageIntensity <= 0f) return;
+        if (shake == null && Cs != null) shake = Cs.GetComponent<CameraShaker>();
+        if (shake == null) return;
         float scaleFactor = Mathf.Sqrt(damageIntensity);
 
-        Cs.GetComponent<CameraShaker>().enabled = true;
+        shake.enabled = true;
         shake.ShakeOnce(magnitude *scaleFactor, rough, fadeIn, fadeOut * scaleFactor, posInf, rotInf);
     }
 }

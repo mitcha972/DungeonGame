@@ -1,0 +1,12 @@
+success=False
+Log: [CombatTest] PASS Inventory opens and owns cursor
+Log: [CombatTest] PASS Inventory blocks movement: distance=5.960464E-08
+Log: [CombatTest] PASS Pause freezes game
+Log: [CombatTest] PASS Resume restores game
+Log: [CombatTest] Sword execution damage=3 duration=1.333333 gameTime=3.058519 animation=229373857
+Log: [CombatTest] PASS Sword deals exactly one hit: lost=1 expected=1
+Exception: MissingReferenceException: The object of type 'UnityEngine.UI.Image' has been destroyed but you are still trying to access it.
+Your script should either check if it is null or you should not destroy the object.
+Log: [CombatTest] PASS Sword kills enemy via attack timeline
+Log: [CombatTest] FAIL Bow equipment selects ranged weapon data
+Log: [CombatTest] FAIL Bow projectile kills enemy; projectile frames observed=0

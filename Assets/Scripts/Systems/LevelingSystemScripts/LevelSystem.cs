@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +54,7 @@ public class LevelSystem
 
     public int GetExperienceToNextLevel(int level) 
     {
-        if (level < experiencePerLevel.Length) {
+        if (level >= 0 && level < experiencePerLevel.Length) {
             return experiencePerLevel[level];
         } else {
             // Level Invalid

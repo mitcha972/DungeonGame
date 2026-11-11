@@ -7,7 +7,8 @@ public class PlayerAim : MonoBehaviour
     void Start()
     {
         // Find the player's camera by looking for the "MainCamera" tag
-        playerCamera = GameObject.FindGameObjectWithTag("MainCamera").transform;
+        var camera = Camera.main;
+        playerCamera = camera != null ? camera.transform : null;
     }
 
     void LateUpdate()
@@ -24,6 +25,7 @@ public class PlayerAim : MonoBehaviour
         //transform.Translate(Vector3.back * - 14f);
 
         // Smoothly rotate the aim object to face the same direction as the player's camera
+        if (playerCamera == null) return;
         transform.rotation = Quaternion.Slerp(transform.rotation, playerCamera.rotation, 10f * Time.deltaTime);
     
     }

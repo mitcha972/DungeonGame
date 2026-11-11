@@ -7,14 +7,14 @@ public class RoomBehaviour : MonoBehaviour
 {
     public GameObject[] walls; // 0 - Up 1 -Down 2 - Right 3- Left
     public GameObject[] doors;
-    public NavMeshSurface[] tiles;
+    public Unity.AI.Navigation.NavMeshSurface[] tiles;
 
     void Awake()
     {  
         //For Ever Obeject in tile
-        for(int i = 0; i < tiles.Length; i++)
+        for (int i = 0; i < tiles.Length; i++)
         {
-            tiles[i].BuildNavMesh();
+            if (tiles[i] != null && tiles[i].isActiveAndEnabled) tiles[i].BuildNavMesh();
         }
     }
 

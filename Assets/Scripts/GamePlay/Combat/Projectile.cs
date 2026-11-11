@@ -1,167 +1,114 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Projectile : MonoBehaviour
 {
-    [Header("Info")]
     [HideInInspector] public CharacterStats myStats;
     [HideInInspector] public CharacterCombat target;
     [HideInInspector] public GameObject owner;
     public WeaponClass weaponClass;
-
-    [Header("Stats")]
-    private int damage;
     public GameObject collisionEffect;
-    private float range;
     [HideInInspector] public float speed;
-
-    [Header("Bools")]
-    public bool rangeEnd;
-    public bool destroyOnCollide;
-    
-    private LayerMask collisionMask;
+    public bool rangeEnd = true;
+    public bool destroyOnCollide = true;
     public LayerMask solidCollisionMask;
-
-    private Vector3 startPosition;
-    private List<CharacterStats> collidedCharacters; 
-
+    [SerializeField] private float collisionRadius = 0.05f;
+    [SerializeField] private float lifetime = 10f;
+    private int _damage;
+    private float _range, _travelled;
+    private Vector3 _previousPosition;
+    private Rigidbody _body;
+    private bool _initialized, _consumed;
+    private readonly HashSet<CharacterStats> _hitCharacters = new HashSet<CharacterStats>();
+    private readonly RaycastHit[] _hits = new RaycastHit[32];
     private void Awake()
     {
-        //attackRange = weaponClass.range;
-        //rangeEnd = weaponClass.rangeEnd;
-        //destroyOnCollide = weaponClass.destroyOnCollide;
-        collisionMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Wall");
-        startPosition = transform.position;
-        collidedCharacters = new List<CharacterStats>();
+        _body = GetComponent<Rigidbody>();
+        _previousPosition = transform.position;
+        Destroy(gameObject, lifetime);
     }
-
-    public void StartUp(CharacterStats MyStats, GameObject Owner, int aDamage, float aRange, float aSpeed)
+    public void StartUp(CharacterStats stats, GameObject source, int damage, float range, float velocity)
     {
-        myStats = MyStats;
-		owner = Owner;
-        damage = aDamage;
-        range = aRange;
-        speed = aSpeed;
-    }
-
-    private void Update()
-    {      
-        CheckRange();
-    }
-    
-    private void CheckRange()
-    {
-        if(rangeEnd)    
+        myStats = stats;
+        owner = source;
+        _damage = Mathf.Max(1, damage);
+        _range = Mathf.Max(1f, range);
+        speed = Mathf.Max(1f, velocity);
+        _initialized = true;
+        _body.isKinematic = false;
+        _body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        _body.linearVelocity = transform.forward * speed;
+        if (owner != null)
         {
-            float dist = Vector3.Distance(startPosition, transform.position);
-            if(dist >= range)
+            var projectileColliders = GetComponentsInChildren<Collider>();
+            foreach (var ownCollider in owner.GetComponentsInChildren<Collider>())
+                foreach (var projectileCollider in projectileColliders)
+                    Physics.IgnoreCollision(ownCollider, projectileCollider);
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (!_initialized || _consumed) return;
+        Vector3 position = _body.position;
+        Vector3 delta = position - _previousPosition;
+        float distance = delta.magnitude;
+        if (distance > 0.001f)
+        {
+            int count = Physics.SphereCastNonAlloc(_previousPosition, collisionRadius, delta / distance, _hits, distance, ~0, QueryTriggerInteraction.Ignore);
+            RaycastHit[] hits = _hits;
+            if (count == _hits.Length)
             {
-                Destroy(gameObject); 
+                // A full nonalloc buffer may omit the nearest wall or target.
+                hits = Physics.SphereCastAll(_previousPosition, collisionRadius, delta / distance, distance, ~0, QueryTriggerInteraction.Ignore);
+                count = hits.Length;
             }
-        }
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {  
-        //If has Same tag
-        if(other.CompareTag(this.tag))
-            return;
-        
-        // int otherLayer = 1 << other.gameObject.layer;
-        // if((collisionMask & otherLayer) == otherLayer)
-        //     return;
-
-        if ((solidCollisionMask.value & (1 << other.gameObject.layer)) > 0)
-        {
-            Debug.Log("HitWalllll");
-            CollisionEffect(); 
-            DestroyObject();
-            return;
-        }
-
-        if(other.TryGetComponent(out DestructibleObject destructibleObject))
-        { 
-            destructibleObject.Damage(damage, transform.position);
-            DestroyObject();
-            return;
-        }
-
-        if(other.TryGetComponent(out CharacterStats characterStats))
-        {   
-            if(!collidedCharacters.Contains(characterStats))
+            // Resolve nearest blocking hit first, independent of physics result order.
+            for (int pass = 0; pass < count && !_consumed; pass++)
             {
-                collidedCharacters.Add(characterStats);
-                Debug.Log("Hit Player");
-                CharacterCollision(other.gameObject);
+                int nearest = -1;
+                float best = float.PositiveInfinity;
+                for (int i = 0; i < count; i++) if (hits[i].collider != null && hits[i].distance < best) { nearest = i; best = hits[i].distance; }
+                if (nearest < 0) break;
+                var hit = hits[nearest];
+                hits[nearest] = default;
+                Hit(hit.collider, hit.point);
             }
-        }    
-    }  
-
-    private void CharacterCollision(GameObject other)
-    {
-        //Target Info
-        target = other.GetComponent<CharacterCombat>();
-        Vector3 direction = transform.position - target.transform.position;
-        Vector3 planeNormal = target.transform.up;
-        Vector3 projectedDirection = Vector3.ProjectOnPlane(direction, planeNormal);
-        float angle = Vector3.SignedAngle(projectedDirection, target.transform.forward, planeNormal);
-
-        //Check Block
-        bool isBlocked = CheckBlock(other);
-        int damageReduction = 0;
-
-        if(isBlocked)
-        {
-            Debug.Log("Attack blockedddd");
-            damageReduction += other.GetComponent<CharacterStats>().armor;
-            //damageReduction += 100;
+            _travelled += distance;
         }
-        else
-            damageReduction += 0;
-
-        //Deal Damage And destroy
-        DealDamage(damageReduction, angle, isBlocked);
-        CollisionEffect(); 
-        DestroyObject();
+        _previousPosition = position;
+        if (!_consumed && rangeEnd && _travelled >= _range) Finish(position);
     }
-
-    private bool CheckBlock(GameObject other)
+    private void OnTriggerEnter(Collider other) { if (_initialized && !_consumed) Hit(other, transform.position); }
+    private void OnCollisionEnter(Collision collision) { if (_initialized && !_consumed) Hit(collision.collider, collision.contactCount > 0 ? collision.GetContact(0).point : transform.position); }
+    private void Hit(Collider other, Vector3 position)
     {
-
-        BlockHitBox blockHitBox = other.GetComponent<CharacterCombat>().blockHitBox;
-
-        if(blockHitBox)
+        if (owner == null || other.transform.IsChildOf(owner.transform) || other.transform.IsChildOf(transform)) return;
+        var stats = other.GetComponentInParent<CharacterStats>();
+        if (stats != null)
         {
-            for(int i = 0 ; i < blockHitBox.DHB.Count; i++)
+            if (stats == myStats || stats.IsDead || stats.CompareTag(owner.tag) || !_hitCharacters.Add(stats)) return;
+            target = stats.GetComponent<CharacterCombat>();
+            if (target != null)
             {
-                if(blockHitBox.DHB[i] == this)
-                {
-                    blockHitBox.DHB[i] = null;
-                    return true;
-                }
+                Vector3 direction = owner.transform.position - stats.transform.position;
+                float angle = Vector3.SignedAngle(direction, stats.transform.forward, Vector3.up);
+                bool blocked = target.isBlocking && Vector3.Dot(stats.transform.forward, direction.normalized) > 0.2f;
+                target.TakeDamage(_damage, owner.transform, angle, position, blocked);
             }
+            if (destroyOnCollide) Finish(position);
+            return;
         }
-        return false;      
+        var destructible = other.GetComponentInParent<DestructibleObject>();
+        if (destructible != null) destructible.Damage(_damage, position);
+        if (!other.isTrigger || destructible != null) Finish(position);
     }
-
-    void CollisionEffect()
+    private void Finish(Vector3 position)
     {
-         // Instantiate the collision effect at the position of the collision
-        GameObject effect = Instantiate(collisionEffect, transform.position, Quaternion.identity);
-        
-        // Destroy the effect after a certain amount of time
-        Destroy(effect, 1.0f);
-    }
-
-    private void DealDamage(int damageReduction, float angle, bool isBlocked)
-    {
-        target.TakeDamage(damage - damageReduction, owner.transform, angle, transform.position, isBlocked);
-    }
-    
-    private void DestroyObject()
-    {  
-        if(destroyOnCollide)
-            Destroy(gameObject);
+        if (_consumed) return;
+        _consumed = true;
+        _body.linearVelocity = Vector3.zero;
+        if (collisionEffect != null) Destroy(Instantiate(collisionEffect, position, Quaternion.identity), 2f);
+        Destroy(gameObject);
     }
 }

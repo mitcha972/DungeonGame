@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,6 +25,11 @@ public class Tooltip : MonoBehaviour
         tooltipText = transform.Find("text").GetComponent<Text>();
 
         HideTooltip();
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this) instance = null;
     }
 
     private void Update() 
@@ -73,17 +78,17 @@ public class Tooltip : MonoBehaviour
 
     public static void ShowTooltip_Static(string tooltipString) 
     {
-        instance.ShowTooltip(tooltipString);
+        if (instance != null) instance.ShowTooltip(tooltipString);
     }
 
     public static void ShowTooltip_Static(Func<string> getTooltipStringFunc) 
     {
-        instance.ShowTooltip(getTooltipStringFunc);
+        if (instance != null) instance.ShowTooltip(getTooltipStringFunc);
     }
 
     public static void HideTooltip_Static() 
     {
-        instance.HideTooltip();
+        if (instance != null) instance.HideTooltip();
     }    
 
     public static void AddTooltip(Transform transform, string tooltipString) {

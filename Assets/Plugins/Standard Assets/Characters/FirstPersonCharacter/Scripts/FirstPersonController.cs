@@ -260,7 +260,7 @@ public class FirstPersonController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && m_grounded)
         {
             // Apply jump velocity
-            m_Rigidbody.velocity = new Vector3(m_Rigidbody.velocity.x, jumpHeight, m_Rigidbody.velocity.z);
+            m_Rigidbody.linearVelocity = new Vector3(m_Rigidbody.linearVelocity.x, jumpHeight, m_Rigidbody.linearVelocity.z);
 
             // Set jump animation bool to true
             if (_hasAnimator)
@@ -270,7 +270,7 @@ public class FirstPersonController : MonoBehaviour
         }
 
         // Check if player has landed, and turn off jump animation bool
-        if (_hasAnimator && _animator.GetBool(_animIDJump) && m_Rigidbody.velocity.y <= 0)
+        if (_hasAnimator && _animator.GetBool(_animIDJump) && m_Rigidbody.linearVelocity.y <= 0)
         {
             _animator.SetBool(_animIDJump, false);
         }

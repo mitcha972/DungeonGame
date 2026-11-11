@@ -1,231 +1,150 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(CharacterStats))]
-public class CharacterCombat : MonoBehaviour 
-{	
-	//Run OnAttack action throuch multiple scripts()
-	public event System.Action<bool> OnAttack;
-	
-	public CharacterStats myStats;
-    CharacterStats opponentStats;
+public class CharacterCombat : MonoBehaviour
+{
+    public event System.Action<bool> OnAttack;
+    public CharacterStats myStats;
+    public GameObject currentProjectile, bloodSplat;
+    public AttackHitBox attackHitBox;
+    public Abilities abilities;
+    public bool InCombat, canAttack, attackIsReady;
+    public BlockHitBox blockHitBox;
+    public bool isBlocking, canBlock;
+    public float cooldownTime;
+    [SerializeField, Range(0f, 1f)] private float blockDamageMultiplier = 0.35f;
+    [SerializeField] private float hitRecoveryTime = 0.3f;
+    private CharacterAnimator _combatAnimator;
+    private Coroutine _attackRoutine;
+    private bool _damageWindow, _projectileReleased, _ranged;
+    private int _attackDamage;
+    public int AttackDamage => _attackDamage;
+    public bool IsExecutingAttack { get; private set; }
+    protected WeaponClass ActiveWeapon => _combatAnimator != null ? _combatAnimator.CurrentWeapon : null;
 
-	public GameObject currentProjectile;
-	public GameObject bloodSplat;
-	public AttackHitBox attackHitBox;
-	public Abilities abilities;
-
-	public bool InCombat;
-
-	//Attacking 
-	private float attackSpeed;
-    const float combatCooldown = 5;//fix
-    float lastAttackTime;
-	public bool canAttack;
-	public bool attackIsReady;//fix
-
-	//Blocking
-	public BlockHitBox blockHitBox;
-	public bool isBlocking;
-	public bool canBlock;//fix
-	public float cooldownTime; 
-
-	CharacterAnimator animator;
-	Rigidbody rb;
-	
-	private void Awake()
-	{
-		myStats = GetComponent<CharacterStats>();
-		animator = GetComponent<CharacterAnimator>();
-		rb = GetComponent<Rigidbody>();
-
-		Transform blockChild = transform.Find("Block");
-
-		if (blockChild != null)
-			blockHitBox = blockChild.GetComponent<BlockHitBox>();
-	 
-	 	attackSpeed = myStats.attackSpeed;
-	}
-
-	private void Start()
-	{
-		//Set Bools
-		canBlock = true;
-		isBlocking = false;
-		canAttack = true;
-		attackIsReady = true;
-
-		cooldownTime  = 0f;		
-	}
-
-	public void Ability()
-	{
-		//Check if Animation is Busy
-		if (animator.AnimationIsBusy())
-			return;
-
-		//Play Abiltiy Animation
-		animator.PlayAbilityAnimation(abilities.startAnimation);
-		
-		//Play the ability particl effect
-		//		
-
-		//If has Projectile
-		if(abilities.projectile) EnableProjectile(abilities,abilities.damage);
-	}
-
-	public void Attack(bool isHeavyAttack)
-	{
-		//Check if Player Animation is Busy
-		if (animator.AnimationIsBusy() || !attackIsReady)
-			return;
-
-		// //Attack Function
-		// if ()
-        //  	return;
-
-		//If there is an onattack functuion run it (Used by: Cahracter Animator)
-		if (OnAttack != null)
-			OnAttack(isHeavyAttack);
-
-		attackIsReady = false;
-
-		StartCoroutine(AttackCooldown());
-		
-		InCombat = true;
-		lastAttackTime = Time.time;
-	}
-
-	private IEnumerator AttackCooldown()
-	{		
-		//Find current attack animation length
-		//attackAnimationTime = 
-
-		cooldownTime = 1f;
-		//cooldownTime = (2f/attackSpeed) + attackAnimationTime;
-
-		while (cooldownTime > 0f)
-    	{
-			cooldownTime -= Time.deltaTime;
-			yield return null;
-    	}
-
-		//When cooldown loop is done
-		attackIsReady = true;
-	}
-
-	public virtual void TakeDamage (int damageTaken, Transform attackOwner, float attackDirection, Vector3 attackPos, bool isBlocked)
-	{
-		myStats.TakeDamage(damageTaken, attackOwner, attackDirection);
-
-		//Debug.Log("hit from the " + attackDirection);
-
-		//if is Blcoked
-		if(isBlocked)
-		{
-			//Play Blocked Animation
-			animator.PlayTargetAnimation("BlockImpact", true);
-		}
-		else
-		{			
-			//Play Damage Animation
-			animator.GetHit(attackDirection);
-			
-			// Calculate the knockback direction opposite to the attack direction
-			Vector3 knockbackDirection = (transform.position - attackOwner.position).normalized;
-			knockbackDirection.y = 0f;
-			float knockbackDistance = 2f;// * knockbackDuration;
-
-			// Calculate the target position to move to
-			Vector3 targetPosition = transform.position + knockbackDirection* knockbackDistance;// knockbackDirection * knockbackDistance;
-			StartCoroutine(KnockbackForce(targetPosition));
-
-			//Bleed
-			if(bloodSplat != null)
-			{
-				// Instantiate blood splatter
-				GameObject bloodSplatter = Instantiate(bloodSplat, attackPos, Quaternion.Euler(new Vector3(0, 0, 0)));
-
-				// Set the parent of the blood splatter to this object's parent
-				bloodSplatter.transform.parent = transform.parent;
-			}
-		}
-	}
-
-	private IEnumerator KnockbackForce(Vector3 targetPosition)
-	{
-		float timeElapsed = 0f;
-		Vector3 startingPosition = transform.position;
-
-		while (timeElapsed < 0.2f)
-		{
-			// Calculate the interpolation factor based on the elapsed time and duration
-			float t = timeElapsed / 0.2f;
-
-			// Move the character gradually towards the target position
-			transform.position = Vector3.Lerp(startingPosition, targetPosition, t);
-
-			timeElapsed += Time.deltaTime;
-
-			yield return null;
-		}
-	}
-
-	public void BlockStart()
-	{
-		if (animator.AnimationIsBusy())
-			return;
-
-		if(isBlocking)
-			return;
-		
-		//animator.SetBool("Blocking",isBlocking );
-		animator.PlayTargetAnimation("BlockStart", true);
-		Debug.Log("Block Statupppp");
-		blockHitBox.EnableBlock();
-		isBlocking = true;
-	}
-	
-	public void BlockDrop()
-	{
-		if(isBlocking == false)
-			return;
-
-		animator.PlayTargetAnimation("BlockDrop", true);
-		Debug.Log("DropBlock KKKK ");
-		blockHitBox.DisableBlock();
-		isBlocking = false;
-	}
-
-	void CheckInComabt()
-	{
-		if (Time.time - lastAttackTime > combatCooldown)
+    protected virtual void Awake()
+    {
+        myStats = GetComponent<CharacterStats>();
+        _combatAnimator = GetComponent<CharacterAnimator>();
+        if (attackHitBox == null) attackHitBox = GetComponentInChildren<AttackHitBox>(true);
+        if (blockHitBox == null) blockHitBox = GetComponentInChildren<BlockHitBox>(true);
+        if (attackHitBox != null) { attackHitBox.owner = gameObject; attackHitBox.myStats = myStats; attackHitBox.DisableDamage(); }
+    }
+    protected virtual float AttackCooldown => ActiveWeapon != null ? ActiveWeapon.cooldown : 0.8f;
+    private void Start() { canAttack = canBlock = attackIsReady = !myStats.IsDead; }
+    protected virtual void OnEnable() { if (myStats != null && !myStats.IsDead) attackIsReady = true; }
+    protected virtual void OnDisable() => CancelAttack();
+    public void CancelAttack()
+    {
+        StopAllCoroutines();
+        _attackRoutine = null;
+        IsExecutingAttack = false;
+        _damageWindow = false;
+        InCombat = isBlocking = false;
+        DisableDamage();
+        if (blockHitBox != null) blockHitBox.DisableBlock();
+        attackIsReady = isActiveAndEnabled && myStats != null && !myStats.IsDead;
+        if (_combatAnimator != null && myStats != null && !myStats.IsDead) _combatAnimator.SetBusy(false);
+    }
+    public virtual void Attack(bool heavy)
+    {
+        if (!isActiveAndEnabled || !canAttack || !attackIsReady || myStats.IsDead || myStats.currentHealth <= 0 || _combatAnimator == null || _combatAnimator.AnimationIsBusy()) return;
+        var weapon = ActiveWeapon;
+        _ranged = weapon != null && weapon.isRanged;
+        _projectileReleased = false;
+        _attackDamage = Mathf.Max(1, Mathf.RoundToInt(myStats.damage * (heavy && weapon != null ? weapon.heavyDamageMultiplier : 1f)));
+        attackIsReady = false;
+        IsExecutingAttack = true;
+        InCombat = true;
+        if (attackHitBox != null) attackHitBox.BeginAttack();
+        OnAttack?.Invoke(heavy);
+        _combatAnimator.SetBusy(true);
+        float duration = Mathf.Max(0.1f, _combatAnimator.CurrentAttackDuration);
+        _attackRoutine = StartCoroutine(ExecuteAttack(weapon, duration));
+    }
+    private IEnumerator ExecuteAttack(WeaponClass weapon, float duration)
+    {
+        float hitStart = weapon != null ? Mathf.Clamp01(weapon.hitStart) : 0.3f;
+        float hitEnd = weapon != null ? Mathf.Clamp(Mathf.Max(hitStart, weapon.hitEnd), hitStart, 1f) : 0.6f;
+        float elapsed = 0f;
+        while (elapsed < duration)
         {
-            InCombat = false;
+            if (myStats.IsDead) break;
+            float phase = elapsed / duration;
+            _damageWindow = phase >= hitStart && phase <= hitEnd;
+            if (_ranged)
+            {
+                if (_damageWindow && !_projectileReleased) EnableProjectile();
+            }
+            else if (_damageWindow) EnableDamage();
+            else DisableDamage();
+            elapsed += Time.deltaTime;
+            yield return null;
         }
-	}
-	
-	public virtual void EnableProjectile()
+        IsExecutingAttack = false;
+        _damageWindow = false;
+        DisableDamage();
+        if (!myStats.IsDead) _combatAnimator.SetBusy(false);
+        cooldownTime = Mathf.Max(0f, AttackCooldown - duration);
+        while (cooldownTime > 0f) { cooldownTime -= Time.deltaTime; yield return null; }
+        attackIsReady = !myStats.IsDead;
+        _attackRoutine = null;
+    }
+    protected bool TryReleaseProjectile()
     {
-		//...Does Something
-	}
-
-	public virtual void EnableProjectile(Abilities ability, int damage)
+        if (!isActiveAndEnabled || !_ranged || !_damageWindow || _projectileReleased || myStats.IsDead) return false;
+        _projectileReleased = true;
+        return true;
+    }
+    public void Ability()
     {
-		//...Does Something
-	}
-
-	public void EnableDamage()
-	{
-		//Debug.Log("Damage Enabled");
-		attackHitBox.EnableDamage();
-	}
-
-	public void DisableDamage()
-	{
-		//Debug.Log("Damage Disabled");
-		attackHitBox.DisableDamage();
-	}
-
+        if (!isActiveAndEnabled || abilities == null || _combatAnimator == null || _combatAnimator.AnimationIsBusy() || myStats.IsDead) return;
+        _combatAnimator.PlayAbilityAnimation(abilities.startAnimation);
+        if (abilities.projectile != null) EnableProjectile(abilities, abilities.damage);
+        StartCoroutine(RecoverHit());
+    }
+    public virtual void TakeDamage(int damageTaken, Transform attackOwner, float direction, Vector3 position, bool blocked)
+    {
+        if (!isActiveAndEnabled || myStats.IsDead || damageTaken <= 0) return;
+        int incoming = blocked ? Mathf.Max(1, Mathf.RoundToInt(damageTaken * blockDamageMultiplier)) : damageTaken;
+        myStats.TakeDamage(incoming, attackOwner, direction);
+        if (myStats.IsDead) return;
+        StopAllCoroutines();
+        _attackRoutine = null;
+        IsExecutingAttack = false;
+        _damageWindow = false;
+        DisableDamage();
+        attackIsReady = false;
+        if (_combatAnimator != null)
+        {
+            _combatAnimator.SetBusy(true);
+            if (blocked) _combatAnimator.PlayTargetAnimation("BlockImpact", true); else _combatAnimator.GetHit(direction);
+        }
+        StartCoroutine(RecoverHit());
+        if (!blocked && bloodSplat != null) Destroy(Instantiate(bloodSplat, position, Quaternion.identity), 2f);
+    }
+    private IEnumerator RecoverHit()
+    {
+        yield return new WaitForSeconds(hitRecoveryTime);
+        if (!myStats.IsDead) { attackIsReady = true; if (_combatAnimator != null) _combatAnimator.SetBusy(false); }
+    }
+    public void BlockStart()
+    {
+        if (!isActiveAndEnabled || !canBlock || isBlocking || _combatAnimator == null || _combatAnimator.AnimationIsBusy() || myStats.IsDead) return;
+        isBlocking = true;
+        if (blockHitBox != null) blockHitBox.EnableBlock();
+        _combatAnimator.PlayTargetAnimation("BlockStart", false);
+    }
+    public void BlockDrop()
+    {
+        if (!isBlocking) return;
+        isBlocking = false;
+        if (blockHitBox != null) blockHitBox.DisableBlock();
+        if (_combatAnimator != null) _combatAnimator.PlayTargetAnimation("BlockDrop", false);
+    }
+    public virtual void EnableProjectile() { }
+    public virtual void EnableProjectile(Abilities ability, int damage) { }
+    public void EnableDamage() { if (isActiveAndEnabled && !myStats.IsDead && _damageWindow && !_ranged && attackHitBox != null) attackHitBox.EnableDamage(); }
+    public void DisableDamage() { if (attackHitBox != null) attackHitBox.DisableDamage(); }
 }

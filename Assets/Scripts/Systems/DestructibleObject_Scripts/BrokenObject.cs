@@ -1,49 +1,56 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BrokenObject : MonoBehaviour
 {
     private Renderer[] parts;
-    
-    void Awake()
-    {
-        //Set Part array
-        parts = new Renderer[transform.childCount];
+    private Material[] fadeMaterials;
+    private Material[] originalMaterials;
 
-        //add child to part list 
-        for(int i = 0; i < parts.Length ; i++)
+    private void Awake()
+    {
+        parts = new Renderer[transform.childCount];
+        fadeMaterials = new Material[parts.Length];
+        originalMaterials = new Material[parts.Length];
+        for (int i = 0; i < parts.Length; i++)
         {
             parts[i] = transform.GetChild(i).GetComponent<MeshRenderer>();
+            if (parts[i] == null || parts[i].sharedMaterial == null) continue;
+            originalMaterials[i] = parts[i].sharedMaterial;
+            fadeMaterials[i] = new Material(originalMaterials[i]);
+            parts[i].sharedMaterial = fadeMaterials[i];
         }
-
-        StartCoroutine("RemoveParts");
+        StartCoroutine(RemoveParts());
     }
 
     private IEnumerator RemoveParts()
     {
         yield return new WaitForSeconds(2f);
-
-        float aAlpha = 1f;  
-
-        while(aAlpha > 0)
-        {   
-            //fade parts
-            aAlpha -= 0.4f * Time.deltaTime;
-            
-            for(int i = 0; i < parts.Length ; i++)
+        float alpha = 1f;
+        while (alpha > 0f)
+        {
+            alpha = Mathf.Max(0f, alpha - 0.4f * Time.deltaTime);
+            foreach (Material material in fadeMaterials)
             {
-                Color color = parts[i].material.color;
-                color.a = aAlpha;
-                parts[i].material.color = color;
-            }    
-
-            if (aAlpha <= 0)
-                Destroy(this.gameObject);
-
+                if (material == null) continue;
+                Color color = material.color;
+                color.a = alpha;
+                material.color = color;
+            }
             yield return null;
         }
-
+        Destroy(gameObject);
     }
 
+    private void OnDestroy()
+    {
+        if (fadeMaterials == null) return;
+        for (int i = 0; i < fadeMaterials.Length; i++)
+        {
+            if (fadeMaterials[i] == null) continue;
+            if (parts[i] != null && parts[i].sharedMaterial == fadeMaterials[i])
+                parts[i].sharedMaterial = originalMaterials[i];
+            Destroy(fadeMaterials[i]);
+        }
+    }
 }

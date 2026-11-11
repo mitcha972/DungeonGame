@@ -1,0 +1,12 @@
+success=False
+Log: [Test] Exit object=ExitObject at (144.00, 0.00, 96.00)
+Log: [Test] Generation 0 ready: player=(0.00, 0.08, 0.00) exitSampled=False exitPath=PathInvalid enemies=4 triangles=3673
+Log: [Test] Exit object=ExitObject at (144.00, 0.00, 96.00)
+Log: [Test] Generation 1 ready: player=(0.00, 0.10, 0.00) exitSampled=False exitPath=PathInvalid enemies=4 triangles=3656
+Log: [Test] Exit object=ExitObject at (144.00, 0.00, 96.00)
+Log: [Test] Generation 2 ready: player=(0.00, 0.08, 0.00) exitSampled=False exitPath=PathInvalid enemies=4 triangles=3681
+Log: [Test] Movement W distance=1.335429 input=(0.00, 1.00) grounded=True
+Log: [Test] Movement D distance=1.333333 input=(1.00, 0.00) grounded=True
+Log: [Test] Movement S distance=1.324582 input=(0.00, -1.00) grounded=True
+Log: [Test] Movement A distance=0.7730438 input=(-1.00, 0.00) grounded=True
+Log: [Test] Camera=(0.87, 2.76, -3.33) playerViewport=(0.45, 0.31, 3.68)

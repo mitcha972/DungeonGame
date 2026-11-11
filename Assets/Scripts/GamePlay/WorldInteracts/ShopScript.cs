@@ -10,22 +10,19 @@ public class ShopScript : Interactable
 
     void Start()
     {
-        int rand = 0;
-       
-        for(int i = 0; i < itemDrops.Length; i++)
-        { 
-            rand = Random.Range(0,100);
-            if(rand <= itemDrops[i].dropChance)
-			{
-                inventory.Add(itemDrops[i].lootItem.GetComponent<ItemInteract>().item);
-            }
+        if (inventory == null || itemDrops == null) return;
+        foreach (var drop in itemDrops)
+        {
+            if (drop == null || drop.lootItem == null || Random.Range(0, 100) >= Mathf.Clamp(drop.dropChance, 0, 100)) continue;
+            var pickup = drop.lootItem.GetComponent<ItemInteract>();
+            if (pickup != null) inventory.Add(pickup.item);
         }
     }
 
     // When the player interacts with the item
 	public override void Interact(Transform interactOwner)
 	{
-		base.Interact(interactOwner);
+        if (inventory == null || shopInventoryUI == null) return;
 
 		Debug.Log("Shop");
 
@@ -35,7 +32,7 @@ public class ShopScript : Interactable
         shopInventoryUI.inventory = inventory;
 
         //Set items to chest items //FIX
-        for(int i = 0; i < inventory.items.Count; i++)
+        for(int i = 0; i < inventory.items.Count && i < shopInventoryUI.slots.Length; i++)
         {
             Debug.Log(inventory.items[i]);
             shopInventoryUI.slots[i].AddItem(inventory.items[i]);

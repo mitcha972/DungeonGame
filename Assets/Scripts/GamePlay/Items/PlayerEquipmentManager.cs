@@ -10,6 +10,7 @@ public class PlayerEquipmentManager : EquipmentManager
 	void Awake()
 	{
 		inventory = GetComponent<Inventory>();
+        animator = GetComponent<CharacterAnimator>();
 	}
 
 	public override void Setup()
@@ -20,35 +21,39 @@ public class PlayerEquipmentManager : EquipmentManager
 	// Equip a New Item
 	public override void Equip (Equipment newItem, int SlotIndex)
 	{
+        if (newItem == null || inventory == null || SlotIndex < 0 || SlotIndex >= inventory.items.Count || inventory.items[SlotIndex] != newItem) return;
 		//Check if free Animation
-		if (animator.AnimationIsBusy())
+		if (animator != null && animator.AnimationIsBusy())
 		 	return;
 
 		base.Equip(newItem, SlotIndex);
 		
 		AddToUI(newItem);
-		animator.PlayTargetAnimation("Equip", true);							
+		if (animator != null) animator.PlayTargetAnimation("Equip", true);							
 	}
 
-	public override void Equip (Equipment newItem)
+	public override void Equip(Equipment newItem)
 	{
-		//Check if free Animation
-		if (animator.AnimationIsBusy())
-		 	return;
-
+        if (newItem == null) return;
 		base.Equip(newItem);
-		
-		//Add to slot
-		//
 		AddToUI(newItem);
-		animator.PlayTargetAnimation("Equip", true);						
 	}
 
-	void AddToUI(Equipment newItem)
+    public override Equipment Unequip(EquipmentSlot slotIndex)
+    {
+        Equipment removed = base.Unequip(slotIndex);
+        if (equipmentSlotsUI != null)
+            foreach (var slot in equipmentSlotsUI)
+                if (slot != null && slot.equipmentSlot == slotIndex) slot.ClearSlot();
+        return removed;
+    }
+
+    void AddToUI(Equipment newItem)
 	{
 		//Add Item image To equiptment Slot UI
-		for(int i = 0; i < equipmentSlotsUI.Length; i++)
-			if(equipmentSlotsUI[i].equipmentSlot == newItem.equipSlot)
+		if (equipmentSlotsUI == null) return;
+        for(int i = 0; i < equipmentSlotsUI.Length; i++)
+			if(equipmentSlotsUI[i] != null && equipmentSlotsUI[i].equipmentSlot == newItem.equipSlot)
 				equipmentSlotsUI[i].AddItem(newItem);
 	}
 

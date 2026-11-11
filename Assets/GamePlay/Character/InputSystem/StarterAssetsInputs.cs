@@ -12,6 +12,7 @@ namespace StarterAssets
 		public Vector2 look;
 		public bool jump;
 		public bool sprint;
+		public bool toggleCamera;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -43,6 +44,11 @@ namespace StarterAssets
 		{
 			SprintInput(value.isPressed);
 		}
+
+		public void OnToggleCamera(InputValue value)
+		{
+			ToggleCameraInput(value.isPressed);
+		}
 #endif
 
 
@@ -66,9 +72,32 @@ namespace StarterAssets
 			sprint = newSprintState;
 		}
 
+		public void ToggleCameraInput(bool newToggleState)
+		{
+			toggleCamera = newToggleState;
+		}
+
+		private UnityEngine.InputSystem.PlayerInput _playerInput;
+		private PlayerControlState _state;
+		private void Awake() { _playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>(); _state = GetComponent<PlayerControlState>(); }
+		private void OnEnable() { if (_playerInput != null) _playerInput.onActionTriggered += OnAction; }
+		private void OnDisable() { if (_playerInput != null) _playerInput.onActionTriggered -= OnAction; ResetInput(); }
+		public void ResetInput() { move = look = Vector2.zero; jump = sprint = toggleCamera = false; }
+		private void OnAction(UnityEngine.InputSystem.InputAction.CallbackContext context)
+		{
+		    bool allowed = _state != null ? _state.GameplayAllowed : Cursor.lockState == CursorLockMode.Locked && Time.timeScale > 0f;
+		    switch (context.action.name)
+		    {
+		        case "Move": MoveInput(allowed && !context.canceled ? context.ReadValue<Vector2>() : Vector2.zero); break;
+		        case "Look": LookInput(allowed && cursorInputForLook && !context.canceled ? context.ReadValue<Vector2>() : Vector2.zero); break;
+		        case "Sprint": SprintInput(allowed && context.ReadValue<float>() > 0.5f); break;
+		        case "Jump": if (allowed && context.performed) jump = true; break;
+		        case "ToggleCamera": if (allowed && context.performed) toggleCamera = true; break;
+		    }
+		}
 		private void OnApplicationFocus(bool hasFocus)
 		{
-			SetCursorState(cursorLocked);
+		    if (!hasFocus) ResetInput();
 		}
 
 		private void SetCursorState(bool newState)

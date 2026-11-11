@@ -1,122 +1,89 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class AttackHitBox : MonoBehaviour
 {
     public CharacterStats myStats;
     public CharacterCombat target;
     public GameObject owner;
-    BoxCollider boxCollider;
-    private LayerMask collisionMask;
-    public List<CharacterStats> collidedCharacters;
-    
-    void Awake()
+    public List<CharacterStats> collidedCharacters = new List<CharacterStats>();
+    private BoxCollider _collider;
+    private CharacterCombat _combat;
+    private readonly Collider[] _overlaps = new Collider[64];
+    private readonly HashSet<DestructibleObject> _destructibles = new HashSet<DestructibleObject>();
+    private void Awake()
     {
-        boxCollider = GetComponent<BoxCollider>();
-        collisionMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Wall");
-        collidedCharacters = new List<CharacterStats>();
+        _collider = GetComponent<BoxCollider>();
+        _collider.isTrigger = true;
+        _collider.enabled = false;
+        _combat = GetComponentInParent<CharacterCombat>();
+        if (myStats == null && _combat != null) myStats = _combat.myStats;
+        if (owner == null && _combat != null) owner = _combat.gameObject;
     }
-
-    public void UpdateAttackHitBox(Equipment equipment)//remove
+    private void FixedUpdate()
     {
-        //boxCollider.size = new Vector3(equipment.xLength, equipment.yLength, equipment.zLength);
+        if (!_collider.enabled || myStats == null || myStats.IsDead) return;
+        Transform hitTransform = transform;
+        Bounds bounds = new Bounds(_collider.center, _collider.size);
+        if (_weaponMesh != null)
+        {
+            _weaponMesh.BakeMesh(_bakedMesh);
+            _bakedMesh.RecalculateBounds();
+            bounds = _bakedMesh.bounds;
+            hitTransform = _weaponMesh.transform;
+        }
+        Vector3 scale = hitTransform.lossyScale;
+        Vector3 halfExtents = Vector3.Scale(bounds.extents, new Vector3(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z)));
+        int count = Physics.OverlapBoxNonAlloc(hitTransform.TransformPoint(bounds.center), halfExtents, _overlaps, hitTransform.rotation, ~0, QueryTriggerInteraction.Ignore);
+        Collider[] overlaps = _overlaps;
+        if (count == _overlaps.Length)
+        {
+            overlaps = Physics.OverlapBox(hitTransform.TransformPoint(bounds.center), halfExtents, hitTransform.rotation, ~0, QueryTriggerInteraction.Ignore);
+            count = overlaps.Length;
+        }
+        for (int i = 0; i < count; i++) Hit(overlaps[i]);
     }
-
-    private void DealDamage(int damageReduction, float angle , bool isBlocked)
+    private SkinnedMeshRenderer _weaponMesh;
+    private Mesh _bakedMesh;
+    public void ConfigureWeapon(SkinnedMeshRenderer mesh)
     {
-        target.TakeDamage(myStats.damage - damageReduction, owner.transform, angle, transform.position, isBlocked);
+        _weaponMesh = mesh;
+        if (_bakedMesh == null) _bakedMesh = new Mesh();
     }
-
-    public void EnableDamage()
+    private void OnDestroy() { if (_bakedMesh != null) Destroy(_bakedMesh); }
+    private void OnTriggerEnter(Collider other) { if (_collider.enabled && _weaponMesh == null) Hit(other); }
+    private void Hit(Collider other)
     {
-       
-        boxCollider.enabled = true;
+        if (owner == null || other.transform.IsChildOf(owner.transform)) return;
+        var stats = other.GetComponentInParent<CharacterStats>();
+        if (stats != null)
+        {
+            if (stats == myStats || stats.IsDead || stats.CompareTag(owner.tag) || collidedCharacters.Contains(stats)) return;
+            target = stats.GetComponent<CharacterCombat>();
+            if (target == null) return;
+            collidedCharacters.Add(stats);
+            Vector3 direction = owner.transform.position - stats.transform.position;
+            direction.y = 0f;
+            float angle = Vector3.SignedAngle(direction, stats.transform.forward, Vector3.up);
+            bool blocked = target.isBlocking && Vector3.Dot(stats.transform.forward, direction.normalized) > 0.2f;
+            target.TakeDamage(_combat != null ? _combat.AttackDamage : Mathf.Max(1, myStats.damage), owner.transform, angle, other.ClosestPoint(transform.position), blocked);
+            return;
+        }
+        var destructible = other.GetComponentInParent<DestructibleObject>();
+        if (destructible != null && _destructibles.Add(destructible)) destructible.Damage(Mathf.Max(1, myStats.damage), transform.position);
     }
-
+    public void BeginAttack()
+    {
+        collidedCharacters.Clear();
+        _destructibles.Clear();
+        target = null;
+    }
+    public void EnableDamage() { if (_collider != null && myStats != null && !myStats.IsDead && _combat != null && _combat.isActiveAndEnabled) _collider.enabled = true; }
     public void DisableDamage()
     {
-        //RestSet Attack
-        target = null; 
-        boxCollider.enabled = false;
-        collidedCharacters.Clear();
+        if (_collider != null) _collider.enabled = false;
+        target = null;
     }
-
-    private void OnTriggerEnter(Collider other)
-    {  
-        //If same tage
-        if(other.CompareTag(this.tag))
-            return;
-        
-        int otherLayer = 1 << other.gameObject.layer;
-        if((collisionMask & otherLayer) == otherLayer)
-            return;
-        
-        Debug.LogWarning("Trigger Hit " + other);
-        if(other.TryGetComponent(out DestructibleObject destructibleObject))
-        { 
-            destructibleObject.Damage(myStats.damage, transform.position);
-            return;
-        }
-
-        if(other.TryGetComponent(out CharacterStats characterStats))
-        {   
-            if(!collidedCharacters.Contains(characterStats))
-            {
-                collidedCharacters.Add(characterStats);
-                //Debug.Log("Hit Player");
-                CharacterCollision(other.gameObject);
-            }
-        }    
-    }  
-
-    private void CharacterCollision(GameObject other)
-    {
-        target = other.GetComponent<CharacterCombat>();
-        Vector3 direction = transform.position - target.transform.position;
-        Vector3 planeNormal = target.transform.up;
-        Vector3 projectedDirection = Vector3.ProjectOnPlane(direction, planeNormal);
-        float angle = Vector3.SignedAngle(projectedDirection, target.transform.forward, planeNormal);
-
-        //Fix
-        bool isBlocked = CheckBlock(other);
-        int damageReduction = 0;
-
-        if(isBlocked)
-        {
-            //Debug.Log("Attack blockedddd");
-            damageReduction += other.GetComponent<CharacterStats>().armor;
-        }
-        else
-            damageReduction += 0;
-
-        DealDamage(damageReduction, angle , isBlocked);
-    }
-
-    private bool CheckBlock(GameObject other)
-    {
-        BlockHitBox blockHitBox = other.GetComponent<CharacterCombat>().blockHitBox;
-        
-        if(other.GetComponent<CharacterCombat>().isBlocking)
-        {   
-            //Debug.Log("WE SAYYY Attack blockedddd");
-            return true;
-        }
-        
-        /*
-        if(blockHitBox)
-        {
-            for(int i = 0 ; i < blockHitBox.DHB.Count; i++)
-            {
-                if(blockHitBox.DHB[i] == this)
-                {
-                    blockHitBox.DHB[i] = null;
-                    return true;
-                }
-            }
-        }
-        */
-        return false;      
-    }
-
+    public void UpdateAttackHitBox(Equipment equipment) { }
 }

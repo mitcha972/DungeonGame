@@ -19,8 +19,8 @@ public class ChestInventorySlot : UISlot
 	{		
 		if (item != null)
 		{
-			//Add Itme to inventory
-			IU.inventory.Add(item);			
+			// Transfer only after destination accepts the item.
+            if (IU == null || IU.inventory == null || CUI == null || CUI.currentChest == null || !IU.inventory.Add(item)) return;
 
 			//Remove from Chest Inventory
 			CUI.currentChest.inventory.Remove(item);

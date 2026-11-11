@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5239938503980953068}
   - component: {fileID: 5239938503980953071}
   m_Layer: 0
-  m_Name: Generator
+  m_Name: DungeonGenerator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24,12 +24,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5239938503980953070}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5239938503980953071
 MonoBehaviour:
@@ -59,6 +60,9 @@ MonoBehaviour:
     roomType: 1
     numb: 2
   offset: {x: 12, y: 12}
-  startRoom: {fileID: 4338170598584033073, guid: cc561c8e76e36ba42a3dfa90f06877a8, type: 3}
+  startRoom: {fileID: 4338170598584033073, guid: cc561c8e76e36ba42a3dfa90f06877a8,
+    type: 3}
   endRoom: {fileID: 4338170598584033073, guid: 484d905b754887b4e8dad8152098039f, type: 3}
   player: {fileID: 0}
+  navigationSurface: {fileID: 0}
+  spawnSearchRadius: 4

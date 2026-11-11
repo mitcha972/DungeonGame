@@ -1,0 +1,18 @@
+success=False
+Log: [Test] Exit object=ExitObject at (0.00, 0.00, -144.00)
+Log: [Test] Nearest exit navigation point=(0.14, 0.03, -143.31) distance=0.7068442
+Log: [Test] Exit floor hit=ExitObject at (0.00, 1.12, -144.00)
+Log: [Test] Generation 0 ready: player=(0.00, 0.08, 0.00) exitSampled=True exitPath=PathPartial enemies=4 triangles=3651
+Log: [Test] Exit object=ExitObject at (144.00, 0.00, 0.00)
+Log: [Test] Nearest exit navigation point=(143.31, 0.05, 0.14) distance=0.7075602
+Log: [Test] Exit floor hit=ExitObject at (144.00, 1.12, 0.00)
+Log: [Test] Generation 1 ready: player=(0.00, 0.10, 0.00) exitSampled=True exitPath=PathPartial enemies=4 triangles=3656
+Log: [Test] Exit object=ExitObject at (0.00, 0.00, -48.00)
+Log: [Test] Nearest exit navigation point=(-0.72, 0.03, -48.00) distance=0.7208099
+Log: [Test] Exit floor hit=ExitObject at (0.00, 1.12, -48.00)
+Log: [Test] Generation 2 ready: player=(0.00, 0.08, 0.00) exitSampled=True exitPath=PathPartial enemies=4 triangles=3681
+Log: [Test] Movement W distance=1.335429 input=(0.00, 1.00) grounded=True
+Log: [Test] Movement D distance=1.333333 input=(1.00, 0.00) grounded=True
+Log: [Test] Movement S distance=1.204451 input=(0.00, -1.00) grounded=True
+Log: [Test] Movement A distance=0.7895463 input=(-1.00, 0.00) grounded=True
+Log: [Test] Camera=(0.84, 2.76, -3.21) playerViewport=(0.45, 0.31, 3.68)

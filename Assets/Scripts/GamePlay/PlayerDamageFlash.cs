@@ -16,14 +16,16 @@ public class PlayerDamageFlash : MonoBehaviour
             image = GetComponent<Image>(); // Get the Image component if it is not set in the inspector
         }
 
+        if (image == null) { enabled = false; return; }
         originalColor = image.color;
         originalColor.a = 0f; // Set the original alpha to 0
         image.color = originalColor;
+        image.enabled = false;
     }
 
     public void DamageFlash(float damageIntensity)
     {
-        if (!image.enabled)
+        if (image != null && isActiveAndEnabled && damageIntensity > 0f && !image.enabled)
         {
             StartCoroutine(FadeOut(damageIntensity));
         }

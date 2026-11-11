@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace EZCameraShake
 {
@@ -88,13 +88,13 @@ namespace EZCameraShake
             if (fadeInDuration > 0 && sustain)
             {
                 if (currentFadeTime < 1)
-                    currentFadeTime += Time.deltaTime / fadeInDuration;
+                    currentFadeTime = Mathf.Min(1f, currentFadeTime + Time.deltaTime / fadeInDuration);
                 else if (fadeOutDuration > 0)
                     sustain = false;
             }
 
             if (!sustain)
-                currentFadeTime -= Time.deltaTime / fadeOutDuration;
+                currentFadeTime = fadeOutDuration > 0f ? Mathf.Max(0f, currentFadeTime - Time.deltaTime / fadeOutDuration) : 0f;
 
             if (sustain)
                 tick += Time.deltaTime * Roughness * roughMod;

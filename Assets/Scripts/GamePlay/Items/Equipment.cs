@@ -47,8 +47,9 @@ public class Equipment : Item
 		// }
 
 		//Find equipmentManager And Equip Item 
-		EquipmentManager equipmentManager = owner.GetComponent<EquipmentManager>();
-		equipmentManager.Equip(this, slotIndex);
+		if (owner == null) return;
+        EquipmentManager equipmentManager = owner.GetComponent<EquipmentManager>();
+        if (equipmentManager != null) equipmentManager.Equip(this, slotIndex);
 	}
 
 }

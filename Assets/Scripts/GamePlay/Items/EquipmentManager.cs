@@ -49,7 +49,12 @@ public class EquipmentManager : MonoBehaviour //used by PEM EEM
 
 	void Start()
 	{
-		animator = GetComponent<CharacterAnimator>();
+		animator = GetComponentInParent<CharacterAnimator>();
+        if (attackHitBox == null)
+        {
+            var ownerCombat = GetComponentInParent<CharacterCombat>();
+            if (ownerCombat != null && ownerCombat.attackHitBox != null) attackHitBox = ownerCombat.attackHitBox.gameObject;
+        }
 		Setup();
 	}
 
@@ -69,134 +74,53 @@ public class EquipmentManager : MonoBehaviour //used by PEM EEM
 	
 	public virtual void Equip(Equipment newItem, int SlotIndex)
 	{
-		// Set equip trigger
-    	animator.Equip();
-
-		Debug.Log("Equipping " + newItem.name + "From Index-" +SlotIndex + " to " + slotNames[newItem.equipSlot]);
-
-		// Find equipment slot item is replacing
-		EquipmentSlot slotIndex = newItem.equipSlot;
-
-		//check equipment slot , if there is a curent item then unequip it. 
-		Equipment oldItem = Unequip(slotIndex, SlotIndex, newItem);
-
-		//Equip new item to equiptment slot 
-		currentEquipment[slotIndex] = newItem;
-		
-		//Add update eupiment ui Here
-		UpdateCurrentEquipmentArray();
-
-		AttachToMesh(newItem, slotIndex);
-
-		//Attak Hit box function
-		//Set AttackHitBox parent To hand GameObject object based on if the Equipted slot is a "MainHand"
-		// if(newItem.equipSlot == EquipmentSlot.MainHand)
-		// {
-		// 	attackHitBox.GetComponent<AttackHitBox>().UpdateAttackHitBox(newItem);
-		// }
-			
+	    if (newItem == null || inventory == null || SlotIndex < 0 || SlotIndex >= inventory.items.Count || inventory.items[SlotIndex] != newItem) return;
+	    currentEquipment.TryGetValue(newItem.equipSlot, out Equipment oldItem);
+	    inventory.Swap(oldItem, SlotIndex);
+	    ReplaceEquipment(newItem, oldItem);
 	}
 
 	public virtual void Equip(Equipment newItem)
 	{
-		// Set equip trigger
-    	animator.Equip();
-
-		Debug.Log("Equipping " + newItem.name + " to " + slotNames[newItem.equipSlot]);
-
-		// Find equipment slot item is replacing
-		EquipmentSlot  slotIndex = newItem.equipSlot;
-
-		//check equipment slot , if there is a curent item then unequpt it. 
-        Equipment oldItem = Unequip(slotIndex);
-		
-		//FIXXXX
-		if(onEquipmentChanged != null)
-			onEquipmentChanged.Invoke(newItem, oldItem);
-		
-		//Equip new item to equiptment slot 
-		currentEquipment[slotIndex] = newItem;
-		UpdateCurrentEquipmentArray();
-
-		AttachToMesh(newItem, slotIndex);
-
-		//Set AttackHitBox parent To hand GameObject object based on if the Equipted slot is a "MainHand"
-		// if(newItem.equipSlot == EquipmentSlot.MainHand)
-		// {
-		// 	attackHitBox.GetComponent<AttackHitBox>().UpdateAttackHitBox(newItem);
-		// }
+	    if (newItem == null) return;
+	    currentEquipment.TryGetValue(newItem.equipSlot, out Equipment oldItem);
+	    ReplaceEquipment(newItem, oldItem);
 	}
 
-	public virtual Equipment Unequip(EquipmentSlot slotIndex, int SlotIndex, Equipment newItem ) //Add Switch Function
+	private void ReplaceEquipment(Equipment newItem, Equipment oldItem)
 	{
-        Equipment oldItem = null;
-		
-		// If Item is in current equiptment slot
-		if(currentEquipment.ContainsKey(slotIndex))
-		{
-			// Find Item being removed from Eq
-			oldItem = currentEquipment[slotIndex];
-			
-			Debug.Log("Unequipint - " + oldItem + "from Slot- " + SlotIndex);
-	
-			inventory.Swap(oldItem, SlotIndex);
-
-			// Remove the item from the equipment dictionary
-            currentEquipment.Remove(slotIndex);
-			UpdateCurrentEquipmentArray();
-
-            SetBlendShapeWeight(oldItem, 0);
-           
-		    // Destroy the mesh
-            if (currentMeshes[slotIndex] != null)
-                Destroy(currentMeshes[slotIndex].gameObject);
-            
-		}
-		else
-		{
-			inventory.Remove(SlotIndex);
-		}
-
-		// Trigger the onEquipmentChanged callback : Called in - ??
-		if (onEquipmentChanged != null)
-			onEquipmentChanged.Invoke(newItem, oldItem);
-
-        return oldItem;
+	    EquipmentSlot slot = newItem.equipSlot;
+	    if (oldItem != null) SetBlendShapeWeight(oldItem, 0);
+	    if (currentMeshes.TryGetValue(slot, out SkinnedMeshRenderer oldMesh) && oldMesh != null) Destroy(oldMesh.gameObject);
+	    currentMeshes.Remove(slot);
+	    currentEquipment[slot] = newItem;
+	    UpdateCurrentEquipmentArray();
+	    if (newItem.mesh != null && targetMesh != null) AttachToMesh(newItem, slot);
+	    onEquipmentChanged?.Invoke(newItem, oldItem);
 	}
 
-	public virtual Equipment Unequip(EquipmentSlot slotIndex) //Add Switch Function
+	public virtual Equipment Unequip(EquipmentSlot slotIndex, int SlotIndex, Equipment newItem)
 	{
-		Equipment oldItem = null;
-		
-		// If Item is in current equiptment slot
-		if(currentEquipment.ContainsKey(slotIndex))
-		{
-			// Find Item being removed from Eq
-			oldItem = currentEquipment[slotIndex];
-			
-			Debug.Log("Unequipint - " + oldItem);
-
-			// Remove the item from the equipment dictionary
-            currentEquipment.Remove(slotIndex);
-			
-			UpdateCurrentEquipmentArray();
-
-            SetBlendShapeWeight(oldItem, 0);
-           
-		    // Destroy the mesh
-            if (currentMeshes[slotIndex] != null)
-                Destroy(currentMeshes[slotIndex].gameObject);
-
-		}
-
-		//FIX OR JUST REMOVE 
-		if(onEquipmentChanged != null)
-			onEquipmentChanged.Invoke(null, oldItem);
-
-        return oldItem;
+	    currentEquipment.TryGetValue(slotIndex, out Equipment oldItem);
+	    if (inventory != null && SlotIndex >= 0 && SlotIndex < inventory.items.Count) inventory.Swap(oldItem, SlotIndex);
+	    if (newItem != null) ReplaceEquipment(newItem, oldItem);
+	    else Unequip(slotIndex);
+	    return oldItem;
 	}
 
-	public void UnequipAll()
+	public virtual Equipment Unequip(EquipmentSlot slotIndex)
+	{
+	    if (!currentEquipment.TryGetValue(slotIndex, out Equipment oldItem)) return null;
+	    currentEquipment.Remove(slotIndex);
+	    UpdateCurrentEquipmentArray();
+	    SetBlendShapeWeight(oldItem, 0);
+	    if (currentMeshes.TryGetValue(slotIndex, out SkinnedMeshRenderer mesh) && mesh != null) Destroy(mesh.gameObject);
+	    currentMeshes.Remove(slotIndex);
+	    onEquipmentChanged?.Invoke(null, oldItem);
+	    return oldItem;
+	}
+
+public void UnequipAll()
 	{
 		foreach (EquipmentSlot slot in currentEquipment.Keys.ToList())
 		{
@@ -204,66 +128,92 @@ public class EquipmentManager : MonoBehaviour //used by PEM EEM
 		}
 	}
 
-	public void DropItem(Item dropI)
-	{
-		var it = dropI as Equipment;
-		
-		///WOrkig on 
-		GameObject newItemDrop = Instantiate(itemDrop,this.transform.position + this.transform.up + this.transform.forward, Quaternion.identity);
-		newItemDrop.name = it.name;
-		newItemDrop.GetComponent<ItemInteract>().item = dropI;
-		newItemDrop.transform.Find("ItemPreview").GetComponent<MeshFilter>().sharedMesh = it.mesh.sharedMesh;
-		newItemDrop.transform.Find("ItemPreview").GetComponent<MeshRenderer>().materials = it.mesh.sharedMaterials;
+    public void UnequipAllToInventory()
+    {
+        if (inventory == null) return;
+        foreach (EquipmentSlot slot in currentEquipment.Keys.ToList())
+        {
+            if (currentEquipment.TryGetValue(slot, out Equipment equipment) && equipment != null && inventory.Add(equipment))
+                Unequip(slot);
+        }
+    }
 
-		//Change Item Size//
-		newItemDrop.transform.Find("ItemPreview").GetComponent<Transform>().localScale = it.mesh.GetComponent<Transform>().localScale;
-	
-		//Remove from inventory
-		//inventory.Remove(this.transform.GetSiblingIndex()); //fix	
-		//RemoveFromInventory(item);
-	}
+    public void DropItem(Item dropI)
+    {
+        TryDropItem(dropI);
+    }
 
-    public void AttachToMesh(Equipment item, EquipmentSlot slotIndex)
+    public bool TryDropItem(Item dropI)
+    {
+        var equipment = dropI as Equipment;
+        if (equipment == null || equipment.mesh == null || itemDrop == null) return false;
+
+        GameObject droppedItem = Instantiate(itemDrop, transform.position + transform.up + transform.forward, Quaternion.identity);
+        var pickup = droppedItem.GetComponent<ItemInteract>();
+        Transform preview = droppedItem.transform.Find("ItemPreview");
+        var filter = preview != null ? preview.GetComponent<MeshFilter>() : null;
+        var renderer = preview != null ? preview.GetComponent<MeshRenderer>() : null;
+        if (pickup == null || filter == null || renderer == null)
+        {
+            droppedItem.SetActive(false);
+            Destroy(droppedItem);
+            Debug.LogWarning("Item drop requires ItemInteract and an ItemPreview with MeshFilter and MeshRenderer.", this);
+            return false;
+        }
+
+        droppedItem.name = equipment.name;
+        pickup.item = dropI;
+        filter.sharedMesh = equipment.mesh.sharedMesh;
+        renderer.sharedMaterials = equipment.mesh.sharedMaterials;
+        preview.localScale = equipment.mesh.transform.localScale;
+        return true;
+    }
+
+	public void AttachToMesh(Equipment item, EquipmentSlot slotIndex)
 	{
-        SkinnedMeshRenderer newMesh = Instantiate(item.mesh) as SkinnedMeshRenderer;
-        
-		//Change to SetParent
-		//newMesh.transform.parent = targetMesh.transform.parent;
+		if (item == null || item.mesh == null || targetMesh == null) return;
+
+	    SkinnedMeshRenderer newMesh = Instantiate(item.mesh) as SkinnedMeshRenderer;
+		if (newMesh == null) return;
 		newMesh.transform.SetParent(targetMesh.transform.parent, false);
 
 		if(item.equipSlot == EquipmentSlot.MainHand)
-    	{
-			//FIXX Change newmesh Boxcollider to int values.
+		{
 			BoxCollider newCollider = newMesh.GetComponent<BoxCollider>();
-			if (newCollider != null)
+			if (newCollider != null && attackHitBox != null && attackHitBox.TryGetComponent<BoxCollider>(out var hitCollider))
 			{
-				attackHitBox.GetComponent<BoxCollider>().center = newCollider.center;
-				attackHitBox.GetComponent<BoxCollider>().size = newCollider.size;
+	            hitCollider.center = newCollider.center;
+	            hitCollider.size = newCollider.size;
 			}
 		}
 
-		//Set Bones
-        newMesh.rootBone = targetMesh.rootBone;
+	    newMesh.rootBone = targetMesh.rootBone;
 		newMesh.bones = targetMesh.bones;
+	    if (slotIndex == EquipmentSlot.MainHand && attackHitBox != null && attackHitBox.TryGetComponent<AttackHitBox>(out var hitbox)) hitbox.ConfigureWeapon(newMesh);
 		
 		currentMeshes[slotIndex] = newMesh;
 
-        SetBlendShapeWeight(item, 100);
+	    SetBlendShapeWeight(item, 100);
        
 	}
 
-    public void SetBlendShapeWeight(Equipment item, int weight)
+	public void SetBlendShapeWeight(Equipment item, int weight)
 	{
+		if (item == null || targetMesh == null || targetMesh.sharedMesh == null || item.coveredMeshRegions == null) return;
 		foreach (MeshBlendShape blendShape in item.coveredMeshRegions)
 		{
 			int shapeIndex = (int)blendShape;
-			targetMesh.SetBlendShapeWeight(shapeIndex, weight);
+			if (shapeIndex >= 0 && shapeIndex < targetMesh.sharedMesh.blendShapeCount)
+                targetMesh.SetBlendShapeWeight(shapeIndex, weight);
 		}
 	}
 
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.U))
-			UnequipAll();
+        if (!Input.GetKeyDown(KeyCode.U)) return;
+        var controlState = GetComponentInParent<PlayerControlState>();
+        if (controlState != null && !controlState.GameplayAllowed) return;
+        if (animator != null && animator.AnimationIsBusy()) return;
+        UnequipAllToInventory();
 	}
 }

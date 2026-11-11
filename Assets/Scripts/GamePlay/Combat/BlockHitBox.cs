@@ -25,6 +25,7 @@ public class BlockHitBox : MonoBehaviour
         canBlock = true;
         player = GetComponentInParent<CharacterCombat>();
         myStats = GetComponentInParent<CharacterStats>();
+        owner = player != null ? player.gameObject : transform.root.gameObject;
 
         // Get the BoxCollider and MeshRenderer components from the current object
         boxCollider = GetComponent<BoxCollider>();
@@ -34,13 +35,20 @@ public class BlockHitBox : MonoBehaviour
 
     void Update()
     {
-        //Update Shield durability
+        DHB.RemoveAll(projectile => projectile == null);
+        // Durability mechanics remain unchanged; combat owns damage reduction.
         CheckBlock();
+    }
+
+    private void OnDisable()
+    {
+        DisableBlock();
+        RemoveCollisonList();
     }
 
     public void EnableBlock()
     {        
-        if (!canBlock)
+        if (!canBlock || boxCollider == null || meshRenderer == null)
             return;
 
         Debug.Log("Block Enabled");
@@ -58,8 +66,8 @@ public class BlockHitBox : MonoBehaviour
             return;
 
         // Enable the MeshRenderer and BoxCollider components
-        meshRenderer.enabled = false;
-        boxCollider.enabled = false;
+        if (meshRenderer != null) meshRenderer.enabled = false;
+        if (boxCollider != null) boxCollider.enabled = false;
 
         //Set blocking to true
         isBlocking = false;
@@ -92,7 +100,7 @@ public class BlockHitBox : MonoBehaviour
         Projectile dhb = collision.gameObject.GetComponent<Projectile>();
         Debug.Log("Sheild Hit" + collision);
         
-        //Add Collision to list
+        if (dhb == null || dhb.owner == owner || DHB.Contains(dhb)) return;
         DHB.Add(dhb);
 
         //LowerSheild duriblitlty

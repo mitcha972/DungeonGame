@@ -1,4 +1,4 @@
-﻿/* 
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading this package
@@ -25,10 +25,11 @@ public class HealthSystem {
 
     private int healthMax;
     private int health;
+    private bool deathNotified;
 
     public HealthSystem(int healthMax) {
-        this.healthMax = healthMax;
-        health = healthMax;
+        this.healthMax = Mathf.Max(1, healthMax);
+        health = this.healthMax;
     }
 
     public int GetHealth() {
@@ -44,6 +45,7 @@ public class HealthSystem {
     }
 
     public void Damage(int amount) {
+        if (amount <= 0 || IsDead()) return;
         health -= amount;
         if (health < 0) {
             health = 0;
@@ -57,6 +59,9 @@ public class HealthSystem {
     }
 
     public void Die() {
+        if (deathNotified) return;
+        deathNotified = true;
+        health = 0;
         OnDead?.Invoke(this, EventArgs.Empty);
     }
 
@@ -65,23 +70,24 @@ public class HealthSystem {
     }
 
     public void Heal(int amount) {
-        health += amount;
-        if (health > healthMax) {
-            health = healthMax;
-        }
+        if (amount <= 0) return;
+        health = (int)Math.Min((long)health + amount, healthMax);
+        if (health > 0) deathNotified = false;
         OnHealthChanged?.Invoke(this, EventArgs.Empty);
         OnHealed?.Invoke(this, EventArgs.Empty);
     }
 
     public void HealComplete() {
         health = healthMax;
+        deathNotified = false;
         OnHealthChanged?.Invoke(this, EventArgs.Empty);
         OnHealed?.Invoke(this, EventArgs.Empty);
     }
 
     public void SetHealthMax(int healthMax, bool fullHealth) {
-        this.healthMax = healthMax;
-        if (fullHealth) health = healthMax;
+        this.healthMax = Mathf.Max(1, healthMax);
+        health = fullHealth ? this.healthMax : Mathf.Min(health, this.healthMax);
+        if (health > 0) deathNotified = false;
         OnHealthMaxChanged?.Invoke(this, EventArgs.Empty);
         OnHealthChanged?.Invoke(this, EventArgs.Empty);
     }

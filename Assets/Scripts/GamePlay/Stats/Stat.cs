@@ -17,7 +17,8 @@ public class Stat {
 	public int GetValue ()
 	{
 		int finalValue = baseValue;
-		modifiers.ForEach(x => finalValue += x);
+		foreach (int modifier in modifiers)
+            finalValue += modifier;
 		return finalValue;
 	}
 

@@ -1,4 +1,4 @@
-﻿/* 
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading this package
@@ -46,7 +46,9 @@ public class LevelWindow : MonoBehaviour {
 
     public void SetLevelSystemAnimated(LevelSystemAnimated levelSystemAnimated) {
         // Set the LevelSystemAnimated object
+        Unsubscribe();
         this.levelSystemAnimated = levelSystemAnimated;
+        if (levelSystemAnimated == null) return;
 
         // Update the starting values
         SetLevelNumber(levelSystemAnimated.GetLevelNumber());
@@ -55,6 +57,15 @@ public class LevelWindow : MonoBehaviour {
         // Surbscribe to the changed events
         levelSystemAnimated.OnExperienceChanged += LevelSystemAnimated_OnExperienceChanged;
         levelSystemAnimated.OnLevelChanged += LevelSystemAnimated_OnLevelChanged;
+    }
+
+    private void OnDestroy() => Unsubscribe();
+
+    private void Unsubscribe()
+    {
+        if (levelSystemAnimated == null) return;
+        levelSystemAnimated.OnExperienceChanged -= LevelSystemAnimated_OnExperienceChanged;
+        levelSystemAnimated.OnLevelChanged -= LevelSystemAnimated_OnLevelChanged;
     }
 
     private void LevelSystemAnimated_OnLevelChanged(object sender, System.EventArgs e) {

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,11 +19,13 @@ public class HealthChange : MonoBehaviour
     public SkinnedMeshRenderer meshRenderer;
     Color originalColor;
     float Flashtime = .15f;
+    private CharacterStats stats;
     
 	// Use this for initialization
-    void Awake () 
+    void Awake ()
     {
-        cam = Camera.main.transform;
+        cam = Camera.main != null ? Camera.main.transform : null;
+        if (meshRenderer == null) meshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
 	void Start () 
@@ -32,9 +34,9 @@ public class HealthChange : MonoBehaviour
 
         //Damage flash 
         //meshRenderer = GetComponent<SkinnedMeshRenderer>(); // Change GetComponent<SpriteRenderer>() to GetComponent<SkinnedMeshRenderer>()
-        originalColor = meshRenderer.material.color;
+        if (meshRenderer != null) originalColor = meshRenderer.material.color;
 
-        foreach (Canvas c in FindObjectsOfType<Canvas>())
+        if (uiPrefab != null) foreach (Canvas c in FindObjectsOfType<Canvas>())
         {
             if (c.renderMode == RenderMode.WorldSpace)
             {
@@ -47,7 +49,8 @@ public class HealthChange : MonoBehaviour
         }
 
         //Run Health change script when a cahnge in health is detected.
-        GetComponent<CharacterStats>().OnHealthChanged += OnHealthChanged;
+        stats = GetComponent<CharacterStats>();
+        stats.OnHealthChanged += OnHealthChanged;
 	}
 
     //When Eenmy Healht is chaged (Change to take damage funtion then heal function)
@@ -61,15 +64,17 @@ public class HealthChange : MonoBehaviour
         {
             ui.gameObject.SetActive(true);
             lastMadeVisibleTime = Time.time;
-            float healthPercent = (float)currentHealth / maxHealth;
+            float healthPercent = (float)currentHealth / Mathf.Max(1, maxHealth);
             healthSlider.fillAmount = healthPercent;
             
-            StartCoroutine(HealthChanged());
-            
+            StopAllCoroutines();
             if (currentHealth <= 0)
             {
                 Destroy(ui.gameObject);
+                ui = null;
+                healthSlider = healthSliderBkg = null;
             }
+            else StartCoroutine(HealthChanged());
         }
 
         // Instantiate damageText on top of the player //Fix
@@ -109,13 +114,21 @@ public class HealthChange : MonoBehaviour
     void DamageFlashStart()
     {
         //Color lightRed = new Color(0.8f, 0.4f, 0.4f, 1);
+        if (meshRenderer == null) return;
+        CancelInvoke(nameof(DamageFlashStop));
         meshRenderer.material.color = Color.red; // Change meshRenderer.color to meshRenderer.material.color
-        Invoke("DamageFlashStop", Flashtime);
+        Invoke(nameof(DamageFlashStop), Flashtime);
     }
 
     void DamageFlashStop()
     {
-        meshRenderer.material.color = originalColor; // Change meshRenderer.color to meshRenderer.material.color
+        if (meshRenderer != null) meshRenderer.material.color = originalColor; // Change meshRenderer.color to meshRenderer.material.color
+    }
+
+    private void OnDestroy()
+    {
+        if (stats != null) stats.OnHealthChanged -= OnHealthChanged;
+        if (ui != null) Destroy(ui.gameObject);
     }
 
     void LateUpdate () 
@@ -123,7 +136,7 @@ public class HealthChange : MonoBehaviour
         if (ui != null)
         {
             ui.position =  this.transform.position + Vector3.up * 2.5f;
-            ui.forward = -cam.forward;
+            if (cam != null) ui.forward = -cam.forward;
 
             if (Time.time - lastMadeVisibleTime > visibleTime)
             {

@@ -18,15 +18,25 @@ public class GameController : MonoBehaviour
     public static int goToScene;
 
     void Awake()
-    {        
-        //If game scene
-        if ( SceneManager.GetActiveScene().name != "Menu")
+    {
+        string sceneName = gameObject.scene.name;
+        if (sceneName == "Main" || sceneName == "Menu")
         {
-            playerContent.SetUpPlayer(playerName, playerClass);
+            floor = m_floor;
+            difficulty = m_difficulty;
+            Time.timeScale = 1f;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+            return;
         }
-
-        floor = m_floor;
-        difficulty = m_difficulty;
+        if (playerContent == null)
+        {
+            Debug.LogError("GameController requires the scene PlayerContent reference.", this);
+            return;
+        }
+        if (playerClass == null && playerContent.player != null) playerClass = playerContent.player.playerClass;
+        if (string.IsNullOrWhiteSpace(playerName)) playerName = "Player";
+        playerContent.SetUpPlayer(playerName, playerClass);
     }
 
     public void MenuStart(Class pClass)

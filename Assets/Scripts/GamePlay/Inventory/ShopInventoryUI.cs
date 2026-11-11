@@ -21,11 +21,13 @@ public class ShopInventoryUI : MonoBehaviour {
 		//inventory.onItemChangedCallback += UpdateUI;	// Subscribe to the onItemChanged callback
 
 		// Populate our slots array
-		slots = itemsParent.GetComponentsInChildren<ShopInventorySlot>();
+		slots = itemsParent.GetComponentsInChildren<ShopInventorySlot>(true);
 	}
 	
-	void Update() 
-	{
+	[SerializeField] private PlayerControlState _controlState;
+void Update() 
+{
+	    if (_controlState != null) return;
 		// Check to see if we should open/close the inventory
 		if (Input.GetButtonDown("Cancel"))
 			CloseUI();
@@ -40,8 +42,7 @@ public class ShopInventoryUI : MonoBehaviour {
 			slots[i].ClearSlot();				
 		}				
 		
-		slots = null;
-		slots = itemsParent.GetComponentsInChildren<ShopInventorySlot>();
+
 		//inventory.items.Clear();
 		currentShop = null;
 		inventory = null;

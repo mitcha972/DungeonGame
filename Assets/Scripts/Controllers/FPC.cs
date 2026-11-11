@@ -168,7 +168,7 @@ public class FPC : MonoBehaviour
         }
 
         //m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
-        m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
+        m_CollisionFlags = m_CharacterController.Move(m_MoveDir*Time.fixedDeltaTime);
         //ProgressStepCycle(speed);
         //UpdateCameraPosition(speed);
 
@@ -306,7 +306,7 @@ public class FPC : MonoBehaviour
     {
         Rigidbody body = hit.collider.attachedRigidbody;
         //dont move the rigidbody if the character is on top of it
-        if (m_CollisionFlags == CollisionFlags.Below)
+        if ((m_CollisionFlags & CollisionFlags.Below) != 0)
         {
             return;
         }

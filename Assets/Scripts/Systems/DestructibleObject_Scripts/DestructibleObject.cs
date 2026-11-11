@@ -24,14 +24,14 @@ public class DestructibleObject : MonoBehaviour, IDamageable
     public virtual void HealthSystem_OnDead(object sender, System.EventArgs e) 
     {
         // Spawn Smoke VFX
-        Instantiate(vfxSmoke, lastDamagePosition, Quaternion.identity);
+        if (vfxSmoke != null) Instantiate(vfxSmoke, lastDamagePosition, Quaternion.identity);
         //for (int i = 1; i < vfxAmount; i++) {
         //    Instantiate(vfxSmoke, lastDamagePosition + UtilsClass.GetRandomDir() * 2f, Quaternion.identity);
         //}
 
         // Spawn Wall Broken and Apply Explosion
-        Transform wallBrokenTransform = Instantiate(pfObjectBroken, transform.position, transform.rotation);
-        foreach (Transform child in wallBrokenTransform) {
+        Transform wallBrokenTransform = pfObjectBroken != null ? Instantiate(pfObjectBroken, transform.position, transform.rotation) : null;
+        if (wallBrokenTransform != null) foreach (Transform child in wallBrokenTransform) {
             if (child.TryGetComponent<Rigidbody>(out Rigidbody childRigidbody)) {
                 childRigidbody.AddExplosionForce(explosionForce, lastDamagePosition, 10f);
             }
@@ -40,6 +40,11 @@ public class DestructibleObject : MonoBehaviour, IDamageable
         // Destroy this game object
         Destroy(gameObject);
         Debug.Log("Destroyed!");
+    }
+
+    private void OnDestroy()
+    {
+        if (healthSystem != null) healthSystem.OnDead -= HealthSystem_OnDead;
     }
 
     public void Damage(int damageAmount, Vector3 damagePosition) {

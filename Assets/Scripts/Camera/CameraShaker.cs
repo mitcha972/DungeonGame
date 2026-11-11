@@ -1,8 +1,9 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 
 namespace EZCameraShake
 {
+    [DefaultExecutionOrder(10000)]
     [AddComponentMenu("EZ Camera Shake/Camera Shaker")]
     public class CameraShaker : MonoBehaviour
     {
@@ -14,28 +15,36 @@ namespace EZCameraShake
 
         public CameraShakeInstance shake;
 
-        Vector3 posAddShake, rotAddShake;
+        private Quaternion baseRotation, appliedRotation;
+        private bool rotationApplied;
 
-        void Update()
+        private void RestoreRotation()
         {
-            if(shake != null)
-            {
-
-                if (shake.CurrentState == CameraShakeState.Inactive)
-                {
-                    shake = null;
-                    return;
-                }
-                
-                posAddShake = Vector3.zero;
-                rotAddShake = Vector3.zero;
-
-                posAddShake += CameraUtilities.MultiplyVectors(shake.UpdateShake(), shake.PositionInfluence);
-                rotAddShake += CameraUtilities.MultiplyVectors(shake.UpdateShake(), shake.RotationInfluence);
-                
-                transform.localEulerAngles += rotAddShake + RestRotationOffset;
-            }
+            if (!rotationApplied) return;
+            // Absolute camera controllers may already have replaced our previous pose.
+            if (Quaternion.Angle(transform.localRotation, appliedRotation) < 0.001f)
+                transform.localRotation = baseRotation;
+            rotationApplied = false;
         }
+
+        private void LateUpdate()
+        {
+            RestoreRotation();
+            if (shake == null) return;
+            if (shake.CurrentState == CameraShakeState.Inactive)
+            {
+                shake = null;
+                return;
+            }
+            Vector3 offset = shake.UpdateShake();
+            Vector3 rotation = CameraUtilities.MultiplyVectors(offset, shake.RotationInfluence);
+            baseRotation = transform.localRotation;
+            appliedRotation = baseRotation * Quaternion.Euler(rotation + RestRotationOffset);
+            transform.localRotation = appliedRotation;
+            rotationApplied = true;
+        }
+
+        private void OnDisable() => RestoreRotation();
 
         public CameraShakeInstance ShakeOnce(float magnitude, float roughness, float fadeInTime, float fadeOutTime, Vector3 posInfluence, Vector3 rotInfluence)
         {
@@ -49,7 +58,7 @@ namespace EZCameraShake
 
         public CameraShakeInstance StartShake(float magnitude, float roughness, float fadeInTime, Vector3 posInfluence, Vector3 rotInfluence)
         {
-            CameraShakeInstance shake = new CameraShakeInstance(magnitude, roughness);
+            shake = new CameraShakeInstance(magnitude, roughness);
             shake.PositionInfluence = posInfluence;
             shake.RotationInfluence = rotInfluence;
             shake.StartFadeIn(fadeInTime);

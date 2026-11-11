@@ -50,72 +50,30 @@ public class CharacterStats : MonoBehaviour
 			//enemyAi.attackRange = range;	
 	}
 
-	// Damage The Character // Called from character combat
-	public virtual void TakeDamage (int damageTaken, Transform attackOwner, float attackDirection)
+	public bool IsDead { get; private set; }
+
+	public virtual void TakeDamage(int damageTaken, Transform attackOwner, float attackDirection)
 	{
-		//Play Damage Animation
-		this.gameObject.GetComponent<CharacterAnimator>().GetHit(attackDirection);
-		/*
-			//Bleed
-			//GameObject bloodSplater = Instantiate(bloodSplat, attackDirection, Quaternion.identity);
-			
-			
-			if(bloodSplat != null)
-			{
-				//Find direction
-				//attackDirection - this.transform;
-				GameObject bloodSplat = Instantiate(bloodSplat, attackDirection, Quaternion.identity);
-			}
-		*/
-
-		// Subtract Damage Based on Armomr FIXXXX***
-		damageTaken -= armor;
-		damageTaken = Mathf.Clamp(damageTaken, 1, int.MaxValue);
-
-		// Damage The Character
-		currentHealth -= damageTaken;
-		Debug.Log(transform.name + ": Takes - " + damageTaken + " Damage");
-
-		//Update Health
-        if (OnHealthChanged != null)
-        {
-           OnHealthChanged(maxHealth, currentHealth);
-        }
-
-		// If Health Reaches Zero Then Die
-		if (currentHealth <= 0)
-		{
-			Die(attackOwner);
-		}
+	    if (IsDead || currentHealth <= 0 || damageTaken <= 0) return;
+	    int resolvedDamage = Mathf.Max(1, damageTaken - Mathf.Max(0, armor));
+	    currentHealth = Mathf.Max(0, currentHealth - resolvedDamage);
+	    OnHealthChanged?.Invoke(maxHealth, currentHealth);
+	    if (currentHealth == 0)
+	    {
+	        IsDead = true;
+	        Die(attackOwner);
+	    }
 	}
 
-	public virtual void TakeDamage (int damageTaken)
+	public virtual void TakeDamage(int damageTaken)
 	{
-		damageTaken -= armor;
-		damageTaken = Mathf.Clamp(damageTaken, 1, int.MaxValue);
-
-		// Damage The Character
-		currentHealth -= damageTaken;
-		Debug.Log(transform.name + ": Takes - " + damageTaken + " Damage");
-
-		//Update Health
-        if (OnHealthChanged != null)
-        {
-           OnHealthChanged(maxHealth, currentHealth);
-        }
-
-		// If Health Reaches Zero
-		if (currentHealth <= 0)
-		{
-			Die(null);
-		}
+	    TakeDamage(damageTaken, null, 0f);
 	}
 
 	public virtual void Die(Transform attackOwner)
 	{
-		// Die in some way
-		//this.gameObject.GetComponent<CharacterAnimator>().Death();
-		Debug.Log(transform.name + ": Was Killed By - " + attackOwner.name);
+	    IsDead = true;
+	    Debug.Log(transform.name + " killed by " + (attackOwner != null ? attackOwner.name : "environment"), this);
 	}
 }
 

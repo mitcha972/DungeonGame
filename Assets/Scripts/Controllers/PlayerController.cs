@@ -1,428 +1,172 @@
-using UnityEngine.EventSystems;
 using UnityEngine;
-using System;
-using System.Collections;
-using UnityEngine.UI;
 using TMPro;
 using StarterAssets;
-using Random = UnityEngine.Random;
+using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour 
+/// <summary>Gameplay actions and focus. Locomotion and orbit belong to ThirdPersonController.</summary>
+public class PlayerController : MonoBehaviour
 {
-	Camera cam;			// Reference to our camer
-	PlayerCombat playerCombat; 
-	PlayerStats myStats; 
-	public bool lockedOn;
-	public Interactable focus;	// Our current focus: Item, Enemy etc.
-    private ThirdPersonController movementController;
-	//Look at object
-	Ray lookRay;
-	RaycastHit lookHit;
-	Interactable interactable,Tinteractable;
-	[SerializeField] private TMP_Text interactText;
-
-	[Header("Movement")]
-     private Vector2 m_Input;
-    // private Vector3 m_MoveDir = Vector3.zero;
-    private Rigidbody m_Rigidbody;
+    public bool lockedOn;
+    public Interactable focus;
     public bool canMove;
-    private bool canRotate;
-    private bool canAttack;
-    
-    [Header("Camera")]
     public bool mouseLocked;
+    [SerializeField] private TMP_Text interactText;
+    [SerializeField] private float interactionDistance = 4f;
+    [SerializeField] private float turnSpeed = 540f;
+    private Camera _camera;
+    private PlayerCombat _combat;
+    private CharacterAnimator _animator;
+    private ThirdPersonController _movement;
+    private PlayerStats _stats;
+    private UnityEngine.InputSystem.PlayerInput _playerInput;
+    private PlayerControlState _controlState;
+    [SerializeField] private float _powerAttackHoldTime = 0.25f;
+    private bool _leftPending, _rightPending, _leftIgnored, _rightIgnored, _rightShield;
+    private float _leftPressedAt;
+    private bool GameplayInputAllowed => _stats != null && !_stats.IsDead && _stats.currentHealth > 0 && (_controlState != null ? _controlState.GameplayAllowed : Time.timeScale > 0f && Cursor.lockState == CursorLockMode.Locked);
 
-    [Header("Animation")]
-    private Animator _animator;
-	CharacterAnimator animator;// = GetComponent<CharacterAnimator>();
-    private bool _hasAnimator;
-    private float _animationBlend;
-
-    //Attack
-    bool isHeavyAttack;
-    float buttonDownTime;
-    float heavyAttackThreshold = 0.25f;
-
-	void Awake() 
-	{
-		cam = Camera.main;
-		playerCombat = GetComponent<PlayerCombat>();
-		myStats = GetComponent<PlayerStats>();
-		animator = GetComponent<CharacterAnimator>();
-        m_Rigidbody = GetComponent<Rigidbody>();
-        movementController = GetComponent<ThirdPersonController>();
-
-        animator.EnableMovement += EnableMovement;
-        animator.DisableMovement += DisableMovement;
-	}	
-
-	void Start() 
-	{
-		//lockedOn = false;
-		focus = null;
-		CurrentMouseMode = MouseMode.Locked;
-        // Initialize animation related variables
-        _hasAnimator = TryGetComponent(out _animator);
-
-        canMove = true;
-        canRotate = true;
-	}
-
-	void Update () 
-	{
-		MouseInput();
-        GetInput();
-        
-        //Ability
-        if (Input.GetKeyDown(KeyCode.T))
+    private void Awake()
+    {
+        _camera = Camera.main;
+        _combat = GetComponent<PlayerCombat>();
+        _animator = GetComponent<CharacterAnimator>();
+        _movement = GetComponent<ThirdPersonController>();
+        _stats = GetComponent<PlayerStats>();
+        _playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
+        _controlState = GetComponent<PlayerControlState>();
+        if (_animator != null) { _animator.EnableMovement += EnableMovement; _animator.DisableMovement += DisableMovement; }
+    }
+    private void OnEnable()
+    {
+        if (_playerInput != null) _playerInput.onActionTriggered += OnAction;
+        if (_controlState != null) { _controlState.InteractRequested += Interact; _controlState.GameplayChanged += ResetCombatInput; }
+    }
+    private void OnDisable()
+    {
+        if (_playerInput != null) _playerInput.onActionTriggered -= OnAction;
+        if (_controlState != null) { _controlState.InteractRequested -= Interact; _controlState.GameplayChanged -= ResetCombatInput; }
+        ResetCombatInput(false);
+        RemoveFocus();
+    }
+    private void OnDestroy()
+    {
+        if (_animator != null) { _animator.EnableMovement -= EnableMovement; _animator.DisableMovement -= DisableMovement; }
+    }
+    private void Start() => EnableMovement();
+    private void ResetCombatInput(bool allowed)
+    {
+        _leftPending = _rightPending = _rightShield = false;
+        if (_combat != null) _combat.SetShieldBlock(false);
+        var actions = _playerInput != null ? _playerInput.actions : null;
+        _leftIgnored = actions != null && actions.FindAction("Attack") != null && actions.FindAction("Attack").IsPressed();
+        _rightIgnored = actions != null && actions.FindAction("Block") != null && actions.FindAction("Block").IsPressed();
+    }
+    private void OnAction(UnityEngine.InputSystem.InputAction.CallbackContext context)
+    {
+        if (_combat == null) return;
+        if (context.action.name == "Interact" && context.performed && _controlState == null && GameplayInputAllowed) Interact();
+        if (context.action.name == "Attack")
         {
-            playerCombat.Ability();
-        }
-	}
-
-	void FixedUpdate() 
-	{		
-		//Look at object
-		lookRay = cam.ScreenPointToRay(Input.mousePosition);
-
-		CheckFocus();
-        //Checkinterractable();
-	}
-
-	void MouseInput()
-	{
-        //Set up a bool can input check
-        // 
-
-		// Handle right-click
-		if (Input.GetMouseButtonDown(0))
-			RightClick();
-
-        LeftClick();		
-	}
-
-	void RightClick()
-	{
-		// Create a ray from the camera to the mouse position
-		Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-
-		// Cast the ray and check if it hits an interactable object
-		if (Physics.Raycast(ray, out hit, 20))
-		{
-			Interactable interactable = hit.collider.GetComponent<Interactable>();
-			if (interactable != null)
-			{
-				// Set the focus to the interactable object
-				SetFocus(interactable);
-			}
-			else
-				RemoveFocus();
-		}
-		else
-			RemoveFocus();
-	}
-
-	void LeftClick()
-	{
-		// Handle left-click           
-        if (Input.GetMouseButtonDown(1))
-        {
-            // store the time when the button was first pressed
-            buttonDownTime = Time.time;
-            // reset the heavy attack flag
-            isHeavyAttack = false;
-        }
-
-        if (Input.GetMouseButton(1))
-        {
-            // calculate how long the button has been held down
-            float holdTime = Time.time - buttonDownTime;
-
-            // if the hold time is greater than the threshold, set the heavy attack flag
-            if (holdTime >= heavyAttackThreshold && !isHeavyAttack)
+            if (context.canceled)
             {
-                isHeavyAttack = true;
-                // Perform the heavy attack immediately
-                if (playerCombat != null)
-                {
-                    Debug.Log("HeavyATtakc - 1");
-                    playerCombat.Attack(true);
-                    buttonDownTime = 0;
-                }
+                if (_leftPending && !_leftIgnored && GameplayInputAllowed) TryAttack(false);
+                _leftPending = _leftIgnored = false;
+            }
+            else if (context.performed && GameplayInputAllowed && !_leftIgnored)
+            {
+                if (_combat.SupportsPowerAttack) { _leftPending = true; _leftPressedAt = Time.time; }
+                else TryAttack(false);
             }
         }
-
-        if (Input.GetMouseButtonUp(1))
+        if (context.action.name == "Block")
         {
-            // check if it's a regular attack
-            if (!isHeavyAttack && playerCombat != null)
+            if (context.canceled)
             {
-                playerCombat.Attack(false);
+                if (_rightPending && !_rightShield && !_rightIgnored && GameplayInputAllowed) TryAttack(false);
+                _rightPending = _rightShield = _rightIgnored = false;
+                _combat.SetShieldBlock(false);
             }
-            // reset the heavy attack flag
-            isHeavyAttack = false;
+            else if (context.performed && GameplayInputAllowed && !_rightIgnored)
+            {
+                _rightPending = true;
+                _rightShield = _combat.HasShield;
+                if (_rightShield) { _leftPending = false; _combat.SetShieldBlock(true); }
+            }
         }
-	}
-
-	[SerializeField] MouseMode CurrentMouseMode;
-    enum MouseMode{Locked,Unlocked}
-    
-    void ChangeMouseMode(MouseMode NewMouseMode)
+    }
+    private void TryAttack(bool heavy)
     {
-        if(CurrentMouseMode == NewMouseMode)
-            return;
-
-        CurrentMouseMode = NewMouseMode;
-
-        switch (NewMouseMode)
+        if (GameplayInputAllowed && !_combat.isBlocking && !_rightShield) _combat.Attack(heavy);
+    }
+    private void Update()
+    {
+        if (!GameplayInputAllowed) { _leftPending = _rightPending = _rightShield = false; _combat?.SetShieldBlock(false); return; }
+        if (_leftPending && Time.time - _leftPressedAt >= _powerAttackHoldTime)
         {
-            case MouseMode.Locked:
-                MouseLocked();
-                break;
-
-            case MouseMode.Unlocked:
-                MouseUnlocked();
-                break;
+            _leftPending = false;
+            TryAttack(_combat.SupportsPowerAttack);
+        }
+        if (_rightShield && _rightPending) _combat.SetShieldBlock(true);
+        if (focus == null && lockedOn) RemoveFocus();
+        if (lockedOn && focus != null && _movement != null && !_movement.FirstPerson && _movement.canRotate)
+        {
+            Vector3 direction = focus.transform.position - transform.position;
+            direction.y = 0f;
+            if (direction.sqrMagnitude > 0.001f) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
         }
     }
 
-    private void MouseLocked()
+    private void Interact()
     {
-		//UnlockLock player rotation
-		//
-
-		//lock mouse (hid - gameplay)
-		//
-
+        if (!GameplayInputAllowed || _camera == null) return;
+        Ray ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f));
+        if (Physics.Raycast(ray, out RaycastHit hit, interactionDistance + Vector3.Distance(_camera.transform.position, transform.position), ~(1 << gameObject.layer), QueryTriggerInteraction.Ignore))
+        {
+            var target = hit.collider.GetComponentInParent<Interactable>();
+            if (target != null && target.isActiveAndEnabled && Vector3.Distance(transform.position, target.transform.position) <= interactionDistance)
+            {
+                SetFocus(target);
+                return;
+            }
+        }
+        RemoveFocus();
     }
 
-    private void MouseUnlocked()
+    private void SetFocus(Interactable target)
     {
-        //Lock player rotation
-		//
-
-		//unlock lock mouse (Gui of clicking screen)
-		//
-
-		//Lock player right and left motion clicks
-		// 
+        if (focus == target && lockedOn) { RemoveFocus(); return; }
+        RemoveFocus();
+        focus = target;
+        target.OnFocused(transform);
+        target.Interact(transform);
+        lockedOn = target.CompareTag("Enemy");
+        mouseLocked = lockedOn;
+        if (_movement != null) _movement.SetRotateOnMove(!lockedOn);
     }
 
-	void UpdateText()
-	{
-		//c
-	} 
-
-	void RemoveText()
-	{
-		interactText.SetText("");
-		interactable = null;
-	} 
-	
-	void CheckFocus()
-	{
-		// Rotate towards the focused object if there is one
-		if (lockedOn == false)
-			return;
-
-		//Debug.Log("SHoulf turn" + lockedOn);
-		TurnTo();	
-	}
-
-    void Checkinterractable()
+    private void RemoveFocus()
     {
-        /*
-			if (Physics.Raycast(lookRay, out lookHit, 20))
-			{
-				//Check if Obejct has Des
-				Tinteractable = lookHit.collider.GetComponent<Interactable>();
-
-				if ((Tinteractable == null && interactable == Tinteractable) || (Tinteractable != null && interactable == Tinteractable))
-				{
-					return;
-				}
-
-				//Change to no interact
-				if (Tinteractable == null && interactable != Tinteractable)
-				{
-					RemoveText();
-				}
-				
-				if (Tinteractable != null && interactable != Tinteractable)
-				{
-					//UpdateText();
-					interactable = Tinteractable;
-					
-					//Look At Tip
-					if(lookHit.collider.GetComponent<ObjectGrabbable>())
-						interactText.SetText("[ " + interactable.gameObject.name + " ] \n Q - Pick Up");
-				}
-			}
-		*/
+        if (focus != null) focus.OnDefocused();
+        focus = null;
+        lockedOn = mouseLocked = false;
+        if (_movement != null) _movement.SetRotateOnMove(true);
+        if (interactText != null) interactText.SetText(string.Empty);
     }
 
-	void TurnTo()
-	{
-		// Calculate the direction towards the focused object
-		Vector3 targetDirection = focus.transform.position - transform.position;
-		targetDirection.y = 0; // Ignore vertical angle
-		float singleStep = 2f * Time.deltaTime;
-		Vector3 newDirection = Vector3.RotateTowards(transform.forward, targetDirection, singleStep, 0.0f);
-		// Rotate the player towards the focused object
-		transform.rotation = Quaternion.LookRotation(newDirection);
-	}
-
-	// Set our focus to a new focus
-	void SetFocus (Interactable newFocus)
-	{
-		//if click on already focused then defocus.
-		if (newFocus == focus)
-		{
-			Debug.Log("???RemovedLocked On!!!!");
-			RemoveFocus();
-			return;
-		}
-
-		// If our focus has changed
-		if (newFocus != focus)
-		{
-			// Defocus the old one
-			if (focus != null)
-				focus.OnDefocused();
-
-			focus = newFocus;	// Set our new focus
-		}
-		newFocus.OnFocused(transform);
-		newFocus.Interact(transform);
-
-		//Check if new focus is an enemy
-		if(focus.transform.tag == "Enemy")
-		{		
-			//IF so then run the lock on script
-			lockedOn = true;
-			mouseLocked = true;
-			Debug.Log("Locked On!!!!");
-
-			//Change mouse Lock on
-			// 
-		}
-	}
-
-	// Remove our current focus
-	void RemoveFocus()
-	{
-		if (focus == null)
-			return;
-
-		focus.OnDefocused();
-		focus = null;
-		lockedOn = false;
-		mouseLocked = false;
-		//motor.StopFollowingTarget();
-	}
-  
     public void EnableMovement()
     {
-        //lock or unlock player movement
-        movementController.canMove = true;
-        movementController.canRotate = true;
+        if (_stats != null && _stats.IsDead) return;
+        canMove = true;
+        if (_movement == null) return;
+        _movement.canMove = true;
+        _movement.canRotate = true;
     }
-
     public void DisableMovement()
     {
-        // Lock or unlock player rotation
-        movementController.canMove = false;
-        movementController.canRotate = false;
-    }
-
-    private void GetInput()//out float speed
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        // Store input as a vector.
-        m_Input = new Vector2(horizontal, vertical);
-
-         // Normalize input if it exceeds 1 in combined length.
-        if (m_Input.sqrMagnitude > 1)
-        {
-            m_Input.Normalize();
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && m_Input.magnitude > 0f)
-        {
-            // Find the dodge direction based on the WASD inputs
-            int dodgeDirection = 0;
-
-            if (Mathf.Abs(horizontal) > Mathf.Abs(vertical))
-            {
-                if (horizontal > 0)
-                {
-                    dodgeDirection = 2; // Right
-                }
-                else
-                {
-                    dodgeDirection = 3; // Left
-                }
-            }
-            else
-            {
-                if (vertical > 0)
-                {
-                    dodgeDirection = 1; // Front
-                }
-                else if (vertical < 0)
-                {
-                    dodgeDirection = 4; // Back
-                }
-            }
-
-            // Perform the dodge action in the dodge direction
-            if(dodgeDirection != 0)
-                DoDodge(dodgeDirection);
-        }
-
-        // Update animation blend.
-        // _animationBlend = Mathf.Lerp(_animationBlend,  speed * m_Input.sqrMagnitude, Time.deltaTime * 10f);
-        // if (_animationBlend < 0.01f) _animationBlend = 0f;
-
-        //_animator.SetFloat("Horizontal", m_Input.x);
-        //_animator.SetFloat("Vertical", m_Input.y);
-    }
-
-    private void DoDodge(int direction)
-    {
-        //Check if Animation is Busy
-        if (animator.AnimationIsBusy())
-            return;
-        
-        animator.PlayTargetAnimation("Roll", true);
-        // switch (direction)
-        // {
-        //      case 1: // Front
-        //         animator.PlayTargetAnimation("Roll", true);
-        //         break;
-        //     case 2: // Right
-        //         animator.PlayTargetAnimation("DodgeRight", true);
-        //         break;
-        //     case 3: // Left
-        //         animator.PlayTargetAnimation("DodgeLeft", true);
-        //         break;
-        //     case 4: // Back
-        //         animator.PlayTargetAnimation("RollBackwards", true);
-        //         break;
-        // }
-        
-        StartCoroutine(CheckDodge());
-    }
-
-    private IEnumerator CheckDodge()
-    {
-        // ...
-
-        yield return new WaitForSeconds(.1f);
-
-        _animator.SetBool("Dodge", false);
+        canMove = false;
+        if (_movement == null) return;
+        _movement.canMove = false;
+        _movement.canRotate = false;
     }
 }
+

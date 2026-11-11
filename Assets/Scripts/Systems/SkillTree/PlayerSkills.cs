@@ -1,4 +1,4 @@
-﻿/* 
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading this package
@@ -60,37 +60,13 @@ public class PlayerSkills {
         return unlockedSkillTypeList.Contains(skillType);
     }
 
-    public bool CanUnlock(SkillType skillType) {
-        //SkillType skillRequirement = GetSkillRequirement(skillType);
-
-        //array of neede skills
-        int siz = GetSkillRequirement(skillType).Length;
-        SkillType[] skillRequirement = new SkillType[siz];
-        skillRequirement = GetSkillRequirement(skillType);
-            
-            
-        //Object[] objects = new Object[]
-
-        //For each skill requirement
-        for(int i = 0; i < skillRequirement.Length; i++)
-        {
-        if (skillRequirement[i] != SkillType.None) {
-
-            if (IsSkillUnlocked(skillRequirement[i])) {
-                return true;
-            } else {
-
-                //if check all paths
-                if(i == skillRequirement.Length - 1)
-                    return false;
-            }
-        } else {
-            //If no path is needed to unlock
-            if(i <=0)
-                return true;
-        }
-        
-        }
+    public bool CanUnlock(SkillType skillType)
+    {
+        // Existing paths are alternatives: any unlocked prerequisite is sufficient.
+        SkillType[] requirements = GetSkillRequirement(skillType);
+        if (requirements.Length == 0 || requirements[0] == SkillType.None) return true;
+        foreach (SkillType requirement in requirements)
+            if (requirement != SkillType.None && IsSkillUnlocked(requirement)) return true;
         return false;
     }
 
@@ -113,7 +89,7 @@ public class PlayerSkills {
     }
 
     public bool TryUnlockSkill(SkillType skillType) {
-        if (CanUnlock(skillType)) {
+        if (skillType != SkillType.None && !IsSkillUnlocked(skillType) && CanUnlock(skillType)) {
             if (skillPoints > 0) {
                 skillPoints--;
                 OnSkillPointsChanged?.Invoke(this, EventArgs.Empty);

@@ -1,4 +1,4 @@
-﻿/* 
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading this package
@@ -14,7 +14,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using CodeMonkey.Utils;
 
 public class LevelSystemAnimated {
 
@@ -28,16 +27,54 @@ public class LevelSystemAnimated {
 
     private int level;
     private int experience;
+    private LevelSystemAnimatedUpdater updater;
+    private bool ownsUpdaterObject;
+    private bool disposed;
 
-    public LevelSystemAnimated(LevelSystem levelSystem) {
+    public LevelSystemAnimated(LevelSystem levelSystem) : this(levelSystem, null) { }
+
+    public LevelSystemAnimated(LevelSystem levelSystem, MonoBehaviour owner) {
         SetLevelSystem(levelSystem);
         updateTimerMax = .010f;
+        ownsUpdaterObject = owner == null;
+        GameObject host = ownsUpdaterObject ? new GameObject("LevelSystemAnimatedUpdater") : owner.gameObject;
+        updater = host.AddComponent<LevelSystemAnimatedUpdater>();
+        updater.Initialize(this);
+    }
 
-        FunctionUpdater.Create(() => Update());
+    public void Dispose() {
+        if (disposed) return;
+        disposed = true;
+        isAnimating = false;
+        levelSystem.OnExperienceChanged -= LevelSystem_OnExperienceChanged;
+        levelSystem.OnLevelChanged -= LevelSystem_OnLevelChanged;
+        OnExperienceChanged = null;
+        OnLevelChanged = null;
+        if (updater != null) {
+            updater.Detach();
+            if (ownsUpdaterObject) UnityEngine.Object.Destroy(updater.gameObject);
+            else UnityEngine.Object.Destroy(updater);
+            updater = null;
+        }
+    }
+
+    internal void UpdaterDestroyed(LevelSystemAnimatedUpdater source) {
+        if (updater != source) return;
+        updater = null;
+        Dispose();
     }
 
     public void SetLevelSystem(LevelSystem levelSystem) {
+        if (disposed) throw new ObjectDisposedException(nameof(LevelSystemAnimated));
+        if (levelSystem == null) throw new ArgumentNullException(nameof(levelSystem));
+        if (this.levelSystem != null)
+        {
+            this.levelSystem.OnExperienceChanged -= LevelSystem_OnExperienceChanged;
+            this.levelSystem.OnLevelChanged -= LevelSystem_OnLevelChanged;
+        }
         this.levelSystem = levelSystem;
+        isAnimating = false;
+        updateTimer = 0f;
 
         level = levelSystem.GetLevelNumber();
         experience = levelSystem.GetExperience();
@@ -54,11 +91,12 @@ public class LevelSystemAnimated {
         isAnimating = true;
     }
 
-    private void Update() {
+    internal void Tick(float deltaTime) {
+        if (disposed) return;
         if (isAnimating) {
             // Check if its time to update
-            updateTimer += Time.deltaTime;
-            while (updateTimer > updateTimerMax) {
+            updateTimer += Mathf.Max(0f, deltaTime);
+            while (isAnimating && updateTimer > updateTimerMax) {
                 // Time to update
                 updateTimer -= updateTimerMax;
                 UpdateAddExperience();
@@ -67,6 +105,7 @@ public class LevelSystemAnimated {
     }
 
     private void UpdateAddExperience() {
+        if (levelSystem.IsMaxLevel(level)) { isAnimating = false; return; }
         if (level < levelSystem.GetLevelNumber()) {
             // Local level under target level
             AddExperience();

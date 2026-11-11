@@ -1,55 +1,44 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 
-/* This object updates the inventory UI. */
-public class HotKeysUI : MonoBehaviour 
+public class HotKeysUI : MonoBehaviour
 {
-	public Inventory inventory;
-	public GameObject[] hotKeys; //hotkeyslots
-	public GameObject[] imageSlots; //hotkeyslots
+    public Inventory inventory;
+    public GameObject[] hotKeys;
+    public GameObject[] imageSlots;
 
-	void Start () 
-	{
-		inventory.onItemAddCallback += UpUI;
-		inventory.onItemChangedCallback += UpUI;
-		//inventory.onItemRemoveCallback += UpUI; //Fixxx
+    private void Start()
+    {
+        if (inventory != null) inventory.onItemChangedCallback += UpUI;
+        RefreshIcons();
+    }
 
-		//Set Tab Icon Images to Inventory slot images
-		for(int i = 0; i < hotKeys.Length; i++)
-			hotKeys[i].GetComponent<Image>().sprite = imageSlots[i].GetComponent<Image>().sprite;			
-	}
+    private void OnDestroy()
+    {
+        if (inventory != null) inventory.onItemChangedCallback -= UpUI;
+    }
 
-	/*
-	Update the inventory UI by:
-			- Adding items
-			- Clearing empty slot
-	*/
-    void UpUI()
-	{
-		StartCoroutine(UpdateUI());
-	}  
+    private void UpUI() => RefreshIcons();
 
-	public IEnumerator UpdateUI()
-	{
-		//Debug.Log("ShoulhaveAdded ---- ");
-		yield return new WaitForSeconds(0.08f);
-		
-		for(int i = 0; i <= 4; i++)
-		{
-			//Debug.Log("Sprite - " + i + " " + imageSlots[i].GetComponent<Image>().sprite);
-			if(imageSlots[i].GetComponent<Image>().sprite != null)
-			{
-				hotKeys[i].GetComponent<Image>().sprite = imageSlots[i].GetComponent<Image>().sprite;
-				hotKeys[i].SetActive(true);
-			}
-			else
-			{
-				hotKeys[i].GetComponent<Image>().sprite = null;
-				hotKeys[i].SetActive(false);
-			}
-		}
+    private void RefreshIcons()
+    {
+        if (hotKeys == null || imageSlots == null) return;
+        int count = Mathf.Min(hotKeys.Length, imageSlots.Length);
+        for (int i = 0; i < count; i++)
+        {
+            if (hotKeys[i] == null || imageSlots[i] == null) continue;
+            var source = imageSlots[i].GetComponent<Image>();
+            var destination = hotKeys[i].GetComponent<Image>();
+            if (source == null || destination == null) continue;
+            destination.sprite = source.sprite;
+            hotKeys[i].SetActive(source.sprite != null);
+        }
+    }
 
-	}
-
+    public IEnumerator UpdateUI()
+    {
+        yield return new WaitForSeconds(0.08f);
+        RefreshIcons();
+    }
 }

@@ -15,23 +15,14 @@ public class Consumable : Item
 
     public override void Use(GameObject owner, int SlotIndex)
     {
-        //Play Animation
-        owner.GetComponent<CharacterAnimator>().PlayTargetAnimation("Drink", true);
-
-        Debug.Log("Used " + this.name);
-        PlayerStats PS = owner.GetComponent<PlayerStats>();
-
-        // Check modifier
-        switch (statModifier)
-        {
-            case StatModifier.Health:
-                PS.Heal(StatAmount);
-                break;
-
-            case StatModifier.Damage:
-                // TODO: Handle damage modification
-                break;
-        }
+        if (owner == null || StatAmount <= 0 || statModifier != StatModifier.Health) return;
+        var PS = owner.GetComponent<PlayerStats>();
+        var inventory = owner.GetComponent<Inventory>();
+        if (PS == null || PS.IsDead || PS.currentHealth >= PS.maxHealth || inventory == null || SlotIndex < 0 || SlotIndex >= inventory.items.Count || inventory.items[SlotIndex] != this) return;
+        var animator = owner.GetComponent<CharacterAnimator>();
+        if (animator != null) animator.PlayTargetAnimation("Drink", true);
+        PS.Heal(StatAmount);
+        inventory.Remove(SlotIndex);
 
         //Particle Effect
         if(particleEffect)

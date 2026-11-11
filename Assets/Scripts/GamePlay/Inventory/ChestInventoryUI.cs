@@ -21,18 +21,10 @@ public class ChestInventoryUI : MonoBehaviour {
 		//inventory.onItemChangedCallback += UpdateUI;	// Subscribe to the onItemChanged callback
 
 		// Populate our slots array
-		slots = itemsParent.GetComponentsInChildren<ChestInventorySlot>();
+		slots = itemsParent.GetComponentsInChildren<ChestInventorySlot>(true);
 		this.transform.gameObject.SetActive(false);
 	}
 	
-	void Update() 
-	{
-		// Check to see if we should open/close the inventory
-		//if (Input.GetButtonDown("Cancel"))
-		//if (Input.GetKeyDown(KeyCode.I))
-		//	CloseUI();
-	}
-
 	public void CloseUI() 
 	{
 		//Remove all Items
@@ -42,8 +34,7 @@ public class ChestInventoryUI : MonoBehaviour {
 			slots[i].ClearSlot();				
 		}				
 		
-		slots = null;
-		slots = itemsParent.GetComponentsInChildren<ChestInventorySlot>();
+
 		//inventory.items.Clear();
 		currentChest = null;
 		inventory = null;

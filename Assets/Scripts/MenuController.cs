@@ -25,9 +25,12 @@ public class MenuController : MonoBehaviour
 
     public void NewClass(Class newClass)
     {
+        if (newClass == null) return;
         pClass = newClass;
+        GameController.playerClass = newClass;
+        GC.playerContent.player.equipmentManager.UnequipAll();
         classDescriptionText.text = pClass.description;
-        classNameText.text = (pClass.name + ":");
+        classNameText.text = pClass.name + ":";
         GC.playerContent.NewClass(pClass);
 
         //Update equiptemnet stats
@@ -40,11 +43,17 @@ public class MenuController : MonoBehaviour
         name = newName.text;
     }
 
+    private bool _startingGame;
     public void Play()
     {
-        //Go to Game Scene
-        GameController.goToScene = 2;
-        GameController.playerName = name;
+        if (_startingGame || pClass == null) return;
+        int target = SceneUtility.GetBuildIndexByScenePath("Assets/Scenes/DungeonFloorTemp.unity");
+        if (target < 0) { Debug.LogError("DungeonFloorTemp must be enabled in Build Settings.", this); return; }
+        _startingGame = true;
+        GameController.goToScene = target;
+        GameController.playerName = string.IsNullOrWhiteSpace(name) ? "Player" : name;
+        GameController.playerClass = pClass;
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Loading");
     }
 

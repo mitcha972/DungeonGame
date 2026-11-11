@@ -1,95 +1,82 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-/* Keeps track of enemy stats*/ //controller ?
-public class EnemyStats : CharacterStats 
+public class EnemyStats : CharacterStats
 {
-	[SerializeField] Enemy enemy;
+    [SerializeField] private Enemy enemy;
+    private EnemyAi _enemyAi;
+    private bool _deathHandled;
+    public Enemy Definition => enemy;
+    public event System.Action<Transform> OnDeath;
 
-	Loot[] itemDrops;
-	EnemyAi enemyAi;
-	
-	void Awake()
-	{		
-		equipmentManager = GetComponent<EquipmentManager>();
-		equipmentManager.onEquipmentChanged += OnEquipmentChanged;
-		enemyAi = GetComponent<EnemyAi>();
-		
-		//Enemy stats
-		maxHealth = enemy.health;
-		damage = enemy.damage;
-		armor = enemy.armor;
-		range = enemy.attackRange;
-		itemDrops = enemy.itemDrops;
-		attackSpeed = enemy.attackSpeed;
-		movementSpeed = enemy.movementSpeed;
-		sightRange = enemy.sightRange;
-	}
-
-	void Start()
-	{
-		StartUP();
-	}
-
-	public override void OnEquipmentChanged (Equipment newItem, Equipment oldItem)
-	{
-		base.OnEquipmentChanged(newItem, oldItem);
-	}
-
-	public override void TakeDamage (int damageTaken, Transform attackOwner, float attackDirection)
-	{
-		base.TakeDamage (damageTaken, attackOwner,attackDirection);
-
-		//Check if Eenmy Has A targt //If not Set this attacker at target
-		if(enemyAi.target == null)
-		{
-			//set target
-			enemyAi.target = attackOwner;
-
-			//Change CombatState to incombat
-			//
-			//enemyAi.ChangeState(enemyAi.State.InCombat);
-		}	
-	}
-
-	public override void Die(Transform attackOwner)
-	{
-		base.Die(attackOwner);
-
-		//Give Player XP;
-		attackOwner.gameObject.GetComponent<PlayerStats>().AddXP(enemy.XP);
-
-		// DropItem Chance
-		int rand = 0;
-
-		for(int i = 0; i < itemDrops.Length; i++)
-		{
-			rand = Random.Range(0,100);
-
-			if(rand <= itemDrops[i].dropChance)
-			{
-				GameObject newItemDrop = Instantiate(itemDrops[i].lootItem,transform.position + transform.up, Quaternion.identity);
-				Rigidbody rb = newItemDrop.GetComponent<Rigidbody>();
-				rb.AddForce(0, Random.Range(1,3), Random.Range(1,3), ForceMode.Impulse);
-			}
-		}	
-		
-		//Death Effect
-		enemyAi.Die();
-	}
-}
-/*
-[System.Serializable]
-public class Loot 
-{
-	public GameObject lootItem;
-	public int dropChance;
-
-	public Loot(GameObject LootItem, int DropChance)
+    private void Awake()
     {
-        lootItem = LootItem;
-		dropChance = DropChance;
+        equipmentManager = GetComponentInChildren<EquipmentManager>(true);
+        if (equipmentManager != null) equipmentManager.onEquipmentChanged += OnEquipmentChanged;
+        _enemyAi = GetComponent<EnemyAi>();
+        if (enemy == null)
+        {
+            Debug.LogError("Assign an Enemy definition to EnemyStats.", this);
+            if (_enemyAi != null) _enemyAi.enabled = false;
+            enabled = false;
+            return;
+        }
+        maxHealth = Mathf.Max(1, enemy.health);
+        damage = Mathf.Max(0, enemy.damage);
+        armor = Mathf.Max(0, enemy.armor);
+        range = Mathf.Max(1, enemy.attackRange);
+        attackSpeed = Mathf.Max(0, enemy.attackSpeed);
+        movementSpeed = Mathf.Max(0, enemy.movementSpeed);
+        sightRange = Mathf.Max(0, enemy.sightRange);
+        StartUP();
+    }
+
+    private void OnDestroy()
+    {
+        if (equipmentManager != null) equipmentManager.onEquipmentChanged -= OnEquipmentChanged;
+    }
+
+    public override void TakeDamage(int damageTaken, Transform attackOwner, float attackDirection)
+    {
+        if (!isActiveAndEnabled || IsDead || currentHealth <= 0 || damageTaken <= 0) return;
+        base.TakeDamage(damageTaken, attackOwner, attackDirection);
+        if (!IsDead && _enemyAi != null) _enemyAi.NotifyDamaged(attackOwner);
+    }
+
+    public override void Die(Transform attackOwner)
+    {
+        if (_deathHandled) return;
+        _deathHandled = true;
+        currentHealth = 0;
+        base.Die(attackOwner);
+        if (_enemyAi != null) _enemyAi.Die();
+        else
+        {
+            var combat = GetComponent<CharacterCombat>();
+            if (combat != null) combat.enabled = false;
+        }
+        if (enemy != null)
+        {
+            var playerStats = attackOwner != null ? attackOwner.GetComponentInParent<PlayerStats>() : null;
+            if (playerStats != null) playerStats.AddXP(Mathf.Max(0, enemy.XP));
+            DropLoot();
+        }
+        OnDeath?.Invoke(attackOwner);
+    }
+
+    private void DropLoot()
+    {
+        if (enemy.itemDrops == null) return;
+        Vector3 position = transform.position;
+        var agent = GetComponent<NavMeshAgent>();
+        var filter = new NavMeshQueryFilter { agentTypeID = agent != null ? agent.agentTypeID : 0, areaMask = agent != null ? agent.areaMask : NavMesh.AllAreas };
+        if (NavMesh.SamplePosition(position, out NavMeshHit hit, 2f, filter)) position = hit.position;
+        foreach (var drop in enemy.itemDrops)
+        {
+            if (drop == null || drop.lootItem == null || Random.Range(0, 100) >= Mathf.Clamp(drop.dropChance, 0, 100)) continue;
+            var item = Instantiate(drop.lootItem, position + Vector3.up * 0.5f, Quaternion.identity);
+            if (item.TryGetComponent<Rigidbody>(out var body) && !body.isKinematic)
+                body.AddForce(Vector3.up * Random.Range(1f, 2f), ForceMode.Impulse);
+        }
     }
 }
-*/

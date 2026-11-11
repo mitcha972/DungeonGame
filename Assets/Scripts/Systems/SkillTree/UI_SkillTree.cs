@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,6 +31,8 @@ public class UI_SkillTree : MonoBehaviour
 
     public void SetPlayerSkills(PlayerSkills playerSkills) 
     {
+        if (playerSkills == null) return;
+        Unsubscribe();
         this.playerSkills = playerSkills;
 
         //Add Skills To Tree
@@ -47,6 +49,15 @@ public class UI_SkillTree : MonoBehaviour
 
         UpdateVisuals();
         UpdateSkillPoints();
+    }
+
+    private void OnDestroy() => Unsubscribe();
+
+    private void Unsubscribe()
+    {
+        if (playerSkills == null) return;
+        playerSkills.OnSkillUnlocked -= PlayerSkills_OnSkillUnlocked;
+        playerSkills.OnSkillPointsChanged -= PlayerSkills_OnSkillPointsChanged;
     }
 
     private void PlayerSkills_OnSkillPointsChanged(object sender, System.EventArgs e) {

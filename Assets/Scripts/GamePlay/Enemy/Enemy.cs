@@ -23,7 +23,24 @@ public class Enemy : ScriptableObject
 	//Starting Items (wapons/armor)[]
 	[Header("Items")]
 	public DefaultEquipment[] defaultEquipment;
-	public Loot[] itemDrops;		
+	public Loot[] itemDrops;
+
+	[Header("Navigation and Awareness")]
+	[Min(0.1f)] public float repathInterval = 0.4f;
+	[Min(0.05f)] public float destinationThreshold = 0.5f;
+	[Min(0f)] public float patrolRadius = 8f;
+	[Min(0f)] public float patrolWait = 2f;
+	[Min(0f)] public float memoryDuration = 5f;
+	[Range(1f, 360f)] public float fieldOfView = 120f;
+	[Min(0f)] public float turnSpeed = 360f;
+	[Min(0.1f)] public float acceleration = 12f;
+	[Min(0.1f)] public float navMeshSampleRadius = 1.5f;
+	[Min(0.1f)] public float stuckTimeout = 3f;
+	[Min(0f)] public float attackRangeHysteresis = 0.25f;
+	[Range(1f, 180f)] public float attackFacingAngle = 35f;
+	[Header("Death")]
+	[Tooltip("Zero keeps the corpse indefinitely; positive values remove it after this delay.")]
+	[Min(0f)] public float corpseLifetime = 10f;
 }
 
 [System.Serializable]

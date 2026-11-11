@@ -1,0 +1,11 @@
+success=True
+Log: [CombatTest] PASS Inventory opens and owns cursor
+Log: [CombatTest] PASS Inventory blocks movement: distance=5.960464E-08
+Log: [CombatTest] PASS Pause freezes game
+Log: [CombatTest] PASS Resume restores game
+Log: [CombatTest] Sword execution damage=3 duration=1.333333 gameTime=2.737714 animation=229373857
+Log: [CombatTest] PASS Sword deals exactly one hit: lost=1 expected=1
+Log: [CombatTest] PASS Sword kills enemy via attack timeline
+Log: [CombatTest] Selected weapon=Arrow busy=False inventory0=Sword-Wood (Equipment)
+Log: [CombatTest] PASS Bow equipment selects ranged weapon data
+Log: [CombatTest] PASS Bow projectile kills enemy; projectile frames observed=0

@@ -24,20 +24,21 @@ public class UISlot : MonoBehaviour , IDropHandler
 		transform.name = "slot" + slotIndex;
 
 		//Tool Tip
-		transform.GetComponent<Button_UI>().MouseOutOnceTooltipFunc = () => Tooltip_ItemStats.HideTooltip_Static();
-        transform.GetComponent<Button_UI>().MouseOverOnceTooltipFunc = () => Tooltip_ItemStats.ShowTooltip_Static(item);
+        var button = GetComponent<Button_UI>();
+        if (button != null)
+        {
+            button.MouseOutOnceTooltipFunc = () => Tooltip_ItemStats.HideTooltip_Static();
+            button.MouseOverOnceTooltipFunc = () => Tooltip_ItemStats.ShowTooltip_Static(item);
+        }
 	}
 
 	public virtual void ItemSelect()//Change to slotpressed//
 	{
 		//check if busy
-		CharacterAnimator ani = equipmentManager.gameObject.GetComponent<CharacterAnimator>();
+        if (item == null || inventory == null) return;
+        CharacterAnimator ani = equipmentManager != null ? equipmentManager.GetComponentInParent<CharacterAnimator>() : null;
 
-		if(ani.AnimationIsBusy())
-			return;
-
-		// Called when the item is pressed in inventory
-		if (item == null)
+        if (ani != null && ani.AnimationIsBusy())
 			return;
 
 		//Use the Item
@@ -54,9 +55,10 @@ public class UISlot : MonoBehaviour , IDropHandler
 
 	public void AddItem (Item newItem) //add item to slot
 	{
-		Debug.Log(newItem + " - Addedededede to slot: " +slotIndex );
+		if (newItem == null) { ClearSlot(); return; }
 		
 		item = newItem;
+        if (icon == null) return;
 		icon.sprite = item.icon;
 		icon.enabled = true;
 		//removeButton.interactable = true;
@@ -68,6 +70,7 @@ public class UISlot : MonoBehaviour , IDropHandler
 		//Debug.Log(slotIndex +  "- Slot Cleared..." );
 		
 		item = null;
+        if (icon == null) return;
 		icon.sprite = null;
 		icon.enabled = false;
 		//removeButton.interactable = false;
@@ -77,63 +80,22 @@ public class UISlot : MonoBehaviour , IDropHandler
 	{
 		// Called when the remove button is pressed
 
-		if (item == null)
+		if (item == null || inventory == null || equipmentManager == null)
 			return;
-
-		Debug.Log("Drop Item");
 
 		//Add Item Back to world
 		//Change//
-		equipmentManager.DropItem(item);
+		if (!equipmentManager.TryDropItem(item)) return;
 		inventory.Remove(slotIndex); 
 		ClearSlot();
 	}	
 
-	public void OnDrop(PointerEventData eventData)//Change to - Drop Item In Slot 
-	{
-		//Drop Item In Slot 
-		
-		//Find Slot being dragged
-		if(eventData.pointerDrag)
-		{
-			//When Dropping Moving slot
-			Debug.Log("Droped on Slot -- " + this.gameObject.name);
-			//Slot being dragged
-			InventorySlot inventorySlot = eventData.pointerDrag.GetComponent<DragDrop>().inventorySlot;
-			
-			//item in drop slot 
-			Item tempItem = item;
-
-			//item being moved 
-			Item moveItem = inventorySlot.item;
-
-			//Change to inventoy
-			int firstS = this.transform.GetSiblingIndex();
-			Item II = inventory.items[firstS];
-			int secondS = inventorySlot.transform.GetSiblingIndex();
-
-			inventory.items[firstS] = inventory.items[secondS];
-			inventory.items[secondS] = II;
-			//inventory.Remove(this.transform.GetSiblingIndex());
-			//inventory.Remove(inventorySlot.transform.GetSiblingIndex());
-			
-			inventorySlot.ClearSlot();
-			ClearSlot();
-
-			//item in drop slot 
-			if(tempItem != null)
-			{
-				Debug.Log("Item IN dropppp");
-				//tempItem.ISN = retempInt;//1
-				//inventory.Add(tempItem);
-				inventorySlot.AddItem(tempItem);
-			}
-
-			AddItem(moveItem);
-			//inventory.Add(moveItem);
-
-			//inventory.SwapItem();
-		}		
-	}
+	public void OnDrop(PointerEventData eventData)
+    {
+        if (!(this is InventorySlot) || eventData.pointerDrag == null) return;
+        var drag = eventData.pointerDrag.GetComponent<DragDrop>();
+        if (drag == null || drag.inventorySlot == null || inventory == null || drag.inventorySlot.inventory != inventory) return;
+        inventory.SwapSlots(transform.GetSiblingIndex(), drag.inventorySlot.transform.GetSiblingIndex());
+    }
 
 }

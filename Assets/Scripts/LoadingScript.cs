@@ -10,18 +10,18 @@ public class LoadingScript : MonoBehaviour
     void Start()
     {
         //Debug.Log("We Loaded");
-        StartCoroutine("LoadScene");
+        StartCoroutine(LoadScene());
     }
 
     IEnumerator LoadScene()
     {
         AsyncOperation operation = SceneManager.LoadSceneAsync(GameController.goToScene);
 
+        if (operation == null) yield break;
         while(!operation.isDone)
         {
             float progress = Mathf.Clamp01(operation.progress/ .9f);
-            Debug.Log(progress);
-            slider.value = progress;
+            if (slider != null) slider.value = progress;
             //progressText.text = progress * 100f;
             yield return null; 
         }

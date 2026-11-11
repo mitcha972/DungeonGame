@@ -14,7 +14,7 @@ public class HotKeySlot : UISlot
 	{
 		if(Input.GetKeyDown(keyCode) )
 		{
-			if (inventorySlot.item == null)
+			if (inventorySlot == null || inventorySlot.item == null)
 				return;
 
 			Debug.Log("Keyyyyy Clicked");

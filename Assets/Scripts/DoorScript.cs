@@ -20,33 +20,22 @@ public class DoorScript : Interactable
         Door();
 	}
 
-    void Door()
+    void Door() => SetOpen(!isOpen);
+
+    public void SetOpen(bool open, bool immediate = false)
     {
-        isOpen = !isOpen;
-
-        //Check if Door is Closed Or open
-        if(isOpen) //close the door 
+        isOpen = open;
+        if (animator == null) animator = GetComponent<Animator>();
+        if (door == null) door = GetComponent<UnityEngine.AI.NavMeshObstacle>();
+        if (animator != null)
         {
-            //Open Door Animation
-            //animator.SetTrigger("OpenDoor");
-            animator.Play("DoorOpen", 0, 0f);
-
-            //Remove Contact
-            //
-
-            //NaveMesh 
-            door.carving = isOpen;
+            animator.Play(open ? "DoorOpen" : "DoorClose", 0, immediate ? 1f : 0f);
+            if (immediate) animator.Update(0f);
         }
-        else
+        if (door != null)
         {
-            //Close Door Animation
-            animator.Play("DoorClose", 0, 0f);
-
-            //Add Contact
-            //
-
-            //NaveMesh 
-            door.carving = isOpen;
-        }        
+            door.enabled = !open;
+            door.carving = !open;
+        }
     }
 }

@@ -1,32 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-/* Handles interaction with the Enemy */
 [RequireComponent(typeof(CharacterStats))]
-public class EnemyInteract : Interactable 
+public class EnemyInteract : Interactable
 {
-	PlayerManager playerManager;
-	CharacterStats myStats;
-	
-	private Outline outline; 
-
-	void Start ()
-	{
-		playerManager = PlayerManager.instance;
-		myStats = GetComponent<CharacterStats>();
-		outline = GetComponent<Outline>();
-	}
-
-	public override void OnFocused (Transform playerTransform)
-	{
-		base.OnFocused (playerTransform);
-		outline.enabled = true;
-	}
-
-	public override void OnDefocused()
-	{
-		base.OnDefocused();
-		outline.enabled = false;
-	}
+    private CharacterStats _stats;
+    private Outline _outline;
+    private void Awake()
+    {
+        _stats = GetComponent<CharacterStats>();
+        _outline = GetComponentInChildren<Outline>(true);
+    }
+    public override void OnFocused(Transform playerTransform)
+    {
+        if (!isActiveAndEnabled || _stats == null || _stats.IsDead) return;
+        base.OnFocused(playerTransform);
+        if (_outline != null) _outline.enabled = true;
+    }
+    public override void OnDefocused()
+    {
+        base.OnDefocused();
+        if (_outline != null) _outline.enabled = false;
+    }
+    private void OnDisable() { if (_outline != null) _outline.enabled = false; }
 }

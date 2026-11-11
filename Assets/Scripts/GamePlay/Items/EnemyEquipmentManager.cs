@@ -1,30 +1,19 @@
 using UnityEngine;
 
-public class EnemyEquipmentManager : EquipmentManager 
-{	
-	//add enemy stats
-	//get enemy from stats
-	[SerializeField] Enemy enemy; // change to get enemy from stats
-	
-	public override void Setup ()
-	{
-		//Set up enemy equipment - Choose from default equiptment by chance;
-		
-		//defaultEquipment = enemy.defaultEquipment;
-		DefaultEquipment[] defaultEquipment = enemy.defaultEquipment; //Fixed
-
-		for(int i = 0; i < defaultEquipment.Length; i++)
-		{
-			//Floors (1-20) * 1:5 + Difficulty(1-4) * 1:10 
-			int randomRange = Random.Range(-10,11); //Time level
-
-			int equipLevel = GameController.floor * 5 + GameController.difficulty * 10 + randomRange; 
-			int equipChance = Random.Range(0,101);
-
-			if(equipChance <= defaultEquipment[i].equipChance) //Fixed
-				if(defaultEquipment[i].equipLevel <= equipLevel)
-					Equip(defaultEquipment[i].equipment);
-	}
-	}
-
+public class EnemyEquipmentManager : EquipmentManager
+{
+    // Retained only as a migration fallback for legacy prefabs without EnemyStats.
+    [SerializeField, HideInInspector] private Enemy enemy;
+    public override void Setup()
+    {
+        var stats = GetComponentInParent<EnemyStats>();
+        var definition = stats != null ? stats.Definition : enemy;
+        if (definition == null || definition.defaultEquipment == null) return;
+        int equipLevel = GameController.floor * 5 + GameController.difficulty * 10 + Random.Range(-10, 11);
+        foreach (var entry in definition.defaultEquipment)
+        {
+            if (entry == null || entry.equipment == null || entry.equipLevel > equipLevel) continue;
+            if (Random.Range(0, 100) < Mathf.Clamp(entry.equipChance, 0, 100)) Equip(entry.equipment);
+        }
+    }
 }

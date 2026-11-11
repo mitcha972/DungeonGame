@@ -1,4 +1,4 @@
-﻿/* 
+/* 
     ------------------- Code Monkey -------------------
 
     Thank you for downloading this package
@@ -41,6 +41,11 @@ public class Tooltip_Warning : MonoBehaviour {
         backgroundImage = transform.Find("background").GetComponent<Image>();
 
         HideTooltip();
+    }
+
+    private void OnDestroy()
+    {
+        if (instance == this) instance = null;
     }
 
     private void Update() {
@@ -111,15 +116,15 @@ public class Tooltip_Warning : MonoBehaviour {
     }
 
     public static void ShowTooltip_Static(string tooltipString) {
-        instance.ShowTooltip(tooltipString);
+        if (instance != null) instance.ShowTooltip(tooltipString);
     }
 
     public static void ShowTooltip_Static(Func<string> getTooltipStringFunc) {
-        instance.ShowTooltip(getTooltipStringFunc);
+        if (instance != null) instance.ShowTooltip(getTooltipStringFunc);
     }
 
     public static void HideTooltip_Static() {
-        instance.HideTooltip();
+        if (instance != null) instance.HideTooltip();
     }
 
 
