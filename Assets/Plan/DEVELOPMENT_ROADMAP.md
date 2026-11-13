@@ -34,6 +34,8 @@ These describe retained implementations, not every scene passing. [Maintenance](
 
 ## Targeted maintenance
 
+Animation assessment (2026-11-13): obsolete combat clip callbacks, grip-layer indexing and ability recovery timing repaired. Remaining: rig-appropriate Spider/Metalon controllers and native motion recovery, one authoritative Giant Animator, missing enemy block/weapon clips, dedicated gathering tools/chopping and designed ability input/effects. See [animation/models](SYSTEMS/Animation.md) for evidence, organization and actual test coverage.
+
 Retain FSM/generator/shared combat unless evidence justifies replacement. Profile before pooling/scheduling work. Vendor removal requires reference migration: CodeMonkey Button_UI still supplies serialized presentation; legacy NavMeshComponents includes editor/test/example assemblies and duplicate menu warnings. Review positional camera shake, shared-renderer materials, tooltip extremes and edit-mode conversion separately.
 
 Remove completed work from pending lists. Historical approval gates, licensing failures and unavailable-tool statements belong to their original tasks; inspect current instructions and tooling instead.

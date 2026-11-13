@@ -114,7 +114,7 @@ public class CharacterCombat : MonoBehaviour
         if (!isActiveAndEnabled || abilities == null || _combatAnimator == null || _combatAnimator.AnimationIsBusy() || myStats.IsDead) return;
         _combatAnimator.PlayAbilityAnimation(abilities.startAnimation);
         if (abilities.projectile != null) EnableProjectile(abilities, abilities.damage);
-        StartCoroutine(RecoverHit());
+        StartCoroutine(RecoverHit(abilities.startAnimation != null ? Mathf.Max(hitRecoveryTime, abilities.startAnimation.length) : hitRecoveryTime));
     }
     public virtual void TakeDamage(int damageTaken, Transform attackOwner, float direction, Vector3 position, bool blocked)
     {
@@ -144,9 +144,9 @@ public class CharacterCombat : MonoBehaviour
         StartCoroutine(RecoverHit());
         if (!blocked && bloodSplat != null) Destroy(Instantiate(bloodSplat, position, Quaternion.identity), 2f);
     }
-    private IEnumerator RecoverHit()
+    private IEnumerator RecoverHit(float duration = -1f)
     {
-        yield return new WaitForSeconds(hitRecoveryTime);
+        yield return new WaitForSeconds(duration >= 0f ? duration : hitRecoveryTime);
         if (!myStats.IsDead) { attackIsReady = true; if (_combatAnimator != null) _combatAnimator.SetBusy(false); }
     }
     public void BlockStart()

@@ -1,0 +1,1142 @@
+[
+  {
+    "old": "Assets/Animations/StarterAssetsThirdPerson.controller",
+    "new": "Assets/Animations/Controllers/Legacy/Standalone_StarterAssetsThirdPerson.controller",
+    "guid": "2bfcd576810c5dc47a712df4d31bb36d"
+  },
+  {
+    "old": "Assets/Animations/Character/Jump--InAir.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Jump--InAir.anim.fbx",
+    "guid": "063aa479676c4084ebf187660ca0a7b8"
+  },
+  {
+    "old": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Jump--Jump.anim.fbx",
+    "guid": "98f277b0c8055e143b2fcf058d3c27dc"
+  },
+  {
+    "old": "Assets/Animations/Character/JumpLand 1.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/JumpLand 1.anim",
+    "guid": "552f0e2b4621f8b498df0d2cc158c2fa"
+  },
+  {
+    "old": "Assets/Animations/Character/JumpStart.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/JumpStart.anim",
+    "guid": "dbacf3fc386ad1347921f12fa836e6fa"
+  },
+  {
+    "old": "Assets/Animations/Character/Locomotion--Run_N_Land.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Locomotion--Run_N_Land.anim.fbx",
+    "guid": "3c033631149b9c541bcf155cd94cccba"
+  },
+  {
+    "old": "Assets/Animations/Character/Locomotion--Run_S.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Locomotion--Run_S.anim.fbx",
+    "guid": "a073c604c44135e438eeeaef77058ac5"
+  },
+  {
+    "old": "Assets/Animations/Character/Locomotion--Walk_N_Land.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Locomotion--Walk_N_Land.anim.fbx",
+    "guid": "325a26d62b61fa94cb3c97c435efebc5"
+  },
+  {
+    "old": "Assets/Animations/Character/Run.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Run.anim",
+    "guid": "c34ede961161f5448920ec6caef9f669"
+  },
+  {
+    "old": "Assets/Animations/Character/Stand--Idle.anim.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Stand--Idle.anim.fbx",
+    "guid": "12e52e465ed793a4d801955e9f964a82"
+  },
+  {
+    "old": "Assets/Animations/Character/Walk.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StarterAssets/Walk.anim",
+    "guid": "38faf4969228ec94083ef5d0eeb2ef09"
+  },
+  {
+    "old": "Assets/Animations/Combat/2Handed/Ch36_nonPBR@Great Sword Slash.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/2Handed/Ch36_nonPBR@Great Sword Slash.fbx",
+    "guid": "878e447a008bd9843850fc35feb5acac"
+  },
+  {
+    "old": "Assets/Animations/Combat/2Handed/Ch36_nonPBR@Great Sword Slash2.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/2Handed/Ch36_nonPBR@Great Sword Slash2.fbx",
+    "guid": "a345b3dba95cc39419fa6bd792cbd223"
+  },
+  {
+    "old": "Assets/Animations/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx",
+    "guid": "cf0dae15bffe45a47bec9730fd120f3d"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield Impact.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield Impact.fbx",
+    "guid": "1712fb9bfe0afb54d8b323b608b354f1"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Block - Idle.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Block - Idle.anim",
+    "guid": "5236bf76203085e42a3c0f8ef24d9e02"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Block - Idle2.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Block - Idle2.anim",
+    "guid": "73805eac2fdc3bb49a3333a3c65759c3"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Block - Start.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Block - Start.anim",
+    "guid": "77f9f78c4e631d54e969fc25b2870fde"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Block - Start.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Block - Start.fbx",
+    "guid": "4fa1565eaa8aa614c91298ffd27435ed"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Ch36_nonPBR@Sword And Shield Block Idle.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Ch36_nonPBR@Sword And Shield Block Idle.fbx",
+    "guid": "2df4f98d58d95214fa92c01181a33b03"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/Ch36_nonPBR@Sword And Shield Impact.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/Ch36_nonPBR@Sword And Shield Impact.fbx",
+    "guid": "9b499fae254c16449a7c4114425422c8"
+  },
+  {
+    "old": "Assets/Animations/Combat/Blocking/Shield/ShieldImpact.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Blocking/Shield/ShieldImpact.anim",
+    "guid": "7eaecb612dbbe63458c42c7ebebeba68"
+  },
+  {
+    "old": "Assets/Animations/Combat/Bow/Armature_BowAttack.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Bow/Armature_BowAttack.anim",
+    "guid": "71060b9fc8373db4eb98e5ee4a3fe511"
+  },
+  {
+    "old": "Assets/Animations/Combat/Bow/BowShot.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Bow/BowShot.anim",
+    "guid": "cbcc2ac0d7332cf47857e7809fe426a7"
+  },
+  {
+    "old": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Fist/Punch - Left.anim",
+    "guid": "b6b77768740796f4bb6bf78064789708"
+  },
+  {
+    "old": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Fist/Punch - Right.anim",
+    "guid": "cb032138a9419cf4cb93f019fddf349e"
+  },
+  {
+    "old": "Assets/Animations/Combat/Fist/UppercutL.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Fist/UppercutL.anim",
+    "guid": "64ac38e628d99a444b271ca234bbc6ba"
+  },
+  {
+    "old": "Assets/Animations/Combat/Fist/UppercutR.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Fist/UppercutR.anim",
+    "guid": "bc2f48a75acecb64c8e5638bcdd5314b"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/BackStab.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/BackStab.fbx",
+    "guid": "ff7e356b2ed27df428c4ac0873d66a2d"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Combo - 1.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Combo - 1.anim",
+    "guid": "5120b429988a80142bbc6b845e8caf77"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Combo - 1.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Combo - 1.fbx",
+    "guid": "21f5276e57633734f833159e66962941"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Combo - 2.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Combo - 2.fbx",
+    "guid": "d2c34adaaad9e5c4c969a70ae46dbdc6"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/GroundSmash.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/GroundSmash.fbx",
+    "guid": "044fa5cf420706548978fe3dc69ae63b"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Heavy - 1.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Heavy - 1.fbx",
+    "guid": "d10e94b437b6d5844a06dadecdea4813"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Heavy - 2.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Heavy - 2.fbx",
+    "guid": "5cf4e5ccbbbbc2249bcf01467f0e7b00"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Heavy - 3.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Heavy - 3.fbx",
+    "guid": "1c0df1d6c6a8f8e46b651ae5e88d1efa"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Slash - 1.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Slash - 1.anim",
+    "guid": "3dab0109f30a6ed4ea31fbceaf53762f"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Slash - 1.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Slash - 1.fbx",
+    "guid": "4a0b31624f36daa4a84283334267a26b"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Slash - 2.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Slash - 2.anim",
+    "guid": "5f0971797b4ee0440801a20568f0b089"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/Slash - 2.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/Slash - 2.fbx",
+    "guid": "1b6086b93a25c9b43b90f7ca4d2c42b0"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/SwordGrip.anim",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/SwordGrip.anim",
+    "guid": "184b3f0f163507e4d9c5b12523aea8c4"
+  },
+  {
+    "old": "Assets/Animations/Combat/Sword/UpSlash - 1.fbx",
+    "new": "Assets/Animations/Humanoid/Combat/Sword/UpSlash - 1.fbx",
+    "guid": "422f22ddf5c34e24d9f4736b1b1d54a7"
+  },
+  {
+    "old": "Assets/Animations/Effects/AbilityAnimtaion.fbx",
+    "new": "Assets/Animations/Humanoid/Abilities/Source/AbilityAnimtaion.fbx",
+    "guid": "5db6842af3765a04ca238c51a401b7ad"
+  },
+  {
+    "old": "Assets/Animations/Effects/AbilityAnimtaion2.fbx",
+    "new": "Assets/Animations/Humanoid/Abilities/Source/AbilityAnimtaion2.fbx",
+    "guid": "2a6f699b92daee347bbac00ad9653dab"
+  },
+  {
+    "old": "Assets/Animations/Effects/AbilityCasting.fbx",
+    "new": "Assets/Animations/Humanoid/Abilities/Source/AbilityCasting.fbx",
+    "guid": "3847be2a50d451e4f9bd516592e8f818"
+  },
+  {
+    "old": "Assets/Animations/Effects/PowerUp.fbx",
+    "new": "Assets/Animations/Humanoid/Abilities/Source/PowerUp.fbx",
+    "guid": "0b12e9ca1fd1ba94ba183837afb4c387"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Death.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Death.anim",
+    "guid": "1709c91f0df4fc442b3a1040c440b7cc"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Dying.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Dying.fbx",
+    "guid": "ab4d82bb0a69e374d90f75069db4aac6"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Dying2.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Dying2.fbx",
+    "guid": "a631d423a9f6dd740a2ee4ce1ea943af"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Falling Back Death.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Falling Back Death.fbx",
+    "guid": "24b1efe9febdcd94b861f7179253ead6"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Standing Death Backward 01.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Standing Death Backward 01.fbx",
+    "guid": "9f56098ab3cfa4b46b62fc8a98060956"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Standing React Death Forward.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Standing React Death Forward.fbx",
+    "guid": "82328361f1187224997d3cb182cbefdd"
+  },
+  {
+    "old": "Assets/Animations/Effects/Death/Sword And Shield Death.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Death/Sword And Shield Death.fbx",
+    "guid": "9695dd1a98fc82044b2b0659f216280a"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Big Body Blow.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Big Body Blow.fbx",
+    "guid": "2c7bb5300702efa499bfc7fdcc6d4001"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Ch36_nonPBR@HeavyHit.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Ch36_nonPBR@HeavyHit.fbx",
+    "guid": "117ecc57f757f26459d657e0eb5a0b80"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Ch36_nonPBR@Standing React Large From Back.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Ch36_nonPBR@Standing React Large From Back.fbx",
+    "guid": "8b41ab4943f91b640a9878fbbebd1a5b"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Heavy Hit Front.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Heavy Hit Front.anim",
+    "guid": "3fd5d3cedb6a4f947970db88d489163a"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Heavy Hit Front.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Heavy Hit Front.fbx",
+    "guid": "924d7773dd3f68649ac418a3e6bbb0f1"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit - Back.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit - Back.anim",
+    "guid": "33955676c1104a640a44ccfc57043756"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit - Front.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit - Front.anim",
+    "guid": "3006b77b85e181c4384cbe9465ddcf28"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit - Front.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit - Front.fbx",
+    "guid": "4d5a5b7956220524c9554064ade756c1"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit - Left.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit - Left.fbx",
+    "guid": "f769927f4bdc52045b3747ec53490d1f"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit - Right.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit - Right.fbx",
+    "guid": "1a48f5f1456ad0c459c3df13b68fe338"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit To body.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit To body.fbx",
+    "guid": "59bbdf91ae9bace44bf0b537dad8dbf4"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit-Back.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit-Back.fbx",
+    "guid": "51caa12c193838f4c87f6efed47c29d1"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit-Left.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit-Left.anim",
+    "guid": "d0f12e0c39967be4ab32efa708e04c05"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Hit-Right.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Hit-Right.anim",
+    "guid": "46d442aacf7f1e24bb8e1ae69fc2ea57"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Stagger.anim",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Stagger.anim",
+    "guid": "9177cd1f22e3f3d4ebb87f64ba878647"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Stagger.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Stagger.fbx",
+    "guid": "7c633396ca334bb4ebf7547bf279e250"
+  },
+  {
+    "old": "Assets/Animations/Effects/Hit/Standing React Death Right.fbx",
+    "new": "Assets/Animations/Humanoid/Reactions/Hit/Standing React Death Right.fbx",
+    "guid": "1b73a91385d9d3040a203167560f83a7"
+  },
+  {
+    "old": "Assets/Animations/Exploration/m@Idle.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/m@Idle.fbx",
+    "guid": "77ebce5437875674da8b297c3eed5d1a"
+  },
+  {
+    "old": "Assets/Animations/Exploration/m@RunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/m@RunForwards.fbx",
+    "guid": "5603ba2736827934f814315bda037898"
+  },
+  {
+    "old": "Assets/Animations/Exploration/m@SprintForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/m@SprintForwards.fbx",
+    "guid": "f5929a78ddc0f40518df247d645a7747"
+  },
+  {
+    "old": "Assets/Animations/Exploration/m@WalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/m@WalkForwards.fbx",
+    "guid": "8d2f32dac24d0c446b26db61358312e9"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@IdleLeftTurn180.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@IdleLeftTurn180.fbx",
+    "guid": "9956fa61c80270048ab0f59f8054c7e3"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@RapidTurningLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@RapidTurningLeft.fbx",
+    "guid": "a7046a107b3b39a4ab9d86ab609a80d3"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@RapidTurningLeftRunForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@RapidTurningLeftRunForward.fbx",
+    "guid": "f42864c4d2622594a8b5f0d9264a91ee"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@RapidTurningLeftSprintForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@RapidTurningLeftSprintForwards.fbx",
+    "guid": "bc7c28e9430d0564a953ce9ec1be418e"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@RapidTurningLeftWalkForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@RapidTurningLeftWalkForward.fbx",
+    "guid": "4ca0e826467c5f6499e37fee92149c51"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@RunForwardTurnLeft180.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@RunForwardTurnLeft180.fbx",
+    "guid": "f1dc5f89196240f4e9011601e5b3f7ba"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@TurningLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@TurningLeft.fbx",
+    "guid": "5182533d60eb43e4aad60da1a3573b1e"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@TurningLeftRunForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@TurningLeftRunForward.fbx",
+    "guid": "b8acb10484ac20846935d5c471477ab4"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@TurningLeftSprintForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@TurningLeftSprintForwards.fbx",
+    "guid": "c0f04258feff0fc48877eae1bc51caf8"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@TurningLeftWalkForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@TurningLeftWalkForward.fbx",
+    "guid": "aa131be0fdec02e458bc6740944805a9"
+  },
+  {
+    "old": "Assets/Animations/Exploration/Turning/m@WalkForwardTurnLeft180.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Directional/Turning/m@WalkForwardTurnLeft180.fbx",
+    "guid": "3abca61b1e222374a962f9fdd930b5c2"
+  },
+  {
+    "old": "Assets/Animations/Giant/Giant@Idle01.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Giant@Idle01.fbx",
+    "guid": "fa0a845703afc5d4ca54de97fee2b135"
+  },
+  {
+    "old": "Assets/Animations/Giant/Combat/Giant Stomp Left.anim",
+    "new": "Assets/Animations/Monsters/Giant/Source/Combat/Giant Stomp Left.anim",
+    "guid": "6a2beb6cdd35134478ad1c2e65fb0dfa"
+  },
+  {
+    "old": "Assets/Animations/Giant/Combat/Giant Stomp Right.anim",
+    "new": "Assets/Animations/Monsters/Giant/Source/Combat/Giant Stomp Right.anim",
+    "guid": "4ecb079fd35dc3240a61d03fb99a4fb8"
+  },
+  {
+    "old": "Assets/Animations/Giant/Combat/Giant@Damage01.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Combat/Giant@Damage01.fbx",
+    "guid": "886feb2bd97fec24583974a20434552e"
+  },
+  {
+    "old": "Assets/Animations/Giant/Movement/Giant@Run01.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Movement/Giant@Run01.fbx",
+    "guid": "63f73fc2ade375f4e927f9c11223a594"
+  },
+  {
+    "old": "Assets/Animations/Giant/Movement/Giant@Walk01.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Movement/Giant@Walk01.fbx",
+    "guid": "d99fb20acccd1c94ba5f617603e483f0"
+  },
+  {
+    "old": "Assets/Animations/Magic/CastingLoop.anim",
+    "new": "Assets/Animations/Humanoid/Abilities/Clips/CastingLoop.anim",
+    "guid": "d014913274c155e4eb99673452700c47"
+  },
+  {
+    "old": "Assets/Animations/Magic/SpellCast.anim",
+    "new": "Assets/Animations/Humanoid/Abilities/Clips/SpellCast.anim",
+    "guid": "5dc8cf788ac2a9742937e024322ce3f1"
+  },
+  {
+    "old": "Assets/Animations/Misc/Drinki.fbx",
+    "new": "Assets/Animations/Humanoid/Actions/Drinki.fbx",
+    "guid": "c13f0b11b6c524b40a5ef82de403ee88"
+  },
+  {
+    "old": "Assets/Animations/Misc/Equip.fbx",
+    "new": "Assets/Animations/Humanoid/Actions/Equip.fbx",
+    "guid": "c4c5902e061a86643bdfde55d7f1a220"
+  },
+  {
+    "old": "Assets/Animations/Misc/Gathering.anim",
+    "new": "Assets/Animations/Humanoid/Actions/Gathering/Gathering.anim",
+    "guid": "652e1d51ddc075e4fba2fc5a55eda215"
+  },
+  {
+    "old": "Assets/Animations/Misc/MiningLoop.anim",
+    "new": "Assets/Animations/Humanoid/Actions/Gathering/MiningLoop.anim",
+    "guid": "4e20050071cefaa42aa73230b81a884c"
+  },
+  {
+    "old": "Assets/Animations/Misc/Door/DoorClose.anim",
+    "new": "Assets/Animations/Environment/Doors/DoorClose.anim",
+    "guid": "e5941b8eab287f4469428851a80c2856"
+  },
+  {
+    "old": "Assets/Animations/Misc/Door/DoorOpen.anim",
+    "new": "Assets/Animations/Environment/Doors/DoorOpen.anim",
+    "guid": "7dd30fdffa6476a4ca8268aef11c7636"
+  },
+  {
+    "old": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+    "new": "Assets/Animations/Environment/Doors/Door_Wooden_Round_Right.controller",
+    "guid": "9accaf9e7fd2440499d92d0d23f70f30"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Enemy.controller",
+    "new": "Assets/Animations/Controllers/Legacy/Enemy.controller",
+    "guid": "5bd90d4012dd084459b271a82ed3cd1d"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Giant/Giant override.overrideController",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant override.overrideController",
+    "guid": "36aad27cdcab4be41898acc902f58100"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Giant/Mutant Punch.anim",
+    "new": "Assets/Animations/Monsters/Giant/Clips/Mutant Punch.anim",
+    "guid": "30bd5a35eaefff84bb908e92558ddc2b"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Giant/Mutant Swiping.anim",
+    "new": "Assets/Animations/Monsters/Giant/Clips/Mutant Swiping.anim",
+    "guid": "dfd285ec5b0107c479c578f63148876e"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Giant/Standing Melee Attack Kick Ver. 2.anim",
+    "new": "Assets/Animations/Monsters/Giant/Clips/Standing Melee Attack Kick Ver. 2.anim",
+    "guid": "fd525cedc19bb1342bcc578a65db9ae5"
+  },
+  {
+    "old": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Attacks.controller",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant@Attacks.controller",
+    "guid": "b13cac861fa860c41b71361b14ec28c8"
+  },
+  {
+    "old": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Damages.controller",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant@Damages.controller",
+    "guid": "08d825eb7aeab5a4db18e5776dbade8d"
+  },
+  {
+    "old": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Idles.controller",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant@Idles.controller",
+    "guid": "75cabacce08bf8742838e3b2c01b2166"
+  },
+  {
+    "old": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@RunForward.controller",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant@RunForward.controller",
+    "guid": "6b665610312a01f4a8e7bafbfb2b6b49"
+  },
+  {
+    "old": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@WalkForward.controller",
+    "new": "Assets/Animations/Monsters/Giant/Controllers/Giant@WalkForward.controller",
+    "guid": "b81beb43b06063f459027d83a78d7abb"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Metalon/Demo.controller",
+    "new": "Assets/Animations/Monsters/Metalon/Controllers/Demo.controller",
+    "guid": "a0d2ba5d068c86a4c82d93f2ec431a84"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Metalon/Idle.anim",
+    "new": "Assets/Animations/Monsters/Metalon/Clips/Idle.anim",
+    "guid": "4a89fb22db9e041479cbf691ceacbb36"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Metalon/Metalon override.overrideController",
+    "new": "Assets/Animations/Monsters/Metalon/Controllers/Metalon override.overrideController",
+    "guid": "660c0005b67d86c409c67a66dece1096"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Metalon/Polygonal Metalon.controller",
+    "new": "Assets/Animations/Monsters/Metalon/Controllers/Polygonal Metalon.controller",
+    "guid": "e761ace889a78a946967af8d6890f71d"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Skeleton/Skeleton override.overrideController",
+    "new": "Assets/Animations/Monsters/Skeleton/Controllers/Skeleton override.overrideController",
+    "guid": "5d7e83872b6424956b6918fdd23ef863"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider/Spider override.overrideController",
+    "new": "Assets/Animations/Monsters/Spider/Controllers/Spider override.overrideController",
+    "guid": "3592520a77682334e9185a26a5229afd"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Attack1.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/Attack1.anim",
+    "guid": "7c5331f86c7aae342b9784bcb841acf3"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Attack2.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/Attack2.anim",
+    "guid": "35ce8e9f53017bd4785fda181294c8fe"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Death.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/Death.anim",
+    "guid": "f3a213ef76a772a4c8e63ba267e2388b"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Idle.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/Idle.anim",
+    "guid": "0c1550a94f19328478a41c13e4fad395"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Spider Controller.controller",
+    "new": "Assets/Animations/Monsters/Spider/Controllers/Spider Controller.controller",
+    "guid": "3f84ca341c1b1844eb99afcd13998555"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Spider.overrideController",
+    "new": "Assets/Animations/Monsters/Spider/Controllers/Spider.overrideController",
+    "guid": "dad8ddea8eb9b5149b91cf64ed35d9d1"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/spider_Avatar.asset",
+    "new": "Assets/Animations/Monsters/Spider/Rig/spider_Avatar.asset",
+    "guid": "a96ff394aa19efb4bbcd55446aefd7db"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/TakeDamage.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/TakeDamage.anim",
+    "guid": "12d1b6dc548540b43886c2744a2d277e"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/Walk.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/Walk.anim",
+    "guid": "5970466435848164fb993ea823e0eff2"
+  },
+  {
+    "old": "Assets/Animations/Monsters/Spider Animations/WalkBack.anim",
+    "new": "Assets/Animations/Monsters/Spider/Clips/WalkBack.anim",
+    "guid": "eaf979041b309d340954a24db6b0f5b4"
+  },
+  {
+    "old": "Assets/Animations/Movement/Ch36_nonPBR@Unarmed Idle 01.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Ch36_nonPBR@Unarmed Idle 01.fbx",
+    "guid": "b091a3d665de9ae4d90b86f73b6ded76"
+  },
+  {
+    "old": "Assets/Animations/Movement/Combat Idle.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Combat Idle.anim",
+    "guid": "3be2d85708364564aab1c7519296a7ed"
+  },
+  {
+    "old": "Assets/Animations/Movement/Dodge Left.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Dodge Left.fbx",
+    "guid": "8e7b7a456da233f4a87d363fc7a35808"
+  },
+  {
+    "old": "Assets/Animations/Movement/Dodge Right.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Dodge Right.fbx",
+    "guid": "07f6f49b169c6ce4e9e40d5857ecbc9e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Idle.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Idle.anim",
+    "guid": "d3653b3bdc7a70b46b290d2254c346f0"
+  },
+  {
+    "old": "Assets/Animations/Movement/IdleCombat.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/IdleCombat.anim",
+    "guid": "0711b5b1fb295734ab88e0c619766e34"
+  },
+  {
+    "old": "Assets/Animations/Movement/RightStrafeInPlace.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/RightStrafeInPlace.fbx",
+    "guid": "c4e283d1d464b3048909306ba832dd51"
+  },
+  {
+    "old": "Assets/Animations/Movement/Roll InPlace.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Roll InPlace.fbx",
+    "guid": "b4842bdfc99bdf64eb2b69f47a6036c7"
+  },
+  {
+    "old": "Assets/Animations/Movement/Roll.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Roll.anim",
+    "guid": "29769833fb57f1e46be245124ca34d88"
+  },
+  {
+    "old": "Assets/Animations/Movement/Roll.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Roll.fbx",
+    "guid": "cb65cd83f33ae2b49b08ff5f58dfad78"
+  },
+  {
+    "old": "Assets/Animations/Movement/RollBackward.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/RollBackward.anim",
+    "guid": "efb87807af311bd4284f4ffb5f349a6e"
+  },
+  {
+    "old": "Assets/Animations/Movement/RollInPlace.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/RollInPlace.anim",
+    "guid": "28df2338ec0fb2f40a3b9401957295b9"
+  },
+  {
+    "old": "Assets/Animations/Movement/Run.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Run.anim",
+    "guid": "a6b12701e3be266409a2148964b670c0"
+  },
+  {
+    "old": "Assets/Animations/Movement/RunBackward.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/RunBackward.anim",
+    "guid": "c5c512c137133ef4fafbbd7d7f450fb2"
+  },
+  {
+    "old": "Assets/Animations/Movement/StrafeLeft.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StrafeLeft.anim",
+    "guid": "2d925d8557553c64582f0c110481e9d6"
+  },
+  {
+    "old": "Assets/Animations/Movement/StrafeLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StrafeLeft.fbx",
+    "guid": "68f8f5ba4bc4ee94b89dfce563d8550d"
+  },
+  {
+    "old": "Assets/Animations/Movement/StrafeLeftInPlace.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StrafeLeftInPlace.fbx",
+    "guid": "0def698f64dbf5c41b192a8c37cbaba4"
+  },
+  {
+    "old": "Assets/Animations/Movement/StrafeRight.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/StrafeRight.anim",
+    "guid": "18a95cfd2358851479e6a0408bddda05"
+  },
+  {
+    "old": "Assets/Animations/Movement/StrafeRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/StrafeRight.fbx",
+    "guid": "ae97b3a27e423cf47abd82fca317d10b"
+  },
+  {
+    "old": "Assets/Animations/Movement/Giant/Avelange@Mutant Walking.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Legacy/Avelange@Mutant Walking.fbx",
+    "guid": "bdee367ce0e9cdf46945297c9944ae3d"
+  },
+  {
+    "old": "Assets/Animations/Movement/Giant/Mutant@Standing Jump.fbx",
+    "new": "Assets/Animations/Monsters/Giant/Source/Legacy/Mutant@Standing Jump.fbx",
+    "guid": "e1e59ff0c34cec84385a9fd04f870a19"
+  },
+  {
+    "old": "Assets/Animations/Movement/Jump/FallingLoop.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Jump/FallingLoop.anim",
+    "guid": "aa62ecd5fd97d9441b8d6c1599a04c86"
+  },
+  {
+    "old": "Assets/Animations/Movement/Jump/Jump.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Jump/Jump.anim",
+    "guid": "af34246a8bd9d504c9443540040f33b4"
+  },
+  {
+    "old": "Assets/Animations/Movement/Jump/JumpWhileRunning.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Jump/JumpWhileRunning.anim",
+    "guid": "bd9d7aa5105356f4387333d6ebe1ad4c"
+  },
+  {
+    "old": "Assets/Animations/Movement/Jump/Jump_Down.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Jump/Jump_Down.anim",
+    "guid": "8fa174248bb52f34fb3abad44553e23c"
+  },
+  {
+    "old": "Assets/Animations/Movement/Jump/Jump_Up.anim",
+    "new": "Assets/Animations/Humanoid/Locomotion/Jump/Jump_Up.anim",
+    "guid": "95b498b354ef6b34da264900f5f608e5"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeForwards.fbx",
+    "guid": "6edf1dc8721fc4ff7ad920aece8abf67"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeRight.fbx",
+    "guid": "4eb6fc449fe1244efadf654d6bc88df6"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeRightRunBackwards.fbx",
+    "guid": "9ef2658cbe12b41ddae7c53512e49809"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeRightRunForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeRightRunForward.fbx",
+    "guid": "f8784e24fe7ef4380b326dd1ffd645de"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeRightWalkBackwards.fbx",
+    "guid": "1ff13555defc64af1b155b3e5aae27ea"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@RapidStrafeRightWalkFowards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@RapidStrafeRightWalkFowards.fbx",
+    "guid": "30fb653273b05404fabf4daaedffcde5"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeIdle.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeIdle.fbx",
+    "guid": "3ad76988cb96447baba231c250dc3149"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeRight.fbx",
+    "guid": "d210e0914e86a4640a5ff92bbb57f6c9"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeRightRunBackwards.fbx",
+    "guid": "c9065aba528e445a5ae6811f5a46e55e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeRightRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeRightRunForwards.fbx",
+    "guid": "f546f95e162b04775be059a9c7a23191"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeRightWalkBackwards.fbx",
+    "guid": "d0de2a187684f4fe896d3835f2509f36"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeRightWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeRightWalkForwards.fbx",
+    "guid": "a0edc1d8af78449c28e1e1bed3c81a36"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/m@StrafeWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/m@StrafeWalkForwards.fbx",
+    "guid": "7324ed001a74c4c21bd9c6a02a17cb5b"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeForwardsRapidTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeForwardsRapidTurnLeft.fbx",
+    "guid": "36caba08c6c75ea4390f34a48ad72ece"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeft.fbx",
+    "guid": "53437e657b1d03041864b7399295663c"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftRunBackwards.fbx",
+    "guid": "de9c5d3b2a4b1fa4ebd7d9edb4538c70"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftRunForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftRunForward.fbx",
+    "guid": "abe59bb881557c140a1ab2de44c90b7a"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftWalkBackwards.fbx",
+    "guid": "4f5942a4f54a3334093ee3d556e5d5ab"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@RapidStrafeRightRapidTurnLeftWalkForwards.fbx",
+    "guid": "23bfa9f13f7b75f45a0771a497cbb48e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeForwardsRapidTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeForwardsRapidTurnLeft.fbx",
+    "guid": "95b1def298872e44ba7daf174e01b5ab"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRapidTurningLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRapidTurningLeft.fbx",
+    "guid": "69b9e096b51629541acd1ff66b9b736d"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeft.fbx",
+    "guid": "91e73eb357e250d46b57b1d3d431a4dc"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftRunBackwards.fbx",
+    "guid": "35717546fd596e44e97bf3d23a8170ac"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftRunForwards.fbx",
+    "guid": "644d2cc65d49bd0418fe75ad9c467caf"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftWalkBackwards.fbx",
+    "guid": "f23bd8748642d954ebab3d16623220bb"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnLeft/m@StrafeRightRapidTurnLeftWalkForwards.fbx",
+    "guid": "1df8cd03bd2ea2243be34784490d1d4a"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeForwardsRapidTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeForwardsRapidTurnRight.fbx",
+    "guid": "ef9daf9d97bc94146bbe2a462b106633"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRight.fbx",
+    "guid": "995b7c41058d6b7498a1e8482416ce1e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightRunBackwards.fbx",
+    "guid": "65ee4da31ab94144faa60e1dc4321ad8"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightRunForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightRunForward.fbx",
+    "guid": "2d1702653990b8a4bb8f8abbc439e57c"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightWalkBackwards.fbx",
+    "guid": "21d0ad4413d86ea4ab51f578f587d620"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@RapidStrafeRightRapidTurnRightWalkForwards.fbx",
+    "guid": "cc6a5d4355582c34b858cd5b4f6bf8e0"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeForwardsRapidTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeForwardsRapidTurnRight.fbx",
+    "guid": "69bac46828ac45749839097f2c2d4ff6"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRapidTurningRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRapidTurningRight.fbx",
+    "guid": "e72d29e671f0f5e4d89b0e6b8ff72aa2"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRight.fbx",
+    "guid": "2918c77626493ea4685ab4cb60f8d8da"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightRunBackwards.fbx",
+    "guid": "64a81d2deb7694e458ec81a2afbc6488"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightRunForwards.fbx",
+    "guid": "5df5c83afb9afe9488c582432ec1a7e3"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightWalkBackwards.fbx",
+    "guid": "72b0d4aa73c93f648962c83b8828aea6"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/RapidTurnRight/m@StrafeRightRapidTurnRightWalkForwards.fbx",
+    "guid": "75a54f05d5a7ffc43a997b3554802d95"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeForwardsTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeForwardsTurnLeft.fbx",
+    "guid": "745b09a2ccfe8594c83d3af61934d84e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeft.fbx",
+    "guid": "0505d941083241e43bd8550b00a6e901"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftRunBackwards.fbx",
+    "guid": "edbab77a5b19d0b4e8681ccb1092e963"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftRunForwards.fbx",
+    "guid": "e74dec57947bc00479f6f4ffa612cc5a"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftWalkBackwards.fbx",
+    "guid": "f44631e96d71f424cbe25c3df4f7852a"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@RapidStrafeRightTurnLeftWalkForwards.fbx",
+    "guid": "c7fe2358e3f386449983a252620bd133"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeForwardsTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeForwardsTurnLeft.fbx",
+    "guid": "5d3667418356f1e4a9e0b7698ed394fe"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeft.fbx",
+    "guid": "d5ee17cc0c8b64b4f88cd95ee6697dfa"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftRunBackwards.fbx",
+    "guid": "1469d89414d90744f8bdafc0e341e23f"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftRunForwards.fbx",
+    "guid": "a40dd411151e514499508b497927472e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftWalkBackwards.fbx",
+    "guid": "6a831467656c016438326f713183e09c"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeRightTurnLeftWalkForwards.fbx",
+    "guid": "165b9a3a5f2bfa44cae59f2be7be83f9"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnLeft/m@StrafeTurningLeft.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnLeft/m@StrafeTurningLeft.fbx",
+    "guid": "9819fe50b33da8642920f5a9d5c44c81"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeBackwardsTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeBackwardsTurnRight.fbx",
+    "guid": "a4aa45c3581694e9a8a0695d48b66e3e"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeForwardsTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeForwardsTurnRight.fbx",
+    "guid": "519ac74a9a58842de9f11bdf65da77f7"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRight.fbx",
+    "guid": "5250e36abf0764761b744d36ea8af930"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightRunBackwards.fbx",
+    "guid": "04067bcdba73342fb86f31e7bf07b553"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightRunForwards.fbx",
+    "guid": "3b3305c0291c64fddae071ad96463257"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightWalkBackwards.fbx",
+    "guid": "05192829d974343cfa626ae857df0c38"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightWalkForward.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@RapidStrafeRightTurnRightWalkForward.fbx",
+    "guid": "ebb8d7214cb3148f4b2d3a66ea3fc7c3"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeBackwardsTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeBackwardsTurnRight.fbx",
+    "guid": "f50ad51445cba4d24beca64c24b5e39f"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeForwardsTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeForwardsTurnRight.fbx",
+    "guid": "836e11f7819104b518a32ef84835c0b5"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeRightTurnRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeRightTurnRight.fbx",
+    "guid": "c24a07a8a08ce44e58533d450c1beecf"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeRightTurnRightRunBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeRightTurnRightRunBackwards.fbx",
+    "guid": "2fc82918ffce2455aa0131dac00e6403"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeRightTurnRightRunForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeRightTurnRightRunForwards.fbx",
+    "guid": "402b093d1c9ee4607a4391e8e36dd308"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeRightTurnRightWalkBackwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeRightTurnRightWalkBackwards.fbx",
+    "guid": "a7ad57614a4804ee690a9c79cf49bafd"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeRightTurnRightWalkForwards.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeRightTurnRightWalkForwards.fbx",
+    "guid": "a2eb899940bdf40f198672dbb58e71fd"
+  },
+  {
+    "old": "Assets/Animations/Movement/Strafe/Turning/TurnRight/m@StrafeTurningRight.fbx",
+    "new": "Assets/Animations/Humanoid/Locomotion/Strafe/Turning/TurnRight/m@StrafeTurningRight.fbx",
+    "guid": "7cb0b5b91c6341e44a2c65b4b2fd2535"
+  },
+  {
+    "old": "Assets/Animators/Body.mask",
+    "new": "Assets/Animations/Controllers/Masks/Body.mask",
+    "guid": "fc492295f6bd1194d88658b5506d7817"
+  },
+  {
+    "old": "Assets/Animators/Character Animator.controller",
+    "new": "Assets/Animations/Controllers/Characters/Character Animator.controller",
+    "guid": "cd74cb150725f4864be8b6a1b0a58810"
+  },
+  {
+    "old": "Assets/Animators/Full.mask",
+    "new": "Assets/Animations/Controllers/Masks/Full.mask",
+    "guid": "136087a4a0561ba4699b623412f8f18a"
+  },
+  {
+    "old": "Assets/Animators/Left hand.mask",
+    "new": "Assets/Animations/Controllers/Masks/Left hand.mask",
+    "guid": "23a8d534e8c034eeebeb60fd163f6c33"
+  },
+  {
+    "old": "Assets/Animators/Legs.mask",
+    "new": "Assets/Animations/Controllers/Masks/Legs.mask",
+    "guid": "dd28f1fdb92d04b41b0791a0c4b02c05"
+  },
+  {
+    "old": "Assets/Animators/Player Animator.controller",
+    "new": "Assets/Animations/Controllers/Characters/Player Animator.controller",
+    "guid": "99ef864f5f705e04887faee418fd9ee4"
+  },
+  {
+    "old": "Assets/Animators/Right hand.mask",
+    "new": "Assets/Animations/Controllers/Masks/Right hand.mask",
+    "guid": "1fd900954f5a74d109763790843d6dc0"
+  },
+  {
+    "old": "Assets/Animators/StarterAssetsThirdPerson.controller",
+    "new": "Assets/Animations/Controllers/Characters/StarterAssetsThirdPerson.controller",
+    "guid": "40db3173a05ae3242b1c182a09b0a183"
+  },
+  {
+    "old": "Assets/Animators/[Test]Player Animator.controller",
+    "new": "Assets/Animations/Controllers/Legacy/[Test]Player Animator.controller",
+    "guid": "9d2b8bee45cca654b9cd1aca9dff0b73"
+  }
+]

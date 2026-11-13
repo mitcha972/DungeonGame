@@ -1,0 +1,88 @@
+[
+  {
+    "path": "Assets/Animations/Combat/Bow/BowShot.anim",
+    "removed": [
+      "EnableProjectile"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableDamage",
+      "DisableDamage",
+      "EnableMovement"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableDamage",
+      "DisableDamage",
+      "EnableMovement"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Fist/UppercutL.anim",
+    "removed": [
+      "AttackHitEvent"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Fist/UppercutR.anim",
+    "removed": [
+      "AttackHitEvent"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Sword/Slash - 1.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableDamage",
+      "DisableDamage",
+      "EnableMovement"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Combat/Sword/Slash - 2.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableDamage",
+      "DisableDamage",
+      "EnableMovement"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Effects/Hit/Stagger.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableMovement"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Giant/Combat/Giant Stomp Left.anim",
+    "removed": [
+      "AttackHitEvent"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Giant/Combat/Giant Stomp Right.anim",
+    "removed": [
+      "AttackHitEvent"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Monsters/Spider Animations/Attack1.anim",
+    "removed": [
+      "AttackHitEvent"
+    ]
+  },
+  {
+    "path": "Assets/Animations/Movement/Roll.anim",
+    "removed": [
+      "DisableMovement",
+      "EnableMovement"
+    ]
+  }
+]

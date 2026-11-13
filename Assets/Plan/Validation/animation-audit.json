@@ -1,0 +1,3851 @@
+{
+  "controllers": [
+    {
+      "path": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "DoorOpen",
+              "motion": "Assets/Animations/Misc/Door/DoorOpen.anim",
+              "motionName": "DoorOpen",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "DoorClose",
+              "motion": "Assets/Animations/Misc/Door/DoorClose.anim",
+              "motionName": "DoorClose",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Idle",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/Enemy.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Sword_atk02",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Attacks.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Attack01",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Attack01",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Damages.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Damage01",
+              "motion": "Assets/Animations/Giant/Combat/Giant@Damage01.fbx",
+              "motionName": "Giant@Damage01",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Damage01",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Idles.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Idle",
+              "motion": "Assets/Animations/Giant/Giant@Idle01.fbx",
+              "motionName": "Giant@Idle01",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@RunForward.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Run",
+              "motion": "Assets/Animations/Giant/Movement/Giant@Run01.fbx",
+              "motionName": "Giant@Run01 - Forward",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@WalkForward.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Walk",
+              "motion": "Assets/Animations/Giant/Movement/Giant@Walk01.fbx",
+              "motionName": "Giant@Walk01 - Forward",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/Metalon/Demo.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Walk Forward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Walk Backward In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Walk Backward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Walk Backward In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Walk Backward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Walk Forward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Strafe Left In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Strafe Right In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Strafe Left W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Strafe Right In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Strafe Right In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Strafe Right W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Idle",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Walk Forward In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Run Backward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Run Backward In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Run Backward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Run Forward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Run Backward In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Run Forward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Jump In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Jump W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Stab Attack",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Stab Attack",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Smash Attack",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Cast Spell",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Defend",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Defend",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Take Damage",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Die",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Smash Attack",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Cast Spell",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Take Damage",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Die",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Turn Right",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Turn Left",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle 1",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Run Backward In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Turn Right",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Walk Forward In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Walk Forward In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Walk Backward In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Strafe Left In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Run Forward In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Run Forward In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Strafe Left In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Strafe Left In Place",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Strafe Right In Place 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Run Forward In Place 0",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Idle 0",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Turn Left",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Idle 1",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Jump W Root",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/Metalon/Polygonal Metalon.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Walk Forward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Walk Forward IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Walk Backward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Walk Backward IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Walk Backward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Walk Forward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Strafe Left In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Strafe Left IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Strafe Left W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Strafe Right In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Strafe Right IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Strafe Right W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Idle",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Walk Forward In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Walk Forward If 0"
+                  ]
+                },
+                {
+                  "to": "Walk Backward In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Walk Backward If 0"
+                  ]
+                },
+                {
+                  "to": "Strafe Left In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Strafe Left If 0"
+                  ]
+                },
+                {
+                  "to": "Strafe Right In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Strafe Right If 0"
+                  ]
+                },
+                {
+                  "to": "Run Forward In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Run Forward If 0"
+                  ]
+                },
+                {
+                  "to": "Run Backward In Place",
+                  "exit": false,
+                  "conditions": [
+                    "Run Backward If 0"
+                  ]
+                },
+                {
+                  "to": "Jump W Root",
+                  "exit": false,
+                  "conditions": [
+                    "Jump If 0"
+                  ]
+                },
+                {
+                  "to": "Turn Right",
+                  "exit": false,
+                  "conditions": [
+                    "Turn Right If 0"
+                  ]
+                },
+                {
+                  "to": "Stab Attack",
+                  "exit": false,
+                  "conditions": [
+                    "Stab Attack If 0"
+                  ]
+                },
+                {
+                  "to": "Smash Attack",
+                  "exit": false,
+                  "conditions": [
+                    "Smash Attack If 0"
+                  ]
+                },
+                {
+                  "to": "Cast Spell",
+                  "exit": false,
+                  "conditions": [
+                    "Cast Spell If 0"
+                  ]
+                },
+                {
+                  "to": "Defend",
+                  "exit": false,
+                  "conditions": [
+                    "Defend If 0"
+                  ]
+                },
+                {
+                  "to": "Take Damage",
+                  "exit": false,
+                  "conditions": [
+                    "Take Damage If 0"
+                  ]
+                },
+                {
+                  "to": "Turn Left",
+                  "exit": false,
+                  "conditions": [
+                    "Turn Left If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Run Backward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Run Backward IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Run Backward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Run Forward In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Run Forward IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Run Forward W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Jump In Place",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Jump W Root",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Stab Attack",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Cast Spell",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Defend",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": false,
+                  "conditions": [
+                    "Defend IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Die",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "EXIT",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Smash Attack",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Take Damage",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Turn Right",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Turn Left",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/Spider Animations/Spider Controller.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Idle",
+              "motion": "Assets/Animations/Monsters/Spider Animations/Idle.anim",
+              "motionName": "Idle",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animations/StarterAssetsThirdPerson.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Idle Walk Run Blend",
+              "motion": "Assets/Animations/StarterAssetsThirdPerson.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": false,
+                  "conditions": [
+                    "FreeFall If 0"
+                  ]
+                },
+                {
+                  "to": "JumpStart",
+                  "exit": false,
+                  "conditions": [
+                    "Jump If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "InAir",
+              "motion": "Assets/Animations/Character/Jump--InAir.anim.fbx",
+              "motionName": "InAir",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "JumpLand",
+                  "exit": false,
+                  "conditions": [
+                    "Grounded If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "JumpLand",
+              "motion": "Assets/Animations/StarterAssetsThirdPerson.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle Walk Run Blend",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "JumpStart",
+              "motion": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+              "motionName": "JumpStart",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animators/[Test]Player Animator.controller",
+      "layers": [
+        {
+          "name": "Movement",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Movement",
+              "motion": "Assets/Animators/[Test]Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Combat Idel",
+              "motion": "Assets/Animators/[Test]Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Override",
+          "weight": 1.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "RollBackwards",
+              "motion": "Assets/Animations/Movement/Roll.fbx",
+              "motionName": "Roll",
+              "speed": -1.25,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "DodgeLeft",
+              "motion": "Assets/Animations/Movement/Dodge Left.fbx",
+              "motionName": "Dodge Left",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "DodgeRight",
+              "motion": "Assets/Animations/Movement/Dodge Right.fbx",
+              "motionName": "Dodge Right",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "InAir",
+              "motion": "Assets/Animations/Character/Jump--InAir.anim.fbx",
+              "motionName": "InAir",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "JumpLand",
+                  "exit": false,
+                  "conditions": [
+                    "Grounded If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "JumpStart",
+              "motion": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+              "motionName": "JumpStart",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "JumpLand",
+              "motion": "Assets/Animators/[Test]Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Roll",
+              "motion": "Assets/Animations/Movement/Roll.anim",
+              "motionName": "Roll",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "BlockImpact",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/ShieldImpact.anim",
+              "motionName": "ShieldImpact",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "LightAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+              "motionName": "Punch - Right",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Stunned",
+              "motion": "Assets/Animations/Effects/Hit/Stagger.fbx",
+              "motionName": "Stagger",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animators/[Test]Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Stunned",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "AttackRecoil",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "HeavyAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+              "motionName": "Punch - Left",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Right Hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Right hand.mask",
+          "states": [
+            {
+              "name": "Grip_right",
+              "motion": "Assets/Animations/Movement/Combat Idle.anim",
+              "motionName": "Combat Idle",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Left Hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Left hand.mask",
+          "states": [
+            {
+              "name": "Grip_left",
+              "motion": "Assets/Animations/Combat/Sword/SwordGrip.anim",
+              "motionName": "SwordGrip",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "HitLayer",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Body.mask",
+          "states": [
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animators/[Test]Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "UpperBody",
+          "weight": 0.8,
+          "mask": "Assets/Animators/Body.mask",
+          "states": [
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "BlockStart",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Start.anim",
+              "motionName": "Block - Start",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockIdle",
+                  "exit": true,
+                  "conditions": [
+                    "Blocking If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockIdle",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Idle2.anim",
+              "motionName": "Block - Idle2",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockDrop",
+                  "exit": true,
+                  "conditions": [
+                    "Blocking IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockDrop",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Start.anim",
+              "motionName": "Block - Start",
+              "speed": -1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Ability",
+              "motion": "Assets/Animations/Effects/AbilityAnimtaion2.fbx",
+              "motionName": "AbilityAnimtaion2",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Drink",
+              "motion": "Assets/Animations/Misc/Drinki.fbx",
+              "motionName": "Drink",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Equip",
+              "motion": "Assets/Animations/Misc/Equip.fbx",
+              "motionName": "Equip",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "AbiltyBost",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animators/Character Animator.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Locomotion",
+              "motion": "Assets/Animators/Character Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Combat_idle",
+              "motion": "Assets/Animations/Movement/Combat Idle.anim",
+              "motionName": "Combat Idle",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Death",
+              "motion": "Assets/Animators/Character Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Override",
+          "weight": 1.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Combat_idle",
+              "motion": "Assets/Animations/Movement/Combat Idle.anim",
+              "motionName": "Combat Idle",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "LightAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+              "motionName": "Punch - Right",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animations/Effects/Hit/Heavy Hit Front.anim",
+              "motionName": "Heavy Hit Front",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Stunned",
+                  "exit": true,
+                  "conditions": [
+                    "Stunned If 0"
+                  ]
+                },
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": [
+                    "Stunned IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Death",
+              "motion": "Assets/Animators/Character Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Stunned",
+              "motion": "Assets/Animations/Effects/Hit/Stagger.anim",
+              "motionName": "Stagger",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": [
+                    "Stunned IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockStart",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockIdle",
+                  "exit": false,
+                  "conditions": [
+                    "Blocking If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockIdle",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockDrop",
+                  "exit": true,
+                  "conditions": [
+                    "Blocking IfNot 0"
+                  ]
+                },
+                {
+                  "to": "BlockAttack",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "BlockDrop",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": false,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "BlockAttack",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": false,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "HeavyAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+              "motionName": "Punch - Left",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Right hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Right hand.mask",
+          "states": [
+            {
+              "name": "Grip_right",
+              "motion": "Assets/Animations/Movement/Combat Idle.anim",
+              "motionName": "Combat Idle",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Left hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Left hand.mask",
+          "states": [
+            {
+              "name": "Grip_left",
+              "motion": "Assets/Animations/Combat/Sword/SwordGrip.anim",
+              "motionName": "SwordGrip",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Hit",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Body.mask",
+          "states": [
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animators/Character Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animators/Player Animator.controller",
+      "layers": [
+        {
+          "name": "Movement",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Movement",
+              "motion": "Assets/Animators/Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "Combat Idel",
+              "motion": "Assets/Animators/Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "GatheringCollect",
+              "motion": "Assets/ResourceNodes/GatheringCollectLoop.anim",
+              "motionName": "GatheringCollectLoop",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "GatheringChop",
+              "motion": "Assets/Animations/Misc/MiningLoop.anim",
+              "motionName": "MiningLoop",
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "GatheringMine",
+              "motion": "Assets/Animations/Misc/MiningLoop.anim",
+              "motionName": "MiningLoop",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Override",
+          "weight": 1.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "RollBackwards",
+              "motion": "Assets/Animations/Movement/Roll.fbx",
+              "motionName": "Roll",
+              "speed": -1.25,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "InAir",
+              "motion": "Assets/Animations/Character/Jump--InAir.anim.fbx",
+              "motionName": "InAir",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "JumpLand",
+                  "exit": false,
+                  "conditions": [
+                    "Grounded If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "JumpStart",
+              "motion": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+              "motionName": "JumpStart",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "JumpLand",
+              "motion": "Assets/Animators/Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Roll",
+              "motion": "Assets/Animations/Movement/Roll.anim",
+              "motionName": "Roll",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "BlockImpact",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/ShieldImpact.anim",
+              "motionName": "ShieldImpact",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "LightAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+              "motionName": "Punch - Right",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Stunned",
+              "motion": "Assets/Animations/Effects/Hit/Stagger.fbx",
+              "motionName": "Stagger",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animators/Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Stunned",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "AttackRecoil",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "HeavyAttack",
+              "motion": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+              "motionName": "Punch - Left",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Right Hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Right hand.mask",
+          "states": [
+            {
+              "name": "Grip_right",
+              "motion": "Assets/Animations/Movement/Combat Idle.anim",
+              "motionName": "Combat Idle",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "Left Hand",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Left hand.mask",
+          "states": [
+            {
+              "name": "Grip_left",
+              "motion": "Assets/Animations/Combat/Sword/SwordGrip.anim",
+              "motionName": "SwordGrip",
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "HitLayer",
+          "weight": 0.0,
+          "mask": "Assets/Animators/Body.mask",
+          "states": [
+            {
+              "name": "GetHit",
+              "motion": "Assets/Animators/Player Animator.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            }
+          ]
+        },
+        {
+          "name": "UpperBody",
+          "weight": 0.8,
+          "mask": "Assets/Animators/Body.mask",
+          "states": [
+            {
+              "name": "Empty",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": []
+            },
+            {
+              "name": "BlockStart",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Start.anim",
+              "motionName": "Block - Start",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockIdle",
+                  "exit": true,
+                  "conditions": [
+                    "Blocking If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockIdle",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Idle2.anim",
+              "motionName": "Block - Idle2",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "BlockDrop",
+                  "exit": true,
+                  "conditions": [
+                    "Blocking IfNot 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "BlockDrop",
+              "motion": "Assets/Animations/Combat/Blocking/Shield/Block - Start.anim",
+              "motionName": "Block - Start",
+              "speed": -1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Ability",
+              "motion": "Assets/Animations/Effects/AbilityAnimtaion2.fbx",
+              "motionName": "AbilityAnimtaion2",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Drink",
+              "motion": "Assets/Animations/Misc/Drinki.fbx",
+              "motionName": "Drink",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "Equip",
+              "motion": "Assets/Animations/Misc/Equip.fbx",
+              "motionName": "Equip",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "AbiltyBost",
+              "motion": null,
+              "motionName": null,
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Empty",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Animators/StarterAssetsThirdPerson.controller",
+      "layers": [
+        {
+          "name": "Base Layer",
+          "weight": 0.0,
+          "mask": null,
+          "states": [
+            {
+              "name": "Idle Walk Run Blend",
+              "motion": "Assets/Animators/StarterAssetsThirdPerson.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": false,
+                  "conditions": [
+                    "FreeFall If 0"
+                  ]
+                },
+                {
+                  "to": "JumpStart",
+                  "exit": false,
+                  "conditions": [
+                    "Jump If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "InAir",
+              "motion": "Assets/Animations/Character/Jump--InAir.anim.fbx",
+              "motionName": "InAir",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "JumpLand",
+                  "exit": false,
+                  "conditions": [
+                    "Grounded If 0"
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "JumpLand",
+              "motion": "Assets/Animators/StarterAssetsThirdPerson.controller",
+              "motionName": "Blend Tree",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "Idle Walk Run Blend",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            },
+            {
+              "name": "JumpStart",
+              "motion": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+              "motionName": "JumpStart",
+              "speed": 1.0,
+              "transitions": [
+                {
+                  "to": "InAir",
+                  "exit": true,
+                  "conditions": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "weapons": [
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Acid.asset",
+      "type": "Unarmed",
+      "light": [],
+      "heavy": []
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Arrow.asset",
+      "type": "Bow",
+      "light": [
+        "Assets/Animations/Combat/Bow/BowShot.anim"
+      ],
+      "heavy": []
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Giant-Stomp.asset",
+      "type": "Unarmed",
+      "light": [],
+      "heavy": []
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Giant-Swipe.asset",
+      "type": "Unarmed",
+      "light": [],
+      "heavy": []
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Metalon - Stab.asset",
+      "type": "Unarmed",
+      "light": [],
+      "heavy": []
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Slash.asset",
+      "type": "Sword",
+      "light": [
+        "Assets/Animations/Combat/Sword/Slash - 1.anim"
+      ],
+      "heavy": [
+        "Assets/Animations/Combat/Sword/Combo - 1.anim"
+      ]
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Attacks/Unarmed.asset",
+      "type": "Unarmed",
+      "light": [
+        "Assets/Animations/Combat/Fist/Punch - Right.anim"
+      ],
+      "heavy": [
+        "Assets/Animations/Combat/Fist/UppercutR.anim"
+      ]
+    }
+  ],
+  "abilities": [
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Abilities/Fire Ball.asset",
+      "start": "Assets/Animations/Effects/AbilityCasting.fbx",
+      "cast": null
+    },
+    {
+      "path": "Assets/GamePlay/ScriptableObjects/Combat/Abilities/Heal.asset",
+      "start": "Assets/Animations/Effects/AbilityAnimtaion2.fbx",
+      "cast": null
+    }
+  ],
+  "events": [
+    {
+      "path": "Assets/Animations/Character/Jump--Jump.anim.fbx",
+      "clip": "JumpLand",
+      "human": true,
+      "events": [
+        "OnLand"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Character/JumpLand 1.anim",
+      "clip": "JumpLand 1",
+      "human": true,
+      "events": [
+        "OnLand"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Character/Locomotion--Run_N_Land.anim.fbx",
+      "clip": "Run_N_Land",
+      "human": true,
+      "events": [
+        "OnLand"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Character/Locomotion--Run_S.anim.fbx",
+      "clip": "Run_S",
+      "human": true,
+      "events": [
+        "OnFootstep",
+        "OnFootstep"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Character/Locomotion--Walk_N_Land.anim.fbx",
+      "clip": "Walk_N_Land",
+      "human": true,
+      "events": [
+        "OnLand"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Bow/BowShot.anim",
+      "clip": "BowShot",
+      "human": true,
+      "events": [
+        "EnableProjectile"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Fist/Punch - Left.anim",
+      "clip": "Punch - Left",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableDamage",
+        "DisableDamage",
+        "EnableMovement"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Fist/Punch - Right.anim",
+      "clip": "Punch - Right",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableDamage",
+        "DisableDamage",
+        "EnableMovement"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Fist/UppercutL.anim",
+      "clip": "UppercutL",
+      "human": true,
+      "events": [
+        "AttackHitEvent"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Fist/UppercutR.anim",
+      "clip": "UppercutR",
+      "human": true,
+      "events": [
+        "AttackHitEvent"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Sword/Slash - 1.anim",
+      "clip": "Slash - 1",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableDamage",
+        "DisableDamage",
+        "EnableMovement"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Combat/Sword/Slash - 2.anim",
+      "clip": "Slash - 2",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableDamage",
+        "DisableDamage",
+        "EnableMovement"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Effects/Hit/Stagger.anim",
+      "clip": "Stagger",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableMovement"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Giant/Combat/Giant Stomp Left.anim",
+      "clip": "Giant Stomp Left",
+      "human": true,
+      "events": [
+        "AttackHitEvent"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Giant/Combat/Giant Stomp Right.anim",
+      "clip": "Giant Stomp Right",
+      "human": true,
+      "events": [
+        "AttackHitEvent"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Monsters/Spider Animations/Attack1.anim",
+      "clip": "Attack1",
+      "human": false,
+      "events": [
+        "AttackHitEvent"
+      ]
+    },
+    {
+      "path": "Assets/Animations/Movement/Roll.anim",
+      "clip": "Roll",
+      "human": true,
+      "events": [
+        "DisableMovement",
+        "EnableMovement"
+      ]
+    }
+  ],
+  "models": [
+    {
+      "path": "Assets/Prefabs/Player/PlayerHolder.prefab",
+      "animators": [
+        {
+          "name": "MAIN",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineMovement",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineCombat",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineGeneral",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineGame",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineControls",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "Canv_Exit",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "Player",
+          "controller": "Assets/Animators/Player Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "PlayerInput",
+            "StarterAssetsInputs",
+            "Player",
+            "PlayerStats",
+            "PlayerAnimator",
+            "PlayerCombat",
+            "ThirdPersonController",
+            "PlayerController",
+            "PlayerSword",
+            "PlayerEquipmentManager",
+            "Inventory",
+            "PlayerPickUpDrop",
+            "PlayerCameraController",
+            "PlayerControlState",
+            "DialogueController",
+            "QuestController",
+            "PlayerGathering",
+            "PlayerSkillProgress"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Weapons/LowPoly/Arrow_Regular.prefab",
+      "animators": [
+        {
+          "name": "Arrow_Regular",
+          "controller": null,
+          "avatar": "Assets/Meshes/WeaponMeshes/Low-Poly Weapons/Arrow_Regular.fbx",
+          "valid": true,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/DHall.prefab",
+      "animators": [
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Characters/Spider/spider_brown.prefab",
+      "animators": [
+        {
+          "name": "spider_brown",
+          "controller": "Assets/Animations/Monsters/Spider Animations/Spider Controller.controller",
+          "avatar": "Assets/Animations/Monsters/Spider Animations/spider_Avatar.asset",
+          "valid": true,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Legacy/Enemy-Test Old.prefab",
+      "animators": [
+        {
+          "name": "Enemy-Test Old",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "EnemyInteract",
+            "EnemyStats",
+            "EnemyCombat",
+            "HealthChange",
+            "EnemyAi",
+            "PlayerAnimator"
+          ]
+        },
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Legacy/OldEnemy-Test.prefab",
+      "animators": [
+        {
+          "name": "OldEnemy-Test",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "EnemyInteract",
+            "EnemyStats",
+            "EnemyCombat",
+            "HealthChange",
+            "EnemyAi",
+            "PlayerAnimator",
+            "Outline"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Weapons/LowPoly/Arrow_Piercing.prefab",
+      "animators": [
+        {
+          "name": "Arrow_Piercing",
+          "controller": null,
+          "avatar": "Assets/Meshes/WeaponMeshes/Low-Poly Weapons/Arrow_Piercing.fbx",
+          "valid": true,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/GiantDummy.prefab",
+      "animators": [
+        {
+          "name": "GiantDummy",
+          "controller": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Idles.controller",
+          "avatar": "Assets/Models/Enemies/Giant Models/GiantDummy.fbx",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Player/Variants/StarterAssets_PlayerContent.prefab",
+      "animators": [
+        {
+          "name": "PlayerObj",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Player/Legacy/Backups/Player.prefab",
+      "animators": [
+        {
+          "name": "PlayerObj",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/DMain.prefab",
+      "animators": [
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Weapons/LowPoly/Arrow_Explosive.prefab",
+      "animators": [
+        {
+          "name": "Arrow_Explosive",
+          "controller": null,
+          "avatar": "Assets/Meshes/WeaponMeshes/Low-Poly Weapons/Arrow_Explosive.fbx",
+          "valid": true,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/UI/Menus/Canv_Main.prefab",
+      "animators": [
+        {
+          "name": "PLAY",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "MAIN",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "EXIT",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Player/Legacy/Backups/PlayerContent.prefab",
+      "animators": [
+        {
+          "name": "PlayerObj",
+          "controller": "Assets/Animators/Player Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "PlayerInput",
+            "CharacterAnimationEventReceiver",
+            "BasicRigidBodyPush",
+            "StarterAssetsInputs",
+            "PlayerAnimator",
+            "PlayerStats",
+            "PlayerCombat",
+            "PlayerController",
+            "FirstPersonController",
+            "PlayerSword",
+            "Player",
+            "PlayerEquipmentManager",
+            "PlayerManager",
+            "Inventory"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Characters/Metalon/Polygonal Metalon Red.prefab",
+      "animators": [
+        {
+          "name": "Polygonal Metalon Red",
+          "controller": "Assets/Animations/Monsters/Metalon/Polygonal Metalon.controller",
+          "avatar": "Assets/Models/Enemies/Polygonal/Polygonal Metalon.FBX",
+          "valid": true,
+          "human": false,
+          "rootMotion": true,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/WorldInteract/Quartermaster_Nessa.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/D3.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Spider.prefab",
+      "animators": [
+        {
+          "name": "spider_brown",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/Animations/Monsters/Spider Animations/spider_Avatar.asset",
+          "valid": true,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Characters/Metalon/Polygonal Metalon Purple.prefab",
+      "animators": [
+        {
+          "name": "Polygonal Metalon Purple",
+          "controller": "Assets/Animations/Monsters/Metalon/Polygonal Metalon.controller",
+          "avatar": "Assets/Models/Enemies/Polygonal/Polygonal Metalon.FBX",
+          "valid": true,
+          "human": false,
+          "rootMotion": true,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Legacy/Enemy-Test.prefab",
+      "animators": [
+        {
+          "name": "Enemy-Test",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "EnemyStats",
+            "EnemyAnimator",
+            "EnemyAi",
+            "EnemyCombat",
+            "EnemyEquipmentManager",
+            "HealthChange",
+            "Outline",
+            "EnemyInteract",
+            "EnemyManager"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/WorldInteract/NPC_Main.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Skeleton.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": true,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/Full_D.prefab",
+      "animators": [
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (1)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (3)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Door_Wooden_Round_Right (2)",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        },
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/DEnd.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Props/Destructibles/Interactive/Door_Wooden_Round_Right.prefab",
+      "animators": [
+        {
+          "name": "Door_Wooden_Round_Right",
+          "controller": "Assets/Animations/Misc/Door/Door_Wooden_Round_Right.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "DestructibleObject",
+            "DoorScript"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/DHall2.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Giant.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/Models/Enemies/Giant Models/GiantDummy.fbx",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        },
+        {
+          "name": "GiantDummy",
+          "controller": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Idles.controller",
+          "avatar": "Assets/Models/Enemies/Giant Models/GiantDummy.fbx",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerContent.prefab",
+      "animators": [
+        {
+          "name": "MAIN",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo (2)",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineReturn",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineMovement",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineCombat",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineGeneral",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineGame",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineControls",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "Canv_Exit",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/WindowPopUpBig.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": []
+        },
+        {
+          "name": "PlayerObj",
+          "controller": "Assets/Animators/Player Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "PlayerInput",
+            "StarterAssetsInputs",
+            "BasicRigidBodyPush",
+            "CharacterAnimationEventReceiver",
+            "PlayerAnimator",
+            "PlayerStats",
+            "PlayerCombat",
+            "PlayerController",
+            "FirstPersonController",
+            "PlayerSword",
+            "Player",
+            "PlayerEquipmentManager",
+            "Inventory",
+            "PlayerPickUpDrop"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Metalon.prefab",
+      "animators": [
+        {
+          "name": "Metalon",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/Models/Enemies/Polygonal/Polygonal Metalon.FBX",
+          "valid": true,
+          "human": false,
+          "rootMotion": true,
+          "receivers": [
+            "EnemyInteract",
+            "EnemyStats",
+            "EnemyCombat",
+            "HealthChange",
+            "EnemyAi",
+            "PlayerAnimator"
+          ]
+        },
+        {
+          "name": "Polygonal Metalon Red",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/Models/Enemies/Polygonal/Polygonal Metalon.FBX",
+          "valid": true,
+          "human": false,
+          "rootMotion": true,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Characters/Giant/GiantDummy.prefab",
+      "animators": [
+        {
+          "name": "GiantDummy",
+          "controller": "Assets/Animations/Monsters/GiantAnimatorControllers/Giant@Idles.controller",
+          "avatar": "Assets/Models/Enemies/Giant Models/GiantDummy.fbx",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/UI/Menus/Canv_Options.prefab",
+      "animators": [
+        {
+          "name": "LineGame",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineControls",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineVideo",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineKeyBindings",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineMovement",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineCombat",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        },
+        {
+          "name": "LineGeneral",
+          "controller": "Assets/Plugins/SlimUI/Modern Menu 1/Animations/HighlightFade.controller",
+          "avatar": null,
+          "valid": false,
+          "human": false,
+          "rootMotion": false,
+          "receivers": [
+            "Image",
+            "FlexibleUIElement"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/D1.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Models/Characters/Metalon/Polygonal Metalon Green.prefab",
+      "animators": [
+        {
+          "name": "Polygonal Metalon Green",
+          "controller": "Assets/Animations/Monsters/Metalon/Polygonal Metalon.controller",
+          "avatar": "Assets/Models/Enemies/Polygonal/Polygonal Metalon.FBX",
+          "valid": true,
+          "human": false,
+          "rootMotion": true,
+          "receivers": []
+        }
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Enemy_Main.prefab",
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "controller": "Assets/Animators/Character Animator.controller",
+          "avatar": "Assets/GamePlay/Player.blend",
+          "valid": true,
+          "human": true,
+          "rootMotion": false,
+          "receivers": [
+            "CharacterAnimationEventReceiver"
+          ]
+        }
+      ]
+    }
+  ]
+}

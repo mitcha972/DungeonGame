@@ -26,7 +26,7 @@ public class PlayerCombat : CharacterCombat
         _camera = Camera.main;
         _equipment = GetComponent<EquipmentManager>();
         _state = GetComponent<PlayerControlState>();
-        _animator = GetComponent<Animator>();
+        _animator = GetComponentInChildren<Animator>();
     }
     protected override void OnDisable() { BlockDrop(); base.OnDisable(); }
     private void Update()

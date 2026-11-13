@@ -95,16 +95,23 @@ public class CharacterAnimator : MonoBehaviour
             if (availableWeaponClasses != null)
                 foreach (var candidate in availableWeaponClasses)
                     if (candidate != null && candidate.itemType == newItem.itemType) { CurrentWeapon = candidate; break; }
-            if (animator.layerCount > 1) animator.SetLayerWeight(1, 1f);
+            SetEquipmentLayer("Right Hand", 1f);
         }
         else if (newItem == null && oldItem != null && oldItem.equipSlot == EquipmentSlot.MainHand)
         {
             CurrentWeapon = defaultWeaponClass;
-            if (animator.layerCount > 1) animator.SetLayerWeight(1, 0f);
+            SetEquipmentLayer("Right Hand", 0f);
         }
         if ((newItem != null && newItem.equipSlot == EquipmentSlot.OffHand) || (oldItem != null && oldItem.equipSlot == EquipmentSlot.OffHand))
-            if (animator.layerCount > 2) animator.SetLayerWeight(2, newItem != null ? 1f : 0f);
+            SetEquipmentLayer("Left Hand", newItem != null ? 1f : 0f);
         if (combat != null) combat.currentProjectile = CurrentWeapon != null && CurrentWeapon.isRanged ? CurrentWeapon.projectile : null;
+    }
+    private void SetEquipmentLayer(string name, float weight)
+    {
+        // Player and enemy controllers use different capitalization; indices are not a contract.
+        for (int i = 1; i < animator.layerCount; i++)
+            if (string.Equals(animator.GetLayerName(i), name, System.StringComparison.OrdinalIgnoreCase))
+                animator.SetLayerWeight(i, weight);
     }
     public void Equip() { }
     private int gatheringHash, previousState;

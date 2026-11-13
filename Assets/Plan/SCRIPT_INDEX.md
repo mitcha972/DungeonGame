@@ -199,3 +199,7 @@ Gathering quest follow-up (2026-11-13): no new runtime scripts. DialogueControll
 | Assets/Scripts/Inventory/Items/Skillbook.cs | Existing Item.Use integration; exact 100-XP guarded consumption. |
 
 AgentScripts/Skills contains AssetDatabase authoring, temporary Play Mode scene selection and retained skills/inputs/assets validation scripts. These technical tooling files remain outside Assets; [Skills](SYSTEMS/Skills.md) owns behavior and executed validation.
+
+## Animation assessment tooling (2026-11-13)
+
+No imported runtime script was added or moved. `AgentScripts/Animations/` retains out-of-Assets tooling: AnimationAudit (controller/clip/rig inventory and temporary Play Mode start scene), AnimationPlayTest (synthetic mouse smoke test), AnimationCoverage (weapon/grip/casting tests), EnemyAnimationTest (real accepted enemy punch), SkillAnimationProbe (skill-tree demo inspection), InputDiagnosis (temporary callback/device tracing), RepairAnimationEvents (obsolete clip-event migration), OrganizeAnimations (AssetDatabase moves and GUID/dependency/local-ID verification), and AnimationHandoff (user-approved saved-scene restoration). Python helpers plan moves, update authoring paths and maintain the assessment text. [Animation/models](SYSTEMS/Animation.md) owns findings and executed validation; do not rerun mutating migration helpers just to inspect or test.

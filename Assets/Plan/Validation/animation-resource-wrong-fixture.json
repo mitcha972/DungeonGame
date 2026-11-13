@@ -1,0 +1,11 @@
+{
+  "passed": false,
+  "error": "System.Exception: FAIL: test scene contains exactly three configured resource nodes\r\n  at VerifyResourceNodes.Check (System.Boolean b, System.String s) [0x00026] in C:\\Users\\mitch\\Documents\\Unity\\My_Projects\\Dungeon Game\\AgentScripts\\Resources\\VerifyResourceNodes.cs:13 \r\n  at VerifyResourceNodes.Run () [0x004a8] in C:\\Users\\mitch\\Documents\\Unity\\My_Projects\\Dungeon Game\\AgentScripts\\Resources\\VerifyResourceNodes.cs:31 ",
+  "checks": [
+    "real player contains gathering component",
+    "frames and scaled world time advance"
+  ],
+  "frameCount": 2721,
+  "worldTime": 52.08216,
+  "scope": "Live Editor assertions: synthetic E/Escape, real player/Inventory/Animator, authored starter timers plus shortened cloned respawn fixtures. Not manual combat, hardware or durable save certification."
+}

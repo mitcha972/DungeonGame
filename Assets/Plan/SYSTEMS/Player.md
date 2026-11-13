@@ -1,5 +1,7 @@
 # Player and input
 
+Animation assessment (2026-11-13): named right/left equipment grip layers replace hardcoded attack/right-hand indices; PlayerCombat resolves child Animators. Current input supports attacks/blocking and gathering, while full ability and dodge controls remain unauthored. [Animation/models](Animation.md) owns the detailed results and asset folder guide.
+
 Prefab organization (2026-11-13): active PlayerHolder and PlayerContent retain their established Player paths. Existing backups moved to Player/Legacy/Backups; the older binary PlayerContent formerly in GamePlay/Character/Scripts is now Player/Variants/StarterAssets_PlayerContent. Its existing missing script was retained, not repaired. HitDamage now lives in UI/Feedback. Starter Assets camera/model assets remain with their owner. See [organization validation](../MAINTENANCE.md#prefab-organization--2026-11-13).
 
 **Implemented.** [Architecture](../ARCHITECTURE.md) owns relationships; [index](../SCRIPT_INDEX.md) owns paths. Custom controllers/stats/content moved into Assets/Scripts/Player; legacy FPC/CameraController/PlayerMotor/PlayerManager remain under Player/Legacy. Adapted Starter Assets were not moved.

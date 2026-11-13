@@ -1,5 +1,7 @@
 # Independent RPG skills
 
+The 2026-11-13 [animation assessment](Animation.md) distinguishes this XP/book system from playable abilities: SkillTree_Test is a UI demo with no Animator or PlayerCombat; production ability input and complete spell effects remain unimplemented. Direct casting presentation was separately tested and its premature recovery timer repaired.
+
 Implemented 2026-11-13. This reference owns the ten-skill system; [Progression](Progression.md) owns the retained character level/unlock tree. These serve different purposes: character kill/quest XP still calls PlayerStats.AddXP; independent skill XP never awards legacy unlock points.
 
 ## Ownership and API

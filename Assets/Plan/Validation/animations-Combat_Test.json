@@ -1,0 +1,109 @@
+{
+  "scene": "Combat_Test",
+  "checks": [
+    {
+      "check": "Frames advance",
+      "pass": true
+    },
+    {
+      "check": "Mouse tap routes attack",
+      "pass": true,
+      "weapon": "Slash",
+      "states": [
+        {
+          "layer": 0,
+          "hash": 229373857,
+          "clips": [
+            "Idle"
+          ],
+          "weight": 1.0
+        },
+        {
+          "layer": 1,
+          "hash": 1218592651,
+          "clips": [
+            "Slash - 1"
+          ],
+          "weight": 1.0
+        },
+        {
+          "layer": 2,
+          "hash": -314192788,
+          "clips": [
+            "Combat Idle"
+          ],
+          "weight": 1.0
+        },
+        {
+          "layer": 3,
+          "hash": 1189316628,
+          "clips": [
+            "SwordGrip"
+          ],
+          "weight": 1.0
+        },
+        {
+          "layer": 4,
+          "hash": -1459219776,
+          "clips": [],
+          "weight": 0.0
+        },
+        {
+          "layer": 5,
+          "hash": -1459219776,
+          "clips": [],
+          "weight": 0.8
+        }
+      ]
+    },
+    {
+      "check": "Attack recovers",
+      "pass": true
+    },
+    {
+      "check": "Mouse hold routes supported power attack or light fallback",
+      "pass": true,
+      "heavy": true,
+      "supported": true
+    },
+    {
+      "check": "Right mouse block or unshielded light fallback",
+      "pass": true,
+      "shield": true
+    },
+    {
+      "check": "Player humanoid avatar",
+      "pass": true
+    },
+    {
+      "check": "Enemy attack recovery: Enemy-Test (1)",
+      "pass": true,
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "human": true,
+          "valid": true,
+          "clips": [
+            "Idle"
+          ]
+        }
+      ]
+    },
+    {
+      "check": "Enemy attack recovery: Enemy-Test",
+      "pass": true,
+      "animators": [
+        {
+          "name": "Enemy Animator",
+          "human": true,
+          "valid": true,
+          "clips": [
+            "Idle"
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

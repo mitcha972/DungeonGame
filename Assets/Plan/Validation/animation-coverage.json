@@ -1,0 +1,129 @@
+{
+  "checks": [
+    {
+      "check": "Main hand enables right grip",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Main hand removal preserves attack layer",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Offhand enables left grip",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Offhand removal clears left grip",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Arrow light accepted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Arrow light correct clip",
+      "pass": true,
+      "detail": [
+        "BowShot"
+      ]
+    },
+    {
+      "check": "Arrow recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Slash light accepted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Slash light correct clip",
+      "pass": true,
+      "detail": [
+        "Slash - 1"
+      ]
+    },
+    {
+      "check": "Slash recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Slash heavy accepted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Slash heavy correct clip",
+      "pass": true,
+      "detail": [
+        "Combo - 1"
+      ]
+    },
+    {
+      "check": "Slash recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Unarmed light accepted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Unarmed light correct clip",
+      "pass": true,
+      "detail": [
+        "Punch - Right"
+      ]
+    },
+    {
+      "check": "Unarmed recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Unarmed heavy accepted",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Unarmed heavy correct clip",
+      "pass": true,
+      "detail": [
+        "UppercutR"
+      ]
+    },
+    {
+      "check": "Unarmed recovery",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "W input moves player",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Direct ability API enters Ability state (no production ability input)",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Ability remains busy beyond old 0.3-second recovery",
+      "pass": true,
+      "detail": {
+        "clip": "Casting",
+        "length": 1.03333342
+      }
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

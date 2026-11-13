@@ -1,0 +1,21 @@
+{
+  "checks": [
+    {
+      "check": "Real enemy combat accepts an in-range visible target",
+      "pass": true
+    },
+    {
+      "check": "Enemy child Animator plays native selected punch",
+      "pass": true,
+      "clips": [
+        "Punch - Right"
+      ]
+    },
+    {
+      "check": "Cancellation clears attack and busy",
+      "pass": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

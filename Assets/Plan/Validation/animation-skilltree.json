@@ -1,0 +1,11 @@
+{
+  "scene": "SkillTree_Test",
+  "framesAdvance": true,
+  "skillTrees": 1,
+  "playerCombat": 0,
+  "legacySkillPollers": 1,
+  "animators": [],
+  "inputActions": [],
+  "messagesAfterE": [],
+  "scope": "SkillTree demo inspection and synthetic E only; not complete ability effects."
+}
