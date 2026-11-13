@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "scriptsResolved": 118,
+  "prefabs": [
+    {
+      "path": "Assets/Prefabs/Player/PlayerHolder.prefab",
+      "missingScripts": 0,
+      "dependencies": 245
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerContent.prefab",
+      "missingScripts": 0,
+      "dependencies": 206
+    },
+    {
+      "path": "Assets/Prefabs/WorldInteract/DialogueMerchant.prefab",
+      "missingScripts": 0,
+      "dependencies": 60
+    },
+    {
+      "path": "Assets/Prefabs/WorldInteract/Shop.prefab",
+      "missingScripts": 0,
+      "dependencies": 4
+    },
+    {
+      "path": "Assets/Prefabs/UI_SkillTree.prefab",
+      "missingScripts": 0,
+      "dependencies": 23
+    }
+  ],
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Game/Loading.unity",
+      "guid": "3bfd05882f6fe554182bc5607c7af60c",
+      "dependencies": 18
+    },
+    {
+      "path": "Assets/Scenes/Game/Main.unity",
+      "guid": "3a843169fcbd7674ebd69dd5aab48be6",
+      "dependencies": 643
+    },
+    {
+      "path": "Assets/Scenes/Game/Start.unity",
+      "guid": "35865f7d325b21f4b9d9f158c5076743",
+      "dependencies": 261
+    },
+    {
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "guid": "11d90511ed2ed61438b796ee25a5820c",
+      "dependencies": 460
+    },
+    {
+      "path": "Assets/Scenes/Test_Scenes/DialogueMerchant_Test.unity",
+      "guid": "24ebdfb89ff49d049a221d8fde458b3e",
+      "dependencies": 283
+    },
+    {
+      "path": "Assets/Scenes/Test_Scenes/DungeonGeneration_Test.unity",
+      "guid": "beb22371425dc2c41a6a74fcd36fcd22",
+      "dependencies": 605
+    },
+    {
+      "path": "Assets/Scenes/Test_Scenes/SkillTree_Test.unity",
+      "guid": "a9cba2da51aecea4d981882c64319313",
+      "dependencies": 45
+    }
+  ],
+  "buildScenes": [
+    "Assets/Scenes/Game/Start.unity",
+    "Assets/Scenes/Game/Loading.unity",
+    "Assets/Scenes/Game/Main.unity",
+    "Assets/Scenes/Test_Scenes/Combat_Test.unity"
+  ]
+}

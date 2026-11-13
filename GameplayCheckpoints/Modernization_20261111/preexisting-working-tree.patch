@@ -1,0 +1,634 @@
+diff --git a/Assets/Editor/CombatCheckpointRunner.cs b/Assets/Editor/CombatCheckpointRunner.cs
+index 77fc02c..30eb88e 100644
+--- a/Assets/Editor/CombatCheckpointRunner.cs
++++ b/Assets/Editor/CombatCheckpointRunner.cs
+@@ -25,19 +25,47 @@ internal static class CombatCheckpointRunner
+     {
+         if (SessionState.GetString("CombatCheckpoint.State", "Idle") == "Entering")
+         {
+-            Application.logMessageReceived += Capture;
+-            EditorApplication.playModeStateChanged += Changed;
++            AttachHandlers();
+             if (EditorApplication.isPlaying) Begin();
+         }
+     }
+     public static void Arm()
+     {
++        if (_running) return;
++        Logs.Clear();
++        _success = true;
++        _phase = 0;
++        _projectileCount = 0;
+         SessionState.SetString("CombatCheckpoint.State", "Entering");
++        AttachHandlers();
++        if (EditorApplication.isPlaying) Begin();
++        else
++        {
++            EditorApplication.delayCall -= EnterPlayMode;
++            EditorApplication.delayCall += EnterPlayMode;
++        }
++    }
++    private static void AttachHandlers()
++    {
++        Application.logMessageReceived -= Capture;
++        EditorApplication.playModeStateChanged -= Changed;
+         Application.logMessageReceived += Capture;
+         EditorApplication.playModeStateChanged += Changed;
+-        EditorApplication.delayCall += () => EditorApplication.isPlaying = true;
+     }
+-    private static void Changed(PlayModeStateChange state) { if (state == PlayModeStateChange.EnteredPlayMode) Begin(); }
++
++    private static void EnterPlayMode()
++    {
++        if (SessionState.GetString("CombatCheckpoint.State", "Idle") == "Entering" && !EditorApplication.isPlayingOrWillChangePlaymode)
++            EditorApplication.isPlaying = true;
++    }
++
++    private static void Changed(PlayModeStateChange state)
++    {
++        if (state == PlayModeStateChange.EnteredPlayMode) Begin();
++        else if (state == PlayModeStateChange.EnteredEditMode &&
++                 (_running || SessionState.GetString("CombatCheckpoint.State", "Idle") == "Entering"))
++            Finish("Play mode stopped before checkpoint completion.");
++    }
+     private static void Begin()
+     {
+         if (_running) return;
+@@ -174,12 +202,22 @@ internal static class CombatCheckpointRunner
+     {
+         if (error != null) { _success = false; Logs.Add(error); }
+         Time.timeScale = 1f;
++        _running = false;
++        EditorApplication.delayCall -= EnterPlayMode;
++        EditorApplication.playModeStateChanged -= Changed;
+         EditorApplication.update -= Tick;
+         Application.logMessageReceived -= Capture;
+         string text = "success=" + _success + "\n" + string.Join("\n", Logs);
+         SessionState.SetString("CombatCheckpoint.Result", text);
+         SessionState.SetString("CombatCheckpoint.State", "Done");
+-        System.IO.File.WriteAllText("GameplayCheckpoints/CombatTest.txt", text);
+-        EditorApplication.isPlaying = false;
++        try
++        {
++            System.IO.Directory.CreateDirectory("GameplayCheckpoints");
++            System.IO.File.WriteAllText("GameplayCheckpoints/CombatTest.txt", text);
++        }
++        finally
++        {
++            if (EditorApplication.isPlaying) EditorApplication.isPlaying = false;
++        }
+     }
+ }
+diff --git a/Assets/Scripts/GamePlay/Inventory/ChestInventorySlot.cs b/Assets/Scripts/GamePlay/Inventory/ChestInventorySlot.cs
+index af5b296..d545b26 100644
+--- a/Assets/Scripts/GamePlay/Inventory/ChestInventorySlot.cs
++++ b/Assets/Scripts/GamePlay/Inventory/ChestInventorySlot.cs
+@@ -1,33 +1,22 @@
+ using UnityEngine;
+-using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+-public class ChestInventorySlot : UISlot 
++public class ChestInventorySlot : UISlot
+ {
+-	//public Button removeButton;	// Reference to the remove button
+-	public InventoryUI IU;
+-	public ChestInventoryUI CUI;
++    public InventoryUI IU;
++    public ChestInventoryUI CUI;
+ 
+-	void Start()
+-	{
+-		//Click Function
+-		transform.GetComponent<Button_UI>().ClickFunc = () => ItemSelect();
+-	}
+-
+-	// Called when the item is pressed
+-	public override void ItemSelect()
+-	{		
+-		if (item != null)
+-		{
+-			// Transfer only after destination accepts the item.
+-            if (IU == null || IU.inventory == null || CUI == null || CUI.currentChest == null || !IU.inventory.Add(item)) return;
+-
+-			//Remove from Chest Inventory
+-			CUI.currentChest.inventory.Remove(item);
+-
+-			//Clear Slot
+-			ClearSlot();		
+-		}
+-	}
++    private void Start()
++    {
++        var button = UIPointerEvents.GetOrAdd(this);
++        if (button != null) button.LeftClicked = () => ItemSelect();
++    }
+ 
++    public override void ItemSelect()
++    {
++        if (item == null || IU == null || IU.inventory == null || CUI == null || CUI.currentChest == null) return;
++        var source = CUI.currentChest.inventory;
++        if (source == null || !source.items.Contains(item) || !IU.inventory.Add(item)) return;
++        source.Remove(item);
++        ClearSlot();
++    }
+ }
+diff --git a/Assets/Scripts/GamePlay/Inventory/EquipmentSlotUI.cs b/Assets/Scripts/GamePlay/Inventory/EquipmentSlotUI.cs
+index b4f3644..ec20864 100644
+--- a/Assets/Scripts/GamePlay/Inventory/EquipmentSlotUI.cs
++++ b/Assets/Scripts/GamePlay/Inventory/EquipmentSlotUI.cs
+@@ -1,5 +1,4 @@
+ using UnityEngine;
+-using CodeMonkey.Utils;
+ 
+ public class EquipmentSlotUI : UISlot
+ {
+@@ -7,8 +6,8 @@ public class EquipmentSlotUI : UISlot
+ 
+     private void Start()
+     {
+-        var button = GetComponent<Button_UI>();
+-        if (button != null) button.ClickFunc = () => ItemSelect();
++        var button = UIPointerEvents.GetOrAdd(this);
++        if (button != null) button.LeftClicked = () => ItemSelect();
+     }
+ 
+     public override void ItemSelect()
+diff --git a/Assets/Scripts/GamePlay/Inventory/InventorySlot.cs b/Assets/Scripts/GamePlay/Inventory/InventorySlot.cs
+index 625c77b..cab1f60 100644
+--- a/Assets/Scripts/GamePlay/Inventory/InventorySlot.cs
++++ b/Assets/Scripts/GamePlay/Inventory/InventorySlot.cs
+@@ -1,37 +1,20 @@
+-using System.Collections;
+-using System.Collections.Generic;
+ using UnityEngine;
+-using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+-//Controls the Inventory Slots Buttons 
+ public class InventorySlot : UISlot
+-{	
+-	//Change all to Awake()
+-	void Start()
+-	{
+-		equipmentManager = transform.parent.parent.GetComponent<InventoryUI>().owner.GetComponent<EquipmentManager>();
++{
++    private void Start()
++    {
++        var ui = GetComponentInParent<InventoryUI>();
++        if (ui != null)
++        {
++            if (inventory == null) inventory = ui.inventory;
++            if (ui.owner != null) equipmentManager = ui.owner.GetComponent<EquipmentManager>();
++        }
++        var button = UIPointerEvents.GetOrAdd(this);
++        if (button == null) return;
++        button.LeftClicked = () => ItemSelect();
++        button.RightClicked = () => RemoveFromInventory();
++    }
+ 
+-		//RIght click is item elsect
+-		transform.GetComponent<Button_UI>().ClickFunc = () => ItemSelect();
+-
+-		//Left click is RemoveItem
+-		transform.GetComponent<Button_UI>().MouseRightClickFunc = () => RemoveFromInventory();
+-
+-		//transform.GetComponent<Button_UI>().MouseOutOnceTooltipFunc = () => Tooltip_ItemStats.HideTooltip_Static();
+-        //transform.GetComponent<Button_UI>().MouseOverOnceTooltipFunc = () => Tooltip_ItemStats.ShowTooltip_Static(item);
+-	}
+-
+-	//Set Up Function to check if still on tool tip onece activiated
+-	//Ienumater CheckMouseHover
+-	//{	
+-	//	While mouse is over = true
+-	//}
+-	
+-	public override void ItemSelect()
+-	{
+-		//When An Item Is pressed in the Inventory
+-		base.ItemSelect();
+-	}
+-	
++    public override void ItemSelect() => base.ItemSelect();
+ }
+diff --git a/Assets/Scripts/GamePlay/Inventory/UISlot.cs b/Assets/Scripts/GamePlay/Inventory/UISlot.cs
+index 351890c..b7bca8a 100644
+--- a/Assets/Scripts/GamePlay/Inventory/UISlot.cs
++++ b/Assets/Scripts/GamePlay/Inventory/UISlot.cs
+@@ -2,7 +2,6 @@ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ using UnityEngine.EventSystems;
+ 
+ /* Sits on all InventorySlots. Used By (InventorySlot, EquipmentSlotUI, ChestIventorySlot) */ 
+@@ -24,11 +23,11 @@ public class UISlot : MonoBehaviour , IDropHandler
+ 		transform.name = "slot" + slotIndex;
+ 
+ 		//Tool Tip
+-        var button = GetComponent<Button_UI>();
++        var button = UIPointerEvents.GetOrAdd(this);
+         if (button != null)
+         {
+-            button.MouseOutOnceTooltipFunc = () => Tooltip_ItemStats.HideTooltip_Static();
+-            button.MouseOverOnceTooltipFunc = () => Tooltip_ItemStats.ShowTooltip_Static(item);
++            button.Exited = () => Tooltip_ItemStats.HideTooltip_Static();
++            button.Entered = () => Tooltip_ItemStats.ShowTooltip_Static(item);
+         }
+ 	}
+ 
+diff --git a/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleConObject.cs b/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleConObject.cs
+index 4547595..f50d336 100644
+--- a/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleConObject.cs
++++ b/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleConObject.cs
+@@ -1,7 +1,6 @@
+ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+-using CodeMonkey.Utils;
+ 
+ public class DestructibleConObject : DestructibleObject
+ {
+diff --git a/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleObject.cs b/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleObject.cs
+index f98112b..5d9c92b 100644
+--- a/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleObject.cs
++++ b/Assets/Scripts/Systems/DestructibleObject_Scripts/DestructibleObject.cs
+@@ -1,7 +1,6 @@
+ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+-using CodeMonkey.Utils;
+ 
+ public class DestructibleObject : MonoBehaviour, IDamageable 
+ {
+@@ -25,9 +24,6 @@ public class DestructibleObject : MonoBehaviour, IDamageable
+     {
+         // Spawn Smoke VFX
+         if (vfxSmoke != null) Instantiate(vfxSmoke, lastDamagePosition, Quaternion.identity);
+-        //for (int i = 1; i < vfxAmount; i++) {
+-        //    Instantiate(vfxSmoke, lastDamagePosition + UtilsClass.GetRandomDir() * 2f, Quaternion.identity);
+-        //}
+ 
+         // Spawn Wall Broken and Apply Explosion
+         Transform wallBrokenTransform = pfObjectBroken != null ? Instantiate(pfObjectBroken, transform.position, transform.rotation) : null;
+diff --git a/Assets/Scripts/Systems/LevelingSystemScripts/ExperienceBar.cs b/Assets/Scripts/Systems/LevelingSystemScripts/ExperienceBar.cs
+index 760404b..05afab5 100644
+--- a/Assets/Scripts/Systems/LevelingSystemScripts/ExperienceBar.cs
++++ b/Assets/Scripts/Systems/LevelingSystemScripts/ExperienceBar.cs
+@@ -1,8 +1,7 @@
+-﻿using System.Collections;
++using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey;
+ 
+ public class ExperienceBar : MonoBehaviour {
+ 
+diff --git a/Assets/Scripts/Systems/LevelingSystemScripts/LevelWindow.cs b/Assets/Scripts/Systems/LevelingSystemScripts/LevelWindow.cs
+index 56685d4..0bc22b5 100644
+--- a/Assets/Scripts/Systems/LevelingSystemScripts/LevelWindow.cs
++++ b/Assets/Scripts/Systems/LevelingSystemScripts/LevelWindow.cs
+@@ -14,7 +14,6 @@ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+ public class LevelWindow : MonoBehaviour {
+ 
+@@ -27,9 +26,15 @@ public class LevelWindow : MonoBehaviour {
+         levelText = transform.Find("levelText").GetComponent<Text>();
+         experienceBarImage = transform.Find("experienceBar").Find("bar").GetComponent<Image>();
+         
+-        transform.Find("experience5Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(5);
+-        transform.Find("experience50Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(50);
+-        transform.Find("experience500Btn").GetComponent<Button_UI>().ClickFunc = () => levelSystem.AddExperience(500);
++        BindExperienceButton("experience5Btn", 5);
++        BindExperienceButton("experience50Btn", 50);
++        BindExperienceButton("experience500Btn", 500);
++    }
++
++    private void BindExperienceButton(string childName, int amount)
++    {
++        var button = UIPointerEvents.GetOrAdd(transform.Find(childName));
++        if (button != null) button.LeftClicked = () => levelSystem?.AddExperience(amount);
+     }
+ 
+     private void SetExperienceBarSize(float experienceNormalized) {
+diff --git a/Assets/Scripts/Systems/SkillTree/PlayerSword.cs b/Assets/Scripts/Systems/SkillTree/PlayerSword.cs
+index e7bd5a7..cc49ecf 100644
+--- a/Assets/Scripts/Systems/SkillTree/PlayerSword.cs
++++ b/Assets/Scripts/Systems/SkillTree/PlayerSword.cs
+@@ -1,66 +1,21 @@
+-﻿using System;
+-using System.Collections.Generic;
+ using UnityEngine;
+-//using V_AnimationSystem;
+-//using CodeMonkey.Utils;
+-//using CodeMonkey.MonoBehaviours;
+ 
+-public class PlayerSword : MonoBehaviour{
+-    
++public class PlayerSword : MonoBehaviour
++{
+     public static PlayerSword instance;
+-
+-    private Player player;
+-    private State state;
+-    //private float speed = 50f;
+-    private Material material;
+-    private Color materialTintColor;
+-    //private World_Bar healthBar;
+-
+-    //Check Skills//
+     public UI_SkillTree UITree;
+ 
+-    private enum State {
+-        Normal,
+-        Attacking,
+-        Busy,
+-    }
+-
+-    private void Update() {
+-       
+-        if (Input.GetKeyDown(KeyCode.E)) { //attack key
+-
+-            //Check what skill is equipted/////
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "Earthshatter")
+-            {
+-                
+-            }
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "Whirlwind")
+-            {
+-                
+-            }
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "MoveSpeed_1")
+-            {
+-                Debug.Log("Used Skill " + UI_SkillTree.selectedSkill.ToString());
+-            }
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "MoveSpeed_2")
+-            {
+-                Debug.Log("Used Skill " + UI_SkillTree.selectedSkill.ToString());
+-            }
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "HealthMax_1")
+-            {
+-                Debug.Log("Used Skill " + UI_SkillTree.selectedSkill.ToString());
+-            }
+-
+-            if (UI_SkillTree.selectedSkill.ToString() == "HealthMax_2")
+-            {
+-                Debug.Log("Used Skill " + UI_SkillTree.selectedSkill.ToString());
+-            }
++    private void Update()
++    {
++        if (!Input.GetKeyDown(KeyCode.E)) return;
++        switch (UI_SkillTree.selectedSkill)
++        {
++            case PlayerSkills.SkillType.MoveSpeed_1:
++            case PlayerSkills.SkillType.MoveSpeed_2:
++            case PlayerSkills.SkillType.HealthMax_1:
++            case PlayerSkills.SkillType.HealthMax_2:
++                Debug.Log("Used Skill " + UI_SkillTree.selectedSkill);
++                break;
+         }
+     }
+-    
+ }
+diff --git a/Assets/Scripts/Systems/SkillTree/UI_SkillTree.cs b/Assets/Scripts/Systems/SkillTree/UI_SkillTree.cs
+index f0cbac7..582301d 100644
+--- a/Assets/Scripts/Systems/SkillTree/UI_SkillTree.cs
++++ b/Assets/Scripts/Systems/SkillTree/UI_SkillTree.cs
+@@ -2,7 +2,6 @@ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+ public class UI_SkillTree : MonoBehaviour 
+ {
+@@ -26,7 +25,8 @@ public class UI_SkillTree : MonoBehaviour
+ 
+     private void Awake() 
+     {
+-        skillPointsText = transform.Find("skillPointsText").GetComponent<TMPro.TextMeshProUGUI>();
++        var label = transform.Find("skillPointsText");
++        skillPointsText = label != null ? label.GetComponent<TMPro.TextMeshProUGUI>() : null;
+     }
+ 
+     public void SetPlayerSkills(PlayerSkills playerSkills) 
+@@ -37,12 +37,12 @@ public class UI_SkillTree : MonoBehaviour
+ 
+         //Add Skills To Tree
+         skillButtonList = new List<SkillButton>();
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill1Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_1, skillLockedMaterial, skillUnlockableMaterial));
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill2Btn"), playerSkills, PlayerSkills.SkillType.HealthMax_1, skillLockedMaterial, skillUnlockableMaterial));
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill3Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_2, skillLockedMaterial, skillUnlockableMaterial));
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill4Btn"), playerSkills, PlayerSkills.SkillType.HealthMax_2, skillLockedMaterial, skillUnlockableMaterial));
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill5Btn"), playerSkills, PlayerSkills.SkillType.Whirlwind, skillLockedMaterial, skillUnlockableMaterial));
+-        skillButtonList.Add(new SkillButton(transform.Find("Skill6Btn"), playerSkills, PlayerSkills.SkillType.Earthshatter, skillLockedMaterial, skillUnlockableMaterial));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill1Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_1, skillLockedMaterial, skillUnlockableMaterial, this));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill2Btn"), playerSkills, PlayerSkills.SkillType.HealthMax_1, skillLockedMaterial, skillUnlockableMaterial, this));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill3Btn"), playerSkills, PlayerSkills.SkillType.MoveSpeed_2, skillLockedMaterial, skillUnlockableMaterial, this));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill4Btn"), playerSkills, PlayerSkills.SkillType.HealthMax_2, skillLockedMaterial, skillUnlockableMaterial, this));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill5Btn"), playerSkills, PlayerSkills.SkillType.Whirlwind, skillLockedMaterial, skillUnlockableMaterial, this));
++        skillButtonList.Add(new SkillButton(transform.Find("Skill6Btn"), playerSkills, PlayerSkills.SkillType.Earthshatter, skillLockedMaterial, skillUnlockableMaterial, this));
+         
+         playerSkills.OnSkillUnlocked += PlayerSkills_OnSkillUnlocked;
+         playerSkills.OnSkillPointsChanged += PlayerSkills_OnSkillPointsChanged;
+@@ -69,7 +69,7 @@ public class UI_SkillTree : MonoBehaviour
+     }
+ 
+     private void UpdateSkillPoints() {
+-        skillPointsText.SetText(playerSkills.GetSkillPoints().ToString());
++        if (skillPointsText != null) skillPointsText.SetText(playerSkills.GetSkillPoints().ToString());
+     }
+ 
+     private void UpdateVisuals() {
+@@ -78,17 +78,21 @@ public class UI_SkillTree : MonoBehaviour
+         }
+ 
+         // Darken all links
+-        foreach (SkillUnlockPath skillUnlockPath in skillUnlockPathArray) {
++        foreach (SkillUnlockPath skillUnlockPath in skillUnlockPathArray ?? System.Array.Empty<SkillUnlockPath>()) {
++            if (skillUnlockPath == null || skillUnlockPath.linkImageArray == null) continue;
+             foreach (Image linkImage in skillUnlockPath.linkImageArray) {
++                if (linkImage == null) continue;
+                 linkImage.color = new Color(.5f, .5f, .5f);
+                 linkImage.sprite = lineSprite;
+             }
+         }
+         
+-        foreach (SkillUnlockPath skillUnlockPath in skillUnlockPathArray) {
++        foreach (SkillUnlockPath skillUnlockPath in skillUnlockPathArray ?? System.Array.Empty<SkillUnlockPath>()) {
++            if (skillUnlockPath == null || skillUnlockPath.linkImageArray == null) continue;
+             if (playerSkills.IsSkillUnlocked(skillUnlockPath.skillType) || playerSkills.CanUnlock(skillUnlockPath.skillType)) {
+                 // Skill unlocked or can be unlocked
+                 foreach (Image linkImage in skillUnlockPath.linkImageArray) {
++                if (linkImage == null) continue;
+                     linkImage.color = Color.white;
+                     linkImage.sprite = lineGlowSprite;
+                 }
+@@ -99,7 +103,7 @@ public class UI_SkillTree : MonoBehaviour
+     private class SkillButton 
+     {
+ 
+-        private Transform transform;
++        private UIPointerEvents pointerEvents;
+         private Image image;
+         private Image backgroundImage;
+         private PlayerSkills playerSkills;
+@@ -107,17 +111,20 @@ public class UI_SkillTree : MonoBehaviour
+         private Material skillLockedMaterial;
+         private Material skillUnlockableMaterial;
+ 
+-        public SkillButton(Transform transform, PlayerSkills playerSkills, PlayerSkills.SkillType skillType, Material skillLockedMaterial, Material skillUnlockableMaterial) {
+-            this.transform = transform;
++        public SkillButton(Transform transform, PlayerSkills playerSkills, PlayerSkills.SkillType skillType, Material skillLockedMaterial, Material skillUnlockableMaterial, UI_SkillTree owner) {
++            if (transform == null) return;
++            pointerEvents = UIPointerEvents.GetOrAdd(transform);
+             this.playerSkills = playerSkills;
+             this.skillType = skillType;
+             this.skillLockedMaterial = skillLockedMaterial;
+             this.skillUnlockableMaterial = skillUnlockableMaterial;
+ 
+-            image = transform.Find("image").GetComponent<Image>();
+-            backgroundImage = transform.Find("background").GetComponent<Image>();
++            var icon = transform.Find("image");
++            var background = transform.Find("background");
++            image = icon != null ? icon.GetComponent<Image>() : null;
++            backgroundImage = background != null ? background.GetComponent<Image>() : null;
+ 
+-            transform.GetComponent<Button_UI>().ClickFunc = () => {
++            pointerEvents.LeftClicked = () => {
+                 if (!playerSkills.IsSkillUnlocked(skillType)) {
+                     // Skill not yet unlocked
+                     if (!playerSkills.TryUnlockSkill(skillType)) {
+@@ -127,7 +134,7 @@ public class UI_SkillTree : MonoBehaviour
+             };
+ 
+             //If Item button is clicked
+-            transform.GetComponent<Button_UI>().MouseRightClickFunc = () => 
++            pointerEvents.RightClicked = () => 
+             {
+                 //Check if Skill is Unlocked
+                 if (!playerSkills.IsSkillUnlocked(skillType)) {
+@@ -138,7 +145,7 @@ public class UI_SkillTree : MonoBehaviour
+                 {
+                     Debug.Log("Skill Selected TEST" + skillType);
+                     selectedSkill = skillType;
+-                    GameObject.Find("UI_SkillTree").GetComponent<UI_SkillTree>().selectedSlot.sprite = image.sprite;
++                    if (owner != null && owner.selectedSlot != null && image != null) owner.selectedSlot.sprite = image.sprite;
+ 
+                     Debug.Log("player Selected TEST" + selectedSkill);
+                 }
+@@ -147,19 +154,21 @@ public class UI_SkillTree : MonoBehaviour
+ 
+         public void UpdateVisual() 
+         {
++            if (pointerEvents == null || image == null || backgroundImage == null) return;
+             if (playerSkills.IsSkillUnlocked(skillType)) 
+             {
++                pointerEvents.SetInteractionEnabled(true);
+                 image.material = null;
+                 backgroundImage.material = null;
+             } else {
+                 if (playerSkills.CanUnlock(skillType)) {
+                     image.material = skillUnlockableMaterial;
+-                    backgroundImage.color = UtilsClass.GetColorFromString("4B677D");
+-                    transform.GetComponent<Button_UI>().enabled = true;
++                    backgroundImage.color = new Color32(0x4B, 0x67, 0x7D, 0xFF);
++                    pointerEvents.SetInteractionEnabled(true);
+                 } else {
+                     image.material = skillLockedMaterial;
+                     backgroundImage.color = new Color(.3f, .3f, .3f);
+-                    transform.GetComponent<Button_UI>().enabled = false;
++                    pointerEvents.SetInteractionEnabled(false);
+                 }
+             }
+         }
+diff --git a/Assets/Scripts/Systems/ToolTip/Tooltip.cs b/Assets/Scripts/Systems/ToolTip/Tooltip.cs
+index 4ad043a..df8ca4a 100644
+--- a/Assets/Scripts/Systems/ToolTip/Tooltip.cs
++++ b/Assets/Scripts/Systems/ToolTip/Tooltip.cs
+@@ -3,7 +3,6 @@ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+ public class Tooltip : MonoBehaviour 
+ {
+@@ -34,6 +33,7 @@ public class Tooltip : MonoBehaviour
+ 
+     private void Update() 
+     {
++        if (getTooltipStringFunc == null) { HideTooltip(); return; }
+         Vector2 localPoint;
+         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, uiCamera, out localPoint);
+         transform.localPosition = localPoint;
+@@ -96,10 +96,10 @@ public class Tooltip : MonoBehaviour
+     }
+ 
+     public static void AddTooltip(Transform transform, Func<string> getTooltipStringFunc) {
+-        if (transform.GetComponent<Button_UI>() != null) {
+-            transform.GetComponent<Button_UI>().MouseOverOnceTooltipFunc = () => Tooltip.ShowTooltip_Static(getTooltipStringFunc);
+-            transform.GetComponent<Button_UI>().MouseOutOnceTooltipFunc = () => Tooltip.HideTooltip_Static();
+-        }
++        var button = UIPointerEvents.GetOrAdd(transform);
++        if (button == null) return;
++        button.Entered = () => ShowTooltip_Static(getTooltipStringFunc);
++        button.Exited = () => HideTooltip_Static();
+     }
+ 
+ }
+diff --git a/Assets/Scripts/Systems/ToolTip/Tooltip_Warning.cs b/Assets/Scripts/Systems/ToolTip/Tooltip_Warning.cs
+index 1801788..0c99f52 100644
+--- a/Assets/Scripts/Systems/ToolTip/Tooltip_Warning.cs
++++ b/Assets/Scripts/Systems/ToolTip/Tooltip_Warning.cs
+@@ -15,7 +15,6 @@ using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+ using UnityEngine.UI;
+-using CodeMonkey.Utils;
+ 
+ public class Tooltip_Warning : MonoBehaviour {
+ 
+@@ -49,6 +48,7 @@ public class Tooltip_Warning : MonoBehaviour {
+     }
+ 
+     private void Update() {
++        if (getTooltipStringFunc == null) { HideTooltip(); return; }
+         Vector2 localPoint;
+         RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), Input.mousePosition, uiCamera, out localPoint);
+         transform.localPosition = localPoint;
+diff --git a/Assets/Scripts/Systems/ToolTip/Window.cs b/Assets/Scripts/Systems/ToolTip/Window.cs
+index 3aa37c2..7510e86 100644
+--- a/Assets/Scripts/Systems/ToolTip/Window.cs
++++ b/Assets/Scripts/Systems/ToolTip/Window.cs
+@@ -1,7 +1,6 @@
+-﻿using System.Collections;
++using System.Collections;
+ using System.Collections.Generic;
+ using UnityEngine;
+-using CodeMonkey.Utils;
+ 
+ public class Window : MonoBehaviour {
+ 
+@@ -23,7 +22,9 @@ public class Window : MonoBehaviour {
+ 
+         Tooltip.AddTooltip(transform.Find("attackBtn"), () => "Attack, " + (Mathf.Round(attackCooldown * 100f) / 100f));
+         
+-        transform.Find("attackBtn").GetComponent<Button_UI>().ClickFunc = () => {
++        var button = UIPointerEvents.GetOrAdd(transform.Find("attackBtn"));
++        if (button == null) return;
++        button.LeftClicked = () => {
+             if (attackCooldown > 0) {
+                 Tooltip_Warning.ShowTooltip_Static("Cannot attack!");
+             } else {

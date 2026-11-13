@@ -1,0 +1,890 @@
+{
+  "plan": [
+    [
+      "Controllers/CameraController.cs",
+      "Camera/CameraController.cs"
+    ],
+    [
+      "Controllers/PlayerCameraController.cs",
+      "Camera/PlayerCameraController.cs"
+    ],
+    [
+      "Controllers/CharacterAnimator.cs",
+      "Animation/CharacterAnimator.cs"
+    ],
+    [
+      "Controllers/CharacterAnimationEventReceiver.cs",
+      "Animation/CharacterAnimationEventReceiver.cs"
+    ],
+    [
+      "ResetAnimatorBool.cs",
+      "Animation/ResetAnimatorBool.cs"
+    ],
+    [
+      "Controllers/FPC.cs",
+      "GamePlay/Player/FPC.cs"
+    ],
+    [
+      "Controllers/PlayerController.cs",
+      "GamePlay/Player/PlayerController.cs"
+    ],
+    [
+      "Controllers/PlayerControlState.cs",
+      "GamePlay/Player/PlayerControlState.cs"
+    ],
+    [
+      "Controllers/UICanvasController.cs",
+      "GamePlay/Inventory/UICanvasController.cs"
+    ],
+    [
+      "DamageFlash.cs",
+      "Animation/DamageFlash.cs"
+    ],
+    [
+      "DoorScript.cs",
+      "GamePlay/WorldInteracts/DoorScript.cs"
+    ],
+    [
+      "Drop.cs",
+      "GamePlay/Inventory/Drop.cs"
+    ],
+    [
+      "EnemyAnimator.cs",
+      "GamePlay/Enemy/EnemyAnimator.cs"
+    ],
+    [
+      "GameController.cs",
+      "Core/GameController.cs"
+    ],
+    [
+      "LoadingScript.cs",
+      "Core/LoadingScript.cs"
+    ],
+    [
+      "GamePlay/Abilities.cs",
+      "GamePlay/Combat/Abilities.cs"
+    ],
+    [
+      "GamePlay/AttackHitBox.cs",
+      "GamePlay/Combat/AttackHitBox.cs"
+    ],
+    [
+      "GamePlay/Class.cs",
+      "GamePlay/Player/Class.cs"
+    ],
+    [
+      "GamePlay/DungeonExit.cs",
+      "Dungeon/DungeonExit.cs"
+    ],
+    [
+      "GamePlay/Loot.cs",
+      "GamePlay/Items/Loot.cs"
+    ],
+    [
+      "GamePlay/Player/EnemyManager.cs",
+      "GamePlay/Enemy/EnemyManager.cs"
+    ],
+    [
+      "GamePlay/PlayerAim.cs",
+      "GamePlay/Player/PlayerAim.cs"
+    ],
+    [
+      "GamePlay/PlayerDamageFlash.cs",
+      "GamePlay/Player/PlayerDamageFlash.cs"
+    ],
+    [
+      "GamePlay/Items/Interactable.cs",
+      "GamePlay/WorldInteracts/Interactable.cs"
+    ],
+    [
+      "HealthTextDisplay.cs",
+      "UI/HUD/HealthTextDisplay.cs"
+    ],
+    [
+      "MapController.cs",
+      "UI/HUD/MapController.cs"
+    ],
+    [
+      "MenuController.cs",
+      "UI/Menus/MenuController.cs"
+    ],
+    [
+      "SettingsMenu.cs",
+      "UI/Menus/SettingsMenu.cs"
+    ],
+    [
+      "UI/DragDrop.cs",
+      "GamePlay/Inventory/DragDrop.cs"
+    ],
+    [
+      "UI/HotKeysUI.cs",
+      "GamePlay/Inventory/HotKeysUI.cs"
+    ],
+    [
+      "UI/HealthChange.cs",
+      "UI/HUD/HealthChange.cs"
+    ],
+    [
+      "UI/ScreenDamage.cs",
+      "UI/HUD/ScreenDamage.cs"
+    ]
+  ],
+  "baseline": [
+    [
+      "Camera\\CameraShakeInstance.cs",
+      {
+        "body": "9cc6fdf96616783fdefa800dd5043c371f7d6af50dfb39ac1c285934ad623855",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNGI4OGEyNDM2NzUxN2Y1NGU4ZWUzNWUwYjE5Yzg5NDkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Camera\\CameraShaker.cs",
+      {
+        "body": "9b7244472e3e7d2c68d0c46579c5ac7f46bbf3f958f5969d1049e1fa9554de94",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNDE4ZjYxMzUwNWNmMTg4NGFiMDM2ZWZkNTdjYTFiYWUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Camera\\CameraShaker1.cs",
+      {
+        "body": "a41a4eaaf3f188e75c3a19756cd922862793537bbd8b3b91e3dcd5e2b31d6d35",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNjdkY2FmMjJiZmU1ZjE0NGRiODU0ODBjMjQzZjQxNmQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Camera\\CameraUtilities.cs",
+      {
+        "body": "ac3e6ca2d428728f0cc77e706ff7e96b5fbfeab7e4b7f411f2a8590ae22a49b3",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYWZjNjNhN2U5NWNiMzk3NDE4OGRlZDM5OWIwNDMzOWUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Camera\\ShakeDemo.cs",
+      {
+        "body": "63c6c03baf942e39d2a74d7daa7face5902ccc206cebc56f5e6bf9cdd9c93d13",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogODYzMWI1ZTZlOGY4MWZlNGZhZTNkNDA1OWZkMDVmNDgKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Controller.cs",
+      {
+        "body": "9382a2396f72dd2a853eba2248125c4c338e0d50fb09f556ab7f9fdb4076ae03",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMTk2ZGYxZTQ2NDk4ZjBmNDFhYTlmMzc0YzhmNGFkNGQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Controllers\\CameraController.cs",
+      {
+        "body": "828a414f0c3126060c84670a8b209b60dd9ba518f228cc80a5c084e5931835d2",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOWU1NDIzNDBlNmZiOGE4NDY4OWFiY2QyOGZkMzFjYjgKdGltZUNyZWF0ZWQ6IDE0OTk4NTQ5NjEKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "Controllers\\CharacterAnimationEventReceiver.cs",
+      {
+        "body": "036153fc0b3bc4701665cc93e20baa7a97ec15407007112ac5b6784af184b8ce",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMGFkMjkwNTU4NTA3ZjRhNmE4ZjliMWQ2MDk3NDBhMWUKdGltZUNyZWF0ZWQ6IDE1MjIxNzIzMTIKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgZXh0ZXJuYWxPYmplY3RzOiB7fQogIHNlcmlhbGl6ZWRWZXJzaW9uOiAyCiAgZGVmYXVsdFJlZmVyZW5jZXM6IFtdCiAgZXhlY3V0aW9uT3JkZXI6IDAKICBpY29uOiB7aW5zdGFuY2VJRDogMH0KICB1c2VyRGF0YTogCiAgYXNzZXRCdW5kbGVOYW1lOiAKICBhc3NldEJ1bmRsZVZhcmlhbnQ6IAo="
+      }
+    ],
+    [
+      "Controllers\\CharacterAnimator.cs",
+      {
+        "body": "f32f2fc34f21621fcb219d09d33598bb5a29707e6d17a01cde42689e40d3dbe8",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzliYjM4MDI3NjA3YjRkNGI5ZWVhMTA1MjNmMzE0YzkKdGltZUNyZWF0ZWQ6IDE1MDA0OTUyNDAKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "Controllers\\FPC.cs",
+      {
+        "body": "7a59741c8657c6f145b4527be7e8017fc5f940b3303769bba8bb8cb897e6b9b9",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogN2MzZjk2OGUxNmMyNDk2NDA4MjZmODczMWY0MzEzYzEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Controllers\\PlayerCameraController.cs",
+      {
+        "body": "d1204c1503f142856d84c6fca69020919b0ced64aba4b26b1c8d678cce6819c9",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNWIxNDcxMjYyZDg4YzhiNDU5Y2E1Zjc4NjYxODY0MTU="
+      }
+    ],
+    [
+      "Controllers\\PlayerController.cs",
+      {
+        "body": "a37ab61887466dfead8a4ee520ec4f5e69dfa64f3d3044f85c5ada63ea3a73d1",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYjdlYWJkODg4YjhjMThkNGI5ODdkMjQxMzk1MzNiNTEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Controllers\\PlayerControlState.cs",
+      {
+        "body": "5b7807281ce25c670b7c1448394861a3a2bf31c6e6679704471fc3a82d84902b",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNTI0ZWFlZjA2M2VmMDI4NDRhODJjNDljYzA1NDUwZTY="
+      }
+    ],
+    [
+      "Controllers\\UICanvasController.cs",
+      {
+        "body": "20605a390094b2240bd32b34238006443a2d8e9519e435b21bb374ea94678408",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDNiNTcyMDY0ODQzMjgxNDY4YTJlM2RhODU1MjFjMzQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "DamageFlash.cs",
+      {
+        "body": "caa9780ac85e86817fdad41078b7705e13af85c70ced243a1cbac0e2cc6b3be4",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmJkNDExNDM2OTM1ZGU3NDU4MjM5NzRmNGRmZGNmODMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "DoorScript.cs",
+      {
+        "body": "26321b97b60d9f33cdf73df0c1eb6ed6f6ce4b175e955e16956869ffe09d65bb",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNmUwYzliNDU0YmQ5NGFlNDBhNWU0NjAyNmUzYTBmNGUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Drop.cs",
+      {
+        "body": "880bb9d608e94561fb4134f292ab28ca4d6de2b8b57cdee1ae4997be4170c384",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMDMxNmRiOGFmMjJlOWYzNGE4MjI5MzQyMWNlZjkxOWQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Dungeon\\DungeonGenerator.cs",
+      {
+        "body": "a93fb20bbfb30526616f2418a198cf11efeea4d1ef6bcfcaed40f3e643da2cb4",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMDdhYjZjNDA4OTM2ZDM0NGZiOWFlNmNiNzkzZjg0ZmQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "EnemyAnimator.cs",
+      {
+        "body": "fc2cab433a4903b794aecc3fd455b76706f7354d7d35a172d2c2160f55777fbb",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOTIzNGMxZWQ1YTA2MGIwNGJhNjljNWU5YTg1Y2U4MGQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GameController.cs",
+      {
+        "body": "83f74cb87ae3b7c16c7e57cadc9f61ef54b4fad70cd843e1eb0925ecac3bcdce",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogM2FjMTkxNTk1NjIyOWViNDBiZDQ3OGE0NjYzNjk2YmMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Abilities.cs",
+      {
+        "body": "56a602c3086e597bc44a1d179e552ca26de799fdc15fa736b374ca2d479fd1cc",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmM2ODMwYjAxY2I1MGFjNDRhOTFmN2Q4ZWVjMTk2NGEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\AttackHitBox.cs",
+      {
+        "body": "be02a97ef458ba12a07dcc855bbedc78987e42daa185c597d83ee2f5f2975eb5",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDRlNzliNDkzMDhhMjFkNGY4ZjBjYjdmNDEyZGE2M2MKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Class.cs",
+      {
+        "body": "0b75af4fad8a83d2d1982b441900519058c035144ec9cb1aebb8615636a56c76",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDUzNjdkMTM5NjNhZWY5NGFhODE5NTUxNDM2MmY0NjkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\BlockHitBox.cs",
+      {
+        "body": "69a017bed9bdf2fd11e38fde2c6a05941c84fcd5483d51099cbc6c3fc8c7340e",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogY2JmZDhlYWY1YTI0OTk1NDg5YzBlZGY2YTUyNjFlZDUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\CharacterCombat.cs",
+      {
+        "body": "f022811c5178a4842a8c6cc6639662297cd585141b18c960bb77ecadbe7f18cb",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMDM4Y2UyNDdkNTcyOTZlNGM5OTAwMWZiNTE5ZjUwMWMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\EnemyCombat.cs",
+      {
+        "body": "74a208a285ba7534ebb38c5a28ebcb831f582195942aad91e194336f9028ce7e",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYzE2MTNhYTkzMmY2MWU2NGY4MTU3YmMwOWYyMzVmMWYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\PlayerCombat.cs",
+      {
+        "body": "9d8826863163530f6b049d9f44de63f008e211337edbd1db457387b2ff8d8f13",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYWRkYTVmYzk3NDFlMmFkNDY4ZDgyYzJkMTlkOWYwY2EKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\Projectile.cs",
+      {
+        "body": "2eefd3105b8a8e3164daeff6bea5ef21326f128698610de14dcc778428c8a506",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNmZlZjIyYmE0MjcwMDViNDdiOWQ3ZThjOGNhNzE2NTkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Combat\\WeaponClass.cs",
+      {
+        "body": "acb9f2107be2c742025e714f348a4bc5becaef5b4c202440fab650a2520ffaae",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogM2FiYTIwMjhkMjk1MDI2NDU5MGMyYjJhMTc3NmYzN2YKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\DungeonExit.cs",
+      {
+        "body": "3c76d6851728fffc0c290935c394c6d165b306dbad3943339b268da5ca7f2fd3",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzA0YzgyMGU5MWQ2MmNkNGE5ZDg2NzhkMTZhMmU0NWYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Enemy\\Enemy.cs",
+      {
+        "body": "a983d0dca8dfdbd563d3f861c79c7633452920917b94bcab7852693cdfc39e19",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYjZhOTA1YzFmZGNmMzhjNDA5MDcxOWIwOWVmZTkyNzIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Enemy\\EnemyAi.cs",
+      {
+        "body": "6b416dcf796b955cdb60dff7378cec84d2713ead288212734519b8e3aab79d38",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOWQwNzE3MTNjY2E4MDYxNGRiYjM5NjY5ZDcyZWFiNmIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Enemy\\EnemyAiTutorial.cs",
+      {
+        "body": "c0ee02da5f8651b33d83568e8eedcc6a8c30068fc74023e5ea24a89dd53aae66",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOGFjNmE5ZjllYmQwNmRlNGM5NjM1NDMzNWE5NDkxY2QKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Enemy\\EnemyInteract.cs",
+      {
+        "body": "14f0b149ac822a6e673c48ded7eeb03934380e87810de0b44e8bf17e1fa21ba9",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMTAwOWFhMTFiNGIyYzlmNDRiMzJmYTg4NWFkYmM0OWUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ChestInventory.cs",
+      {
+        "body": "8ae6ece3fac675c092cac68c33e571e9d969ea3559b027de11aa949a0c32b647",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzQ4MDU1NzBhNDcxMTlkNDc4YjRmZWU0OGMzZmJkNjgKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ChestInventorySlot.cs",
+      {
+        "body": "b40b30753c279cf66f6f3bb4d1ea546006c0be141c057f5985eacbf3b84582e0",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzVlYTNkMTUyODNjN2MzNDc5ZTRkMTI1ZTliNjliNjMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ChestInventoryUI.cs",
+      {
+        "body": "bec85625b6c758ac119857122ca19e56149ba262a3cea1b9bd7b5c57b43d0395",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDVlNjI3ODBkMjQzMTY2NGJhOGE0MzE4M2Q1Yzc1MWEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\EquipmentSlotUI.cs",
+      {
+        "body": "3695b2386ca281f2e2513d5476832f80b9a9248da19489284788e1f9c6e004ec",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNGQ4M2Q0MzYxYTllYzZlNDVhODJkYjNmOGViNmY5NmIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\HotKeySlot.cs",
+      {
+        "body": "dd33ac34fcd77a7b014455b569f47728b6d6079a1ce2eeef36541008c6e99ce2",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOGMzNjA1YjA2ODliMjQ5NGM5N2MxOTVjNGI0MjUwNjYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\Inventory.cs",
+      {
+        "body": "1c9f159791cc4563c2ef3d85accc3e89e46cc31cf0f5b0526de10618282e6fae",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYjA3M2E3ZWIzMjk0NDBjNDBhYTAwY2U2NmUyZjg4MzIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\InventorySlot.cs",
+      {
+        "body": "27abccbf202e0a2cb72770ee71b008f5a4f8a00fc57891b498b43785b1d82a01",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOWEzZWJlZTExMGZkMWUwNDA4OGM3NmUwMzRhYTgwZWMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\InventoryUI.cs",
+      {
+        "body": "44a6b672015024041f85435a1d7bf68161e7645b5c36c515c7942b04e44b4efa",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNDRmNjliM2YxNTA3MTRlNGNhZjllMzZiZDIyZjQ0MzQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ShopInventory.cs",
+      {
+        "body": "f554aa520ef728942711e45af4f7a35e0c9c5b0abb096c2d33e28a1e1ffb4ee3",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMDZjMzBiNTdkZDE1NWJlNDc5MzZmOTM2NGQ3NjBlNDEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ShopInventorySlot.cs",
+      {
+        "body": "35cb197424a01b40b122041871ebb7de2f30096298931f5e1e7f2a7a0fa2f6fd",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMGQwNDAyOTY3MGQ0N2EyNGM4NTg0ZjJmYzNlYTE0ZWUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\ShopInventoryUI.cs",
+      {
+        "body": "d06bc409a9dc877b0dfa292a6f62ec7985bc1a7d589d859468a76534245de0af",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogM2MyNzUyZDMzNTZiYjc4NDI4ZmZiZWJkM2QwN2RiNjYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Inventory\\UISlot.cs",
+      {
+        "body": "48e5720021aa6f407c4f961665d5398d6c3d349164d591ff0bc6e44d70227add",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNDQyZWUxNDRjNWZlN2YyNGI5NWZhOTIyY2FiMDAwNzgKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\Consumable.cs",
+      {
+        "body": "ab5f42fdb4a7685b19f79a8cf3122d08d70d7065c416c2fe5c23b23aaad50b08",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNDVkYWUxNzg3NGI2NWY0NGRhMzA1M2VmN2U2MmNiYjEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\EnemyEquipmentManager.cs",
+      {
+        "body": "341e00862e7af484e643ee54929a84c414f12f85f8c50b9c314efbe81fd23ad0",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYTg4MDZmNjE1ODEzMjhiNDFhMDUxMDE0N2UxYzNmNTEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\Equipment.cs",
+      {
+        "body": "94a6c46932a39a4f4790556d8ef52e97a32d4a2262bd5be7fb9a488a43ee9a94",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMDY2ZGJkZTUxZTAxMTY5NGNhNDE5YWJkYmMyZDMzYTMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\EquipmentManager.cs",
+      {
+        "body": "1391e7f89ec999021967495fd1c234d2297e9a3fb4275a450b873d375f111578",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOTkwYmViNmYzMTMxODM3NDliNWI4ZGQxODY1YTY1NjEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\EquipmentManager1.cs",
+      {
+        "body": "77ed50f2fc46e36d3888f8be3dc08f109c3cc5be06ff86c24885aaf4c1a9861a",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNjk5YTBlMmE4MzZkNzVhNDQ4MWE4MjgwZDM4MTY1MWEKdGltZUNyZWF0ZWQ6IDE1MDIzNTk2NDUKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "GamePlay\\Items\\EquipmentManagerUI.cs",
+      {
+        "body": "a964e32f64f084bc4193411497b4493ead99bc12430182068f03420a13d0ecc2",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZTRkMWYxNjgyMTkzNWE1NDZhMDljNzdhZTVlNWYxNGQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\Interactable.cs",
+      {
+        "body": "c6c3f1952f19e2570fa3377759736a09620fbf6c232e475b89358e55a75af1cd",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYmM2YmExNzJkMGQ2YzhmNDI5NWVmMGFjNWEzMGU2OTQKdGltZUNyZWF0ZWQ6IDE0OTk5MzkyMzkKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "GamePlay\\Items\\Item.cs",
+      {
+        "body": "77a2d8e3126df855b199830a63c08703d9d14f9eee6c7242c8e210fcf3d4b7b1",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOTFhYzRmMDQyNmQ3YWQ0NDhhNDFjNTQyYjZjMjNjZDYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\ItemDrop.cs",
+      {
+        "body": "934f59d871fd8fe77eb13bd28dc0cba0d651545f6fb5e81942af9bc9ea12c4da",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMjIyMWI3MjhlNWVkZmY1NDY5NzEzZThiZGVjMGVlY2QKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\ItemInteract.cs",
+      {
+        "body": "60db403358ae431c3388c095d9a909a5b19f0924fb739f65b404c3cf9a7065e0",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYjJiMGQ4YTY4MjlhMTVhNDg5MjlmNjU1OWI0NjllYjMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\PlayerEquipmentManager.cs",
+      {
+        "body": "d81971fbd3bc2f79c648ce9a0849ee0747759f67fab0776f9d5de6c0f4ed86d5",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzU1ZWZlMzU4NDJkOWEwNDFiMzI3NDU0ZWE5YWM0ODEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Items\\Potion.cs",
+      {
+        "body": "ad5fde3c122a34b434e4a4818deb5188370a92091e1ac5a3da187a937a01cd0e",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNTUzYzU4YzJiMmM5OTQ1NDhiNzZiYzk5OTAwNDEzZDkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Loot.cs",
+      {
+        "body": "4e31b04ab79f9f4f18915fa7242ac802872c99d12cd9909546afa4ce87276bc4",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogODYxNTI0YTk2ZWU5ZDQzNDE4MzkxN2QwM2UyODc1NTkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Player\\EnemyManager.cs",
+      {
+        "body": "0ada497582efb63d7e0951f0197a583c0bb8250cd6e9dba80087eb11f0d0303f",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMTdmZjIzY2U1NDljZDA5NDg4ZjllYTZiMWMzMmVmZTIKdGltZUNyZWF0ZWQ6IDE1MDM0ODE1NjUKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "GamePlay\\Player\\PlayerAnimator.cs",
+      {
+        "body": "203266e99de53f668f5e1ecfba685bcc0fd9a3aedd0741be1ee1199f48fd215d",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogN2JmZGNmNWFlNDQ5NzQ2MTZiY2EyNGY1ZjYwYTM1NTEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Player\\PlayerContent.cs",
+      {
+        "body": "810cd6904a99b6fa73ca8dcbe7f5eed59b6be24564c9f840cb0560a3a4c7435b",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDQxNjIyZjQ0NjMyMWQ4NDQ5MjgxZTU4MWIwNDMwNDgKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Player\\PlayerManager.cs",
+      {
+        "body": "64e7734ff32793e03d67b15c1eea82a01c83cfb4a08a37088cd8667481477ac8",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMzE1NjQ0YWQwOTcyMGUyNGY4YmFlZGU2NTQ2YTkyMjcKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Player\\PlayerMotor.cs",
+      {
+        "body": "3e7c093616aa779fae6b211b097c28373e53956a9118d3f9871d58e82b41f40b",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNjQ2MDg2ODEwYzEwMWY4NDZiYzliYmM0YzRmNjc5ODMKdGltZUNyZWF0ZWQ6IDE0OTk4NTQ0NDAKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "GamePlay\\PlayerAim.cs",
+      {
+        "body": "95c3f46cd871c27b62936e31c22b666c7a611691b47bf415b197fa4dd7384c58",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZWE1ZDljMjRkZTlmNDZkNDhiYjhiMzU5NTk1ZTEwZmEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\PlayerDamageFlash.cs",
+      {
+        "body": "2f7946a9e4f7140f88ec5bf985c4957d433e63d286055eb089617d1ac1693daf",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYWI4MzJlNDE2ODE3ODlhNDZiYjYwOWE4ZjY2ZDNkYTgKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Stats\\CharacterStats.cs",
+      {
+        "body": "f33fd1d93c48d646cac4c8c0a36c88ac8a5d82d8d5ac5762530a65478f2d30ae",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMjkyZjUwNTkxZWQ0MjUyNGM5MjJlMmQ0YmUyYjhhNGIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Stats\\EnemyStats.cs",
+      {
+        "body": "e7791cb2539f7706705b776c3807bc80299f6a1e2085f2d85838602763c3a5b9",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDlkODNjMzVhMzI4MzcyNDhiOGIxYzA3YmJmOWY1MDMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Stats\\PlayerStats.cs",
+      {
+        "body": "266a263d61aa00da24ef29a7af80dcbf204761689238db0feded8a8bc1061f22",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMTBlMzlkYzk2MGI1M2YyNDlhYWQ3ZGU2MWJjZDEzMjMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\Stats\\Stat.cs",
+      {
+        "body": "e33a69e9005411548d878f1aa2ed5d1ea43da3b93479537ddf14360d584c18f3",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmNhZTNjZTFlZjQyNjIyNDViMmZhNWU4ZDU3OTkzY2YKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\WorldInteracts\\ChestScript.cs",
+      {
+        "body": "a7d62247f118bdf17d6096d6d940fafd146085972c14c4ec7000b010099706f8",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZGZiMjY5NzkyMmQyMDQ4NDhiMjAzOWFhYTJjOWYzMTAKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "GamePlay\\WorldInteracts\\ShopScript.cs",
+      {
+        "body": "b7fc8e0dd2c36f3900d385cfa69abb8058f3ea82a4ddb60e32fc68afc7dc82d5",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNTM1ZWFjMzlhYWM5YmY1NGViYzFmNWEyN2VmMzBhYzIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "HealthTextDisplay.cs",
+      {
+        "body": "716fba0f973ea9ff8cfa3d13f301afdf0ec1696ebf715316283cdcf3fc3c3021",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogM2VhZTM1MzhlODIxMjE4NGVhYjJhYjQ1YzVmZDk5ZDMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "LoadingScript.cs",
+      {
+        "body": "a815b685b92cd35d891e8449561cf1fda4cc57dfc69f0877e890604c6a17de07",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNzM5YTFmMDQyZjk3ZmRiNGY4ZTM4MThjMzYxMDVlNDMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "MapController.cs",
+      {
+        "body": "1a3b13885d3427b156b2db56c862aaac257fc6d85e9e47a4da738f6d731235c3",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMjJmNGRjODJlZjkxYWE3NGE5Y2QzMjg1MzhmNWU5NGQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "MenuController.cs",
+      {
+        "body": "0106fd0e4f6374b8f5752202cedb83ccc15960ecf72cee3500f135945f255ce9",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOTNjOWYzOWEyNmU2N2Y1NGM5OWUzOTIzNDBkMGZjZmIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "ResetAnimatorBool.cs",
+      {
+        "body": "fe9d24495df3efd82e741f1ce9b452b11f17d15bbcff058b0b98a95871aebfd4",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNzI4NTQ4NThiY2I5ODE1NGQ4YzlkMzkwZmQzMDYxYWEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "SettingsMenu.cs",
+      {
+        "body": "01311edc735fbb6cf4ca9311f39a176bd023fe5382565b0fea0609499f30e54b",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogODE5Mjg0M2ViNjY2ZmE3NDliMDc4ZDBiZTY2NGYwYjMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DestructibleObject_Scripts\\BrokenObject.cs",
+      {
+        "body": "c8e94c88157b6e420b5dea7c641bc1d5243a5bb299d7b5a3890676ae4ef91ead",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDdiYjI2MjM5OTgyMWJmNDg4Mzc5OTRlMTg0NzljYzMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DestructibleObject_Scripts\\DestructibleConObject.cs",
+      {
+        "body": "96602b97eb0014cabc0def4a7a16b8d6261aba5efb3d7173a714e650bbe8455f",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmI2OGFmOTE2Nzc5M2M5NDk5N2FjNjUyMmVjYjZhMWQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DestructibleObject_Scripts\\DestructibleObject.cs",
+      {
+        "body": "b3826442e92aa12e9240d2a93661aca7be8ab8b5332527b1907c3bb9bdc2fd01",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogY2FkM2JkMzZkNmM5MDk2NDZhYTk3OTRiOWM5OTU0Y2MKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DestructibleObject_Scripts\\HealthSystem.cs",
+      {
+        "body": "3882a2a7a48a131ab68afb7098d4f879ec625b5390a8a3ad01a8bd6aee35ffc2",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNDU3NTBkMWIxZGMzZGM4NDJhNjYwNTZlMDNjMDQ1ZDEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DestructibleObject_Scripts\\IDamageable.cs",
+      {
+        "body": "8a5b1fd9d0f439edb1cc040fe3fd94a1d0e27a4c73c7d539b5ece2fd05f39dbf",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZWQ2MzM4MWEzMjAzZjA3NDdiOTVlZTcwODk1N2I2MDUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DragAndDrrop\\ObjectGrabbable.cs",
+      {
+        "body": "d918b17a9df2fe7de293a6f3aabbdf5b966d639d6e0f986ab3f3feeb112fbddd",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYzUzNDQ0OTdjZWFmMGNmNDQ5NGI3MDM3N2IwOWVhZTQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\DragAndDrrop\\PlayerPickUpDrop.cs",
+      {
+        "body": "6bb01df81dc9ddbb6bb2b994520d80c4a5c044c4d68ce93b242268cf64722527",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNmRiYjlmNTRkYmMxYmJmNDc5OWY1NTVhZDI1N2YwNTQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\Helper\\MeshFromSkinnedMesh.cs",
+      {
+        "body": "7f4cf0d4c8eb8553bc736952e0482327d9f06723d53bc671ee9fdb2c270c543d",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOWMwOGUxNzBmNGRhNTQ1ZjRhMWI1YWIzNzg3ZDVjZmIKdGltZUNyZWF0ZWQ6IDE1MDMzMjE4OTgKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "Systems\\LevelingSystemScripts\\ExperienceBar.cs",
+      {
+        "body": "d7d1ece44b9dd45c4ce81e435953f485fe25bd6e2a0dc6a86a3e4b027c31afb0",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNTZkODQ5ZmM2YjVhYjcxNDk5NWQ5ZmVjMTRhZDhiM2EKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\LevelingSystemScripts\\LevelSystem.cs",
+      {
+        "body": "0839af80f9cdaee23612b386c7cce14ffc1c0039d11506cad73a2206b01820fa",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYzAzZGZiMDA3ZDMwODM4NDdiZTM4MjdlOTU3ZTY5NTQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\LevelingSystemScripts\\LevelSystemAnimated.cs",
+      {
+        "body": "8c5ea6331ada1963a8d179c3919e14dcdab76e8786ba58c2f4a3493d5f2501df",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogOWJjMzRlYzQwYzQ3ZDQ0NGE4NWRlOTJhZDM0MjkwMDIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\LevelingSystemScripts\\LevelSystemAnimatedUpdater.cs",
+      {
+        "body": "b36b71a3f2b88025ed90a3bddbbc40ced6e0cc9a12bbe3182fca70a7aac49499",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogY2JlMWE4NTM5YjIyYTdmNDk5OTdmY2E1OTkxMzM2Nzk="
+      }
+    ],
+    [
+      "Systems\\LevelingSystemScripts\\LevelWindow.cs",
+      {
+        "body": "4510bd318f11daf48a709b11f0c54902d37dc0a931acb081803bd6c7a83f5b12",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMWYzMDZmMWI4OTAzMzk1NDViYzQ2OWQzZDk1ZWI2YzYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\MaterialTintColor.cs",
+      {
+        "body": "f440252ea892af431f1d4cd7550a2a2073ad2ead177e8031203e8968b060d224",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNjg5M2ZhMTUyNzI3MGY5NDhhZmJmZWFlZTU1MzZlZDkKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\Player.cs",
+      {
+        "body": "15c6803c4a10af23e72574a6cbbb36ce67ece562110bdcd1c9d75d08162be061",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmZlNDA5MWU1NDkwZjVjNDhiNjE2ZmVmMDI1YTRmZTAKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\PlayerSkills.cs",
+      {
+        "body": "49aced7f1ae3c36610688c9c1132c9d3ca5d0bd644bd04dcf56271e0edbfabe0",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMmMyOTExOTA5YjhkM2I1NDY5NDkxOTQ3Y2NlNjI0NDAKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\PlayerSword.cs",
+      {
+        "body": "e43ab3c0482415d4843185303d0edc2991f42adaa71c9ca052aa86ac16fb3758",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZDg1NzgyYzQyMjRiNjYwNDliMjI1YjlhOTE0ODZjNjUKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\Testing.cs",
+      {
+        "body": "acf983e890ddf62e1ef058b9c34a86a736a106dbf9c9ece650404dfefd99af6d",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNzgxNTgwZGY0MmNkOGE4NDZiMDczNWE0YjdjMmRjMDQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\SkillTree\\UI_SkillTree.cs",
+      {
+        "body": "cfce0e855e767b17978050c6ffd64fa31b20d85da1537efd84d953ba09728817",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogY2Y2ZjMzZTllZDA1YzE4NGJhZWRiMTM1NDU0YWFlMDcKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\ItemInfo.cs",
+      {
+        "body": "944a4782a3fff39360b50d6784a43841f25184dfb9e4b3444ae3470b564e9971",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYWFiNjgzYzViN2Y2OTg1NGFhNzM0MDZiZjM4MTc0ZTIKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\Tooltip.cs",
+      {
+        "body": "90bf8641f310518709716be06fa39152c65438980660f764d19e519ac8a320af",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogN2Y0ZWE0YmFhZGQ2MTE3NDFhODliNDJhNzVmZDdlOGMKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\Tooltip_ItemStats.cs",
+      {
+        "body": "31bd3c6a9b07b0f803176e8c890e6ecc8da13b3f775263c02744eae872318a9b",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNzdiZjg4YWZmMDk5OTZiNGE5NTA4NDMzYmRiMWE3ODQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\Tooltip_Warning.cs",
+      {
+        "body": "75d37b1101edcbcf3438c0c34490b678c18f3eb79d46af253d704f1081189824",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZmMzZmUyMzJlNDc4NTQwNGJiNWJhZmUxNzY4YTEwNzAKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\Window.cs",
+      {
+        "body": "b0c05e4596214053524ea3ab35c0f008e6302681af91ceb80f3d78b371030886",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogMmIxNDlhNmM0YTQ1YjVmNGFhY2VhZTY3YmNlNWYwOWQKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "Systems\\ToolTip\\Window_Items.cs",
+      {
+        "body": "ffea64b7ae0096dfa869e3a048cd72c01a4d1fc5ea3d9030a7c1bc0dc260a95f",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogZjcyZjU4M2MwNDNjYTQxNGM5YTYxMTM3MTFhODk2ODYKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "UI\\DragDrop.cs",
+      {
+        "body": "f542003c76532c19f592d927856f0b4ea4e19147f06ea5ed0d0061aa42f5aec8",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNTBjZGYzMDcyMDRhOTYxNDA4NDMwMzY5MTI5OWIyYzEKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "UI\\HealthChange.cs",
+      {
+        "body": "2f0a37f2eef94066fdf72c59560c414a46e4516e9c6d282b4b4949c763899c6d",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogNmViNjRlNzZkMjg1ZTQyYjNhZWRiNGIzNzk3NTAwNjkKdGltZUNyZWF0ZWQ6IDE1MjIxNjgyNzAKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgZXh0ZXJuYWxPYmplY3RzOiB7fQogIHNlcmlhbGl6ZWRWZXJzaW9uOiAyCiAgZGVmYXVsdFJlZmVyZW5jZXM6CiAgLSB1aVByZWZhYjoge2ZpbGVJRDogMTExMDY5NTgwNzE1Njk2NiwgZ3VpZDogN2NlOWExZDliOWIxZTQyOWNiN2Q3Njk4ZDJjOTA1ZTIsIHR5cGU6IDJ9CiAgLSB0YXJnZXQ6IHtpbnN0YW5jZUlEOiAwfQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "UI\\HotKeysUI.cs",
+      {
+        "body": "a7effde16254d82ad1e3cc1b8268d945c48de114f1ac5cfe03d995608e8bfd15",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogN2VkMTRkZjhkY2RjNWZjNDdiYTU5MWNiZjEyYmU5MmYKdGltZUNyZWF0ZWQ6IDE1MDA2NDMxMDMKbGljZW5zZVR5cGU6IFBybwpNb25vSW1wb3J0ZXI6CiAgc2VyaWFsaXplZFZlcnNpb246IDIKICBkZWZhdWx0UmVmZXJlbmNlczogW10KICBleGVjdXRpb25PcmRlcjogMAogIGljb246IHtpbnN0YW5jZUlEOiAwfQogIHVzZXJEYXRhOiAKICBhc3NldEJ1bmRsZU5hbWU6IAogIGFzc2V0QnVuZGxlVmFyaWFudDogCg=="
+      }
+    ],
+    [
+      "UI\\ScreenDamage.cs",
+      {
+        "body": "5923d30769a0312dcba2e449521ba3f71b3115aa7f5a2904215995d6c68c068a",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYmEyODhiMDdmOTQzMTBmNDRhMDJkNmEyYmU4ODZjYzcKTW9ub0ltcG9ydGVyOgogIGV4dGVybmFsT2JqZWN0czoge30KICBzZXJpYWxpemVkVmVyc2lvbjogMgogIGRlZmF1bHRSZWZlcmVuY2VzOiBbXQogIGV4ZWN1dGlvbk9yZGVyOiAwCiAgaWNvbjoge2luc3RhbmNlSUQ6IDB9CiAgdXNlckRhdGE6IAogIGFzc2V0QnVuZGxlTmFtZTogCiAgYXNzZXRCdW5kbGVWYXJpYW50OiAK"
+      }
+    ],
+    [
+      "UI\\UIPointerEvents.cs",
+      {
+        "body": "0f87ff5b30a0c0492aa6cf14f7c99d29a7be5a5344373acca7d4304e763e6cfe",
+        "meta": "ZmlsZUZvcm1hdFZlcnNpb246IDIKZ3VpZDogYzdhNzFmNGQwNjM4OTcyNDZiN2Y4NDJmZDEyOTAyZWI="
+      }
+    ]
+  ]
+}

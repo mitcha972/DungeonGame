@@ -1,0 +1,15 @@
+﻿PASS Ignore nonpositive XP
+PASS Exact level threshold/events
+PASS Multiple thresholds/remainder
+PASS Int32 maximum award plus existing XP
+PASS Event counts at cap
+PASS Capped awards idempotent
+PASS Before damage window
+PASS Entering damage window
+PASS Skipped damage window
+PASS Whole attack frame skip
+PASS After damage window
+PASS Zero-width window
+PASS Final boundary
+PASS 13 logic checks
+﻿

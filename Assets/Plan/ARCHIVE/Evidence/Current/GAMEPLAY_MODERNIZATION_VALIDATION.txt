@@ -1,0 +1,19 @@
+PASS: Primary sequence is enabled in Build Settings
+PASS: Dungeon accepted as loading destination
+PASS: Menu and loading recursion rejected
+PASS: Out-of-range destinations rejected
+PASS: Nonpositive awards ignored
+PASS: Exact threshold and events
+PASS: Multi-level award preserves remainder
+PASS: Overflow-sized award reaches bounded cap
+PASS: One level event per threshold and one XP event per award
+PASS: Max-level awards are idempotent
+PASS: Before hit window stays inactive
+PASS: Entering hit window activates
+PASS: Skipped hit window activates
+PASS: Entire attack skipped by one frame still samples
+PASS: After hit window stays inactive
+PASS: Zero-width hit window is crossed
+PASS: Final attack boundary is sampled
+PASS: 300 seeded maze graphs: connected, reciprocal, bounded, unique start/exit, farthest exit, spanning tree
+PASS: all checks completed.

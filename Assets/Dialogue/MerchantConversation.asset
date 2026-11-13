@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3cb1b1c1fbdfb42b12a08b6413be21, type: 3}
+  m_Name: MerchantConversation
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonGame.Dialogue.DialogueConversation
+  entryNode: greeting
+  nodes:
+  - id: greeting
+    text: Welcome, traveller. Steel, supplies, or a story for the road? Take your
+      time - the dungeon will not wait for either of us.
+    responses:
+    - text: Trade
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+    - text: Ask About Wares
+      nextNode: wares
+      action: {fileID: 0}
+    - text: Ask About Rumors
+      nextNode: rumors
+      action: {fileID: 0}
+    - text: Goodbye
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+  - id: wares
+    text: A sturdy wooden shield, an iron sword, and a potion for when courage runs
+      thin. Simple tools, honestly sold. Have a look before you head below.
+    responses:
+    - text: Let me see your wares.
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+    - text: Something else...
+      nextNode: greeting
+      action: {fileID: 0}
+    - text: Goodbye
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+  - id: rumors
+    text: They say the lower halls remember every adventurer who never came back.
+      I say bring a shield, watch the corners, and never trust a quiet doorway.
+    responses:
+    - text: Back to business.
+      nextNode: greeting
+      action: {fileID: 0}
+    - text: Goodbye
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}

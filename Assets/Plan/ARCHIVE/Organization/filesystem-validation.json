@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "scriptsChecked": 118,
+  "scriptMoves": 105,
+  "guidAndMetadataPreserved": true,
+  "protectedFilesChecked": 880,
+  "expectedPathOnlySourceChanges": [
+    "Assets/Editor/Validation/CombatCheckpointRunner.cs",
+    "Assets/Editor/Validation/GameplayModernizationValidation.cs",
+    "Assets/Scripts/Core/Scenes/LoadingScript.cs",
+    "Assets/Scripts/UI/Menus/MenuController.cs",
+    "Assets/Scripts/UI/Menus/SettingsMenu.cs"
+  ],
+  "markdownLinksChecked": 503,
+  "errors": []
+}

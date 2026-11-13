@@ -6,16 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main.unity
+    path: Assets/Scenes/Game/Start.unity
     guid: 35865f7d325b21f4b9d9f158c5076743
   - enabled: 1
-    path: Assets/Scenes/Loading.unity
+    path: Assets/Scenes/Game/Loading.unity
     guid: 3bfd05882f6fe554182bc5607c7af60c
   - enabled: 1
-    path: Assets/Scenes/DungeonFloorTest.unity
+    path: Assets/Scenes/Game/Main.unity
     guid: 3a843169fcbd7674ebd69dd5aab48be6
   - enabled: 1
-    path: Assets/Scenes/Test.unity
+    path: Assets/Scenes/Test_Scenes/Combat_Test.unity
     guid: 11d90511ed2ed61438b796ee25a5820c
   m_configObjects:
     com.unity.dt.app-ui: {fileID: 11400000, guid: 1b1c20d82303e4b5781c3ef50ac1449f,
