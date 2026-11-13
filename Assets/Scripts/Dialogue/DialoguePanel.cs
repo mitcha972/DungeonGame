@@ -20,6 +20,7 @@ namespace DungeonGame.Dialogue
         public void Show(DialogueController owner, string speaker, DialogueNode node)
         {
             controller = owner;
+            int version = owner.PresentationVersion;
             openedFrame = Time.frameCount;
             speakerText.text = speaker;
             npcText.text = node.text;
@@ -33,7 +34,7 @@ namespace DungeonGame.Dialogue
                 var button = Instantiate(responseTemplate, responseParent);
                 button.name = "Response" + (i + 1);
                 button.GetComponentInChildren<TMP_Text>(true).text = (buttons.Count + 1) + ". " + node.responses[i].text;
-                button.onClick.AddListener(() => controller.Choose(index));
+                button.onClick.AddListener(() => controller.Choose(index, node, version));
                 button.gameObject.SetActive(true);
                 buttons.Add(button);
             }
@@ -41,7 +42,7 @@ namespace DungeonGame.Dialogue
             {
                 var exit = Instantiate(responseTemplate, responseParent);
                 exit.GetComponentInChildren<TMP_Text>(true).text = "1. Goodbye";
-                exit.onClick.AddListener(controller.Close);
+                exit.onClick.AddListener(() => { if (controller.CurrentNode == node && controller.PresentationVersion == version) controller.Close(); });
                 exit.gameObject.SetActive(true);
                 buttons.Add(exit);
             }

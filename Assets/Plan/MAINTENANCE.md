@@ -1,5 +1,31 @@
 # Documentation and organization maintenance
 
+## Prefab organization — 2026-11-13
+
+Implemented folder-only cleanup using AssetDatabase.MoveAsset: **251 of 472 prefabs** relocated through 86 asset/folder operations. All prefab GUIDs and metadata retained. No gameplay code, scene content, public callbacks or plugin assets changed. [Exact inventory and move reasons](ARCHIVE/Organization/prefab-organization.json) cover every prefab, including exclusions; [byte validation](ARCHIVE/Organization/prefab-filesystem-validation.json) and [Editor validation](ARCHIVE/Organization/prefab-editor-validation.json) record executed checks.
+
+| Folder under Assets/Prefabs | Role |
+| --- | --- |
+| Core | GAMECONTROLLER session bootstrap |
+| Dungeons/Rooms, Generation, TestGeneration | Authored room assemblies, generator and retained generation fixtures |
+| Environment/LowPolyDungeon | Cohesive imported modular architecture/lighting collection; Stage and SkyBounds sit under Environment |
+| Models/Equipment | Armor, clothing, weapons and consumable display meshes recovered from Assets/Meshes; these are distinct from ItemInteract pickups |
+| Models/Weapons/LowPoly, Models/Characters | Visual weapon collection and Metalon/Giant/Spider models, without gameplay wrappers |
+| Items | Existing pickup armor/weapons/consumables retained; generic grabbable Item moved to Templates |
+| UI/Inventory, HUD, Feedback, Menus, Progression, Tooltips | Canvas/slot templates, health displays, HitDamage overlay, menus, skill tree and tooltips |
+| Props/Destructibles/Interactive, Debris, Unconfigured | Objects with DestructibleObject, broken outputs with BrokenObject, and source props without custom destructible behavior; replaces ambiguous Done naming |
+| Props/Destructibles/Legacy/ImportedDuplicates | Box_02, Jug_02 and Rock_01: exact byte copies of plugin art prefabs, preserved with their distinct GUIDs and existing references |
+| Props/RocksAndCrystals, Valuables, Potions, Decorations | Clearer groups for formerly loose decorative props; existing Clutter/Furniture retained |
+| Enemies/Legacy, Player/Legacy/Backups, Player/Variants | Explicit old enemy test prefabs, existing player backups and the older PlayerContent stranded in a script folder |
+
+Enemy_Main, PlayerHolder, active PlayerContent, WorldInteract, Dialogue and Projectiles retain their established paths. Similar names do not imply duplicates: pickup/display pairs, decorative versus interactive chests/props, projectile/model arrows and enemy/model GiantDummy variants have different responsibilities. No speculative deletion or obsolete classification was applied. Legacy means retained historical/test/duplicate content, not guaranteed unused. The old Starter Assets-derived PlayerContent filename now identifies its provenance; its original binary serialization and internal names were preserved after Unity attempted an automatic version upgrade during renaming.
+
+Excluded: Assets/Plugins, Starter Assets camera/model prefabs retained with their owner, and imported particle-library prefabs under Assets/Particles. Two non-CFX-named ring effects share that library's components/hierarchy, so they remain with it. Game-owned prefabs stranded under ScriptableObjects and script folders were recovered. Only the emptied former destructible folder tree was removed. Live organization helper paths were reconciled; historical evidence retains original paths.
+
+Validation actually executed: SHA-256 checks of all 472 prefab files and .meta files against the pre-move snapshot; 358 files within moved collections (including folder metadata and the tooltip image) verified against Git/LFS identities; Editor loading and before/after dependency-GUID/missing-script-count comparison for 434 non-plugin prefabs/scenes; active Combat_Test scene and its clean state preserved, Play Mode remained stopped. Eighteen audited prefabs already had missing scripts (17 particle prefabs and the older StarterAssets_PlayerContent variant); counts were unchanged and are recorded in the Editor report. No gameplay/Play Mode tests or builds ran because behavior was not changed. Initial read-only audit exceeded 60 seconds but completed; later checks used a longer timeout. CLI updated to 1.0.0 after sandbox network/discovery restrictions were resolved. Auto-tick returned to disabled.
+
+Next integration: use the manifest's destination paths for future tooling; retain prefab GUID references. Missing scripts in the retained imported effects/player variant need a separate repair scope, not silent removal. Existing production-loop/physical-navigation verification remains on the roadmap.
+
 Consolidation decision record, not a parallel feature roadmap. Updated 2026-11-12. [Context](PROJECT_CONTEXT.md), [roadmap](DEVELOPMENT_ROADMAP.md), [architecture](ARCHITECTURE.md), [index](SCRIPT_INDEX.md) and system references are authoritative current documentation.
 
 ## Audit and dispositions

@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public bool mouseLocked;
     [SerializeField] private TMP_Text interactText;
     [SerializeField] private float interactionDistance = 4f;
+    public float InteractionDistance => interactionDistance;
+    private PlayerGathering _gathering;
+    public TMP_Text InteractionText => interactText;
     [SerializeField] private float turnSpeed = 540f;
     private Camera _camera;
     private PlayerCombat _combat;
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
         _stats = GetComponent<PlayerStats>();
         _playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
         _controlState = GetComponent<PlayerControlState>();
+        _gathering = GetComponent<PlayerGathering>();
         if (_animator != null) { _animator.EnableMovement += EnableMovement; _animator.DisableMovement += DisableMovement; }
     }
     private void OnEnable()
@@ -100,6 +104,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+        UpdateResourcePrompt();
         if (!GameplayInputAllowed) { _leftPending = _rightPending = _rightShield = false; _combat?.SetShieldBlock(false); return; }
         if (_leftPending && Time.time - _leftPressedAt >= _powerAttackHoldTime)
         {
@@ -114,6 +119,28 @@ public class PlayerController : MonoBehaviour
             direction.y = 0f;
             if (direction.sqrMagnitude > 0.001f) transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.LookRotation(direction), turnSpeed * Time.deltaTime);
         }
+    }
+
+    public ResourceNode LookedAtResource()
+    {
+        if (_camera == null) _camera = Camera.main;
+        if (_camera == null) return null;
+        Ray ray = _camera.ViewportPointToRay(new Vector3(.5f, .5f));
+        if (!Physics.Raycast(ray, out RaycastHit hit, interactionDistance + Vector3.Distance(_camera.transform.position, transform.position), ~(1 << gameObject.layer), QueryTriggerInteraction.Ignore)) return null;
+        var node = hit.collider.GetComponentInParent<ResourceNode>();
+        return node != null && node.isActiveAndEnabled && Vector3.Distance(transform.position, node.transform.position) <= interactionDistance ? node : null;
+    }
+    private void UpdateResourcePrompt()
+    {
+        if (interactText == null) return;
+        if (_gathering != null && _gathering.IsGathering)
+        {
+            interactText.SetText(_gathering.ActiveNode.definition.actionLabel + "... " + Mathf.RoundToInt(_gathering.Progress * 100) + "%  [Esc: cancel]"); return;
+        }
+        if (!GameplayInputAllowed) { interactText.SetText(string.Empty); return; }
+        if (_gathering != null && _gathering.HasFeedback) { interactText.SetText(_gathering.Feedback); return; }
+        var node = LookedAtResource();
+        interactText.SetText(node != null ? node.Prompt : string.Empty);
     }
 
     private void Interact()

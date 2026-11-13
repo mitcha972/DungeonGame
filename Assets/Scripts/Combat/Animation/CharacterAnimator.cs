@@ -107,6 +107,35 @@ public class CharacterAnimator : MonoBehaviour
         if (combat != null) combat.currentProjectile = CurrentWeapon != null && CurrentWeapon.isRanged ? CurrentWeapon.projectile : null;
     }
     public void Equip() { }
+    private int gatheringHash, previousState;
+    private float[] gatheringLayerWeights;
+    public void BeginGathering(string state)
+    {
+        if (animator == null || string.IsNullOrEmpty(state)) return;
+        gatheringHash = Animator.StringToHash(state);
+        if (!animator.HasState(0, gatheringHash)) { gatheringHash = 0; return; }
+        previousState = animator.GetCurrentAnimatorStateInfo(0).fullPathHash;
+        gatheringLayerWeights = new float[animator.layerCount];
+        for (int i = 1; i < animator.layerCount; i++) { gatheringLayerWeights[i] = animator.GetLayerWeight(i); animator.SetLayerWeight(i, 0); }
+        SetBusy(true);
+        animator.CrossFade(gatheringHash, .1f, 0);
+    }
+    public void EndGathering(bool interrupted)
+    {
+        if (animator == null || gatheringHash == 0) return;
+        var current = animator.GetCurrentAnimatorStateInfo(0);
+        bool stillGathering = current.shortNameHash == gatheringHash || (animator.IsInTransition(0) && animator.GetNextAnimatorStateInfo(0).shortNameHash == gatheringHash);
+        bool transitioningAway = animator.IsInTransition(0) && animator.GetNextAnimatorStateInfo(0).shortNameHash != gatheringHash;
+        if (gatheringLayerWeights != null)
+            for (int i = 1; i < animator.layerCount; i++) animator.SetLayerWeight(i, gatheringLayerWeights[i]);
+        if (stillGathering && (!interrupted || !transitioningAway))
+        {
+            animator.CrossFade(previousState, .1f, 0);
+            SetBusy(false);
+        }
+        else if (!interrupted) SetBusy(false);
+        gatheringHash = 0; gatheringLayerWeights = null;
+    }
     public void Death() => PlayTargetAnimation("Death", true);
     public void AttackHitEvent() { }
     [System.Serializable]

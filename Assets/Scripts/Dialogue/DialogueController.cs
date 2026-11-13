@@ -10,6 +10,7 @@ namespace DungeonGame.Dialogue
         public bool IsOpen { get; private set; }
         public DialogueNpc Speaker { get; private set; }
         public DialogueNode CurrentNode { get; private set; }
+        public int PresentationVersion { get; private set; }
         public PlayerControlState Controls => controls;
         private PlayerControlState controls;
         private GameObject previousSelection;
@@ -36,6 +37,7 @@ namespace DungeonGame.Dialogue
         }
         private void Display(DialogueNode node)
         {
+            PresentationVersion++;
             CurrentNode = node;
             panel.Show(this, Speaker.speakerName, node);
         }
@@ -52,9 +54,13 @@ namespace DungeonGame.Dialogue
         }
         public bool CanChoose(DialogueResponse response) => response != null && DialogueCondition.All(response.conditions, this, Speaker);
         public void RefreshEntry() { if (IsOpen && Speaker != null) Display(ResolveEntry(Speaker) ?? CurrentNode); }
-        public void Choose(int index)
+        public void Choose(int index) => Choose(index, CurrentNode, PresentationVersion);
+
+        // A deferred click belongs to the node that created its button, not a new
+        // stage that happens to reuse the same response index.
+        public void Choose(int index, DialogueNode expectedNode, int presentationVersion)
         {
-            if (!IsOpen || CurrentNode == null || index < 0 || index >= CurrentNode.responses.Length) return;
+            if (!IsOpen || CurrentNode == null || presentationVersion != PresentationVersion || !ReferenceEquals(CurrentNode, expectedNode) || index < 0 || index >= CurrentNode.responses.Length) return;
             var response = CurrentNode.responses[index];
             if (response == null) return;
             if (!CanChoose(response)) { RefreshEntry(); ShowStatus("That response is no longer available."); return; }
@@ -68,6 +74,7 @@ namespace DungeonGame.Dialogue
         public void Close()
         {
             if (!IsOpen) return;
+            PresentationVersion++;
             IsOpen = false;
             if (Speaker != null && Speaker.ActiveController == this) Speaker.ActiveController = null;
             Speaker = null;

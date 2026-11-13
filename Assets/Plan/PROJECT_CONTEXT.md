@@ -20,7 +20,8 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 | [World](SYSTEMS/World.md) | Connected maze and transactional room/NavMesh regeneration implemented; graph connectivity does not establish physical doorway/exit reachability. Historical tests include partial exit paths. |
 | [Progression](SYSTEMS/Progression.md) | XP bounds/local updater implemented. Player wrapper delegates to co-located PlayerStats; many skill effects are prototype/log-only. |
 | [UI](SYSTEMS/UI.md) | Canvas/uGUI, TMP and some legacy Text, menus, inventory/HUD; PlayerHolder north-up minimap and M expanded map ([details](SYSTEMS/Minimap.md)). No runtime UI Toolkit migration. |
-| [Quests](SYSTEMS/Quests.md)/bank/services | **Quest slice implemented:** staged definitions/runtime, dialogue conditions/actions, item/kill/location/NPC objectives, journal and completion rewards. PlayerHolder and Enemy_Main extended; NPC_Main inherits Enemy_Main. Quest JSON only; gameplay disk saves and bank remain unimplemented. |
+| [Quests](SYSTEMS/Quests.md)/bank/services | **Quest slice implemented:** staged definitions/runtime, dialogue conditions/actions, item/kill/location/NPC objectives, journal and completion rewards; Supplies for the Road connects real resource gathering to staged deliveries. PlayerHolder and Enemy_Main extended; NPC_Main inherits Enemy_Main. Quest JSON only; gameplay disk saves and bank remain unimplemented. |
+| [Resource nodes](SYSTEMS/ResourceNodes.md) | Timed E gathering, action leases, atomic inventory rewards, charges/respawn and three starter prefabs implemented; test scene copy and validation are documented in the subsystem reference. Session-only world state. |
 | Gameplay save/load | **Not implemented**. Static GameController fields are session state; SlimUI PlayerPrefs store preferences. |
 
 ## Important paths
@@ -32,7 +33,9 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 - Dialogue data: `Assets/Dialogue/`; panel: `Assets/Prefabs/Dialogue/DialoguePanel.prefab`; merchant: `Assets/Prefabs/WorldInteract/DialogueMerchant.prefab` (Shop variant).
 - Production flow: `Assets/Scenes/Game/Start.unity` (menu) → `Loading.unity` → `Main.unity` (dungeon).
 - Tests: `Assets/Scenes/Test_Scenes/{DialogueMerchant_Test,Combat_Test,DungeonGeneration_Test,SkillTree_Test}.unity`. Presence is not proof of a passing test.
+- Gathering-delivery fixture: `Assets/Scenes/Test_Scenes/GatheringQuest_Test.unity`; Quartermaster Nessa and both adventure catalog entries are described in [quests](SYSTEMS/Quests.md).
 - All active AI plans, architecture, status and handoffs belong in **Assets/Plan/**.
+- Prefab folders were organized on 2026-11-13; [maintenance](MAINTENANCE.md#prefab-organization--2026-11-13) owns the folder guide, exclusions, legacy distinctions and validation. Gameplay prefab identities/references were preserved.
 
 ## Immediate handoff
 

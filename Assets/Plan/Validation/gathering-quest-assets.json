@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "checks": [
+    "Gathering quest definition validates",
+    "Conversation branches and responses resolve",
+    "No missing scripts: Assets/Prefabs/WorldInteract/Quartermaster_Nessa.prefab",
+    "Nessa uses existing dialogue/interactable with stationary navigation",
+    "No missing scripts: Assets/Prefabs/Player/PlayerHolder.prefab",
+    "Existing player catalog retains both valid adventures",
+    "Saved fixture contains four valid nodes including two independent trees",
+    "Saved fixture binds the existing player catalog and Nessa conversation"
+  ],
+  "editScene": "Assets/Scenes/Test_Scenes/Gameplay_Test.unity",
+  "dirty": true
+}

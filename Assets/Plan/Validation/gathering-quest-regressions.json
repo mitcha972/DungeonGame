@@ -1,0 +1,48 @@
+{
+  "passed": true,
+  "date": "2026-11-13",
+  "executed": [
+    {
+      "entry": "VerifyGatheringQuest.Run",
+      "passed": true,
+      "checks": 59,
+      "report": "gathering-quest-playmode.json"
+    },
+    {
+      "entry": "VerifyGatheringQuestAssets.Run",
+      "passed": true,
+      "checks": 8,
+      "report": "gathering-quest-assets.json"
+    },
+    {
+      "entry": "VerifyQuestSlice.Run",
+      "passed": true,
+      "checks": 56,
+      "report": "quest-playmode.json"
+    },
+    {
+      "entry": "VerifyMerchantDialogue.Run",
+      "passed": true,
+      "frameCount": 1196,
+      "worldSeconds": 22.1482334
+    },
+    {
+      "entry": "VerifyDialogueMouse.Run",
+      "passed": true,
+      "stock": 3
+    },
+    {
+      "entry": "VerifyShopUI.Run",
+      "passed": true,
+      "slots": 3,
+      "goldAfterBuySell": 75
+    },
+    {
+      "entry": "VerifyDialogueLifecycle.Run",
+      "passed": true,
+      "serviceRequests": 3
+    }
+  ],
+  "scope": "Live Editor/script-run validation of final versioned dialogue handling, authored resource-delivery quest and existing adventure/merchant integration. Synthetic keyboard/mouse and uGUI pointer paths; no manual hardware, disk gameplay saving or production traversal certification.",
+  "knownConsoleIssue": "Original Quest_Test emitted existing Enemy Animator/Punch - Right legacy EnableMovement/DisableMovement/EnableDamage/DisableDamage missing-receiver errors. Assertions passed; combat run is not console-clean. See SYSTEMS/Combat.md."
+}

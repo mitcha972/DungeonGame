@@ -150,6 +150,10 @@ Outside Assets intentionally; run with script run, not runtime components.
 | [AgentScripts/Organization/OrganizationPlaySmoke.cs](<../../AgentScripts/Organization/OrganizationPlaySmoke.cs>) | Organization/reference validation utility. |
 | [AgentScripts/Organization/OrganizeProjectAssets.cs](<../../AgentScripts/Organization/OrganizeProjectAssets.cs>) | One-shot archived-manifest migration; do not rerun after completion. |
 | [AgentScripts/Organization/VerifyOrganization.cs](<../../AgentScripts/Organization/VerifyOrganization.cs>) | Organization/reference validation utility. |
+| [AgentScripts/Organization/OrganizePrefabs.cs](<../../AgentScripts/Organization/OrganizePrefabs.cs>) | Prefab dependency/state audit and completed one-shot AssetDatabase migration. Do not rerun Move on the completed manifest. |
+| [AgentScripts/Organization/inspect_prefabs.py](<../../AgentScripts/Organization/inspect_prefabs.py>) | Filesystem prefab component/GUID/hash inventory. |
+| [AgentScripts/Organization/plan_prefab_moves.py](<../../AgentScripts/Organization/plan_prefab_moves.py>) | Completed one-shot prefab manifest/snapshot generator; historical old paths, not a reusable migration. |
+| [AgentScripts/Organization/verify_prefab_files.py](<../../AgentScripts/Organization/verify_prefab_files.py>) | Validate all prefab/meta bytes against manifest and reconcile live tool path literals. |
 
 ## Quest additions (2026-11-13)
 
@@ -168,3 +172,17 @@ Outside Assets intentionally; run with script run, not runtime components.
 Builder/assertion scripts remain outside Assets in AgentScripts/Quests. Existing source list above has 118 pre-quest entries; these nine additions bring the indexed custom source total to 127.
 
 Shop addition (2026-11-13): Assets/Scripts/Shops/ShopDefinition.cs — ShopDefinition ScriptableObject and serializable ShopStockRule (stock, allowlists, prices, restock). Existing ShopInventory/ShopScript/ShopInventoryUI/ShopInventorySlot expanded; Inventory owns gold, Item exposes tradeRestricted. Ephemeral builders/checks: AgentScripts/Shops/.
+
+## Resource nodes (2026-11-13)
+
+| File | Responsibility |
+| --- | --- |
+| Assets/Scripts/Resource/ResourceNode.cs | Existing placeholder extended to Interactable; per-node reservation, charges, respawn, events and state snapshot. |
+| Assets/Scripts/Resource/ResourceNodeDefinition.cs | Shared reward/timing/animation/requirement configuration. |
+| Assets/Scripts/Resource/ResourceNodeRequirement.cs | Optional reusable tool/skill/quest check contract. |
+| Assets/Scripts/Resource/PlayerGathering.cs | Timed player action, atomic inventory reward, cancellation and action-lease lifecycle. |
+| Assets/Scripts/Resource/GatheringProgressHUD.cs | Existing-Canvas progress bar presentation. |
+
+Retained authoring/verification tools: AgentScripts/Resources/{BuildResourceNodes,ResourceIcons,InspectResources,ResourceTestSession,VerifyResourceNodes,VerifyResourceAssets,PreviewResourceNodes}.cs, outside Assets. ResourceNode retains its original script GUID; no source files were moved across assembly boundaries.
+
+Gathering quest follow-up (2026-11-13): no new runtime scripts. DialogueController/DialoguePanel add versioned node-bound response handling while preserving Choose(int) callbacks. Authoring/verification tools: AgentScripts/GatheringQuests/{BuildGatheringQuest,GatheringQuestSession,VerifyGatheringQuest,VerifyGatheringQuestAssets}.cs. Existing AgentScripts/Quests/BuildQuestSlice preserves additional catalog entries; VerifyQuestSlice selects the original quest by stable ID.

@@ -22,7 +22,7 @@ public static class BuildQuestSlice
  static void Button(string label,Transform parent,UnityEngine.Events.UnityAction callback){var r=Rect(label,parent);var image=r.gameObject.AddComponent<UnityEngine.UI.Image>();image.color=new Color(.26f,.20f,.12f);var b=r.gameObject.AddComponent<UnityEngine.UI.Button>();b.targetGraphic=image;UnityEditor.Events.UnityEventTools.AddPersistentListener(b.onClick,callback);var le=r.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();le.preferredHeight=40;var text=Text("Label",r,20,36);text.text=label;text.alignment=TextAlignmentOptions.Center;text.rectTransform.anchorMin=Vector2.zero;text.rectTransform.anchorMax=Vector2.one;text.rectTransform.offsetMin=text.rectTransform.offsetMax=Vector2.zero;}
  static void WirePlayer(GameObject root,QuestDefinition quest)
  {
- var state=root.GetComponentInChildren<PlayerControlState>(true);var owner=state.GetComponent<QuestController>()??state.gameObject.AddComponent<QuestController>();owner.quests=new[]{quest};
+ var state=root.GetComponentInChildren<PlayerControlState>(true);var owner=state.GetComponent<QuestController>()??state.gameObject.AddComponent<QuestController>();if(owner.quests==null)owner.quests=Array.Empty<QuestDefinition>();if(!owner.quests.Contains(quest))owner.quests=owner.quests.Concat(new[]{quest}).ToArray();
  var canvas=root.GetComponentInChildren<Canvas>(true);if(canvas==null)throw new Exception("Player Canvas missing");
  var journal=canvas.GetComponentInChildren<QuestJournal>(true);
  if(journal==null){var host=Rect("QuestJournal",canvas.transform);host.anchorMin=Vector2.zero;host.anchorMax=Vector2.one;host.offsetMin=host.offsetMax=Vector2.zero;journal=host.gameObject.AddComponent<QuestJournal>();journal.owner=owner;
@@ -64,6 +64,3 @@ public static class BuildQuestSlice
  AssetDatabase.SaveAssets();return new{quest=AssetDatabase.GetAssetPath(quest),scene=ScenePath,player="Assets/Prefabs/Player/PlayerHolder.prefab"};
  }
 }
-
-
-

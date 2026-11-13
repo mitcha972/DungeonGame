@@ -17,6 +17,21 @@ public class PlayerControlState : MonoBehaviour
     private bool _focused = true;
     private bool _allowed;
     public bool GameplayAllowed => _allowed && Time.timeScale > 0f;
+    private UnityEngine.Object _actionOwner;
+    public bool ActionContextAllowed { get; private set; }
+    public bool ActionLocked => _actionOwner != null;
+    public event System.Action ActionCancelRequested;
+    public bool TryAcquireAction(UnityEngine.Object owner)
+    {
+        Synchronize();
+        if (owner == null || !GameplayAllowed || ActionLocked) return false;
+        _actionOwner = owner; Synchronize(); return true;
+    }
+    public void ReleaseAction(UnityEngine.Object owner)
+    {
+        if (_actionOwner != owner) return;
+        _actionOwner = null; Synchronize();
+    }
     public event System.Action<bool> GameplayChanged;
     public event System.Action InteractRequested;
 
@@ -32,14 +47,17 @@ public class PlayerControlState : MonoBehaviour
     private void Update() => Synchronize();
     private void ApplyCursorState()
     {
-        CursorLockMode desired = GameplayAllowed ? CursorLockMode.Locked : CursorLockMode.None;
+        bool lockCursor = GameplayAllowed || (ActionLocked && ActionContextAllowed);
+        CursorLockMode desired = lockCursor ? CursorLockMode.Locked : CursorLockMode.None;
         if (Cursor.lockState != desired) Cursor.lockState = desired;
-        if (Cursor.visible == GameplayAllowed) Cursor.visible = !GameplayAllowed;
+        if (Cursor.visible == lockCursor) Cursor.visible = !lockCursor;
     }
     private void OnDisable()
     {
         if (_playerInput != null) _playerInput.onActionTriggered -= OnAction;
         _allowed = false;
+        ActionContextAllowed = false;
+        ActionCancelRequested?.Invoke();
         if (_inputs != null) { _inputs.move = _inputs.look = Vector2.zero; _inputs.jump = _inputs.sprint = _inputs.toggleCamera = false; }
         GameplayChanged?.Invoke(false);
     }
@@ -48,6 +66,11 @@ public class PlayerControlState : MonoBehaviour
     private void OnAction(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if (!context.performed || !_focused) return;
+        if (ActionLocked)
+        {
+            if (context.action.name == "Pause") ActionCancelRequested?.Invoke();
+            return;
+        }
         if (_map != null && _map.IsExpanded)
         {
             if (context.action.name == "Pause" || context.action.name == "Map") { _map.SetExpanded(false); Synchronize(); }
@@ -108,6 +131,8 @@ public class PlayerControlState : MonoBehaviour
     public void Synchronize()
     {
         bool allowed = isActiveAndEnabled && _focused && Time.timeScale > 0f && (_map == null || !_map.IsExpanded) && !DialogueOpen && (_questJournal == null || !_questJournal.IsOpen) && (_stats == null || !_stats.IsDead) && !InteractionOpen && (_inventoryUI == null || _inventoryUI.inv == null || !_inventoryUI.inv.activeSelf);
+        ActionContextAllowed = allowed;
+        allowed = allowed && !ActionLocked;
         if (allowed != _allowed)
         {
             _allowed = allowed;

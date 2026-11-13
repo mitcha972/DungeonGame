@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "checks": [
+    "No missing scripts: Assets/Prefabs/WorldInteract/ResourceNode_HealingPotionSource.prefab",
+    "Definition, colliders and visual children assigned: Assets/Prefabs/WorldInteract/ResourceNode_HealingPotionSource.prefab",
+    "No missing scripts: Assets/Prefabs/WorldInteract/ResourceNode_Tree.prefab",
+    "Definition, colliders and visual children assigned: Assets/Prefabs/WorldInteract/ResourceNode_Tree.prefab",
+    "No missing scripts: Assets/Prefabs/WorldInteract/ResourceNode_CopperDeposit.prefab",
+    "Definition, colliders and visual children assigned: Assets/Prefabs/WorldInteract/ResourceNode_CopperDeposit.prefab",
+    "No missing scripts: Assets/Prefabs/Player/PlayerHolder.prefab",
+    "Existing PlayerHolder contains wired gatherer and HUD",
+    "Saved test scene has three configured resource node instances"
+  ],
+  "editScene": "Assets/Scenes/Test_Scenes/Gameplay_Test.unity",
+  "dirty": true
+}

@@ -1,5 +1,7 @@
 # Inventory, equipment and chests
 
+Prefab locations (2026-11-13): ItemInteract pickups remain in `Assets/Prefabs/Items/{Armor,Weapons,Consumables}`; equipped/display mesh prefabs are now in `Assets/Prefabs/Models/Equipment/{Armor,Clothing,Weapons,Consumables}`. Generic Item is in Items/Templates; inventory Canvas/slot templates are in UI/Inventory. These are distinct roles, not duplicates; GUIDs and contents were preserved. See [folder guide and validation](../MAINTENANCE.md#prefab-organization--2026-11-13).
+
 **Implemented prototype.** Files moved to Assets/Scripts/Inventory/{Items,Equipment,UI,Chests}; Interactable/world pickups belong to World/Interactions. [Shops](Shops.md) describe merchant storage. No inventory or purchase algorithm changed in organization.
 
 Inventory.Awake creates null slot entries and derives capacity from configured UI slots. The capacity-with-zero-count audit finding is superseded. Add fills an empty slot and returns failure at capacity; indexed operations guard bounds, refresh UI and notify. ItemInteract destroys pickups only after successful Add. ChestInventorySlot checks source membership and successful destination Add before removal. ScriptableObject item definitions have no quantity/unique-instance/save model.
@@ -13,3 +15,5 @@ UIPointerEvents supplies native callbacks while retaining vendor presentation co
 Quest turn-ins use generic InventoryItemAmount/Count/CanExchange/TryExchange APIs. Exchange builds a candidate slot list before mutation; reward capacity includes consumed slots. Quest transactions defer inventory notification until state/XP commit. Existing slot storage/equipment behavior is retained; stacks and durable item identity remain unimplemented. See [quests](Quests.md).
 
 Merchant integration (2026-11-13): Inventory owns serialized gold (default 100); ShopInventory uses deferred TryExchange notification to commit stock, gold and bag together. Player bag remains one item per slot. See [shops](Shops.md) for rules and validation.
+
+Resource gathering reuses the atomic exchange API to grant quantity N in N free bag slots; no stacks were added. ItemType.Resource is appended after the existing enum values for Logs/Copper ore. Normal inventory notification updates existing quest possession objectives. See [resource nodes](ResourceNodes.md).

@@ -1,0 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEditor;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
+public static class VerifyResourceAssets
+{
+ public static object Run(){if(EditorApplication.isPlaying)throw new Exception("Requires stopped Editor");var checks=new List<string>();string[] paths={"Assets/Prefabs/WorldInteract/ResourceNode_HealingPotionSource.prefab","Assets/Prefabs/WorldInteract/ResourceNode_Tree.prefab","Assets/Prefabs/WorldInteract/ResourceNode_CopperDeposit.prefab","Assets/Prefabs/Player/PlayerHolder.prefab"};foreach(var p in paths){var root=PrefabUtility.LoadPrefabContents(p);try{int missing=root.GetComponentsInChildren<Transform>(true).Sum(t=>GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject));if(missing>0)throw new Exception(p+" has "+missing+" missing scripts");checks.Add("No missing scripts: "+p);var n=root.GetComponent<ResourceNode>();if(n!=null){if(n.definition==null||!n.definition.IsValid||n.availableVisual==null||n.depletedVisual==null||n.GetComponent<Collider>()==null||n.availableVisual==root||n.depletedVisual==root)throw new Exception("Invalid node: "+p);checks.Add("Definition, colliders and visual children assigned: "+p);if(n.definition.resourceItem.icon==null)throw new Exception("Missing item icon");}else{var g=root.GetComponentInChildren<PlayerGathering>(true);var hud=root.GetComponentInChildren<GatheringProgressHUD>(true);if(g==null||hud==null||hud.owner!=g||hud.progressFill==null||hud.progressRoot==null)throw new Exception("Player gathering/HUD wiring incomplete");checks.Add("Existing PlayerHolder contains wired gatherer and HUD");}}finally{PrefabUtility.UnloadPrefabContents(root);}}
+ var scene=EditorSceneManager.OpenScene("Assets/Scenes/Test_Scenes/ResourceNodes_Test.unity",OpenSceneMode.Additive);try{var nodes=scene.GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<ResourceNode>(true)).ToArray();if(nodes.Length!=3||nodes.Any(n=>n.definition==null))throw new Exception("Test scene node count/references invalid");checks.Add("Saved test scene has three configured resource node instances");}finally{EditorSceneManager.CloseScene(scene,true);}var report=new{passed=true,checks=checks.ToArray(),editScene=SceneManager.GetActiveScene().path,dirty=SceneManager.GetActiveScene().isDirty};System.IO.File.WriteAllText("Assets/Plan/Validation/resource-node-assets.json",Newtonsoft.Json.JsonConvert.SerializeObject(report,Newtonsoft.Json.Formatting.Indented));return report;}
+}

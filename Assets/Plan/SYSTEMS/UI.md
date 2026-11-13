@@ -1,5 +1,7 @@
 # UI and modal ownership
 
+Reusable prefab templates now live in `Assets/Prefabs/UI/{Inventory,HUD,Feedback,Menus,Progression,Tooltips}` (2026-11-13). DialoguePanel retains its Dialogue path; embedded PlayerHolder UI was not rewritten. [Organization record](../MAINTENANCE.md#prefab-organization--2026-11-13) records byte/reference validation and exclusions.
+
 **Implemented uGUI**: Canvas/RectTransform, TMP and some legacy Text. No runtime UXML/USS migration exists. Files moved to UI/Menus, UI/Inventory, UI/HUD, UI/Feedback and UI/Tooltips. UICanvasController/UIPointerEvents are shared; DialoguePanel belongs to Dialogue.
 
 PlayerHolder supplies UICanvas, EventSystem and InputSystemUIInputModule. Dialogue adds an inactive reusable panel; the existing ShopUI is directly under Canvas so inventory visibility cannot hide trading. Preserve GraphicRaycaster, Button events and serialized slot references.
@@ -15,3 +17,5 @@ Dialogue/shop keyboard/mouse paths have historical evidence; organization checks
 Quest journal is added to PlayerHolder and centrally gated by PlayerControlState. J/Escape close it without pausing; gameplay remains blocked while open. See [quests](Quests.md) for the paged TMP/uGUI journal and persistence boundary.
 
 Minimap: PlayerHolder now supplies a north-up circular minimap and M/Escape expanded view, with PlayerControlState modal gating. Configuration, validation and limitations: [Minimap](Minimap.md).
+
+Resource feedback reuses the player's interaction TMP prompt and adds GatheringProgressHUD under the existing screen Canvas for a narrow gold progress bar. It has no input/modal ownership or independent Canvas. See [resource nodes](ResourceNodes.md) for setup and tested scope.

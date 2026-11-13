@@ -1,0 +1,394 @@
+{
+  "passed": true,
+  "errors": [],
+  "assetsChecked": 434,
+  "state": {
+    "playing": false,
+    "scenes": [
+      {
+        "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+        "dirty": false
+      }
+    ]
+  },
+  "preexistingMissingScripts": [
+    {
+      "path": "Assets/Particles/Misc/CFX_Poof.prefab",
+      "guid": "3156817f64ec68948ad6bb26569b9ef5",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "3156817f64ec68948ad6bb26569b9ef5",
+        "7987b6791dff098469332588914e2c84",
+        "e3d4119c3e4597d4b90fc27f1419ca4b"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Hits/Hit_SmokePuff.prefab",
+      "guid": "71273e443e11bc945925e3332efe2fbe",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "71273e443e11bc945925e3332efe2fbe",
+        "aff991a95cb92204fa62dffc7e7b6ead",
+        "f12d680b3c37c3c4fae5c220798d9977"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX2_BrokenHeart.prefab",
+      "guid": "a1256163b3bbba2498b73e4ab1be3e2f",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "025d69190a4ac0844aba79123c911853",
+        "53d0980ae6a0d2f4290706eb595fa872",
+        "6573156ff7aedbe49b6d60c015d0a67a",
+        "9864efbfd97a1d141aaef379143ac011",
+        "a1256163b3bbba2498b73e4ab1be3e2f",
+        "c6c72eb3fd1471c489daf719f70f62aa",
+        "fc30dedb4b1539a459c3601dc98f4b47"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX2_PickupStar.prefab",
+      "guid": "64dd8e28872763641bd747515c748b31",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "08192a9c1c42061469892514fe447db9",
+        "3ec618feb88d1cc4da88093df65f5795",
+        "64dd8e28872763641bd747515c748b31",
+        "6952b5f508f55574eaafe2fe79f66d45",
+        "b125e76401a407444b8a9c9491a660eb",
+        "c1b09b1ca8ba05d4682ccf6db6b1102d",
+        "e11a46337d7c55c42b0a2df4ae4ce720"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX_MagicPoof.prefab",
+      "guid": "a40b64bf23366dc42a892af2c6ff6140",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "26c880ce3c053d04982d2c8e435fdb95",
+        "28bd8c3c14d3f214da37557b91e0fa5d",
+        "3217b570b11b257469c5461f0457e5d4",
+        "3d70761f9ae377945a3aad2a3936df5e",
+        "74a6f6cd13c058a43858627e5383715e",
+        "7987b6791dff098469332588914e2c84",
+        "95b22be2b746dff46a95032d1620aae1",
+        "a40b64bf23366dc42a892af2c6ff6140",
+        "df9dab791d4192b4694f9a442f64b18d"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX_Tornado.prefab",
+      "guid": "352304b7fbe11f445970df6ae36e6227",
+      "resolved": true,
+      "missingScripts": 2,
+      "dependencies": [
+        "352304b7fbe11f445970df6ae36e6227",
+        "7fe6e3d4e0d540247a6d1af150194b29",
+        "d31773cd67ef98d44a63900e5bf368e8"
+      ]
+    },
+    {
+      "path": "Assets/Prefabs/Player/Variants/StarterAssets_PlayerContent.prefab",
+      "guid": "651d0d882e09f0b4ba6ea943eb19db14",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "038ce247d57296e4c99001fb519f501c",
+        "063aa479676c4084ebf187660ca0a7b8",
+        "0ad290558507f4a6a8f9b1d609740a1e",
+        "0cd44c1031e13a943bb63640046fad76",
+        "0d04029670d47a24c8584f2fc3ea14ee",
+        "0dce1650781f1a64196102cefe73883f",
+        "0f8810d5e106d4d68bc99d24b20063b0",
+        "10e39dc960b53f249aad7de61bcd1323",
+        "12e52e465ed793a4d801955e9f964a82",
+        "184b3f0f163507e4d9c5b12523aea8c4",
+        "1a48f5f1456ad0c459c3df13b68fe338",
+        "1aa08ab6e0800fa44ae55d278d1423e3",
+        "1fd900954f5a74d109763790843d6dc0",
+        "23a8d534e8c034eeebeb60fd163f6c33",
+        "2480ad3c0c0303048a0747e2fdc12873",
+        "27dab7032d4440448b4dbb3dd4210a37",
+        "29769833fb57f1e46be245124ca34d88",
+        "2a4db7a114972834c8e4117be1d82ba3",
+        "2a6f699b92daee347bbac00ad9653dab",
+        "3006b77b85e181c4384cbe9465ddcf28",
+        "315644ad09720e24f8baede6546a9227",
+        "31a19414c41e5ae4aae2af33fee712f6",
+        "3245ec927659c4140ac4f8d17403cc18",
+        "325a26d62b61fa94cb3c97c435efebc5",
+        "33955676c1104a640a44ccfc57043756",
+        "355efe35842d9a041b327454ea9ac481",
+        "35ea3d15283c7c3479e4d125e9b69b63",
+        "36078ab0369161e49a29d349ae3e0739",
+        "367c011470c39e143bd148ecb20edb09",
+        "38faf4969228ec94083ef5d0eeb2ef09",
+        "39477ce525f76fe4b913ef561f2a031b",
+        "3aba2028d2950264590c2b2a1776f37f",
+        "3be2d85708364564aab1c7519296a7ed",
+        "3c033631149b9c541bcf155cd94cccba",
+        "3c2752d3356bb78428ffbebd3d07db66",
+        "3fd5d3cedb6a4f947970db88d489163a",
+        "44f69b3f150714e4caf9e36bd22f4434",
+        "45046281f9159479394f2bec1d814d80",
+        "46d442aacf7f1e24bb8e1ae69fc2ea57",
+        "48f9928b51ba1324e810e3ea440995fc",
+        "4b4fe6a4465e6214583e8f5270848293",
+        "4c61fabec38534e4fbc8e3137996d06b",
+        "4d30254dbfbb63049bb2b9635f16b233",
+        "4d5a5b7956220524c9554064ade756c1",
+        "4d83d4361a9ec6e45a82db3f8eb6f96b",
+        "4e29b1a8efbd4b44bb3f3716e73f07ff",
+        "4eb6fc449fe1244efadf654d6bc88df6",
+        "4f231c4fb786f3946a6b90b886c48677",
+        "50cdf307204a9614084303691299b2c1",
+        "51caa12c193838f4c87f6efed47c29d1",
+        "5264ac7dd54fd4de69e43f8622b062e7",
+        "5603ba2736827934f814315bda037898",
+        "59f8146938fff824cb5fd77236b75775",
+        "5a6ad69d457fc3a4b80587f3b09f5075",
+        "5f7201a12d95ffc409449d95f23cf332",
+        "62d78afbb2dc37c498b85390e5527a34",
+        "63a13adb2b0e64f20a9b56869ed72751",
+        "646086810c101f846bc9bbc4c4f67983",
+        "651d0d882e09f0b4ba6ea943eb19db14",
+        "6ae1ddd644fc7294e8e74995f96d6ee0",
+        "6d63f48bf2bc2e64a9295d5b1a4b44bf",
+        "6eb64e76d285e42b3aedb4b379750069",
+        "6fef22ba427005b47b9d7e8c8ca71659",
+        "72854858bcb98154d8c9d390fd3061aa",
+        "73805eac2fdc3bb49a3333a3c65759c3",
+        "76c392e42b5098c458856cdf6ecaaaa1",
+        "77ebce5437875674da8b297c3eed5d1a",
+        "77f9f78c4e631d54e969fc25b2870fde",
+        "7bfdcf5ae44974616bca24f5f60a3551",
+        "7c633396ca334bb4ebf7547bf279e250",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "7ce9a1d9b9b1e429cb7d7698d2c905e2",
+        "7eaecb612dbbe63458c42c7ebebeba68",
+        "7ed14df8dcdc5fc47ba591cbf12be92f",
+        "7f66bbe09d1d8b64fab1a28afd42a2ed",
+        "80afd895097ad144893ad78943aaf475",
+        "82e534e2654860a4c99bc0b37ee0c181",
+        "8a8695521f0d02e499659fee002a26c2",
+        "8aff43a8fc7ded342899bad4afac7da1",
+        "8d2f32dac24d0c446b26db61358312e9",
+        "8ea81e7d69b01294196818fcf7e7b73c",
+        "8ffceb2cd865147c3b145d39cbddf270",
+        "9177cd1f22e3f3d4ebb87f64ba878647",
+        "98f277b0c8055e143b2fcf058d3c27dc",
+        "99ef864f5f705e04887faee418fd9ee4",
+        "9a3ebee110fd1e04088c76e034aa80ec",
+        "9e542340e6fb8a84689abcd28fd31cb8",
+        "9fc13096d4c7bb244866d63f47861a33",
+        "a1178a081f1ade44e9cc8c6371ef9fbc",
+        "a6b12701e3be266409a2148964b670c0",
+        "abc8142488685ac43b2c192f33b68377",
+        "b073a7eb329440c40aa00ce66e2f8832",
+        "b091a3d665de9ae4d90b86f73b6ded76",
+        "b2b0d8a6829a15a48929f6559b469eb3",
+        "b6b77768740796f4bb6bf78064789708",
+        "b7eabd888b8c18d4b987d24139533b51",
+        "b96f12f6108ae4c7c830b53377f99e6c",
+        "bc2f48a75acecb64c8e5638bcdd5314b",
+        "c13f0b11b6c524b40a5ef82de403ee88",
+        "c34ede961161f5448920ec6caef9f669",
+        "c4c5902e061a86643bdfde55d7f1a220",
+        "c5344497ceaf0cf4494b70377b09eae4",
+        "c9065aba528e445a5ae6811f5a46e55e",
+        "cb032138a9419cf4cb93f019fddf349e",
+        "cb65cd83f33ae2b49b08ff5f58dfad78",
+        "cbfd8eaf5a24995489c0edf6a5261ed5",
+        "cd74cb150725f4864be8b6a1b0a58810",
+        "d0f12e0c39967be4ab32efa708e04c05",
+        "d3653b3bdc7a70b46b290d2254c346f0",
+        "d5e62780d2431664ba8a43183d5c751a",
+        "d7094718bdac022428dd29244922d06b",
+        "dc42784cf147c0c48a680349fa168899",
+        "de13a7420582ded45a8d7d3f96889aca",
+        "df6f1b5142a86ce429b5460a051076d0",
+        "e9dfe0ac8683aa641b9c03bf4eb2fc80",
+        "f06ddef55587d5b469fbe2b907834c91",
+        "f3da5d6ac592afc4b9610199c8f66bb7",
+        "f769927f4bdc52045b3747ec53490d1f",
+        "f8784e24fe7ef4380b326dd1ffd645de",
+        "fc492295f6bd1194d88658b5506d7817",
+        "fe87c0e1cc204ed48ad3b37840f39efc"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Rings/CFX3_DarkMagicAura_A.prefab",
+      "guid": "d5ecdaafa2c0e054b8575f4940431746",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "0e9094c1cb53cc44595d77cdcf14b8d1",
+        "118c317da13d42a458832f85960e9081",
+        "2a23c90b6f28bf849a5ac28e2e9e6e41",
+        "3deb8633c6b720d42aab1c61a340a3af",
+        "63729df9e952c1f4b8fe34b9cd435a79",
+        "7bb9dadd2444bf3439822eed5645b2a0",
+        "d5ecdaafa2c0e054b8575f4940431746"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Rings/CFX3_ResurrectionLight_Circle.prefab",
+      "guid": "165a22010e4591a40a1875c495e85dac",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "0438adcdefc12d349a285d0ec6295fc2",
+        "165a22010e4591a40a1875c495e85dac",
+        "25fe726fd84d1154790a6f91bccc02c5",
+        "695873166113ab64997efed81c2426c7",
+        "6b22999712355474795091cef25021b4",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "80afd895097ad144893ad78943aaf475",
+        "91d3d754c3f2ed742b805399cbbbe0e9",
+        "c3fcf89fb2ad67b4cbfbebbe0e2edd3d"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Explosion/CFX3_Skull_Explosion.prefab",
+      "guid": "673521836e081d140a48240cfe9bea01",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "25fe726fd84d1154790a6f91bccc02c5",
+        "30db71c1add78bc42a3d83af298a4f5a",
+        "673521836e081d140a48240cfe9bea01",
+        "67c3db2f0d5b4aa4eaa1d7aec0699d15",
+        "695873166113ab64997efed81c2426c7",
+        "6c1c207199cd6d044858440b08f67726",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "80afd895097ad144893ad78943aaf475",
+        "c26f3dc2706e5764eb5100c273a349d7",
+        "da8f1c2ca73fa7849812d48c57b95295",
+        "e6d1dbabd3135d546b6c48db6a6879f3"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Rings/CFX3_MagicAura_B_Runic.prefab",
+      "guid": "a9ea6d1d5024f8d4c9210cbd677d3f75",
+      "resolved": true,
+      "missingScripts": 2,
+      "dependencies": [
+        "5bf91ad953f78d54baebb31d5f5ae4a5",
+        "6b22999712355474795091cef25021b4",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "80afd895097ad144893ad78943aaf475",
+        "91d3d754c3f2ed742b805399cbbbe0e9",
+        "a9ea6d1d5024f8d4c9210cbd677d3f75",
+        "d14d0e475cccac4459575f61f2a79a70"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX_Virus.prefab",
+      "guid": "2a474af3f4c27be4e9bdce39cfe4315d",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "24c8b679c66c15248a42885dddffc9e5",
+        "2656ffd617a68d949a7600cc66478917",
+        "2a474af3f4c27be4e9bdce39cfe4315d",
+        "4915fef45fefdd14d99dae19165b8a87",
+        "a3830d369df2cfc478d7dcdfcf71157c",
+        "ebbcc38b2a5a365429d42c1e4c7ebf21",
+        "fd5f77db0b1cae745bf2d8b8df194861"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX2_BatsCloud.prefab",
+      "guid": "5c5d55928698ff54eb540c25af4ba4ba",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "32e27c4d7b392d448928e914fbf9b2d1",
+        "5c5d55928698ff54eb540c25af4ba4ba",
+        "653d8478f72eda9478f558c843ccb9f7"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Rings/ResurrectionLight_Circle.prefab",
+      "guid": "bc83451c5e3478f49b278b312fd25eb6",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "0438adcdefc12d349a285d0ec6295fc2",
+        "25fe726fd84d1154790a6f91bccc02c5",
+        "695873166113ab64997efed81c2426c7",
+        "6b22999712355474795091cef25021b4",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "80afd895097ad144893ad78943aaf475",
+        "91d3d754c3f2ed742b805399cbbbe0e9",
+        "bc83451c5e3478f49b278b312fd25eb6",
+        "c3fcf89fb2ad67b4cbfbebbe0e2edd3d"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Rings/CFX3_MagicAura_D_Runic.prefab",
+      "guid": "dc87d0424d3d85449b307bdada74bb7d",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "0659a2faaee9f7442a45c7ec908dabcb",
+        "5bf91ad953f78d54baebb31d5f5ae4a5",
+        "c26f3dc2706e5764eb5100c273a349d7",
+        "d14d0e475cccac4459575f61f2a79a70",
+        "d9f8ab332ba6f4a45bd1913a9ff33b10",
+        "da8f1c2ca73fa7849812d48c57b95295",
+        "dc87d0424d3d85449b307bdada74bb7d"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Explosion/CFX2_WWExplosion_C.prefab",
+      "guid": "4df944a8dc025ed49a800849b61d9865",
+      "resolved": true,
+      "missingScripts": 2,
+      "dependencies": [
+        "03825a665aa62554eb3e92e2ab6c4b12",
+        "4df944a8dc025ed49a800849b61d9865",
+        "628acb7f048d3594fa40568f2a69c3e2",
+        "b4763647fd335254fb87da94740402ca",
+        "b479681f08574fd4188237f92866cbac",
+        "c2b6d89793f7f774ca8040eb59feb250",
+        "c4e3abfa6e9926248871f8c55bbbc57d",
+        "cb1e9236f4c5c7d47b900b5f0026b10f",
+        "e387f662afce60c4cbf4689043469d34"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX_Magical_Source.prefab",
+      "guid": "9e4577abe56a95f4a91d29a0473cd30c",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "12d6e56bbf4ac7a419ac250680dfae07",
+        "1fdeac39b28b45742b821b6c8acff998",
+        "503ba37627ac18c4ebe9bbe73d6ea9ad",
+        "7b11eec997e4c3044a59e4a2ff710b4e",
+        "7cd73ef8e5a31a244a672ae32c0f6ddb",
+        "80afd895097ad144893ad78943aaf475",
+        "9e4577abe56a95f4a91d29a0473cd30c"
+      ]
+    },
+    {
+      "path": "Assets/Particles/Misc/CFX4 Fire.prefab",
+      "guid": "defa01a2727911c44a0aafcf95552d43",
+      "resolved": true,
+      "missingScripts": 1,
+      "dependencies": [
+        "52c1a422bfc04b543adc653b160af1e6",
+        "53e601bdd2cb5434e96ec915a4e30792",
+        "c9386fd37103dcb479f09e942849a1ce",
+        "defa01a2727911c44a0aafcf95552d43",
+        "f71f658d2f20fdf42b41170b8319e02d"
+      ]
+    }
+  ]
+}

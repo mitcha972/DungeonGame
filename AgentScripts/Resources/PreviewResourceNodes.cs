@@ -1,0 +1,8 @@
+using System;
+using System.Linq;
+using System.Threading.Tasks;
+using UnityEngine;
+public static class PreviewResourceNodes
+{
+ public static async Task<object> Run(){var g=UnityEngine.Object.FindFirstObjectByType<PlayerGathering>();g.Cancel("");var state=g.GetComponent<PlayerControlState>();state.ClosePanels();state.SendMessage("OnApplicationFocus",true);foreach(var n in UnityEngine.Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None))n.RestoreState(new ResourceNode.Snapshot{charges=n.definition.maxCharges});var n1=UnityEngine.Object.FindObjectsByType<ResourceNode>(FindObjectsSortMode.None).First(n=>n.definition.collectionDuration==2);var inv=g.GetComponent<Inventory>();for(int i=0;i<inv.items.Count;i++)inv.items[i]=null;inv.NotifyExchange();g.GetComponent<PlayerCameraController>()?.SetCameraMode(true);var cc=g.GetComponent<CharacterController>();cc.enabled=false;g.transform.position=n1.transform.position+new Vector3(0,.1f,-2.3f);cc.enabled=true;Physics.SyncTransforms();var cam=Camera.main;var brain=cam.GetComponent<Unity.Cinemachine.CinemachineBrain>();if(brain!=null)brain.enabled=false;cam.transform.position=g.transform.position+Vector3.up*1.45f;cam.transform.LookAt(n1.transform.position+Vector3.up*.8f);await Task.Delay(200);bool started=g.TryBegin(n1);await Task.Delay(700);ScreenCapture.CaptureScreenshot("AgentScripts/Resources/resource-gathering-first-person.png");await Task.Delay(400);var prompt=g.GetComponent<PlayerController>().InteractionText;return new{started,progress=g.Progress,prompt=prompt.text,promptActive=prompt.gameObject.activeInHierarchy,bar=UnityEngine.Object.FindFirstObjectByType<GatheringProgressHUD>().progressRoot.activeInHierarchy,file="AgentScripts/Resources/resource-gathering-first-person.png"};}
+}

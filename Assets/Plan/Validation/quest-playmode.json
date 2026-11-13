@@ -58,7 +58,7 @@
     "cyclic prerequisites rejected",
     "duplicate objective IDs rejected"
   ],
-  "frameCount": 7406,
-  "worldTime": 72.01806,
+  "frameCount": 815,
+  "worldTime": 17.0575867,
   "scope": "Play Mode integration with simulated input, native trigger, ItemInteract and EnemyStats damage/death; quest DTO only, no disk gameplay save"
 }

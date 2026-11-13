@@ -22,7 +22,7 @@ public static class VerifyQuestSlice
  var settings=InputSystem.settings;var bg=settings.backgroundBehavior;var edit=settings.editorInputBehaviorInPlayMode;
  settings.backgroundBehavior=InputSettings.BackgroundBehavior.IgnoreFocus;settings.editorInputBehaviorInPlayMode=InputSettings.EditorInputBehaviorInPlayMode.AllDeviceInputAlwaysGoesToGameView;
  try {
- var owner=UnityEngine.Object.FindFirstObjectByType<QuestController>();owner.Initialize();var service=owner.Service;var quest=owner.quests.Single();var state=owner.GetComponent<PlayerControlState>();var d=owner.GetComponent<DialogueController>();var stats=owner.GetComponent<PlayerStats>();var inv=owner.GetComponent<Inventory>();var npc=UnityEngine.Object.FindFirstObjectByType<DialogueNpc>();var journal=UnityEngine.Object.FindFirstObjectByType<QuestJournal>();
+ var owner=UnityEngine.Object.FindFirstObjectByType<QuestController>();owner.Initialize();var service=owner.Service;var quest=owner.quests.Single(q=>q.id=="below-the-trading-post");var state=owner.GetComponent<PlayerControlState>();var d=owner.GetComponent<DialogueController>();var stats=owner.GetComponent<PlayerStats>();var inv=owner.GetComponent<Inventory>();var npc=UnityEngine.Object.FindFirstObjectByType<DialogueNpc>();var journal=UnityEngine.Object.FindFirstObjectByType<QuestJournal>();
  UnityEngine.Object.FindFirstObjectByType<SettingsMenu>().Resume();state.SendMessage("OnApplicationFocus",true);d.Close();await Task.Delay(400);
  int frame=Time.frameCount;float time=Time.time;await Task.Delay(300);Check(Time.frameCount>frame&&Time.time>time,"Play Mode frames and scaled world time advance");
  var enemies=UnityEngine.Object.FindObjectsByType<EnemyStats>(FindObjectsSortMode.None).Where(e=>e.isActiveAndEnabled).OrderBy(e=>e.name).ToArray();Check(enemies.Length==2,"fixture contains two Enemy_Main quest enemies");foreach(var e in enemies){Check(e.GetComponent<EnemyAi>()!=null&&e.GetComponent<UnityEngine.AI.NavMeshAgent>()!=null,"quest enemy retains Enemy_Main AI and agent");var agent=e.GetComponent<UnityEngine.AI.NavMeshAgent>();Check(agent!=null&&agent.isOnNavMesh,"Enemy_Main agent is on baked fixture NavMesh");e.GetComponent<EnemyAi>().enabled=false;}Check(npc.GetComponent<EnemyStats>()!=null,"quest giver retains Enemy_Main character components");Check(npc.GetComponent<UnityEngine.AI.NavMeshAgent>()!=null&&!npc.GetComponent<EnemyAi>().enabled,"NPC retains agent with hostile AI disabled");
@@ -80,6 +80,3 @@ public static class VerifyQuestSlice
  }finally{UnityEngine.Object.Destroy(quest);UnityEngine.Object.Destroy(prerequisite);}
  }
 }
-
-
-

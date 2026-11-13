@@ -1,0 +1,7 @@
+using System;
+using UnityEngine;
+using UnityEditor;
+public static class ResourceIcons
+{
+ public static object Build(){foreach(bool ore in new[]{false,true}){string name=ore?"CopperOre":"Logs";string path="Assets/ResourceNodes/"+name+"Icon.png";var tex=new Texture2D(32,32,TextureFormat.RGBA32,false);for(int y=0;y<32;y++)for(int x=0;x<32;x++){Color c=Color.clear;if(ore){float dx=(x-16)/12f,dy=(y-15)/10f;if(Mathf.Abs(dx)+Mathf.Abs(dy)*.65f<1.05f&&y>5&&y<27)c=((x+y)%9<4)?new Color(.72f,.4f,.21f):new Color(.36f,.25f,.19f);}else{if(x>5&&x<27&&y>8&&y<23)c=(y%5==0)?new Color(.25f,.12f,.05f):new Color(.48f,.28f,.12f);float d=Vector2.Distance(new Vector2(x,y),new Vector2(8,15));if(d<8)c=d>6?new Color(.27f,.13f,.05f):d>4?new Color(.76f,.54f,.28f):d>2?new Color(.48f,.28f,.12f):new Color(.76f,.54f,.28f);}tex.SetPixel(x,y,c);}tex.Apply();System.IO.File.WriteAllBytes(path,tex.EncodeToPNG());UnityEngine.Object.DestroyImmediate(tex);AssetDatabase.ImportAsset(path);var importer=(TextureImporter)AssetImporter.GetAtPath(path);importer.textureType=TextureImporterType.Sprite;importer.spriteImportMode=SpriteImportMode.Single;importer.filterMode=FilterMode.Point;importer.textureCompression=TextureImporterCompression.Uncompressed;importer.SaveAndReimport();var item=AssetDatabase.LoadAssetAtPath<Item>("Assets/ResourceNodes/"+name+".asset");item.icon=AssetDatabase.LoadAssetAtPath<Sprite>(path);EditorUtility.SetDirty(item);}AssetDatabase.SaveAssets();return "Created distinct log and copper ore inventory sprites";}
+}

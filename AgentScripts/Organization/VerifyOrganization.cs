@@ -13,7 +13,7 @@ public static class VerifyOrganization {
  var expected=new[]{"Assets/Scenes/Game/Start.unity","Assets/Scenes/Game/Loading.unity","Assets/Scenes/Game/Main.unity","Assets/Scenes/Test_Scenes/Combat_Test.unity"};
  var build=EditorBuildSettings.scenes.Where(s=>s.enabled).Select(s=>s.path).ToArray();if(!build.SequenceEqual(expected))throw new Exception("Unexpected build scene order: "+string.Join(",",build));
  var prefabChecks=new JArray();
- foreach(var p in new[]{"Assets/Prefabs/Player/PlayerHolder.prefab","Assets/Prefabs/Player/PlayerContent.prefab","Assets/Prefabs/WorldInteract/DialogueMerchant.prefab","Assets/Prefabs/WorldInteract/Shop.prefab","Assets/Prefabs/UI_SkillTree.prefab"}){
+ foreach(var p in new[]{"Assets/Prefabs/Player/PlayerHolder.prefab","Assets/Prefabs/Player/PlayerContent.prefab","Assets/Prefabs/WorldInteract/DialogueMerchant.prefab","Assets/Prefabs/WorldInteract/Shop.prefab","Assets/Prefabs/UI/Progression/UI_SkillTree.prefab"}){
  var root=PrefabUtility.LoadPrefabContents(p);
  try {
  int missing=root.GetComponentsInChildren<Transform>(true).Sum(t=>GameObjectUtility.GetMonoBehavioursWithMissingScriptCount(t.gameObject));if(missing!=0)throw new Exception(p+" has "+missing+" missing scripts");

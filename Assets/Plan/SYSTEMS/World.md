@@ -1,5 +1,7 @@
 # World and dungeon generation
 
+Prefab organization (2026-11-13): authored rooms now live in `Assets/Prefabs/Dungeons/Rooms`, generator in Dungeons/Generation, modular architecture/lamps in Environment/LowPolyDungeon and destructibles in Props/Destructibles/{Interactive,Debris,Unconfigured,Legacy/ImportedDuplicates}. Folder labels describe inspected components, not new functionality. See [organization record](../MAINTENANCE.md#prefab-organization--2026-11-13).
+
 **Implemented graph/room/NavMesh prototype; physical traversal unverified.** Sources moved to World/Dungeon, Interactions, Destructibles, Grabbing, Map and Utilities. ShopScript is under Shops and chest code under Inventory/Chests.
 
 DungeonGenerator creates a randomized depth-first spanning graph with reciprocal passages and a breadth-first farthest exit, validates grids (2â€“16 per axis), and assembles room prefabs. The recursive-retry generator at the old plugin path is superseded. Unity Random is global; no exposed replay seed exists.

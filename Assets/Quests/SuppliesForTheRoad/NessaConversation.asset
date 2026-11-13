@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3cb1b1c1fbdfb42b12a08b6413be21, type: 3}
+  m_Name: NessaConversation
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonGame.Dialogue.DialogueConversation
+  entryNode: offer
+  conditionalEntries:
+  - nodeId: complete
+    conditions:
+    - {fileID: 11400000, guid: 1a53a8e75aa1e5c4dbe9a784862a582a, type: 2}
+  - nodeId: draught
+    conditions:
+    - {fileID: 11400000, guid: daf8c7cb290390440aa01d661b0b3427, type: 2}
+  - nodeId: supplies
+    conditions:
+    - {fileID: 11400000, guid: 80691bccb6fea744ba2c5987bd9c4618, type: 2}
+  nodes:
+  - id: offer
+    text: An expedition runs on preparation. Two logs for the fire, one piece of
+      copper for repairs. After that, we'll see to the medicine. Can you lend a hand?
+    responses:
+    - text: I'll bring the supplies.
+      nextNode: 
+      action: {fileID: 11400000, guid: 041f8a156f8c4534ba439b3472f12ce0, type: 2}
+      conditions:
+      - {fileID: 11400000, guid: eeac61dbad89cc0429f81484d61b119e, type: 2}
+    - text: Maybe later.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+  - id: supplies
+    text: Two logs and one copper ore. The trees and copper rocks are close by. I
+      need the supplies in your bag before I can put them to work.
+    responses:
+    - text: Here are the logs and copper.
+      nextNode: 
+      action: {fileID: 11400000, guid: 6bdc75988e6081c4c920ab28b195f5f6, type: 2}
+      conditions:
+      - {fileID: 11400000, guid: 9a905d9d9253fbd4aacd9dc0bda44010, type: 2}
+    - text: I'll return with the supplies.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+  - id: draught
+    text: 'That will keep the fire burning and the tools in one piece. One last thing:
+      a healing potion from the spring. Bring it back and I''ll restock your medicine
+      pouch.'
+    responses:
+    - text: Here is the healing potion.
+      nextNode: 
+      action: {fileID: 11400000, guid: d8a20724582227849ad631690d200ecb, type: 2}
+      conditions:
+      - {fileID: 11400000, guid: 0e38c6557d9e244468f1f5abe8e7f4b0, type: 2}
+    - text: I'll fetch the potion.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+  - id: complete
+    text: Firewood stacked, tools repaired, medicine packed. That's an expedition
+      ready to leave. Take these potions, and thank you for seeing the job through.
+    responses:
+    - text: Safe travels, Nessa.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []

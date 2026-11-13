@@ -1,5 +1,7 @@
 # Combat and enemy NPCs
 
+Prefab organization (2026-11-13): Enemy_Main and gameplay enemies retain their Enemies paths; explicitly old Enemy-Test variants moved to Enemies/Legacy. Giant/Spider/Metalon visual source models are grouped under Models/Characters. Projectile prefabs retain Projectiles paths and are distinct from visual weapon/arrow models. See [organization record](../MAINTENANCE.md#prefab-organization--2026-11-13).
+
 **Implemented shared prototype.** Shared code moved to Combat, animation to Combat/Animation, definitions to Combat/Data and stats to Combat/Stats. PlayerStats belongs to Player; PlayerCombat stays with shared combat. EnemyAi/EnemyStats/Enemy/EnemyInteract/EnemyAnimator are under NPC/Enemies; tutorial AI and placeholder EnemyManager remain under NPC/Legacy. No class/API/enum renames.
 
 CharacterCombat owns accepted attacks, busy/cooldown, cancellation, block and hit recovery. CharacterAnimator selects authored weapon clips. AttackHitBox samples/deduplicates contacts; Projectile sweeps nearest hits, excludes owner, handles range/full query buffers. Ordinary projectiles call StartUp: the old zero-damage/range finding is superseded. Interval crossing and explicit SampleDamage prevent skipped windows; current-pose sampling is not a historical swept-melee simulation.
@@ -13,3 +15,7 @@ EnemyAi is an **Update-driven FSM**, not the coroutine-heavy version in early au
 Organization rerun: existing combat-window interval cases and dialogue attack-cancellation checks actually passed. Native collision/AI scenarios were not rerun.
 
 Enemy_Main carries QuestEnemyBridge for attributed OnDeath quest credit. NPC_Main inherits that prefab's model, animation, equipment and navigation components with hostile AI/combat/stats and quest kill reporting disabled. Tests and limitations are recorded in [quests](Quests.md).
+
+## Legacy animation-event console errors
+
+During the 2026-11-13 gathering-quest regression pass, the original Quest_Test run emitted `Enemy Animator` / `Punch - Right` missing-receiver errors for EnableMovement, DisableMovement, EnableDamage and DisableDamage. Identical signatures were present in earlier captured console history. Quest assertions (including controlled EnemyStats death attribution) still passed, but this is not a console-clean combat run. The resource-delivery pass did not alter combat or animation-event ownership. Next combat work must inspect the affected Animator GameObject/receiver and legacy clip events against the authoritative CharacterCombat timeline; do not blindly forward old events and accidentally add duplicate damage windows or unlock movement early.
