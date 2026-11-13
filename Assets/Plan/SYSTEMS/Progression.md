@@ -13,3 +13,5 @@ Source verifies bounds/disposal/delegation. Historical standalone tests cover XP
 Organization rerun: the existing Editor XP boundary/overflow/event tests actually passed. Full skill effects are still unimplemented.
 
 Quest integration reads QuestLevel (displayed authoritative level) and CurrentExperience and grants XP through existing AddXP. It does not read animated UI progression or introduce a second leveling state.
+
+Independent ten-skill XP/levels (1–30), skillbooks, success-based mining/melee/ranged/blocking XP and pooled TMP feedback are now implemented alongside the retained character XP/unlock tree. See [Skills](Skills.md) for the authoritative API, thresholds, test setup, save DTO and validation. This does not implement the legacy tree's log-only ability effects.

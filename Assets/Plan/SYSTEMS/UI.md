@@ -19,3 +19,5 @@ Quest journal is added to PlayerHolder and centrally gated by PlayerControlState
 Minimap: PlayerHolder now supplies a north-up circular minimap and M/Escape expanded view, with PlayerControlState modal gating. Configuration, validation and limitations: [Minimap](Minimap.md).
 
 Resource feedback reuses the player's interaction TMP prompt and adds GatheringProgressHUD under the existing screen Canvas for a narrow gold progress bar. It has no input/modal ownership or independent Canvas. See [resource nodes](ResourceNodes.md) for setup and tested scope.
+
+SkillFeedbackHUD now listens to independent skill XP on the existing UICanvas: fixed eight-popup TMP pool, projected action/HUD positions, fading rise, nonmodal level-up banner and optional Inspector-enabled debug text (hidden by default). No new Canvas or input owner. See [Skills](Skills.md).

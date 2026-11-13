@@ -27903,6 +27903,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &6719438550236434030
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2817966349645651038}
+  - component: {fileID: 2832905750407016895}
+  m_Layer: 0
+  m_Name: SkillFeedbackHUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2817966349645651038
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719438550236434030}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7718633904406769069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2832905750407016895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6719438550236434030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62662bcf9b29b44458075042df10a4b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SkillFeedbackHUD
+  progress: {fileID: 4262468969892216615}
+  canvas: {fileID: 7718633904406769058}
+  worldCamera: {fileID: 415924307934927166}
+  font: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  levelUpSound: {fileID: 8300000, guid: c12d40421acc84a4b90823d6080bbad1, type: 3}
+  showDebug: 0
 --- !u!1 &6749269659281760383
 GameObject:
   m_ObjectHideFlags: 0
@@ -29971,6 +30025,7 @@ GameObject:
   - component: {fileID: 3006688266968482197}
   - component: {fileID: 6452599829763698446}
   - component: {fileID: 3068833762296629557}
+  - component: {fileID: 4262468969892216615}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -30630,6 +30685,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af2b4ac672ee21429a28cefc9ac288c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGathering
+--- !u!114 &4262468969892216615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638059077940124454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e55aea34a5904148b13aaf79b5bc948, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSkillProgress
+  curve: {fileID: 11400000, guid: 037c136309c10154aa264e2c5cf52160, type: 2}
+  definitions:
+  - {fileID: 11400000, guid: da81b8f2c58644243b66f28e77e913f9, type: 2}
+  - {fileID: 11400000, guid: 8420d6bff7e2e6947983d68b52850272, type: 2}
+  - {fileID: 11400000, guid: d0ac8507f0de0bd4ebc1c6751245222b, type: 2}
+  - {fileID: 11400000, guid: be92eda1fb382e1498a2b52dd61f814c, type: 2}
+  - {fileID: 11400000, guid: e73a1d5ee066aa94a914970d6f321b6f, type: 2}
+  - {fileID: 11400000, guid: a5404cd97d31bbc4c86c9e15b4d5fff1, type: 2}
+  - {fileID: 11400000, guid: 63c37e23946e1c64b8e59c7ab9e7bee4, type: 2}
+  - {fileID: 11400000, guid: 199ecdd1627fd244c9c2c5a4634c67b6, type: 2}
+  - {fileID: 11400000, guid: 0ae8410915ee8a041a809b58ff6da09e, type: 2}
+  - {fileID: 11400000, guid: d12be4f0e6fcf2b4086808594aa14268, type: 2}
+  damageXpMultiplier: 1
+  successfulBlockXp: 10
+  experience: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &7638059077940124456
 GameObject:
   m_ObjectHideFlags: 0
@@ -33766,6 +33848,7 @@ RectTransform:
   - {fileID: 3897826187753465265}
   - {fileID: 4851320970638187613}
   - {fileID: 4466643683722770794}
+  - {fileID: 2817966349645651038}
   m_Father: {fileID: 7524881039011622613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

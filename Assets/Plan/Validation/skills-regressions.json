@@ -1,0 +1,11 @@
+{
+  "date": "2026-11-13",
+  "passed": true,
+  "resourceNodes": { "passed": true, "assertions": 62, "report": "resource-nodes-playmode.json" },
+  "gameplayModernization": { "passed": true, "scope": "Legacy character XP boundaries/events, combat intervals, primary scene entries and 300 seeded graph cases", "report": "../ARCHIVE/Evidence/Current/GAMEPLAY_MODERNIZATION_VALIDATION.txt" },
+  "merchantDialogue": { "passed": true, "frameCount": 629, "worldSeconds": 12.3608856, "timeScale": 1.0 },
+  "shopUI": { "passed": true, "slots": 3, "gold": 75, "scope": "Existing UI purchase, retained stock after reopen, sell and ownership" },
+  "dialogueLifecycle": { "passed": true, "serviceRequests": 3 },
+  "console": "No new gameplay errors during skills and merchant runs. UnityEditor.Connect.AsyncUtils InvalidOperationException occurred during the resource regression; resource assertions passed. Historical errors were not counted as new.",
+  "limitations": "Script-run Editor/Play Mode assertions, not NUnit, hardware-controller testing or production balance certification."
+}

@@ -15,6 +15,9 @@ public class ResourceNodeDefinition : ScriptableObject
     public Item requiredItem;
     public ResourceNodeRequirement[] requirements = Array.Empty<ResourceNodeRequirement>();
     public AudioClip collectionSound;
+    public bool awardsSkillXP;
+    public RpgSkill xpSkill = RpgSkill.Mining;
+    [Min(1)] public int skillXP = 25;
     public bool IsValid => resourceItem != null && quantity > 0 && collectionDuration > 0 && !float.IsInfinity(collectionDuration) && respawnDuration > 0 && !float.IsInfinity(respawnDuration) && maxCharges > 0;
     public InventoryItemAmount[] Rewards => new[] { new InventoryItemAmount { item = resourceItem, count = quantity } };
     public bool RequirementsMet(Transform player, Inventory inventory, out string reason)

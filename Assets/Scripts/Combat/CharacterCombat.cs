@@ -119,8 +119,16 @@ public class CharacterCombat : MonoBehaviour
     public virtual void TakeDamage(int damageTaken, Transform attackOwner, float direction, Vector3 position, bool blocked)
     {
         if (!isActiveAndEnabled || myStats.IsDead || damageTaken <= 0) return;
+        int previousHealth = myStats.currentHealth;
         int incoming = blocked ? Mathf.Max(1, Mathf.RoundToInt(damageTaken * blockDamageMultiplier)) : damageTaken;
         myStats.TakeDamage(incoming, attackOwner, direction);
+        if (blocked && isBlocking && damageTaken > incoming && myStats.currentHealth < previousHealth && !myStats.IsDead && attackOwner != null)
+        {
+            var attacker = attackOwner.GetComponentInParent<EnemyStats>();
+            var progress = GetComponent<PlayerSkillProgress>();
+            if (attacker != null && attacker.isActiveAndEnabled && !attacker.IsDead && !attacker.CompareTag(gameObject.tag) && progress != null)
+                progress.AwardXP(RpgSkill.Blocking, progress.successfulBlockXp, position);
+        }
         if (myStats.IsDead) return;
         StopAllCoroutines();
         _attackRoutine = null;

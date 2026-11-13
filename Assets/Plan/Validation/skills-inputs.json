@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "count": 21,
+  "checks": [
+    "Synthetic E and camera raycast obtain all ten books through Interactable",
+    "Full bag rejects entire supply without partial changes",
+    "Dead-health player cannot consume a book",
+    "Disabled skill owner retains book",
+    "Missing skill owner retains book",
+    "Extreme authored curve remains monotonic without overflow",
+    "Negative authored curve values become safe increasing costs",
+    "Skill reaches cap with no next cost: Magic",
+    "Skill reaches cap with no next cost: Combat",
+    "Skill reaches cap with no next cost: Blocking",
+    "Skill reaches cap with no next cost: Archery",
+    "Skill reaches cap with no next cost: Crafting",
+    "Skill reaches cap with no next cost: Mining",
+    "Skill reaches cap with no next cost: Smithing",
+    "Skill reaches cap with no next cost: Cooking",
+    "Skill reaches cap with no next cost: Fishing",
+    "Skill reaches cap with no next cost: Wisdom",
+    "Native Physics.OverlapBox melee hit awards Combat XP: actual=9",
+    "Native melee miss awards no XP",
+    "Native swept projectile awards Archery without Combat double credit: archery=13,combat=9,projectile=destroyed,target=(100.00, 11.00, 100.00),health=978",
+    "Input stress preserves running world"
+  ],
+  "error": null
+}

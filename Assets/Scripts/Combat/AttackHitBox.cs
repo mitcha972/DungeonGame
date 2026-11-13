@@ -71,7 +71,10 @@ public class AttackHitBox : MonoBehaviour
             direction.y = 0f;
             float angle = Vector3.SignedAngle(direction, stats.transform.forward, Vector3.up);
             bool blocked = target.isBlocking && Vector3.Dot(stats.transform.forward, direction.normalized) > 0.2f;
-            target.TakeDamage(_combat != null ? _combat.AttackDamage : Mathf.Max(1, myStats.damage), owner.transform, angle, other.ClosestPoint(transform.position), blocked);
+            int previousHealth = stats.currentHealth;
+            Vector3 hitPosition = other.ClosestPoint(transform.position);
+            target.TakeDamage(_combat != null ? _combat.AttackDamage : Mathf.Max(1, myStats.damage), owner.transform, angle, hitPosition, blocked);
+            owner.GetComponent<PlayerSkillProgress>()?.AwardDamage(stats, previousHealth - stats.currentHealth, false, hitPosition);
             return;
         }
         var destructible = other.GetComponentInParent<DestructibleObject>();

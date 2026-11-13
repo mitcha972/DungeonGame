@@ -17,3 +17,5 @@ Quest turn-ins use generic InventoryItemAmount/Count/CanExchange/TryExchange API
 Merchant integration (2026-11-13): Inventory owns serialized gold (default 100); ShopInventory uses deferred TryExchange notification to commit stock, gold and bag together. Player bag remains one item per slot. See [shops](Shops.md) for rules and validation.
 
 Resource gathering reuses the atomic exchange API to grant quantity N in N free bag slots; no stacks were added. ItemType.Resource is appended after the existing enum values for Logs/Copper ore. Normal inventory notification updates existing quest possession objectives. See [resource nodes](ResourceNodes.md).
+
+Skillbooks now extend the existing Item.Use path: ten nonstackable definitions grant exactly 100 matching skill XP, validate source slot/owner, consume before XP observers and notify afterward. Failed use retains the book; stale callbacks cannot reuse a consumed entry. Existing one-item-per-slot storage is unchanged. See [Skills](Skills.md).

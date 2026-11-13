@@ -60,6 +60,8 @@ public class PlayerGathering : MonoBehaviour
         {
             if (!node.Commit(this, transform, inventory)) { ShowFeedback("Your inventory cannot hold the reward."); return; }
             ShowFeedback("You collect " + node.definition.quantity + " x " + node.definition.resourceItem.name + ".");
+            if (node.definition.awardsSkillXP)
+                GetComponent<PlayerSkillProgress>()?.AwardXP(node.definition.xpSkill, node.definition.skillXP, node.transform.position);
             ResourceCollected?.Invoke(node, node.definition.resourceItem, node.definition.quantity);
         }
         finally { Finish(); }

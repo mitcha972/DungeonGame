@@ -186,3 +186,16 @@ Shop addition (2026-11-13): Assets/Scripts/Shops/ShopDefinition.cs — ShopDefin
 Retained authoring/verification tools: AgentScripts/Resources/{BuildResourceNodes,ResourceIcons,InspectResources,ResourceTestSession,VerifyResourceNodes,VerifyResourceAssets,PreviewResourceNodes}.cs, outside Assets. ResourceNode retains its original script GUID; no source files were moved across assembly boundaries.
 
 Gathering quest follow-up (2026-11-13): no new runtime scripts. DialogueController/DialoguePanel add versioned node-bound response handling while preserving Choose(int) callbacks. Authoring/verification tools: AgentScripts/GatheringQuests/{BuildGatheringQuest,GatheringQuestSession,VerifyGatheringQuest,VerifyGatheringQuestAssets}.cs. Existing AgentScripts/Quests/BuildQuestSlice preserves additional catalog entries; VerifyQuestSlice selects the original quest by stable ID.
+
+## Independent skill slice (2026-11-13 additions)
+
+| File | Responsibility |
+| --- | --- |
+| Assets/Scripts/Progression/Skills/SkillDefinition.cs | Stable RpgSkill enum and immutable skill presentation definition. |
+| Assets/Scripts/Progression/Skills/SkillXpCurve.cs | Shared configurable monotonic level 1–30 thresholds. |
+| Assets/Scripts/Progression/Skills/PlayerSkillProgress.cs | Per-player XP, award/events/queries and versioned snapshot contract. |
+| Assets/Scripts/Progression/Skills/SkillFeedbackHUD.cs | Existing-Canvas pooled TMP feedback, celebration and hidden debug display. |
+| Assets/Scripts/Progression/Skills/SkillbookTestSupply.cs | Gameplay_Test-only atomic ten-book Interactable supply. |
+| Assets/Scripts/Inventory/Items/Skillbook.cs | Existing Item.Use integration; exact 100-XP guarded consumption. |
+
+AgentScripts/Skills contains AssetDatabase authoring, temporary Play Mode scene selection and retained skills/inputs/assets validation scripts. These technical tooling files remain outside Assets; [Skills](SYSTEMS/Skills.md) owns behavior and executed validation.

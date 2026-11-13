@@ -23,3 +23,6 @@ MonoBehaviour:
   requiredItem: {fileID: 0}
   requirements: []
   collectionSound: {fileID: 0}
+  awardsSkillXP: 1
+  xpSkill: 5
+  skillXP: 25

@@ -94,7 +94,9 @@ public class Projectile : MonoBehaviour
                 Vector3 direction = owner.transform.position - stats.transform.position;
                 float angle = Vector3.SignedAngle(direction, stats.transform.forward, Vector3.up);
                 bool blocked = target.isBlocking && Vector3.Dot(stats.transform.forward, direction.normalized) > 0.2f;
+                int previousHealth = stats.currentHealth;
                 target.TakeDamage(_damage, owner.transform, angle, position, blocked);
+                owner.GetComponent<PlayerSkillProgress>()?.AwardDamage(stats, previousHealth - stats.currentHealth, true, position);
             }
             if (destroyOnCollide) Finish(position);
             return;
