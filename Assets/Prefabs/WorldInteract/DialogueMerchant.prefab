@@ -98,6 +98,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 644480837493709889, guid: e1b207992d1b34d48a3e6e09d8ce70de,
+        type: 3}
+      propertyPath: space
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 644480837493709889, guid: e1b207992d1b34d48a3e6e09d8ce70de,
+        type: 3}
+      propertyPath: definition
+      value:
+      objectReference: {fileID: 11400000, guid: db1efacb65980f34d84e0095b20a4a38,
+        type: 2}
     - target: {fileID: 8493076029018482161, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -181,7 +192,7 @@ PrefabInstance:
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
       propertyPath: dialogue
-      value: 
+      value:
       objectReference: {fileID: 1510246314727677946}
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
@@ -191,19 +202,19 @@ PrefabInstance:
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
       propertyPath: itemDrops.Array.data[0].lootItem
-      value: 
+      value:
       objectReference: {fileID: 3353445559250090224, guid: 7529876b77b256144bc5929d727a6937,
         type: 3}
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
       propertyPath: itemDrops.Array.data[1].lootItem
-      value: 
+      value:
       objectReference: {fileID: 6809448849816514026, guid: ab280a2b134527d4084e5d8d9ecdec69,
         type: 3}
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,
         type: 3}
       propertyPath: itemDrops.Array.data[2].lootItem
-      value: 
+      value:
       objectReference: {fileID: 9196553485080336457, guid: 9cef2002c56882746bd087379a814d96,
         type: 3}
     - target: {fileID: 9177374081163992488, guid: e1b207992d1b34d48a3e6e09d8ce70de,

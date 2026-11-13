@@ -166,3 +166,5 @@ Outside Assets intentionally; run with script run, not runtime components.
 | Assets/Scripts/Quests/QuestJournal.cs | Paged uGUI journal presentation. |
 
 Builder/assertion scripts remain outside Assets in AgentScripts/Quests. Existing source list above has 118 pre-quest entries; these nine additions bring the indexed custom source total to 127.
+
+Shop addition (2026-11-13): Assets/Scripts/Shops/ShopDefinition.cs — ShopDefinition ScriptableObject and serializable ShopStockRule (stock, allowlists, prices, restock). Existing ShopInventory/ShopScript/ShopInventoryUI/ShopInventorySlot expanded; Inventory owns gold, Item exposes tradeRestricted. Ephemeral builders/checks: AgentScripts/Shops/.

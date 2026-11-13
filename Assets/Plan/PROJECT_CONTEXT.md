@@ -15,7 +15,7 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 | [Player](SYSTEMS/Player.md) | Implemented: StarterAssets ThirdPersonController + PlayerInput/StarterAssetsInputs; PlayerController handles actions and PlayerControlState owns gameplay/UI eligibility. Camera wiring varies by scene. |
 | [Dialogue](SYSTEMS/Dialogue.md) | Implemented branching data, reusable TMP/uGUI panel, E interaction, keyboard/mouse responses, lifecycle and shop handoff. Merchant has historical passing Play Mode evidence. |
 | [Inventory](SYSTEMS/Inventory.md) | Implemented slot initialization, pickups, equipment, chest transfer and health consumables. No runtime item-instance/stack/save contract. |
-| [Shops](SYSTEMS/Shops.md) | Implemented stock display and item grants; **partial economy**: no charging or stock depletion. |
+| [Shops](SYSTEMS/Shops.md) | Implemented finite per-merchant stock, configurable restocking/restrictions/prices, gold transactions and 3x3 buy/sell UI; session-only economy. |
 | [Combat/NPCs](SYSTEMS/Combat.md) | Shared melee/projectile/block execution, stats and enemy FSM implemented. Shield durability and some exposed collision-mask fields remain incomplete. |
 | [World](SYSTEMS/World.md) | Connected maze and transactional room/NavMesh regeneration implemented; graph connectivity does not establish physical doorway/exit reachability. Historical tests include partial exit paths. |
 | [Progression](SYSTEMS/Progression.md) | XP bounds/local updater implemented. Player wrapper delegates to co-located PlayerStats; many skill effects are prototype/log-only. |

@@ -12,7 +12,9 @@ public class ShopScript : Interactable
 
     void Start()
     {
-        if (inventory == null || itemDrops == null) return;
+        if (inventory == null) return;
+        inventory.Initialize();
+        if (inventory.definition != null || itemDrops == null) return;
         foreach (var drop in itemDrops)
         {
             if (drop == null || drop.lootItem == null || Random.Range(0, 100) >= Mathf.Clamp(drop.dropChance, 0, 100)) continue;
@@ -40,7 +42,7 @@ public class ShopScript : Interactable
 
 //Replace it Root class Script
 [System.Serializable]
-public class ShopLoot 
+public class ShopLoot
 {
 	public GameObject lootItem;
 	public int dropChance;

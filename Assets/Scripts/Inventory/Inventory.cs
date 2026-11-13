@@ -9,8 +9,11 @@ public sealed class InventoryItemAmount
     [Min(1)] public int count = 1;
 }
 
-public class Inventory : MonoBehaviour 
+public class Inventory : MonoBehaviour
 {
+    [SerializeField, Min(0)] private int gold = 100;
+    public int Gold => gold;
+    internal void SetGoldAfterTrade(int value) => gold = Mathf.Max(0, value);
     public InventoryUI inventoryUI;
 
     // an item gets added/removed.
