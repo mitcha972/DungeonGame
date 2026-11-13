@@ -2,6 +2,13 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Serializable]
+public sealed class InventoryItemAmount
+{
+    public Item item;
+    [Min(1)] public int count = 1;
+}
+
 public class Inventory : MonoBehaviour 
 {
     public InventoryUI inventoryUI;
@@ -73,6 +80,48 @@ public class Inventory : MonoBehaviour
         items[second] = previous;
         RefreshSlot(first);
         RefreshSlot(second);
+        onItemChangedCallback?.Invoke();
+    }
+
+    public int Count(Item item) => item == null ? 0 : items.FindAll(value => value == item).Count;
+
+    private bool BuildExchange(IEnumerable<InventoryItemAmount> removals, IEnumerable<InventoryItemAmount> additions, out List<Item> result)
+    {
+        result = new List<Item>(items);
+        foreach (var removal in removals)
+        {
+            if (removal == null || removal.item == null || removal.count < 1 || removal.count > result.Count) return false;
+            for (int i = 0; i < removal.count; i++)
+            {
+                int slot = result.IndexOf(removal.item);
+                if (slot < 0) return false;
+                result[slot] = null;
+            }
+        }
+        foreach (var addition in additions)
+        {
+            if (addition == null || addition.item == null || addition.count < 1 || addition.count > result.Count) return false;
+            for (int i = 0; i < addition.count; i++)
+            {
+                int slot = result.IndexOf(null);
+                if (slot < 0) return false;
+                result[slot] = addition.item;
+            }
+        }
+        return true;
+    }
+    public bool CanExchange(IEnumerable<InventoryItemAmount> removals, IEnumerable<InventoryItemAmount> additions)
+        => BuildExchange(removals, additions, out _);
+    public bool TryExchange(IEnumerable<InventoryItemAmount> removals, IEnumerable<InventoryItemAmount> additions, bool notify = true)
+    {
+        if (!BuildExchange(removals, additions, out var result)) return false;
+        for (int i = 0; i < items.Count; i++) items[i] = result[i];
+        if (notify) NotifyExchange();
+        return true;
+    }
+    public void NotifyExchange()
+    {
+        for (int i = 0; i < items.Count; i++) RefreshSlot(i);
         onItemChangedCallback?.Invoke();
     }
 

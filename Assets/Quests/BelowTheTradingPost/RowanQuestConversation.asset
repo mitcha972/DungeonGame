@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc3cb1b1c1fbdfb42b12a08b6413be21, type: 3}
+  m_Name: RowanQuestConversation
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonGame.Dialogue.DialogueConversation
+  entryNode: offer
+  conditionalEntries:
+  - nodeId: completed
+    conditions:
+    - {fileID: 11400000, guid: 33261cd90c4a37d49932d86afdcb2eea, type: 2}
+  - nodeId: recover
+    conditions:
+    - {fileID: 11400000, guid: bb8f0b0a2d7aaca40be0f38efc8b6177, type: 2}
+  - nodeId: raiders
+    conditions:
+    - {fileID: 11400000, guid: 2347d57c60b71604cb1140dcf02a108c, type: 2}
+  nodes:
+  - id: offer
+    text: My runners never returned from the old watch post. Clear out two raiders,
+      then come back. If my ledger survives, I'll pay in supplies and experience.
+    responses:
+    - text: I'll help. What needs doing?
+      nextNode: 
+      action: {fileID: 11400000, guid: 1b82633abab1eea448ff8d359f240780, type: 2}
+      conditions: []
+    - text: Trade
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+      conditions: []
+    - text: Not yet.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+  - id: raiders
+    text: Two raiders hold the route. Watch your footing, bring a shield, and come
+      back alive. Your journal records what remains.
+    responses:
+    - text: The raiders are dealt with.
+      nextNode: 
+      action: {fileID: 11400000, guid: 145411415d6145c45a10644f8c098c3e, type: 2}
+      conditions:
+      - {fileID: 11400000, guid: 52595bc2a91f2c04fac6f3b022090e18, type: 2}
+    - text: I'll return when the route is clear.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+    - text: Trade
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+      conditions: []
+  - id: recover
+    text: Good work. Search the old watch post to the east. My ledger has a red cover.
+      Bring it here and I'll see you rewarded.
+    responses:
+    - text: I found the ledger. Here it is.
+      nextNode: 
+      action: {fileID: 11400000, guid: ec7c6601630481f4bb60124486e7dfb1, type: 2}
+      conditions:
+      - {fileID: 11400000, guid: 154172d33149f574aaa364325bd9bb10, type: 2}
+    - text: I'll search the watch post.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []
+    - text: Trade
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+      conditions: []
+  - id: completed
+    text: You brought my people a safe road and gave me back a piece of home. The
+      ledger is safe. Take these supplies; you've earned them. You're always welcome
+      at my fire.
+    responses:
+    - text: Trade
+      nextNode: 
+      action: {fileID: 11400000, guid: 34a687656b2269e4ba70fb6d47ef1dc4, type: 2}
+      conditions: []
+    - text: Safe travels, Rowan.
+      nextNode: 
+      action: {fileID: 11400000, guid: b04bc50ce9793c045abd69ada89442c3, type: 2}
+      conditions: []

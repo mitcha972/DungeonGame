@@ -7,7 +7,9 @@ public class PlayerControlState : MonoBehaviour
     [SerializeField] private SettingsMenu _pauseMenu;
     [SerializeField] private ShopInventoryUI _shopUI;
     [SerializeField] private DungeonGame.Dialogue.DialogueController _dialogue;
+    [SerializeField] private DungeonGame.Quests.QuestJournal _questJournal;
     public ShopInventoryUI ShopUI => _shopUI;
+    [SerializeField] private MapController _map;
     public bool DialogueOpen => _dialogue != null && _dialogue.IsOpen;
     private UnityEngine.InputSystem.PlayerInput _playerInput;
     private StarterAssets.StarterAssetsInputs _inputs;
@@ -46,6 +48,16 @@ public class PlayerControlState : MonoBehaviour
     private void OnAction(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
         if (!context.performed || !_focused) return;
+        if (_map != null && _map.IsExpanded)
+        {
+            if (context.action.name == "Pause" || context.action.name == "Map") { _map.SetExpanded(false); Synchronize(); }
+            return;
+        }
+        if (_questJournal != null && _questJournal.IsOpen)
+        {
+            if (context.action.name == "Pause" || context.action.name == "Journal") _questJournal.Close();
+            return;
+        }
         if (DialogueOpen)
         {
             if (context.action.name == "Pause") _dialogue.Close();
@@ -53,6 +65,12 @@ public class PlayerControlState : MonoBehaviour
         }
         switch (context.action.name)
         {
+            case "Map":
+                if (GameplayAllowed && _map != null) _map.SetExpanded(true);
+                break;
+            case "Journal":
+                if (GameplayAllowed && _questJournal != null) _questJournal.Open();
+                break;
             case "Pause":
                 if (InteractionOpen) { ClosePanels(); break; }
                 if (_pauseMenu != null)
@@ -77,6 +95,8 @@ public class PlayerControlState : MonoBehaviour
     }
     public void ClosePanels()
     {
+        if (_map != null) _map.SetExpanded(false);
+        if (_questJournal != null) _questJournal.Close();
         if (DialogueOpen) _dialogue.Close();
         if (_shopUI != null && _shopUI.gameObject.activeInHierarchy) _shopUI.CloseUI();
         if (_inventoryUI != null)
@@ -87,7 +107,7 @@ public class PlayerControlState : MonoBehaviour
     }
     public void Synchronize()
     {
-        bool allowed = isActiveAndEnabled && _focused && Time.timeScale > 0f && !DialogueOpen && (_stats == null || !_stats.IsDead) && !InteractionOpen && (_inventoryUI == null || _inventoryUI.inv == null || !_inventoryUI.inv.activeSelf);
+        bool allowed = isActiveAndEnabled && _focused && Time.timeScale > 0f && (_map == null || !_map.IsExpanded) && !DialogueOpen && (_questJournal == null || !_questJournal.IsOpen) && (_stats == null || !_stats.IsDead) && !InteractionOpen && (_inventoryUI == null || _inventoryUI.inv == null || !_inventoryUI.inv.activeSelf);
         if (allowed != _allowed)
         {
             _allowed = allowed;

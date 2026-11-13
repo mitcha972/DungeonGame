@@ -11,3 +11,5 @@ EnemyAi is an **Update-driven FSM**, not the coroutine-heavy version in early au
 [Maintenance](../MAINTENANCE.md) records current interval tests and dialogue attack cancellation. Native collision/projectile behavior, enemy navigation, frame-rate feel and balance still need targeted gameplay checks. Inspect consumers before assuming exposed collision-mask fields are applied. Vendor Outline/navigation components were not removed.
 
 Organization rerun: existing combat-window interval cases and dialogue attack-cancellation checks actually passed. Native collision/AI scenarios were not rerun.
+
+Enemy_Main carries QuestEnemyBridge for attributed OnDeath quest credit. NPC_Main inherits that prefab's model, animation, equipment and navigation components with hostile AI/combat/stats and quest kill reporting disabled. Tests and limitations are recorded in [quests](Quests.md).

@@ -23,6 +23,8 @@ public class PlayerStats : CharacterStats
     private LevelSystem levelSystem;
     private LevelSystemAnimated levelSystemAnimated;
     private PlayerSkills playerSkills;
+    public int QuestLevel => (levelSystem?.GetLevelNumber() ?? 0) + 1;
+    public int CurrentExperience => levelSystem?.GetExperience() ?? 0;
 
     //private EquipmentManager equipmentManager;
     public Inventory inventory;	// Reference to our inventory

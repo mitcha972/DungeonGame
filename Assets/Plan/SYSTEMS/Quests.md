@@ -1,0 +1,62 @@
+# Quest system
+
+**Implemented first playable/test slice, 2026-11-13.** Uses the existing interaction and dialogue runner. Production dungeon placement and coordinated gameplay saving remain planned. This reference supersedes the initial proposal and preserves its core decisions: authored adventures, explicit acceptance/turn-ins, immutable definitions, per-character runtime state and one conversation/input authority.
+
+## Implementation and integration
+
+- `QuestDefinition` ScriptableObjects contain stable quest/stage/objective IDs, title/summary, ordered stages, minimum displayed player level, completed-quest prerequisites, XP and item rewards. Validation rejects invalid targets/counts, duplicate stage/objective IDs and cyclic prerequisites. `QuestService` validates its explicit catalog, including duplicate quest IDs and missing prerequisite definitions.
+- `QuestService` owns independent character progress: NotStarted -> Active -> Completed, active counters, completed stage IDs and reward receipts. Availability is derived. Definitions never store player progress. Commands recheck current state and expected stage; no automatic acceptance, repeatability, abandonment or automatic stage advancement is implemented.
+- `QuestController` binds a service to the same player as Inventory/PlayerStats. It initializes after Awake and subscribes to inventory changes. The existing PlayerHolder prefab now contains it and the journal; there is no separate quest player prefab. It is scene-owned, not a static singleton or durable session owner.
+- `DialogueCondition` extends the existing DialogueConversation/Controller/Panel. Optional ordered conditional entries select stage/completed greetings, with entryNode fallback. Responses have conditions, checked again on Choose; filtered buttons preserve source indices while numbering visible choices consecutively. An empty eligible list supplies Goodbye. Existing unconditioned merchant data remains compatible.
+- `QuestDialogueCondition` supports not-started/available/active-stage/ready/completed facts. `QuestDialogueAction` accepts, turns in the expected stage, or reports an authored NPC interaction. Successful acceptance/turn-in refreshes the current conversation entry immediately; failure displays feedback and owns the transition so success text cannot be reached accidentally. Existing service enums/actions/hooks remain intact; StartQuest's generic hook is not automatically a quest backend.
+- `InventoryItemAmount`, Inventory.Count and planned-slot exchange APIs provide atomic multi-item removal/addition without stacking or an inventory-to-quest dependency. Exchange preflight accounts for consumed items freeing reward slots. Quest state/reward receipt and XP commit before inventory observers run; reentrant turn-in is guarded. Insufficient capacity changes nothing and allows retry. Final-stage completion and claim happen together in this slice; a separate pending-claim UI is not implemented.
+- `PlayerStats.QuestLevel` and CurrentExperience read authoritative LevelSystem state. XP rewards call AddXP, retaining existing progression behavior. No currency, new skill effects or separate progression owner was introduced.
+
+## Objective rules
+
+- **PossessItem:** counts matching occupied inventory slots, including preowned items. Equipment/chests do not count. Removing an item revokes readiness. Delivery optionally consumes only on successful stage turn-in. Multiple consuming objectives for the same item aggregate their costs. Cumulative loot provenance is not supported.
+- **KillEnemy:** QuestEnemyBridge subscribes to EnemyStats.OnDeath, matches Enemy definition and resolves the credited player's QuestController from the attack-owner parent. Repeated death calls, environment deaths and pre-acceptance kills cannot add credit. Add this bridge to each relevant enemy prefab/spawner; it is attached to the existing Enemy_Main prefab. No competing damage/death logic was added.
+- **DiscoverLocation:** QuestLocation uses a BoxCollider trigger and reports a semantic stable key for the correct player root. Trigger stay covers entering/accepting/restoring while inside. Discovery is boolean (required count must be 1), avoiding repeated collider/stay credit. It requires normal Unity trigger prerequisites; the fixture has a kinematic Rigidbody on its trigger.
+- **TalkToNpc:** authored QuestDialogueAction reports a stable interaction key, rather than counting raycast focus or every E press. Boolean required count is 1. Core validation exercises this objective; the sample adventure uses kill, location and item objectives.
+- Event counters only update active stages, saturate at requirements and do not leak into the next stage. Only explicit checked turn-ins advance the ordered stage sequence.
+
+## Sample and journal
+
+`Assets/Scenes/Test_Scenes/Quest_Test.unity` contains **Below the Trading Post**. Rowan asks for two watch-post raider kills, then discovery of the old watch post and recovery/delivery of his ledger. Final turn-in consumes the ledger, grants 125 XP and two existing potions, records completion and presents a warm completed conversation with the existing Trade action still available.
+
+The scene is a focused integration fixture using two Enemy_Main instances and a baked floor NavMesh. Killing assertions call TakeDamage and temporarily disable AI for deterministic attribution checks; they do not certify player weapon hit detection or combat feel. NPC_Main is a permanent variant of Enemy_Main, retaining its model/animator/equipment/NavMeshAgent while disabling hostile AI/combat/stats and replacing enemy interaction with the existing dialogue/shop route. DialogueMerchant remains intact for legacy references. Procedural spawn availability and quest giver placement remain production integration work. The ledger is a simple cube pickup using ItemInteract. No build-settings entries were changed.
+
+The existing `Assets/Prefabs/Player/PlayerHolder.prefab` contains QuestController/catalog and QuestJournal under its Canvas. QuestJournal is a paged TMP/uGUI view of quest status, objectives and rewards, with persistent Previous/Next/Close callbacks. Temporary QuestPlayer content is removed after reference migration. Keep the implementation small; extend these existing owners rather than introducing parallel prefab families.
+
+The project input asset adds Journal (J) in the existing Player map/KeyboardMouse group, preserving existing IDs/bindings. PlayerControlState explicitly owns journal eligibility, closes on J/Escape, ignores competing gameplay while open and retains world time. Quest acceptance does not open a second NPC UI. No separate E or Escape poller was introduced. Other player prefabs have no journal reference and ignore the new action.
+
+## Persistence boundary
+
+QuestService.CaptureJson/TryRestoreJson provide a version-1 quest-only DTO containing stable quest/stage/objective IDs, counters, completed stages and reward receipts. Restore builds/validates replacement state before applying it, clamps counters, rejects duplicate/unknown IDs and incompatible versions, and never grants XP/items. Item possession is read from the caller's current/restored inventory. Unknown/removed content is rejected as a whole rather than silently remapped; migration/quarantine is future work.
+
+This is **not disk gameplay saving**. A caller must coordinate the same character's inventory, XP/skills and quest state. The current scene-owned controller resets on scene/death reload. Exact-once durable rewards need an atomic shared character-save commit; runtime receipt guards cannot provide crash safety on their own. Death/session/floor policies and production bootstrap ownership remain unresolved. Do not wire isolated quest JSON as a complete save feature.
+
+## Validation and tools
+
+The initial Play Mode run passed 48 assertions; the final real-prefab run passed 56 after generic inventory-amount/UI callback review and prefab migration. Results and limits are recorded below. No Unity Test Runner/NUnit test assembly was added: these are retained script-run assertion suites executed inside the live Unity Editor.
+
+- `AgentScripts/Quests/BuildQuestSlice.cs`, entry BuildQuestSlice.Build: authors the isolated assets/prefab/scene via AssetDatabase. It copies the existing merchant fixture; do not run it just to test. It requires stopped Play Mode and does not deliberately save/replace the user's current scene.
+- `QuestTestSession.Prepare` / PrepareMerchant set a temporary EditorSceneManager.playModeStartScene so dirty editing scenes need not be closed or saved. Call Restore after stopping Play Mode to restore the prior start-scene override. Do not chain a Play command after preparation without checking the preparation result: script-run entry exceptions can arrive with shell exit code 0.
+- `VerifyQuestSlice.Run`: Play Mode assertion suite with simulated keyboard input, uGUI pointer dispatch, native physics trigger overlap, ItemInteract pickup, EnemyStats damage/death, reward/full-capacity/reentrancy and JSON validation. It writes [quest-playmode.json](../Validation/quest-playmode.json). A passing snapshot is not manual hardware testing or durable-save certification.
+- Existing merchant suites remain in AgentScripts/Dialogue. Use the original merchant fixture for their expected four-response conversation.
+
+Initial Editor compile completed with no errors. One scene-inspection call timed out while compiling, and a later merchant attempt lost connection during a confirmed domain reload; neither was counted as a passing test. Existing Unity AI/Connect network errors predate the quest tests; do not relabel them as quest assertion failures. Combat_Test has unrelated Editor/disk changes; preserve them rather than reverting or saving them as quest work.
+
+## Remaining implementation sequence
+
+1. Finish production integration: decide character/session lifecycle and death reset policy; place the inherited quest giver in accessible locations and verify relevant enemy spawners use Enemy_Main. PlayerHolder controller/journal/catalog and the Enemy_Main bridge are implemented. Guarantee objective/ledger availability across regenerated floors.
+2. Enemy_Main fixture replacement and floor NavMesh are implemented; next test actual first-person weapon combat and traversal rather than controlled damage calls. Tune pacing and authored dialogue for the OSRS/Barony feel.
+3. Expand journal polish/accessibility/resolution and mouse/controller coverage. Add authoring/editor validation tooling and more reusable requirement types (item/skill conditions) when content needs them. Separate pending reward claims only if designed explicitly.
+4. Coordinate versioned disk saving with item identity/instances, progression, quest receipts and session/floor state. Add content migrations, interrupted-write recovery and tests spanning scene/death reload before claiming gameplay save/load.
+5. Extend only with designed use cases: optional/branching stages, quest points, repeatability, abandonment and cumulative collection. Preserve the current shared dialogue/interaction/combat/input owners.
+
+### Reviewed-prefab validation result
+
+Final reviewed-code Play Mode run: **56 assertions passed**, recorded in `Assets/Plan/Validation/quest-playmode.json`. Covers Enemy_Main AI/agent presence and both enemies on baked NavMesh, friendly NPC component retention, E/number-key dialogue, filtered choices, uGUI turn-in clicks, attributed/de-duplicated kills, native location trigger, full-inventory pickup/delivery failures, possession loss, XP/items once, reentrancy, completion dialogue/reopen/shop handoff, persistent journal Close button, prerequisites/level/NPC objectives and JSON round trips. An initial runtime prefab-path assertion failed because Play Mode linkage metadata was unavailable; it was replaced by component checks, with source prefab inheritance checked separately in the Editor. AI is disabled during controlled kill-credit assertions; actual weapon collision/AI combat balance remains unverified. Merchant regression attempts interrupted by reloads were not counted as passes.
+
+User clarification applied: extend real PlayerHolder/Enemy_Main prefabs, use permanent NPC_Main inherited from Enemy_Main, retain test scenes, and remove the temporary QuestPlayer prefab after dependency verification. No new runtime framework was introduced. Existing DialogueMerchant remains for its serialized references and baseline conversation; it is not a temporary asset.

@@ -7,9 +7,17 @@ namespace DungeonGame.Dialogue
     public sealed class DialogueConversation : ScriptableObject
     {
         public string entryNode = "greeting";
+        public DialogueEntry[] conditionalEntries = Array.Empty<DialogueEntry>();
         public DialogueNode[] nodes = Array.Empty<DialogueNode>();
 
         public DialogueNode Find(string id) => Array.Find(nodes, n => n != null && n.id == id);
+    }
+
+    [Serializable]
+    public sealed class DialogueEntry
+    {
+        public string nodeId;
+        public DialogueCondition[] conditions = Array.Empty<DialogueCondition>();
     }
 
     [Serializable]
@@ -27,5 +35,6 @@ namespace DungeonGame.Dialogue
         [Tooltip("Empty ends the conversation after the action.")]
         public string nextNode;
         public DialogueAction action;
+        public DialogueCondition[] conditions = Array.Empty<DialogueCondition>();
     }
 }

@@ -9,3 +9,5 @@ PlayerControlState owns eligibility/cursor state. Subscriptions use onActionTrig
 PlayerStats consumes Class.health/default equipment and owns XP/skills/death restart. PlayerContent applies name/class. Retained legacy PlayerManager reloads by build index; PlayerStats reloads by current scene name.
 
 Source and historical merchant Input System tests verify input gating/restoration. [Maintenance](../MAINTENANCE.md) records current tests. Remaining: production-versus-test camera wiring, slopes/ceilings/multiple frame rates, focus/death transitions and the separate E-polling PlayerSword prototype. A file move does not certify every controller variant.
+
+PlayerHolder now includes QuestController/catalog and the uGUI journal with a PlayerControlState journal reference. Enemy/NPC quest integration and the limits of scene-owned progress are documented in [quests](Quests.md).

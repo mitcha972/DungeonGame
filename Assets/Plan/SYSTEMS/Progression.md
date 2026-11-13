@@ -11,3 +11,5 @@ PlayerSkills owns points/prerequisites/unlocks; repeated/None unlocks do not spe
 Source verifies bounds/disposal/delegation. Historical standalone tests cover XP boundaries/overflow; the Editor validator repeats them. [Maintenance](../MAINTENANCE.md) owns current results. Unfinished: designed effects, production bootstrap validation, persistence and an explicit penalty API if negative XP is later required.
 
 Organization rerun: the existing Editor XP boundary/overflow/event tests actually passed. Full skill effects are still unimplemented.
+
+Quest integration reads QuestLevel (displayed authoritative level) and CurrentExperience and grants XP through existing AddXP. It does not read animated UI progression or introduce a second leveling state.

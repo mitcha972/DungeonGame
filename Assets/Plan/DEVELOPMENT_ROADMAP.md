@@ -25,7 +25,7 @@ These describe retained implementations, not every scene passing. [Maintenance](
 ## Subsequent milestones — choose scope first
 
 - **Inventory/economy:** decide currency ownership, prices, stock depletion/restock, transfer failure, item quantities/identity and persistence before replacing free item grants. Dialogue opening ShopUI does not complete an economy.
-- **Quest/bank/service slice:** implement one explicit use case through existing service hooks. Define completion/idempotency and modal ownership first. No quest/bank storage exists.
+- **Quest system — first slice implemented:** see [quests](SYSTEMS/Quests.md). Finish production NPC/spawn placement, first-person combat coverage and coordinated gameplay persistence. Extend PlayerHolder/Enemy_Main and permanent NPC_Main; avoid duplicate temporary prefabs. Bank/services remain future scopes.
 - **Skills:** replace log-only effects with designed abilities/stat changes and validate that each bootstrap uses the intended PlayerStats state.
 - **Persistence:** choose a versioned contract for character, items/equipment, XP/skills, quests and session/floor seed policy. PlayerPrefs preferences are not gameplay saves.
 - **Replayable generation:** define session/floor seed semantics before exposing a seed; preserve Random state in tests.

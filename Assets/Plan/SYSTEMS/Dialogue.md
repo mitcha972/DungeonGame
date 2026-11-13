@@ -19,3 +19,5 @@ Historical tests passed E/input blocking/world time, keyboard/mouse branching, u
 Ephemeral tools are in `AgentScripts/Dialogue/`. Run VerifyMerchantDialogue.Run, VerifyDialogueMouse.Run and VerifyDialogueLifecycle.Run via Unity CLI script run. They temporarily adjust background routing/paired devices and restore them. They test actual Input System/uGUI paths, not manual hardware/platform behavior. BuildMerchantDialogue.Build regenerates the dedicated assets/scene; do not run it merely to test an existing fixture.
 
 Organization rerun: keyboard, mouse and lifecycle suites actually passed after all script moves; see [current validation](../MAINTENANCE.md). No dialogue runtime algorithm changed in this pass.
+
+Quest integration extends this same runner with optional conditional entries/responses and checked QuestDialogueAction commands. Filtered responses retain original source indices and visible numeric shortcuts. Stage/completion actions refresh the NPC greeting immediately. See [quests](Quests.md); no parallel conversation system was introduced.

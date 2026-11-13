@@ -51,3 +51,9 @@ PlayerStats owns player XP/skills. Player delegates to co-located PlayerStats, r
 ## Serialization and tooling
 
 Organization retained class names, namespaces, serialized fields, enum ordering, GUIDs and Assembly-CSharp/Assembly-CSharp-Editor boundaries. No asmdefs were added. Editor-only code stays in Editor folders; script-run builders remain outside Assets. Vendor/Starter Assets paths were retained. [Maintenance](MAINTENANCE.md) records scene/output path corrections and validation.
+
+## Quest integration (2026-11-13)
+
+QuestController/QuestService own per-player quest state; immutable QuestDefinition assets describe content. Existing DialogueController/Panel evaluate DialogueCondition and QuestDialogueAction against that service. Inventory exposes generic atomic exchanges; it does not depend on quest code. Enemy_Main carries QuestEnemyBridge; NPC_Main is its friendly prefab variant with hostile components disabled. PlayerHolder owns the quest controller and uGUI journal; PlayerControlState retains modal/input authority. See [quests](SYSTEMS/Quests.md) for implemented boundaries and the quest-only JSON persistence limitation.
+
+Minimap presentation is owned by MapController on PlayerHolder HUD; it follows the player through the existing MapCamera. PlayerControlState owns Map/M and Escape gating; expanded mode blocks gameplay without pausing. See [minimap](SYSTEMS/Minimap.md).

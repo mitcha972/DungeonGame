@@ -11,3 +11,7 @@ UIPointerEvents implements native click/enter/exit callbacks with an optional Co
 Scene rename correction: SettingsMenu.Exit loads **Start**, the menu's new name, instead of **Main**, now dungeon gameplay. MenuController/LoadingScript guards use the relocated paths, preserving destination roles.
 
 Dialogue/shop keyboard/mouse paths have historical evidence; organization checks are in [maintenance](../MAINTENANCE.md). Inventory drag/right-click, SlimUI settings, display cameras, accessibility/localization and alternate resolutions are not fully certified. Future bank/service panels need explicit input ownership; arbitrary modals are not automatically discovered.
+
+Quest journal is added to PlayerHolder and centrally gated by PlayerControlState. J/Escape close it without pausing; gameplay remains blocked while open. See [quests](Quests.md) for the paged TMP/uGUI journal and persistence boundary.
+
+Minimap: PlayerHolder now supplies a north-up circular minimap and M/Escape expanded view, with PlayerControlState modal gating. Configuration, validation and limitations: [Minimap](Minimap.md).

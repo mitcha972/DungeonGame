@@ -1411,8 +1411,9 @@ GameObject:
   - component: {fileID: 5160646311569419616}
   - component: {fileID: 2612642202064244446}
   - component: {fileID: 6753919449685918973}
+  - component: {fileID: 2102378818591635495}
   m_Layer: 0
-  m_Name: Enemy-Test
+  m_Name: Enemy_Main
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1614,6 +1615,18 @@ MonoBehaviour:
     type: 2}
   replaceableAbilityAnim: {fileID: 0}
   overrideController: {fileID: 0}
+--- !u!114 &2102378818591635495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5160646311569419609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d391b1e0cf56fdd49844d86fea6671df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DungeonGame.Quests.QuestEnemyBridge
 --- !u!1 &5200028227428984663
 GameObject:
   m_ObjectHideFlags: 0

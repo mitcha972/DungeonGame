@@ -122,7 +122,7 @@ Current 2026-11-12 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/World/Interactions/DoorScript.cs](<../Scripts/World/Interactions/DoorScript.cs>) | Interactable door opening/closing. |
 | [Assets/Scripts/World/Interactions/Interactable.cs](<../Scripts/World/Interactions/Interactable.cs>) | Shared focus and Interact(owner) contract. |
 | [Assets/Scripts/World/Interactions/ItemInteract.cs](<../Scripts/World/Interactions/ItemInteract.cs>) | Guarded world pickup/add-before-destroy. |
-| [Assets/Scripts/World/Map/MapController.cs](<../Scripts/World/Map/MapController.cs>) | Retained map placeholder. |
+| [Assets/Scripts/World/Map/MapController.cs](<../Scripts/World/Map/MapController.cs>) | North-up minimap follow, owned render output, heading marker and expanded view; see SYSTEMS/Minimap.md. |
 | [Assets/Scripts/World/Utilities/MeshFromSkinnedMesh.cs](<../Scripts/World/Utilities/MeshFromSkinnedMesh.cs>) | Edit-mode bind-mesh conversion; not auto-executed. |
 
 ## Retained integration locations
@@ -150,3 +150,19 @@ Outside Assets intentionally; run with script run, not runtime components.
 | [AgentScripts/Organization/OrganizationPlaySmoke.cs](<../../AgentScripts/Organization/OrganizationPlaySmoke.cs>) | Organization/reference validation utility. |
 | [AgentScripts/Organization/OrganizeProjectAssets.cs](<../../AgentScripts/Organization/OrganizeProjectAssets.cs>) | One-shot archived-manifest migration; do not rerun after completion. |
 | [AgentScripts/Organization/VerifyOrganization.cs](<../../AgentScripts/Organization/VerifyOrganization.cs>) | Organization/reference validation utility. |
+
+## Quest additions (2026-11-13)
+
+| File | Responsibility |
+| --- | --- |
+| Assets/Scripts/Dialogue/DialogueCondition.cs | Shared dialogue condition contract and all-condition evaluator. |
+| Assets/Scripts/Quests/QuestDefinition.cs | Immutable quest/stage/objective definitions and content validation. |
+| Assets/Scripts/Quests/QuestService.cs | Character progress, checked transitions/rewards and versioned quest DTO. |
+| Assets/Scripts/Quests/QuestController.cs | Player inventory/progression binding. |
+| Assets/Scripts/Quests/QuestEnemyBridge.cs | Existing enemy death attribution adapter. |
+| Assets/Scripts/Quests/QuestLocation.cs | Semantic location trigger adapter. |
+| Assets/Scripts/Quests/QuestDialogueCondition.cs | Quest facts exposed to existing dialogue. |
+| Assets/Scripts/Quests/QuestDialogueAction.cs | Accept, turn-in and authored NPC report actions. |
+| Assets/Scripts/Quests/QuestJournal.cs | Paged uGUI journal presentation. |
+
+Builder/assertion scripts remain outside Assets in AgentScripts/Quests. Existing source list above has 118 pre-quest entries; these nine additions bring the indexed custom source total to 127.

@@ -28,14 +28,22 @@ namespace DungeonGame.Dialogue
             responseTemplate.gameObject.SetActive(false);
             for (int i = 0; i < node.responses.Length; i++)
             {
-                if (node.responses[i] == null) continue;
+                if (!owner.CanChoose(node.responses[i])) continue;
                 int index = i;
                 var button = Instantiate(responseTemplate, responseParent);
                 button.name = "Response" + (i + 1);
-                button.GetComponentInChildren<TMP_Text>(true).text = (i + 1) + ". " + node.responses[i].text;
+                button.GetComponentInChildren<TMP_Text>(true).text = (buttons.Count + 1) + ". " + node.responses[i].text;
                 button.onClick.AddListener(() => controller.Choose(index));
                 button.gameObject.SetActive(true);
                 buttons.Add(button);
+            }
+            if (buttons.Count == 0)
+            {
+                var exit = Instantiate(responseTemplate, responseParent);
+                exit.GetComponentInChildren<TMP_Text>(true).text = "1. Goodbye";
+                exit.onClick.AddListener(controller.Close);
+                exit.gameObject.SetActive(true);
+                buttons.Add(exit);
             }
             for (int i = 0; i < buttons.Count; i++)
             {
