@@ -2814,6 +2814,52 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 309564565}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1420674202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1420674204}
+  - component: {fileID: 1420674203}
+  m_Layer: 0
+  m_Name: StatusEffectTestSupply
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1420674203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420674202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122a74c1d72977a4696c7f64abbabcb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectTestSupply
+  poisonPotion: {fileID: 11400000, guid: 0a62f5ea23d186445be5f86501568e41, type: 2}
+  count: 3
+--- !u!4 &1420674204
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1420674202}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1421624752
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7406,6 +7452,7 @@ GameObject:
   - component: {fileID: 8023817529708054551}
   - component: {fileID: 546425363246745836}
   - component: {fileID: 8023817529708054576}
+  - component: {fileID: 8023817529708054579}
   m_Layer: 7
   m_Name: Enemy-Test 1
   m_TagString: Enemy
@@ -7439,7 +7486,6 @@ MonoBehaviour:
   isBlocking: 0
   canBlock: 0
   cooldownTime: 0
-  blockDamageMultiplier: 0.35
   hitRecoveryTime: 0.3
 --- !u!114 &8023817529708054576
 MonoBehaviour:
@@ -7507,6 +7553,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8023817529708054579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023817529708054574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
 --- !u!4 &8126712510230720746
 Transform:
   m_ObjectHideFlags: 0
@@ -7638,3 +7696,4 @@ SceneRoots:
   - {fileID: 1176406449}
   - {fileID: 296466427}
   - {fileID: 410653895}
+  - {fileID: 1420674204}

@@ -26295,6 +26295,55 @@ RectTransform:
   m_AnchoredPosition: {x: 275.2, y: -44.0625}
   m_SizeDelta: {x: 550.4, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6159671740029615782
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4265260845438887139}
+  - component: {fileID: 8633561017779162450}
+  m_Layer: 0
+  m_Name: StatusEffects
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4265260845438887139
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159671740029615782}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7718633904406769069}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 20, y: -100}
+  m_SizeDelta: {x: 370, y: 48}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &8633561017779162450
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6159671740029615782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e3c308bfa00ad148a1067e776fd6681, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectHUD
+  controller: {fileID: 5271428591430845496}
 --- !u!1 &6256440137095517792
 GameObject:
   m_ObjectHideFlags: 0
@@ -30026,6 +30075,7 @@ GameObject:
   - component: {fileID: 6452599829763698446}
   - component: {fileID: 3068833762296629557}
   - component: {fileID: 4262468969892216615}
+  - component: {fileID: 5271428591430845496}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -30447,7 +30497,6 @@ MonoBehaviour:
   isBlocking: 0
   canBlock: 0
   cooldownTime: 0
-  blockDamageMultiplier: 0.35
   hitRecoveryTime: 0.3
   aim: {fileID: 80962058}
 --- !u!114 &7638059077940124453
@@ -30507,7 +30556,6 @@ MonoBehaviour:
   interactText: {fileID: 8797746200864022818}
   interactionDistance: 4
   turnSpeed: 540
-  _powerAttackHoldTime: 0.25
 --- !u!114 &7638059077940124630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30712,6 +30760,18 @@ MonoBehaviour:
   damageXpMultiplier: 1
   successfulBlockXp: 10
   experience: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
+--- !u!114 &5271428591430845496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7638059077940124454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
 --- !u!1 &7638059077940124456
 GameObject:
   m_ObjectHideFlags: 0
@@ -33849,6 +33909,7 @@ RectTransform:
   - {fileID: 4851320970638187613}
   - {fileID: 4466643683722770794}
   - {fileID: 2817966349645651038}
+  - {fileID: 4265260845438887139}
   m_Father: {fileID: 7524881039011622613}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}

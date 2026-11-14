@@ -12,9 +12,34 @@ public class Consumable : Item
    
     public StatModifier statModifier; // Declare statModifier variable
     public GameObject particleEffect;
+    public StatusEffectDefinition statusEffect;
 
     public override void Use(GameObject owner, int SlotIndex)
     {
+        if (statusEffect != null)
+        {
+            var bag = owner != null ? owner.GetComponent<Inventory>() : null;
+            var effects = owner != null ? owner.GetComponent<StatusEffectController>() : null;
+            if (bag == null || effects == null || SlotIndex < 0 || SlotIndex >= bag.items.Count || bag.items[SlotIndex] != this) return;
+            // Reserve exact slot before application events can invoke Use again.
+            bag.items[SlotIndex] = null;
+            var result = effects.TryApplyEffect(statusEffect, owner.transform);
+            if (result != StatusEffectApplyResult.Applied)
+            {
+                bag.items[SlotIndex] = this;
+                if (result == StatusEffectApplyResult.AlreadyActive)
+                {
+                    string message = statusEffect.displayName + " is already active.";
+                    var hud = owner.transform.root.GetComponentInChildren<StatusEffectHUD>(true);
+                    if (hud != null && hud.isActiveAndEnabled) hud.ShowMessage(message);
+                    else Tooltip_Warning.ShowTooltip_Static(message);
+                }
+                return;
+            }
+            bag.NotifyExchange();
+            owner.GetComponent<CharacterAnimator>()?.PlayTargetAnimation("Drink", true);
+            return;
+        }
         if (owner == null || StatAmount <= 0 || statModifier != StatModifier.Health) return;
         var PS = owner.GetComponent<PlayerStats>();
         var inventory = owner.GetComponent<Inventory>();

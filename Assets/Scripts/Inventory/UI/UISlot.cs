@@ -81,6 +81,7 @@ public class UISlot : MonoBehaviour , IDropHandler
 
 		if (item == null || inventory == null || equipmentManager == null)
 			return;
+        if (slotIndex < 0 || slotIndex >= inventory.items.Count || inventory.items[slotIndex] != item) return;
 
 		//Add Item Back to world
 		//Change//

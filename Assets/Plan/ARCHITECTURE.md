@@ -69,3 +69,9 @@ Resource-delivery quest integration (2026-11-13) retains those boundaries: Resou
 ## Independent skill progression (2026-11-13)
 
 PlayerSkillProgress is the per-player owner of ten independent XP totals alongside PlayerStats' existing character XP/unlock tree. SkillDefinition/SkillXpCurve are immutable shared configuration. PlayerGathering awards only after committed rewards; melee/projectile contacts measure actual hostile enemy health loss; CharacterCombat reports successful blocks. Skillbook reuses Item.Use and commits exact-slot consumption before XP observers; SkillFeedbackHUD listens on the existing UICanvas with no input authority. Versioned snapshot data is available, but coordinated gameplay disk saving remains unimplemented. See [Skills](SYSTEMS/Skills.md).
+
+## Temporary status effects (2026-11-13)
+
+StatusEffectDefinition is shared configuration; StatusEffectController owns per-entity snapshots/timers and exposes events/query APIs. CharacterStats retains health/armor/death and exposes derived modifiers; CharacterCombat consumes effective damage, ThirdPersonController and EnemyAi consume effective movement. Consumable optionally applies effects through the shared controller; StatusEffectHUD presents them on the existing UICanvas without input ownership. PlayerHolder/Enemy_Main and Combat_Test are wired; temporary effects are session-only. See [status effects](SYSTEMS/StatusEffects.md).
+
+Item.worldPrefab optionally supplies a complete world pickup for EquipmentManager.TryDropItem; UISlot removes its exact source entry only after successful creation. Equipment retains the original mesh-based fallback. Poison Potion owns an independent pickup prefab while reusing potion art; see [inventory](SYSTEMS/Inventory.md).

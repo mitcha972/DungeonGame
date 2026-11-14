@@ -145,6 +145,15 @@ public void UnequipAll()
 
     public bool TryDropItem(Item dropI)
     {
+        if (dropI == null) return false;
+        if (dropI.worldPrefab != null)
+        {
+            if (dropI.worldPrefab.GetComponent<ItemInteract>() == null) return false;
+            var dropped = Instantiate(dropI.worldPrefab, transform.position + transform.up + transform.forward, Quaternion.identity);
+            dropped.name = dropI.name;
+            dropped.GetComponent<ItemInteract>().item = dropI;
+            return true;
+        }
         var equipment = dropI as Equipment;
         if (equipment == null || equipment.mesh == null || itemDrop == null) return false;
 

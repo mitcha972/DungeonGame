@@ -41,3 +41,5 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 ## Immediate handoff
 
 Follow [the roadmap](DEVELOPMENT_ROADMAP.md). Prioritize measured production-flow and physical exit/NavMesh verification over a new architecture. Preserve current economy/shield/skill limitations. [Maintenance validation](MAINTENANCE.md) distinguishes checks actually executed from historical evidence and remaining gaps. Do not reapply old inventory/input/progression fixes already present in code.
+
+Status effects (2026-11-13): shared Poison/Slow/Bleeding, derived movement/damage modifiers, player HUD countdowns/tooltips and Poison Potion implemented on PlayerHolder/Enemy_Main. Combat_Test supplies three potions. Session-only; validation scope and remaining prefab/production coverage are in [StatusEffects](SYSTEMS/StatusEffects.md).

@@ -1,6 +1,7 @@
 using UnityEngine;
 
 /* Base class that player and enemies can derive from to include stats */
+[RequireComponent(typeof(StatusEffectController))]
 public class CharacterStats : MonoBehaviour 
 {
 	//equipmentManager
@@ -52,15 +53,21 @@ public class CharacterStats : MonoBehaviour
 
 	public bool IsDead { get; private set; }
 
+    private StatusEffectController statusEffects;
+    public StatusEffectController StatusEffects => statusEffects != null ? statusEffects : (statusEffects = GetComponent<StatusEffectController>());
+    public float MovementMultiplier => StatusEffects != null ? StatusEffects.MovementMultiplier : 1;
+    public int EffectiveDamage => Mathf.Max(1, Mathf.RoundToInt(damage * (StatusEffects != null ? StatusEffects.OutgoingDamageMultiplier : 1)));
+
 	public virtual void TakeDamage(int damageTaken, Transform attackOwner, float attackDirection)
 	{
 	    if (IsDead || currentHealth <= 0 || damageTaken <= 0) return;
-	    int resolvedDamage = Mathf.Max(1, damageTaken - Mathf.Max(0, armor));
+	    int resolvedDamage = Mathf.Max(1, Mathf.RoundToInt(damageTaken * (StatusEffects != null ? StatusEffects.IncomingDamageMultiplier : 1)) - Mathf.Max(0, armor));
 	    currentHealth = Mathf.Max(0, currentHealth - resolvedDamage);
 	    OnHealthChanged?.Invoke(maxHealth, currentHealth);
 	    if (currentHealth == 0)
 	    {
 	        IsDead = true;
+	        StatusEffects?.ClearAllEffects();
 	        Die(attackOwner);
 	    }
 	}
@@ -73,6 +80,7 @@ public class CharacterStats : MonoBehaviour
 	public virtual void Die(Transform attackOwner)
 	{
 	    IsDead = true;
+	    StatusEffects?.ClearAllEffects();
 	    Debug.Log(transform.name + " killed by " + (attackOwner != null ? attackOwner.name : "environment"), this);
 	}
 }

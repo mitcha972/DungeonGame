@@ -17,3 +17,5 @@ Source and historical merchant Input System tests verify input gating/restoratio
 PlayerHolder now includes QuestController/catalog and the uGUI journal with a PlayerControlState journal reference. Enemy/NPC quest integration and the limits of scene-owned progress are documented in [quests](Quests.md).
 
 Resource gathering (2026-11-13): PlayerControlState now supports an exclusive owner-checked action lease while independently retaining modal/focus/death eligibility. PlayerGathering uses it to block conflicting gameplay without pausing or freeing the cursor. Escape cancels the action; other player action keys are ignored until completion. Existing UI ownership still wins when the lease is released. PlayerController reuses its camera-center raycast/range and TMP prompt. See [resource nodes](ResourceNodes.md) for cancellation and validation.
+
+ThirdPersonController now scales walk/sprint target velocity by CharacterStats.MovementMultiplier without changing base speeds. PlayerHolder carries the shared status controller and HUD; see [status effects](StatusEffects.md).

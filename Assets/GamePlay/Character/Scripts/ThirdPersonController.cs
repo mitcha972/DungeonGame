@@ -35,6 +35,7 @@ namespace StarterAssets
         private float _jumpPressTime = float.NegativeInfinity;
         private bool _jumpConsumed;
         private PlayerControlState _controlState;
+        private CharacterStats _statusStats;
         public bool FirstPerson { get; set; }
         public float ViewYaw => _cinemachineTargetYaw;
         private bool InputAllowed => _controlState != null ? _controlState.GameplayAllowed : Cursor.lockState == CursorLockMode.Locked;
@@ -115,6 +116,7 @@ namespace StarterAssets
 			_input = GetComponent<StarterAssetsInputs>();
 			_playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
 			_controlState = GetComponent<PlayerControlState>();
+            _statusStats = GetComponent<CharacterStats>();
             _lookAction = _playerInput != null && _playerInput.actions != null ? _playerInput.actions.FindAction("Look") : null;
 		}
 
@@ -189,7 +191,7 @@ namespace StarterAssets
             bool allowed = InputAllowed && canMove;
             Vector2 move = allowed ? Vector2.ClampMagnitude(_input.move, 1f) : Vector2.zero;
             float magnitude = _input.analogMovement ? move.magnitude : (move.sqrMagnitude > 0.0001f ? 1f : 0f);
-            float targetSpeed = (_input.sprint ? SprintSpeed : MoveSpeed) * magnitude;
+            float targetSpeed = (_input.sprint ? SprintSpeed : MoveSpeed) * magnitude * (_statusStats != null ? _statusStats.MovementMultiplier : 1);
             Vector3 direction = Quaternion.Euler(0f, _cinemachineTargetYaw, 0f) * new Vector3(move.x, 0f, move.y).normalized;
             Vector3 desired = direction * targetSpeed;
             float acceleration = magnitude == 0f || Vector3.Dot(_horizontalVelocity, desired) < 0f ? _braking : SpeedChangeRate;

@@ -52,7 +52,7 @@ public class CharacterCombat : MonoBehaviour
         var weapon = ActiveWeapon;
         _ranged = weapon != null && weapon.isRanged;
         _projectileReleased = false;
-        _attackDamage = Mathf.Max(1, Mathf.RoundToInt(myStats.damage * (heavy && weapon != null ? weapon.heavyDamageMultiplier : 1f)));
+        _attackDamage = Mathf.Max(1, Mathf.RoundToInt(myStats.EffectiveDamage * (heavy && weapon != null ? weapon.heavyDamageMultiplier : 1f)));
         attackIsReady = false;
         IsExecutingAttack = true;
         InCombat = true;

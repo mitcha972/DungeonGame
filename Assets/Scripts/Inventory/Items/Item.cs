@@ -12,6 +12,8 @@ public class Item : ScriptableObject
 	public Sprite icon = null;
 
 	[Header("InGame")]
+    [Tooltip("Optional world pickup prefab used when this item is dropped. Its ItemInteract is assigned this definition at runtime.")]
+    public GameObject worldPrefab;
 	public int price;
     [Tooltip("Category rules cannot buy this item; explicit merchant allowlist required.")]
     public bool tradeRestricted;

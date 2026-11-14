@@ -205,3 +205,10 @@ AgentScripts/Skills contains AssetDatabase authoring, temporary Play Mode scene 
 No imported runtime script was added or moved. `AgentScripts/Animations/` retains out-of-Assets tooling: AnimationAudit (controller/clip/rig inventory and temporary Play Mode start scene), AnimationPlayTest (synthetic mouse smoke test), AnimationCoverage (weapon/grip/casting tests), EnemyAnimationTest (real accepted enemy punch), SkillAnimationProbe (skill-tree demo inspection), InputDiagnosis (temporary callback/device tracing), RepairAnimationEvents (obsolete clip-event migration), OrganizeAnimations (AssetDatabase moves and GUID/dependency/local-ID verification), and AnimationHandoff (user-approved saved-scene restoration). Python helpers plan moves, update authoring paths and maintain the assessment text. [Animation/models](SYSTEMS/Animation.md) owns findings and executed validation; do not rerun mutating migration helpers just to inspect or test.
 
 Combat simplification validation (2026-11-13): `AgentScripts/Combat/SimpleCombatCheck.cs` is an out-of-Assets, nonblocking Play Mode regression runner (`CombatRegression.Main`) for Combat_Test. It temporarily spawns Enemy_Main and equips player weapons/shields, checks real input/timelines/native damage, then writes evidence; stop the test session afterward to discard runtime fixtures/state. No runtime scripts were added or renamed. See [combat](SYSTEMS/Combat.md).
+
+## Status effects (2026-11-13)
+
+- Assets/Scripts/Combat/StatusEffectDefinition.cs: shared configuration.
+- Assets/Scripts/Combat/StatusEffectController.cs: active instances, timers, modifiers and application results.
+- Assets/Scripts/Combat/StatusEffectTestSupply.cs: explicit Combat_Test potion fixture.
+- Assets/Scripts/UI/HUD/StatusEffectHUD.cs: icons, TMP countdowns and hover tooltip.

@@ -89,6 +89,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
+        if (_agent != null && _stats != null) _agent.speed = Mathf.Max(0f, _stats.movementSpeed * _stats.MovementMultiplier);
         if (_deathStarted || _settings == null || Time.timeScale == 0f) return;
         if (_stats.IsDead) { Die(); return; }
         RefreshTarget();

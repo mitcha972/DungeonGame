@@ -39,3 +39,5 @@ Animation assessment (2026-11-13): obsolete combat clip callbacks, grip-layer in
 Retain FSM/generator/shared combat unless evidence justifies replacement. Profile before pooling/scheduling work. Vendor removal requires reference migration: CodeMonkey Button_UI still supplies serialized presentation; legacy NavMeshComponents includes editor/test/example assemblies and duplicate menu warnings. Review positional camera shake, shared-renderer materials, tooltip extremes and edit-mode conversion separately.
 
 Remove completed work from pending lists. Historical approval gates, licensing failures and unavailable-tool statements belong to their original tasks; inspect current instructions and tooling instead.
+
+- **Status effects — starter slice implemented:** shared Poison/Slow/Bleeding, non-refreshing stable IDs, derived movement/damage modifiers, HUD and Poison Potion in Combat_Test. Remaining: production application sources/balance, alternate prefab coverage and coordinated persistence. See [status effects](SYSTEMS/StatusEffects.md).

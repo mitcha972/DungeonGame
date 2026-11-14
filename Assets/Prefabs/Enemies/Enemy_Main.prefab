@@ -1412,6 +1412,7 @@ GameObject:
   - component: {fileID: 2612642202064244446}
   - component: {fileID: 6753919449685918973}
   - component: {fileID: 2102378818591635495}
+  - component: {fileID: 2995900682226398366}
   m_Layer: 0
   m_Name: Enemy_Main
   m_TagString: Enemy
@@ -1545,7 +1546,6 @@ MonoBehaviour:
   isBlocking: 0
   canBlock: 0
   cooldownTime: 0
-  blockDamageMultiplier: 0.35
   hitRecoveryTime: 0.3
 --- !u!114 &5160646311569419616
 MonoBehaviour:
@@ -1627,6 +1627,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d391b1e0cf56fdd49844d86fea6671df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DungeonGame.Quests.QuestEnemyBridge
+--- !u!114 &2995900682226398366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5160646311569419609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
 --- !u!1 &5200028227428984663
 GameObject:
   m_ObjectHideFlags: 0
