@@ -37,6 +37,7 @@ public class AttackHitBox : MonoBehaviour
             bounds = _bakedMesh.bounds;
             hitTransform = _weaponMesh.transform;
         }
+        ShowAttackBounds(hitTransform, bounds);
         Vector3 scale = hitTransform.lossyScale;
         Vector3 halfExtents = Vector3.Scale(bounds.extents, new Vector3(Mathf.Abs(scale.x), Mathf.Abs(scale.y), Mathf.Abs(scale.z)));
         int count = Physics.OverlapBoxNonAlloc(hitTransform.TransformPoint(bounds.center), halfExtents, _overlaps, hitTransform.rotation, ~0, QueryTriggerInteraction.Ignore);
@@ -48,6 +49,29 @@ public class AttackHitBox : MonoBehaviour
         }
         for (int i = 0; i < count; i++) Hit(overlaps[i]);
     }
+    private GameObject _visual;
+    private Material _visualMaterial;
+    private void ShowAttackBounds(Transform pose, Bounds bounds)
+    {
+        if (_visual == null)
+        {
+            _visual = GameObject.CreatePrimitive(PrimitiveType.Cube);
+            _visual.name = "Active Attack Box";
+            Destroy(_visual.GetComponent<Collider>());
+            _visualMaterial = new Material(Shader.Find("Sprites/Default"));
+            _visualMaterial.color = new Color(1f, .25f, .05f, .25f);
+            var renderer = _visual.GetComponent<MeshRenderer>();
+            renderer.sharedMaterial = _visualMaterial;
+            renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+            renderer.receiveShadows = false;
+        }
+        _visual.SetActive(true);
+        _visual.transform.SetParent(pose, false);
+        _visual.transform.localPosition = bounds.center;
+        _visual.transform.localRotation = Quaternion.identity;
+        _visual.transform.localScale = bounds.size;
+    }
+    private void OnDisable() => DisableDamage();
     private SkinnedMeshRenderer _weaponMesh;
     private Mesh _bakedMesh;
     public void ConfigureWeapon(SkinnedMeshRenderer mesh)
@@ -55,7 +79,7 @@ public class AttackHitBox : MonoBehaviour
         _weaponMesh = mesh;
         if (_bakedMesh == null) _bakedMesh = new Mesh();
     }
-    private void OnDestroy() { if (_bakedMesh != null) Destroy(_bakedMesh); }
+    private void OnDestroy() { if (_bakedMesh != null) Destroy(_bakedMesh); if (_visual != null) Destroy(_visual); if (_visualMaterial != null) Destroy(_visualMaterial); }
     private void OnTriggerEnter(Collider other) { if (_collider.enabled && _weaponMesh == null) Hit(other); }
     private void Hit(Collider other)
     {
@@ -90,6 +114,7 @@ public class AttackHitBox : MonoBehaviour
     public void DisableDamage()
     {
         if (_collider != null) _collider.enabled = false;
+        if (_visual != null) _visual.SetActive(false);
         target = null;
     }
     public void UpdateAttackHitBox(Equipment equipment) { }

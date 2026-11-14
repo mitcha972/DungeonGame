@@ -42,7 +42,7 @@ OpenBank/StartQuest/OpenService are **request hooks only**. Future modal handler
 
 ## Combat, world and progression
 
-CharacterCombat owns timelines/cooldowns/block/recovery. AttackHitBox/Projectile acquire contacts; CharacterStats owns final armor/health/death; CharacterAnimator owns presentation. EnemyAi is an Update-driven FSM with throttled perception/pathfinding, configured by EnemyStats.Definition. Preserve these responsibilities rather than adding competing damage/movement authorities.
+CharacterCombat owns timelines/cooldowns/block/recovery. PlayerCombat exposes light attacks only; animation busy state no longer owns player locomotion. Active shield reduction remains in CharacterCombat, with final armor/minimum health loss in CharacterStats; see [combat](SYSTEMS/Combat.md). AttackHitBox/Projectile acquire contacts; CharacterStats owns final armor/health/death; CharacterAnimator owns presentation. EnemyAi is an Update-driven FSM with throttled perception/pathfinding, configured by EnemyStats.Definition. Preserve these responsibilities rather than adding competing damage/movement authorities.
 
 DungeonGenerator owns the graph, room assembly, current NavMesh, generation state and floor advancement/rollback. Runtime custom navigation uses Unity.AI.Navigation; the legacy NavMeshComponents vendor tree remains separate. Physical path validation is distinct from graph tests.
 

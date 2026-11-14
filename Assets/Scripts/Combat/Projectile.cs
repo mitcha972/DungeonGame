@@ -15,6 +15,7 @@ public class Projectile : MonoBehaviour
     public LayerMask solidCollisionMask;
     [SerializeField] private float collisionRadius = 0.05f;
     [SerializeField] private float lifetime = 10f;
+    private Material _attackVisualMaterial;
     private int _damage;
     private float _range, _travelled;
     private Vector3 _previousPosition;
@@ -36,6 +37,20 @@ public class Projectile : MonoBehaviour
         _range = Mathf.Max(1f, range);
         speed = Mathf.Max(1f, velocity);
         _initialized = true;
+        var visual = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        visual.name = "Projectile Attack Box";
+        Destroy(visual.GetComponent<Collider>());
+        visual.transform.SetParent(transform, false);
+        // Sweep uses a world-space radius, independent of the prefab scale.
+        Vector3 scale = transform.lossyScale;
+        float size = Mathf.Max(.1f, collisionRadius * 2f);
+        visual.transform.localScale = new Vector3(size / Mathf.Max(.001f, Mathf.Abs(scale.x)), size / Mathf.Max(.001f, Mathf.Abs(scale.y)), size / Mathf.Max(.001f, Mathf.Abs(scale.z)));
+        _attackVisualMaterial = new Material(Shader.Find("Sprites/Default"));
+        _attackVisualMaterial.color = new Color(1f, .65f, .05f, .5f);
+        var renderer = visual.GetComponent<MeshRenderer>();
+        renderer.sharedMaterial = _attackVisualMaterial;
+        renderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        renderer.receiveShadows = false;
         _body.isKinematic = false;
         _body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
         _body.linearVelocity = transform.forward * speed;
@@ -105,6 +120,7 @@ public class Projectile : MonoBehaviour
         if (destructible != null) destructible.Damage(_damage, position);
         if (!other.isTrigger || destructible != null) Finish(position);
     }
+    private void OnDestroy() { if (_attackVisualMaterial != null) Destroy(_attackVisualMaterial); }
     private void Finish(Vector3 position)
     {
         if (_consumed) return;

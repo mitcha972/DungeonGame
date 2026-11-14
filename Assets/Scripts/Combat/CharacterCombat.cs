@@ -13,7 +13,6 @@ public class CharacterCombat : MonoBehaviour
     public BlockHitBox blockHitBox;
     public bool isBlocking, canBlock;
     public float cooldownTime;
-    [SerializeField, Range(0f, 1f)] private float blockDamageMultiplier = 0.35f;
     [SerializeField] private float hitRecoveryTime = 0.3f;
     private CharacterAnimator _combatAnimator;
     private Coroutine _attackRoutine;
@@ -120,7 +119,13 @@ public class CharacterCombat : MonoBehaviour
     {
         if (!isActiveAndEnabled || myStats.IsDead || damageTaken <= 0) return;
         int previousHealth = myStats.currentHealth;
-        int incoming = blocked ? Mathf.Max(1, Mathf.RoundToInt(damageTaken * blockDamageMultiplier)) : damageTaken;
+        var equipment = GetComponent<EquipmentManager>();
+        Equipment shield = null;
+        bool hasShield = equipment != null && equipment.currentEquipment.TryGetValue(EquipmentSlot.OffHand, out shield)
+            && shield != null && shield.itemType == ItemType.Shield;
+        blocked = blocked && isBlocking && hasShield;
+        // Shield armor is passive equipment armor; an active frontal block adds its value again.
+        int incoming = blocked ? Mathf.Max(1, damageTaken - Mathf.Max(0, shield.armorModifier)) : damageTaken;
         myStats.TakeDamage(incoming, attackOwner, direction);
         if (blocked && isBlocking && damageTaken > incoming && myStats.currentHealth < previousHealth && !myStats.IsDead && attackOwner != null)
         {

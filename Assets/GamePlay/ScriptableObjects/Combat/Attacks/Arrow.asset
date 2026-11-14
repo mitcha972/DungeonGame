@@ -19,9 +19,13 @@ MonoBehaviour:
   lightAttackClips:
   - {fileID: 7400000, guid: cbcc2ac0d7332cf47857e7809fe426a7, type: 2}
   heavyAttackClips: []
+  isRanged: 1
+  hitStart: 0.3
+  hitEnd: 0.6
+  attackDuration: 0.8
+  cooldown: 0.8
+  heavyDamageMultiplier: 1.5
   projectile: {fileID: 8303955909878210039, guid: 5588390f6f8ee324ea131269ed8c4529,
     type: 3}
-  range: 10
-  speed: 35
-  rangeEnd: 0
-  destroyOnCollide: 1
+  projectileSpeed: 35
+  projectileRange: 40

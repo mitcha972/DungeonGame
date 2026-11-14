@@ -21,3 +21,10 @@ Minimap: PlayerHolder now supplies a north-up circular minimap and M/Escape expa
 Resource feedback reuses the player's interaction TMP prompt and adds GatheringProgressHUD under the existing screen Canvas for a narrow gold progress bar. It has no input/modal ownership or independent Canvas. See [resource nodes](ResourceNodes.md) for setup and tested scope.
 
 SkillFeedbackHUD now listens to independent skill XP on the existing UICanvas: fixed eight-popup TMP pool, projected action/HUD positions, fading rise, nonmodal level-up banner and optional Inspector-enabled debug text (hidden by default). No new Canvas or input owner. See [Skills](Skills.md).
+
+
+## HUD redesign reverted - 2026-11-13
+
+At the user's request, the sidebar redesign was fully removed. PlayerHolder and all changed UI/input scripts were restored to their pre-redesign contents; Combat_Test was restored from its exact pre-HUD snapshot, preserving its earlier gameplay changes. Added sidebar scripts, backups, test fixtures and captures were removed. Previous redesign test results do not describe the restored interface. Rollback validation: original prefab matches the pre-task Git contents, the combat scene was restored byte-for-byte from its pre-HUD snapshot, and Unity compilation completed without errors. No new gameplay features remain.
+
+Final Editor scene-reload verification timed out after 30 seconds; subsequent CLI status reported the Editor unreachable. Disk rollback and successful restored-script compilation were verified before that timeout. No post-reload visual/gameplay test is claimed.

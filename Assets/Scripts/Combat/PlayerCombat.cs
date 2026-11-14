@@ -8,18 +8,8 @@ public class PlayerCombat : CharacterCombat
     private PlayerControlState _state;
     private Animator _animator;
     public bool HasShield => _equipment != null && _equipment.currentEquipment.TryGetValue(EquipmentSlot.OffHand, out Equipment item) && item != null && item.itemType == ItemType.Shield && blockHitBox != null;
-    public bool SupportsPowerAttack
-    {
-        get
-        {
-            if (ActiveWeapon == null || ActiveWeapon.heavyAttackClips == null || _animator == null) return false;
-            bool clipAvailable = false;
-            foreach (var clip in ActiveWeapon.heavyAttackClips) if (clip != null) { clipAvailable = true; break; }
-            if (!clipAvailable) return false;
-            for (int layer = 0; layer < _animator.layerCount; layer++) if (_animator.HasState(layer, Animator.StringToHash("HeavyAttack"))) return true;
-            return false;
-        }
-    }
+    public bool SupportsPowerAttack => false;
+    public override void Attack(bool heavy) => base.Attack(false);
     protected override void Awake()
     {
         base.Awake();

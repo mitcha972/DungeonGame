@@ -58,7 +58,7 @@ public class CharacterAnimator : MonoBehaviour
     public void SetBusy(bool busy)
     {
         if (animator != null) animator.SetBool("isBusy", busy);
-        if (busy) DisableMovement?.Invoke(); else EnableMovement?.Invoke();
+        if (busy && !(combat is PlayerCombat)) DisableMovement?.Invoke(); else EnableMovement?.Invoke();
     }
     public void PlayAbilityAnimation(AnimationClip clip)
     {

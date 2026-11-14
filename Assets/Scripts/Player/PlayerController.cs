@@ -23,9 +23,7 @@ public class PlayerController : MonoBehaviour
     private PlayerStats _stats;
     private UnityEngine.InputSystem.PlayerInput _playerInput;
     private PlayerControlState _controlState;
-    [SerializeField] private float _powerAttackHoldTime = 0.25f;
-    private bool _leftPending, _rightPending, _leftIgnored, _rightIgnored, _rightShield;
-    private float _leftPressedAt;
+    private bool _rightPending, _leftIgnored, _rightIgnored, _rightShield;
     private bool GameplayInputAllowed => _stats != null && !_stats.IsDead && _stats.currentHealth > 0 && (_controlState != null ? _controlState.GameplayAllowed : Time.timeScale > 0f && Cursor.lockState == CursorLockMode.Locked);
 
     private void Awake()
@@ -59,7 +57,7 @@ public class PlayerController : MonoBehaviour
     private void Start() => EnableMovement();
     private void ResetCombatInput(bool allowed)
     {
-        _leftPending = _rightPending = _rightShield = false;
+        _rightPending = _rightShield = false;
         if (_combat != null) _combat.SetShieldBlock(false);
         var actions = _playerInput != null ? _playerInput.actions : null;
         _leftIgnored = actions != null && actions.FindAction("Attack") != null && actions.FindAction("Attack").IsPressed();
@@ -73,20 +71,17 @@ public class PlayerController : MonoBehaviour
         {
             if (context.canceled)
             {
-                if (_leftPending && !_leftIgnored && GameplayInputAllowed) TryAttack(false);
-                _leftPending = _leftIgnored = false;
+                _leftIgnored = false;
             }
             else if (context.performed && GameplayInputAllowed && !_leftIgnored)
             {
-                if (_combat.SupportsPowerAttack) { _leftPending = true; _leftPressedAt = Time.time; }
-                else TryAttack(false);
+                TryAttack(false);
             }
         }
         if (context.action.name == "Block")
         {
             if (context.canceled)
             {
-                if (_rightPending && !_rightShield && !_rightIgnored && GameplayInputAllowed) TryAttack(false);
                 _rightPending = _rightShield = _rightIgnored = false;
                 _combat.SetShieldBlock(false);
             }
@@ -94,7 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 _rightPending = true;
                 _rightShield = _combat.HasShield;
-                if (_rightShield) { _leftPending = false; _combat.SetShieldBlock(true); }
+                if (_rightShield) _combat.SetShieldBlock(true);
             }
         }
     }
@@ -105,12 +100,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         UpdateResourcePrompt();
-        if (!GameplayInputAllowed) { _leftPending = _rightPending = _rightShield = false; _combat?.SetShieldBlock(false); return; }
-        if (_leftPending && Time.time - _leftPressedAt >= _powerAttackHoldTime)
-        {
-            _leftPending = false;
-            TryAttack(_combat.SupportsPowerAttack);
-        }
+        if (!GameplayInputAllowed) { _rightPending = _rightShield = false; _combat?.SetShieldBlock(false); return; }
         if (_rightShield && _rightPending) _combat.SetShieldBlock(true);
         if (focus == null && lockedOn) RemoveFocus();
         if (lockedOn && focus != null && _movement != null && !_movement.FirstPerson && _movement.canRotate)
@@ -196,4 +186,3 @@ public class PlayerController : MonoBehaviour
         _movement.canRotate = false;
     }
 }
-

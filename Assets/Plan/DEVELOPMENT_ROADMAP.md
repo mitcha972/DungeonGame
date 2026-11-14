@@ -7,7 +7,7 @@ One active backlog. Distinguish **implemented**, **partially implemented**, **pl
 - CharacterController locomotion with bounded acceleration/braking, jump buffering/coyote time, substeps and first/third-person support.
 - PlayerControlState, project-owned input actions and shared combat/interaction integration.
 - Fixed inventory slots; guarded pickups/chest transfers; equipment state-before-event ordering; class health and local progression updater.
-- Shared combat, initialized ordinary projectiles, contact deduplication and skipped-window sampling.
+- Shared combat, initialized ordinary projectiles, contact deduplication and skipped-window sampling. Single-click player light attacks, visible damage volumes, mobile combat and shield-value active reduction verified across unarmed/swords/bow in Combat_Test; see [combat](SYSTEMS/Combat.md).
 - Positive/overflow-safe XP awards and level-cap behavior.
 - Enemy FSM and transactional maze/room/NavMesh regeneration.
 - Branching merchant dialogue, keyboard/mouse panel, safe close and existing-shop handoff.
