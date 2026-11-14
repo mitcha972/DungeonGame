@@ -1,6 +1,6 @@
 # Dungeon Game — project context
 
-Authoritative current overview, audited against source/assets on **2026-11-12** (America/New_York). Read [architecture](ARCHITECTURE.md), [roadmap](DEVELOPMENT_ROADMAP.md), the relevant system and actual code before changing anything. [Maintenance](MAINTENANCE.md) records consolidation and validation. Historical reports are evidence, not active requirements.
+Authoritative current overview, audited against source/assets on **2026-11-13** (America/New_York). Read [architecture](ARCHITECTURE.md), [roadmap](DEVELOPMENT_ROADMAP.md), the relevant system and actual code before changing anything. [Maintenance](MAINTENANCE.md) records consolidation and validation. Historical reports are evidence, not active requirements.
 
 ## Direction and environment
 
@@ -18,7 +18,7 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 | [Shops](SYSTEMS/Shops.md) | Implemented finite per-merchant stock, configurable restocking/restrictions/prices, gold transactions and 3x3 buy/sell UI; session-only economy. |
 | [Combat/NPCs](SYSTEMS/Combat.md) | Single-click light attacks, visible damage volumes, mobile player combat, shield-value active block reduction, shared melee/projectile execution, stats and enemy FSM implemented. Shield durability and some exposed collision-mask fields remain incomplete. |
 | [Animation/models](SYSTEMS/Animation.md) | Live assessment of combat, gathering and skill-tree fixtures; obsolete clip events, equipment grip-layer routing and casting recovery repaired. Monster rig/controller gaps and animation folder identities are recorded in the subsystem reference. |
-| [World](SYSTEMS/World.md) | Connected maze and transactional room/NavMesh regeneration implemented; graph connectivity does not establish physical doorway/exit reachability. Historical tests include partial exit paths. |
+| [World](SYSTEMS/World.md) | Connected maze, transactional regeneration, reachable-exit guard and owned native NavMesh lifetime implemented. DEnd exits/entrances repaired; 20 seeded floors have complete paths. Controlled capsule traversal still identifies a stair requiring upward clearance; normal movement/build coverage remains partial. |
 | [Progression](SYSTEMS/Progression.md) / [RPG skills](SYSTEMS/Skills.md) | Existing character XP/unlock tree retained; ten independent skills (levels 1–30), 100-XP skillbooks, success-based mining/melee/ranged/block XP and pooled TMP feedback implemented. Legacy ability effects remain prototypes. |
 | [UI](SYSTEMS/UI.md) | Canvas/uGUI, TMP and some legacy Text, menus, inventory/HUD; PlayerHolder north-up minimap and M expanded map ([details](SYSTEMS/Minimap.md)). No runtime UI Toolkit migration. |
 | [Quests](SYSTEMS/Quests.md)/bank/services | **Quest slice implemented:** staged definitions/runtime, dialogue conditions/actions, item/kill/location/NPC objectives, journal and completion rewards; Supplies for the Road connects real resource gathering to staged deliveries. PlayerHolder and Enemy_Main extended; NPC_Main inherits Enemy_Main. Quest JSON only; gameplay disk saves and bank remain unimplemented. |
@@ -40,6 +40,6 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 
 ## Immediate handoff
 
-Follow [the roadmap](DEVELOPMENT_ROADMAP.md). Prioritize measured production-flow and physical exit/NavMesh verification over a new architecture. Preserve current economy/shield/skill limitations. [Maintenance validation](MAINTENANCE.md) distinguishes checks actually executed from historical evidence and remaining gaps. Do not reapply old inventory/input/progression fixes already present in code.
+Follow [the roadmap](DEVELOPMENT_ROADMAP.md). The production loop and native exit/rollback audit now have passing Editor evidence; next verify a packaged player, normal stair/jump traversal and remaining prefab/content coverage. Preserve current economy/shield/skill limitations. [Maintenance validation](MAINTENANCE.md#gameplay-audit--2026-11-13) distinguishes executed checks from remaining gaps. Do not reapply old inventory/input/progression fixes already present in code.
 
 Status effects (2026-11-13): shared Poison/Slow/Bleeding, derived movement/damage modifiers, player HUD countdowns/tooltips and Poison Potion implemented on PlayerHolder/Enemy_Main. Combat_Test supplies three potions. Session-only; validation scope and remaining prefab/production coverage are in [StatusEffects](SYSTEMS/StatusEffects.md).

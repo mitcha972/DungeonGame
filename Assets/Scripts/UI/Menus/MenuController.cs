@@ -49,7 +49,7 @@ public class MenuController : MonoBehaviour
         if (_startingGame || pClass == null) return;
         int target = SceneUtility.GetBuildIndexByScenePath("Assets/Scenes/Game/Main.unity");
         int loading = SceneUtility.GetBuildIndexByScenePath("Assets/Scenes/Game/Loading.unity");
-        if (target < 0 || loading < 0) { Debug.LogError("DungeonFloorTest and Loading must be enabled in Build Settings.", this); return; }
+        if (target < 0 || loading < 0) { Debug.LogError("Main and Loading must be enabled in Build Settings.", this); return; }
         _startingGame = true;
         GameController.goToScene = target;
         GameController.playerName = string.IsNullOrWhiteSpace(name) ? "Player" : name;

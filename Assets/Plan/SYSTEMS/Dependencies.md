@@ -2,6 +2,8 @@
 
 Unity 6000.3.28f1 uses **Built-in rendering** despite URP 17.3.0 being installed. Input System 1.20.1, Cinemachine 3.1.7, AI Navigation 2.0.16, uGUI 2.0.0 and Pipeline 1.0.0 are declared. Both input backends remain enabled. Package presence is not active-use evidence; preserve licenses/attribution and inspect the renderer before authoring materials.
 
+Runtime NavMesh import requirement (2026-11-13): `Assets/Models/Building/Tiles/Dungeon_Big_col.fbx` now has ModelImporter Read/Write enabled. Runtime PhysicsColliders baking reads its collision mesh; Editor-only access previously masked a player-build failure and logged unreadable-source diagnostics. FBX/GUID/material mappings remain; Unity updated importer serialization. Production Editor transitions reran without errors; packaged-player validation remains pending. Future runtime bake sources must permit required CPU reads. [Audit evidence](../MAINTENANCE.md#gameplay-audit--2026-11-13).
+
 ## Retained boundaries
 
 - `Assets/GamePlay/Character/`: adapted Starter Assets movement/input/push source stays at existing paths.

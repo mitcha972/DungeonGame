@@ -1,0 +1,17 @@
+{
+  "passed": false,
+  "checks": [
+    "PASS frames advance",
+    "PASS seed 0 generated",
+    "FAIL seed 0 room centers reachable 15/16",
+    "FAIL seed 0 exit interaction path PathInvalid",
+    "PASS seed 1 generated",
+    "FAIL seed 1 room centers reachable 15/16",
+    "FAIL seed 1 exit interaction path PathInvalid",
+    "PASS seed 2 generated",
+    "FAIL seed 2 room centers reachable 15/16",
+    "FAIL seed 2 exit interaction path PathInvalid"
+  ],
+  "frame": 4535,
+  "error": null
+}

@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "completedUtc": "2026-11-14T04:20:06.7952415Z",
+  "originalPrefabIds": 267,
+  "currentPrefabIds": 281,
+  "missingOriginalIds": [],
+  "prefabs": [
+    {
+      "path": "Assets/Prefabs/Dungeons/Rooms/DEnd.prefab",
+      "missingScripts": 0
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerHolder.prefab",
+      "missingScripts": 0
+    },
+    {
+      "path": "Assets/Prefabs/Enemies/Enemy_Main.prefab",
+      "missingScripts": 0
+    }
+  ],
+  "readable": true,
+  "sceneDiffPreserved": true,
+  "sceneDiffHash": "EF9FC3D4B789AF225823107A36EA7AF0373DED92BA7F7770BD408BCF0BD2559E",
+  "identities": true,
+  "buildSequence": true,
+  "enabledScenes": [
+    "Assets/Scenes/Game/Start.unity",
+    "Assets/Scenes/Game/Loading.unity",
+    "Assets/Scenes/Game/Main.unity",
+    "Assets/Scenes/Test_Scenes/Gameplay_Test.unity"
+  ],
+  "scene": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+  "isDirty": false,
+  "playMode": false,
+  "startSceneOverride": null,
+  "windowsBuildSupportAvailable": true,
+  "standaloneBuildExecuted": false
+}

@@ -1,0 +1,41 @@
+{
+  "scope": "Error entries after the pre-fix unreadable-mesh diagnostics (cursor 4838); historical Console ground truth includes earlier messages.",
+  "expectedInjectedErrors": 4,
+  "unexpectedErrors": [],
+  "entries": [
+    {
+      "seq": 5081,
+      "timestampUtc": "2026-11-14T04:08:04.8289022Z",
+      "message": "Invalid dungeon configuration: assign player, surface, rooms and a grid between 2 and 16 cells per axis.",
+      "expectedInjection": true
+    },
+    {
+      "seq": 5083,
+      "timestampUtc": "2026-11-14T04:08:05.1769683Z",
+      "message": "End room requires an active DungeonExit.",
+      "expectedInjection": true
+    },
+    {
+      "seq": 5085,
+      "timestampUtc": "2026-11-14T04:08:06.0690797Z",
+      "message": "Dungeon exit is not reachable from PlayerSpawn on the generated NavMesh.",
+      "expectedInjection": true
+    },
+    {
+      "seq": 5095,
+      "timestampUtc": "2026-11-14T04:08:07.8030804Z",
+      "message": "Invalid dungeon configuration: assign player, surface, rooms and a grid between 2 and 16 cells per axis.",
+      "expectedInjection": true
+    }
+  ],
+  "groundTruth": {
+    "sampledUtc": "2026-11-14T04:17:39.8535407Z",
+    "ageMs": 324,
+    "compilationFailed": false,
+    "compiling": false,
+    "consoleErrors": 10,
+    "consoleWarnings": 30,
+    "consoleLogs": 209,
+    "seeded": true
+  }
+}

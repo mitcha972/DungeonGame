@@ -20,7 +20,9 @@ public class GameController : MonoBehaviour
     void Awake()
     {
         string sceneName = gameObject.scene.name;
-        if (sceneName == "Main" || sceneName == "Menu")
+        // Loading carries the shared controller prefab but no player preview or gameplay owner.
+        if (sceneName == "Loading") return;
+        if (sceneName == "Start" || sceneName == "Menu")
         {
             floor = m_floor;
             difficulty = m_difficulty;

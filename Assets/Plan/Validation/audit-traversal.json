@@ -1,0 +1,54 @@
+{
+  "passed": true,
+  "rows": [
+    {
+      "seed": 0,
+      "passed": true,
+      "walkPassed": true,
+      "jumps": 0,
+      "moves": 2932,
+      "distance": 0.7248973,
+      "stuck": false,
+      "position": "(48.72, 0.08, 0.00)",
+      "obstacle": null,
+      "firstObstruction": null
+    },
+    {
+      "seed": 1,
+      "passed": true,
+      "walkPassed": true,
+      "jumps": 0,
+      "moves": 3325,
+      "distance": 0.7049641,
+      "stuck": false,
+      "position": "(143.30, 0.08, -144.00)",
+      "obstacle": null,
+      "firstObstruction": null
+    },
+    {
+      "seed": 4,
+      "passed": true,
+      "walkPassed": false,
+      "jumps": 1,
+      "moves": 2892,
+      "distance": 0.726458,
+      "stuck": false,
+      "position": "(48.72, 0.10, 0.00)",
+      "obstacle": null,
+      "firstObstruction": "Stairs_Low (1)"
+    },
+    {
+      "seed": 6,
+      "passed": true,
+      "walkPassed": true,
+      "jumps": 0,
+      "moves": 3255,
+      "distance": 0.701067567,
+      "stuck": false,
+      "position": "(143.30, 0.08, -47.99)",
+      "obstacle": null,
+      "firstObstruction": null
+    }
+  ],
+  "scope": "Controlled CharacterController.Move substeps through real static colliders, with bounded upward clearance probes up to the existing jump height when blocked; enemy colliders disabled. Horizontal waypoint arrival ignores NavMesh vertical approximation. walkPassed distinguishes routes requiring clearance probes. Not timed hardware jumps, gravity/locomotion feel or combat navigation."
+}

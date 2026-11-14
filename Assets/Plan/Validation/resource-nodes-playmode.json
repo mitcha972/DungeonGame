@@ -65,7 +65,7 @@
     "final charge depletes and emits one successful collection event",
     "all action locks released after verification"
   ],
-  "frameCount": 1369,
-  "worldTime": 25.5146828,
+  "frameCount": 63687,
+  "worldTime": 580.8214,
   "scope": "Live Editor assertions: synthetic E/Escape, real player/Inventory/Animator, authored starter timers plus shortened cloned respawn fixtures. Not manual combat, hardware or durable save certification."
 }

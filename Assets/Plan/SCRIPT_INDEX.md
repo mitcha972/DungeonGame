@@ -1,6 +1,20 @@
 # Custom script index
 
-Current 2026-11-12 locations. Classes/namespaces/GUIDs retained. [Architecture](ARCHITECTURE.md) owns relationships; this index owns file paths/responsibilities. Imported vendor/package sources are excluded; adapted Camera code and legacy shells are identified.
+## Gameplay audit tooling — 2026-11-13
+
+No runtime script was added/moved. External files under `AgentScripts/Audit/`:
+
+- `AuditSession.cs`: preserve/restore the Play Mode start-scene override; inspect selection/runtime state.
+- `WorldAudit.cs`: seeded production paths, failure/cancellation/rollback and native NavMesh data lifetime.
+- `TraversalAudit.cs`: controlled CharacterController static-collision routes, with walking versus bounded upward clearance reported separately.
+- `ProductionAudit.cs`: real menu/loading/dungeon, modal/focus, death and menu-return checks.
+- `FinalReview.cs`: asset identities/local IDs, missing scripts, source-scene preservation and final Editor state.
+- `InspectWorldAssets.cs`, `EndRoomProbe.cs`: source-room inspection and isolated Play Mode geometry diagnostics.
+- `RepairEndRoom.cs`, `NorthWallRepair.cs`: one-time AssetDatabase prefab repairs for the audited baseline; do not rerun as tests.
+
+Tests require owned Play Mode fixtures; migration helpers require stopped Play Mode. Technical backups stay outside Assets. `AgentScripts/Skills/VerifySkills.cs` also corrects enemy test initialization order. [Maintenance](MAINTENANCE.md#gameplay-audit--2026-11-13) owns executed results and integration limits.
+
+Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](ARCHITECTURE.md) owns relationships; this index owns file paths/responsibilities. Imported vendor/package sources are excluded; adapted Camera code and legacy shells are identified.
 
 ## Imported custom/adapted source (118 files)
 

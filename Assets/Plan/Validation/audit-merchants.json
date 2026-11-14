@@ -1,0 +1,74 @@
+[
+  {
+    "file": "AgentScripts/Dialogue/VerifyMerchantDialogue.cs",
+    "entry": "VerifyMerchantDialogue.Run",
+    "result": {
+      "result": {
+        "passed": true,
+        "frameCount": 94765,
+        "worldSeconds": 10.1099567,
+        "timeScale": 1
+      },
+      "diagnostics": [],
+      "compileMs": 221,
+      "executeMs": 6173,
+      "assemblyName": "PipelineRunScript_VerifyMerchantDialogue_365cb047348c4bb7b65766cebae1b8d7"
+    }
+  },
+  {
+    "file": "AgentScripts/Shops/VerifyShopUI.cs",
+    "entry": "VerifyShopUI.Run",
+    "result": {
+      "result": {
+        "passed": true,
+        "slots": 3,
+        "gold": 75,
+        "uiSize": "(480.00, 520.00)",
+        "stockSize": "(370.00, 345.00)"
+      },
+      "diagnostics": [],
+      "compileMs": 99,
+      "executeMs": 11,
+      "assemblyName": "PipelineRunScript_VerifyShopUI_7609d5601a5d4933afd80e1bd758a655"
+    }
+  },
+  {
+    "file": "AgentScripts/Dialogue/VerifyDialogueMouse.cs",
+    "entry": "VerifyDialogueMouse.Run",
+    "result": {
+      "result": {
+        "passed": true,
+        "stock": 3
+      },
+      "diagnostics": [],
+      "compileMs": 108,
+      "executeMs": 1843,
+      "assemblyName": "PipelineRunScript_VerifyDialogueMouse_76821bff5b694243bb5e4568f6f9fa8c"
+    }
+  },
+  {
+    "file": "AgentScripts/Dialogue/VerifyDialogueLifecycle.cs",
+    "entry": "VerifyDialogueLifecycle.Run",
+    "result": {
+      "result": {
+        "passed": true,
+        "serviceRequests": 3
+      },
+      "diagnostics": [],
+      "compileMs": 125,
+      "executeMs": 182,
+      "assemblyName": "PipelineRunScript_VerifyDialogueLifecycle_bc02c9b9574241bb93317fe9774c746d"
+    }
+  },
+  {
+    "file": "AgentScripts/Shops/BuildShops.cs",
+    "entry": "BuildShops.Verify",
+    "result": {
+      "result": "PASS: purchase, sale, gold, item transfer, depletion, zero-stock rejection, independent stock, restock bounds, full bag atomicity, restrictions, initialization preserves stock, full merchant, stock maximum, restricted category rejection, insufficient gold, repeated purchases.",
+      "diagnostics": [],
+      "compileMs": 203,
+      "executeMs": 75,
+      "assemblyName": "PipelineRunScript_BuildShops_e356e0090c0444e491a37e43be10ca2c"
+    }
+  }
+]

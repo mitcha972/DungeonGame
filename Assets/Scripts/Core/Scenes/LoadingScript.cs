@@ -17,7 +17,7 @@ public class LoadingScript : MonoBehaviour
     {
         if (!IsValidDestination(GameController.goToScene))
         {
-            Debug.LogError("Loading requires a gameplay destination enabled in Build Settings. Start from Main.", this);
+            Debug.LogError("Loading requires a gameplay destination enabled in Build Settings. Start from Start.", this);
             yield break;
         }
         AsyncOperation operation = SceneManager.LoadSceneAsync(GameController.goToScene);

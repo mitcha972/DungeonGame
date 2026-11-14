@@ -50,6 +50,8 @@ Gameplay_Test contains a labeled book supply near the player start. E grants all
 
 AgentScripts/Skills/BuildSkills.cs authors assets/prefab/fixture through AssetDatabase. Do not rerun just for tests: it saves the active Gameplay_Test and reconfigures authored content. SkillTestSession.Prepare/Restore temporarily selects that saved scene for Play Mode without closing the editing scene. VerifySkills.Run retains the script-run integration/assertion suite. Validation results are recorded below after actual execution; these are not NUnit test assemblies.
 
+Audit fixture correction (2026-11-13): VerifySkills sets controlled enemy health/armor after Start applies equipment. Setting them only before Start incorrectly expected 20 XP from a subsequently armored target. The corrected main and additional input/physics suites passed; [maintenance](../MAINTENANCE.md#gameplay-audit--2026-11-13) owns the rerun record. Gameplay damage/XP behavior was unchanged.
+
 ## Persistence and future integration
 
 No disk gameplay-save owner exists. CaptureState/RestoreState expose version-1 SkillProgressSnapshot with a cloned ten-entry int XP array; restore validates version/length/nonnegative XP atomically, derives levels and does not emit rewards. Definitions and curve must be configured first. A future coordinated character save must commit inventory consumption and skills together with legacy character XP, quests, equipment and world state. Current progress resets on scene/death reload. Adding/reordering skills requires explicit version migration; preserve existing enum IDs. Balance/production placement, additional player prefab variants and manual hardware/controller coverage remain future integration work.

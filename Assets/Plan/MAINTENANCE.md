@@ -1,5 +1,46 @@
 # Documentation and organization maintenance
 
+## Gameplay audit — 2026-11-13
+
+Completed the three requested checkpoints against Unity 6000.3.28f1. Initial state: stopped, clean editing scene Combat_Test; its pre-existing disk change (one `m_IsActive` override) was retained. Baseline compilation had no errors. Unity CLI 1.0.0 was verified current; installed Pipeline `commands/scripts.md`, `commands/build-and-compilation.md`, `commands/editor-lifecycle-and-observability.md` and CLI `playmode-verification-loop.md` were consulted. Slow reloads/terminal timeouts required the Unity connector fallback; interrupted calls were not counted as passes.
+
+### Confirmed findings and fixes
+
+| Priority | Reproduced problem | Implemented correction |
+| --- | --- | --- |
+| High | GameController treated Main as the menu after scene renaming. Selected Ranger/name became the prefab Warrior/empty name; dungeon defaults overwrote floor/difficulty. Loading carried a controller without a player. | Start/Menu reset menu state; Loading skips player setup; Main applies the selected player. Menu/loading diagnostics use current names. [Before](Validation/audit-production-before.json), [final flow](Validation/audit-production.json). |
+| High | The **active** Main generator overrides its end room to DEnd: no exit, always-closed inner wall sections and two corridor sections under opposite entrances. A disabled legacy generator's DBig reference was not the active configuration. | DEnd reuses DBig's ExitObject. Ten inner wall sections follow the matching closed-wall toggle; two corridor sections follow the correct entrance. Existing room/model identities retained. [Baseline](Validation/audit-world-before.json), [final tests](Validation/audit-world.json). |
+| High | Runtime baking reported Dungeon_Big_col unreadable: Editor baking worked, but player builds could not read its source mesh. | Enabled ModelImporter Read/Write on `Assets/Models/Building/Tiles/Dungeon_Big_col.fbx`; source FBX/GUID retained. The production rerun emitted no errors. No standalone executable was built. |
+| Medium | Regeneration retained replaced native NavMeshData and accepted floors without a reachable exit. | DungeonGenerator owns only data it builds, releases replaced/failed/destroyed data, retains old data for rollback, rejects missing/inactive/unreachable exits and uses matching agent-type/area query filters. |
+
+Gameplay files changed: GameController.cs, LoadingScript.cs, MenuController.cs, DungeonGenerator.cs, DEnd.prefab and Dungeon_Big_col.fbx.meta. Unity upgraded saved prefab/importer serialization. No source model, vendor code, scene, public callback, enum or assembly boundary changed. `AgentScripts/Skills/VerifySkills.cs` sets controlled enemy health/armor **after** Start applies equipment, correcting a fixture assumption without changing damage/XP rules.
+
+### Checks actually executed on the final implementation
+
+| Check | Result / evidence |
+| --- | --- |
+| Production loop | **20 passed:** Start → Loading → Main name/class/health/equipment, floor/difficulty, advancing frames, Tab/M/J/Escape ownership, focus, lethal damage/death reload and paused return to menu. Captured transition errors: **0**. [Report](Validation/audit-production.json). Menu cursor was observed free/visible. |
+| Native world stress | **74 passed:** **20 seeded 4×4 floors**, 320 room-center paths, 20 complete exit paths, four end entrances, native-data count bounds, invalid configuration, missing/unreachable exit rollback, three disable cancellations, duplicate requests and initial failure termination. Repeated after the import fix. Failure injections intentionally log errors. [Report](Validation/audit-world.json). |
+| Controlled capsule traversal | Four seeded routes reached exit interaction range through static colliders. Seeds 0/1/6 needed no upward probe; seed 4 needed one bounded probe at **Stairs_Low (1)**. Enemy colliders were disabled; this is not timed input jumping or normal gravity/locomotion certification. [Report](Validation/audit-traversal.json). |
+| Existing Editor regressions | Passed scene guards, character XP boundaries/events/overflow/cap, combat intervals and **300 seeded logical graphs**. [Output](ARCHIVE/Evidence/Current/GAMEPLAY_MODERNIZATION_VALIDATION.txt). |
+| Combat | **40 passed:** actual input, unarmed/Wood Sword/Iron Sword/Bow, native melee/projectile contacts, one attack per hold, volumes, movement and shields. [Output](ARCHIVE/Evidence/SimpleCombatValidation.txt). |
+| Skills / input-physics | **115 + 21 passed** in Gameplay_Test. [Skills](Validation/skills-playmode.json), [additional checks](Validation/skills-inputs.json). |
+| Resources / quests | **62** resource, **56** original quest and **59** gathering-quest assertions passed. [Resources](Validation/resource-nodes-playmode.json), [quest](Validation/quest-playmode.json), [gathering quest](Validation/gathering-quest-playmode.json). |
+| Merchants | Keyboard, native UI mouse, buy/sell UI, lifecycle and stock/gold transaction failure checks passed. [Reports](Validation/audit-merchants.json). |
+| Status / potion world item | **33 + 11 passed:** timers/modifiers/HUD/enemy death and drop/pickup/exact-slot guards. [Reports](Validation/audit-status-effects.json). |
+
+Partial runs are not passes: production needed a longer timeout for measured scene-load latency; gathering quest began before an initial focus-loss event settled, then passed unchanged; the skills fixture needed the Start-order correction. The first capsule probe incorrectly required NavMesh's approximate vertical height at every waypoint; horizontal arrival removed that false stop. The stair walking limitation remains explicit.
+
+NUnit discovery contained retained vendor NavMesh assemblies, not a custom game suite; vendor tests were not run. No standalone build, hardware/gamepad test, broad resolution/FPS/slopes survey, durable save test or monster-rig certification ran. Console history retains intentional failure injections and pre-fix diagnostics; it is not a clean historical buffer. Final state/reference review is recorded below. Remaining priorities live only in [the roadmap](DEVELOPMENT_ROADMAP.md).
+
+Audit helpers are indexed in [SCRIPT_INDEX](SCRIPT_INDEX.md). Run tests only in owned Play Mode fixtures; do not rerun one-time room migrations merely to test current content. Technical restore snapshots remain under ignored Temp/AuditRestore, outside Assets.
+
+### Final review and handoff
+
+[Final asset/state review](Validation/audit-final-review.json) passed: all **267** original DEnd object/component IDs remain (281 after exit addition), room/mesh GUIDs retained, zero missing scripts in DEnd/PlayerHolder/Enemy_Main, readable collision meshes and unchanged enabled build-scene order. The pre-existing Combat_Test diff matches its original SHA-256 exactly. Editor returned to clean stopped Combat_Test; the previous Play Mode start-scene override is restored and temporary auto-tick is disabled. Final `unity recompile` returned up_to_date, failed=false, no errors.
+
+The [post-fix console window](Validation/audit-console.json) contains four expected failure-injection errors and **zero unexpected errors**; historical Console counts include earlier diagnostics. Windows standalone build support is available, but no build/run was executed. [Current documentation links](Validation/audit-links.json) were checked without rewriting unrelated legacy document encodings. The roadmap prioritizes packaged-player validation, real stair/jump controls, initial-generation recovery UX and remaining prefab/monster coverage; persistence/content design limits remain under their existing system owners.
+
 ## Prefab organization — 2026-11-13
 
 Implemented folder-only cleanup using AssetDatabase.MoveAsset: **251 of 472 prefabs** relocated through 86 asset/folder operations. All prefab GUIDs and metadata retained. No gameplay code, scene content, public callbacks or plugin assets changed. [Exact inventory and move reasons](ARCHIVE/Organization/prefab-organization.json) cover every prefab, including exclusions; [byte validation](ARCHIVE/Organization/prefab-filesystem-validation.json) and [Editor validation](ARCHIVE/Organization/prefab-editor-validation.json) record executed checks.

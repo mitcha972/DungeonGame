@@ -17,10 +17,10 @@ These describe retained implementations, not every scene passing. [Maintenance](
 
 ## Next milestone — dependable primary loop
 
-1. **Production-flow integration:** verify Start → Loading → Main after scene renaming: class/name/equipment propagation, startup wiring, death reload and return-to-menu. Paths/build identities are reconciled; full gameplay flow needs a run.
-2. **Physical dungeon reachability:** measure player-to-exit paths across generated floors, doorway widths, agent types/area masks and interaction range. Historical foundation logs contain PathPartial exit paths; graph tests cannot close this item.
-3. **Failure/cancellation:** exercise initial failure, failed regeneration, disable/cancel and NavMesh/floor rollback. A user-facing recovery experience remains a design decision.
-4. **Cross-prefab controls:** verify production PlayerContent camera/input/modal wiring as well as the merchant fixture; preserve held-input/focus/death behavior.
+1. **Packaged-player verification — next:** build/run the intended platform after the runtime collision-mesh Read/Write fix. Editor Start → Loading → Main, selection/equipment, controls, death reload and return-to-menu now pass; no standalone build is certified. [Audit results](MAINTENANCE.md#gameplay-audit--2026-11-13).
+2. **Normal stair/jump traversal — partial:** all room centers/exits have complete paths across 20 seeded floors and four end entrances. DEnd's missing exit, closed inner walls and misplaced corridors are fixed. Controlled CharacterController traces reached four exits, but seed 4 required upward clearance at Stairs_Low (1). Test real locomotion/gravity/timed jumping, stairs/slopes/door feel and frame rates; NavMesh readiness is not a walking guarantee.
+3. **Failure UX — planned:** initial failure, bad configuration, partial assembly, unreachable-exit/native-data rollback, three cancellations and duplicate requests now pass. Design a visible retry/return path for initial-generation failure; there is no previous floor to restore then.
+4. **Remaining prefab/content coverage — unverified:** production PlayerHolder modal/focus/death controls and merchant fixtures pass. Alternate PlayerContent/legacy prefabs, hardware/controller input and monster-specific rigs remain separate coverage; prioritize the animation gaps below before expanding enemy content.
 
 ## Subsequent milestones — choose scope first
 

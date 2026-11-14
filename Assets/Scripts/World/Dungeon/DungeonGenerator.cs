@@ -46,6 +46,7 @@ public class DungeonGenerator : MonoBehaviour
     public event System.Action Generated;
     private List<Cell> board = new List<Cell>();
     private GameObject _generatedRoot;
+    private NavMeshData ownedNavigationData;
     private IEnumerator activeGeneration;
     private bool advancingFloor;
     private int floorBeforeGeneration;
@@ -79,6 +80,15 @@ public class DungeonGenerator : MonoBehaviour
             IsGenerating = false;
             if (LastFailure == null) LastFailure = "Dungeon generation was interrupted.";
         }
+    }
+
+    private void OnDestroy()
+    {
+        if (ownedNavigationData == null) return;
+        if (navigationSurface != null && navigationSurface.navMeshData == ownedNavigationData)
+            navigationSurface.RemoveData();
+        Destroy(ownedNavigationData);
+        ownedNavigationData = null;
     }
 
     private IEnumerator RunGeneration(bool advanceFloor)
@@ -182,6 +192,7 @@ public class DungeonGenerator : MonoBehaviour
             for (int i = 0; i < rooms.Length; i++) remaining[i] = rooms[i].numb;
             var enemies = new List<GameObject>();
             Transform spawn = null;
+            DungeonExit exit = null;
             for (int cellIndex = 0; cellIndex < board.Count; cellIndex++)
             {
                 int x = cellIndex % size.x;
@@ -198,6 +209,7 @@ public class DungeonGenerator : MonoBehaviour
                 room.transform.localRotation = Quaternion.identity;
                 room.name = prefab.name + " " + x + "-" + y;
                 room.GetComponent<RoomBehaviour>().UpdateRoom(cell.status);
+                if (cell.endCell) exit = room.GetComponentInChildren<DungeonExit>(true);
                 if (cell.startCell)
                 {
                     foreach (var marker in room.GetComponentsInChildren<Transform>(true))
@@ -219,7 +231,9 @@ public class DungeonGenerator : MonoBehaviour
                 }
             }
             if (spawn == null) { Fail("Start room requires a PlayerSpawn marker."); yield break; }
+            if (exit == null) { Fail("End room requires an active DungeonExit."); yield break; }
             _generatedRoot.SetActive(true);
+            if (!exit.isActiveAndEnabled) { Fail("End room requires an active DungeonExit."); yield break; }
             foreach (var light in _generatedRoot.GetComponentsInChildren<Light>())
             {
                 light.lightmapBakeType = LightmapBakeType.Realtime;
@@ -233,9 +247,26 @@ public class DungeonGenerator : MonoBehaviour
             }
             Physics.SyncTransforms();
             navigationSurface.BuildNavMesh();
-            if (!NavMesh.SamplePosition(spawn.position, out NavMeshHit playerHit, spawnSearchRadius, NavMesh.AllAreas))
+            if (navigationSurface.navMeshData == null || navigationSurface.navMeshData == previousNavigationData)
+            {
+                Fail("Dungeon NavMesh build did not produce replacement data.");
+                yield break;
+            }
+            var filter = new NavMeshQueryFilter { agentTypeID = navigationSurface.agentTypeID, areaMask = NavMesh.AllAreas };
+            if (!NavMesh.SamplePosition(spawn.position, out NavMeshHit playerHit, spawnSearchRadius, filter))
             {
                 Fail("PlayerSpawn is not on the generated NavMesh.");
+                yield break;
+            }
+            var playerInteraction = player.GetComponent<PlayerController>();
+            float exitRange = playerInteraction != null ? playerInteraction.InteractionDistance : spawnSearchRadius;
+            var exitPath = new NavMeshPath();
+            if (!NavMesh.SamplePosition(exit.transform.position, out var exitHit, exitRange, filter) ||
+                Vector3.Distance(exit.transform.position, exitHit.position) >= exitRange ||
+                !NavMesh.CalculatePath(playerHit.position, exitHit.position, filter, exitPath) ||
+                exitPath.status != NavMeshPathStatus.PathComplete)
+            {
+                Fail("Dungeon exit is not reachable from PlayerSpawn on the generated NavMesh.");
                 yield break;
             }
             PlayerSpawnPosition = playerHit.position;
@@ -244,7 +275,9 @@ public class DungeonGenerator : MonoBehaviour
             if (movement != null) movement.canMove = movement.canRotate = true;
             foreach (var enemy in enemies)
             {
-                if (!NavMesh.SamplePosition(enemy.transform.position, out NavMeshHit enemyHit, spawnSearchRadius, NavMesh.AllAreas))
+                var agent = enemy.GetComponent<NavMeshAgent>();
+                var enemyFilter = new NavMeshQueryFilter { agentTypeID = agent.agentTypeID, areaMask = agent.areaMask };
+                if (!NavMesh.SamplePosition(enemy.transform.position, out NavMeshHit enemyHit, spawnSearchRadius, enemyFilter))
                 {
                     Debug.LogWarning("Skipped enemy spawn outside the NavMesh: " + enemy.name, enemy);
                     continue;
@@ -255,10 +288,13 @@ public class DungeonGenerator : MonoBehaviour
                 var ai = enemy.GetComponent<EnemyAi>();
                 if (ai != null) ai.target = player.transform;
                 enemy.SetActive(true);
-                enemy.GetComponent<NavMeshAgent>().Warp(enemyHit.position);
+                agent.Warp(enemyHit.position);
             }
             committed = true;
             IsReady = true;
+            if (ownedNavigationData != null && ownedNavigationData != navigationSurface.navMeshData)
+                Destroy(ownedNavigationData);
+            ownedNavigationData = navigationSurface.navMeshData;
             if (previousRoot != null) Destroy(previousRoot);
         }
         finally
@@ -279,10 +315,13 @@ public class DungeonGenerator : MonoBehaviour
                 {
                     if (navigationSurface != null)
                     {
+                        var failedNavigationData = navigationSurface.navMeshData;
                         navigationSurface.RemoveData();
                         navigationSurface.navMeshData = previousNavigationData;
                         if (navigationSurface.isActiveAndEnabled) navigationSurface.AddData();
                         navigationRestored = previousNavigationData != null;
+                        if (failedNavigationData != null && failedNavigationData != previousNavigationData)
+                            Destroy(failedNavigationData);
                     }
                 }
                 catch (System.Exception exception)

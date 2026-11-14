@@ -2,25 +2,25 @@ PASS Live frames advancing
 PASS Unarmed uses light attack
 PASS Unarmed selects expected melee/ranged data
 PASS Unarmed held click produces exactly one attack (1)
-PASS Unarmed damages enemy (21) contacts=1 health=99979 enabled=True pos=(0.00, -0.01, -3.39) damage=26 visual=Center: (-0.57, 1.43, -3.21), Extents: (0.42, 0.21, 0.24) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
+PASS Unarmed damages enemy (27) contacts=1 health=99973 enabled=True pos=(0.00, -0.01, -3.39) damage=27 visual=Center: (-0.05, 1.36, -3.10), Extents: (0.12, 0.15, 0.15) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
 PASS Unarmed visible attack volume
 PASS Unarmed retains movement/rotation
 PASS Sword-Wood uses light attack
 PASS Sword-Wood selects expected melee/ranged data
 PASS Sword-Wood held click produces exactly one attack (1)
-PASS Sword-Wood damages enemy (24) contacts=1 health=99955 enabled=True pos=(0.00, -0.01, -3.39) damage=29 visual=Center: (1.02, 2.42, -4.05), Extents: (0.24, 0.48, 0.15) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
+PASS Sword-Wood damages enemy (30) contacts=1 health=99943 enabled=True pos=(0.00, -0.01, -3.39) damage=30 visual=Center: (1.04, 2.42, -4.01), Extents: (0.25, 0.47, 0.15) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
 PASS Sword-Wood visible attack volume
 PASS Sword-Wood retains movement/rotation
 PASS Sword-Iron uses light attack
 PASS Sword-Iron selects expected melee/ranged data
 PASS Sword-Iron held click produces exactly one attack (1)
-PASS Sword-Iron damages enemy (26) contacts=1 health=99929 enabled=True pos=(0.00, -0.01, -3.39) damage=31 visual=Center: (1.08, 2.39, -3.91), Extents: (0.29, 0.45, 0.15) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
+PASS Sword-Iron damages enemy (32) contacts=1 health=99911 enabled=True pos=(0.00, -0.01, -3.39) damage=32 visual=Center: (1.08, 2.40, -3.92), Extents: (0.29, 0.45, 0.15) overlaps=Enemy_Main(Clone):Enemy_Main(Clone) (EnemyStats),AttackHitBox:Player (PlayerStats)
 PASS Sword-Iron visible attack volume
 PASS Sword-Iron retains movement/rotation
 PASS Bow uses light attack
 PASS Bow selects expected melee/ranged data
 PASS Bow held click produces exactly one attack (1)
-PASS Bow damages enemy (25) contacts=1 health=99904 enabled=True pos=(-1.66, 1.61, 4.23) damage=30
+PASS Bow damages enemy (31) contacts=1 health=99880 enabled=True pos=(-1.66, 1.61, 4.23) damage=31
 PASS Bow visible attack volume
 PASS Bow retains movement/rotation
 PASS Enemy Slash accepts attack

@@ -1,0 +1,64 @@
+[
+  {
+    "file": "AgentScripts/StatusEffects/Validate.cs",
+    "result": {
+      "passed": 33,
+      "failed": 0,
+      "results": [
+        "PASS Combat_Test supplies three Poison Potions",
+        "PASS inventory potion applies player Poison",
+        "PASS exactly one potion consumed",
+        "PASS HUD icon appears immediately",
+        "PASS Poison first 2HP tick at two seconds",
+        "PASS duplicate potion retained",
+        "PASS duplicate potion displays visible feedback",
+        "PASS duplicate does not refresh timer",
+        "PASS clear duplicate result",
+        "PASS different effects coexist",
+        "PASS player derived movement reduced to 60%",
+        "PASS HUD has three effects",
+        "PASS tooltip contains speed modifier",
+        "PASS HUD rounds fractional seconds up",
+        "PASS removing Slow restores speed while retaining Bleeding",
+        "PASS large-frame Poison catches seven ticks and expires",
+        "PASS Bleeding eleven ticks; no tick at expiration",
+        "PASS HUD icons hidden immediately on expiry",
+        "PASS null definition safe",
+        "PASS invalid duration safe",
+        "PASS outgoing damage modifier",
+        "PASS incoming damage modifier",
+        "PASS modifier expiry retains independent Slow",
+        "PASS Slow expiry restores derived speed",
+        "PASS disabled controller clears modifiers",
+        "PASS disabled target rejected",
+        "PASS healing potion remains functional",
+        "PASS Enemy_Main accepts shared Poison",
+        "PASS enemy Poison damage through EnemyStats",
+        "PASS enemy derived movement reduced",
+        "PASS enemy Bleeding uses same tick engine",
+        "PASS enemy modifier removal restores speed",
+        "PASS DoT uses enemy death event, attribution and clears all effects"
+      ]
+    }
+  },
+  {
+    "file": "AgentScripts/StatusEffects/ValidatePotionDrop.cs",
+    "result": {
+      "passed": 11,
+      "failed": 0,
+      "results": [
+        "PASS Poison has independent pickup prefab",
+        "PASS Poison pickup authored with Poison item",
+        "PASS original health pickup unchanged",
+        "PASS reuses potion mesh",
+        "PASS reuses potion materials",
+        "PASS UI drop creates exactly one poison pickup",
+        "PASS UI drop removes exact inventory entry",
+        "PASS drop retains potion physics",
+        "PASS repeated stale drop cannot duplicate",
+        "PASS pickup returns Poison exactly once",
+        "PASS null drop rejected"
+      ]
+    }
+  }
+]

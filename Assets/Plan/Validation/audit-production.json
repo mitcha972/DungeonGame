@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "checks": [
+    "PASS Start Loading Main preserve chosen name and class",
+    "PASS selected class initializes full health",
+    "PASS selected class equips its defaults",
+    "PASS dungeon bootstrap preserves session floor and difficulty",
+    "PASS production gameplay frames advance",
+    "PASS production inventory owns input without pausing",
+    "PASS production expanded map blocks gameplay",
+    "PASS map Escape closes without pausing",
+    "PASS production journal blocks gameplay",
+    "PASS journal close restores gameplay",
+    "PASS production Escape pauses",
+    "PASS production Escape resumes",
+    "PASS focus loss blocks production gameplay",
+    "PASS focus regain restores production gameplay",
+    "PASS lethal damage blocks gameplay",
+    "PASS death reload recreates selected player alive",
+    "PASS death reload preserves floor difficulty and time",
+    "PASS return to menu resets session defaults from pause",
+    "PASS return to menu restores class selection UI",
+    "PASS production transitions emit no errors"
+  ],
+  "errors": [],
+  "error": null
+}

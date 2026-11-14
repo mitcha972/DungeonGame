@@ -6,8 +6,8 @@
     "authored gathering quest and two reusable trees are configured",
     "new quest preserves original adventure catalog and state",
     "world frames advance during integration test",
-    "E begins gathering: ResourceNode_Tree",
-    "timed collection finishes and depletes: ResourceNode_Tree",
+    "E begins gathering: ResourceNode_Tree_West",
+    "timed collection finishes and depletes: ResourceNode_Tree_West",
     "gathering before acceptance gives an item without starting quest",
     "E raycast opens Nessa's quest offer",
     "number-key acceptance starts existing quest service and refreshes greeting",
@@ -62,7 +62,7 @@
     "journal reports gathering quest completed and rewards received",
     "completion leaves gameplay controls and world time normal"
   ],
-  "frameCount": 1051,
-  "worldTime": 19.8692837,
+  "frameCount": 88237,
+  "worldTime": 823.940063,
   "scope": "Live Editor: authored gathering quest, real reusable resource nodes and collection durations, synthetic E/number/J/Escape, existing inventory/dialogue/uGUI/journal, staged delivery and XP/reward transactions. Temporary direct bag edits exercise failure/stale-choice cases; no gameplay disk-save claim."
 }
