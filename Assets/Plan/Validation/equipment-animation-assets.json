@@ -1,0 +1,145 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "Synchronization is idempotent for authored controllers",
+      "details": [
+        "Assets/Animations/Animators/Characters/NPC Animator.controller",
+        "Assets/Animations/Animators/Characters/Player Animator.controller",
+        "Assets/Animations/Animators/Characters/StarterAssetsThirdPerson.controller"
+      ]
+    },
+    {
+      "pass": true,
+      "name": "All selected weapon motions have their direct authored states",
+      "details": "NPC Animator"
+    },
+    {
+      "pass": true,
+      "name": "No active weapon placeholder states",
+      "details": "NPC Animator"
+    },
+    {
+      "pass": true,
+      "name": "Ability clips have direct authored states",
+      "details": "NPC Animator"
+    },
+    {
+      "pass": true,
+      "name": "All selected weapon motions have their direct authored states",
+      "details": "Player Animator"
+    },
+    {
+      "pass": true,
+      "name": "No active weapon placeholder states",
+      "details": "Player Animator"
+    },
+    {
+      "pass": true,
+      "name": "Ability clips have direct authored states",
+      "details": "Player Animator"
+    },
+    {
+      "pass": true,
+      "name": "All seven migrated attack sets have bound light motions",
+      "details": [
+        "Assets/Combat/WeaponAttacks/Acid.asset",
+        "Assets/Combat/WeaponAttacks/Bow_Attacks.asset",
+        "Assets/Combat/WeaponAttacks/Giant-Stomp.asset",
+        "Assets/Combat/WeaponAttacks/Giant-Swipe.asset",
+        "Assets/Combat/WeaponAttacks/Metalon - Stab.asset",
+        "Assets/Combat/WeaponAttacks/Sword_Attacks.asset",
+        "Assets/Combat/WeaponAttacks/Unarmed_Attacks.asset"
+      ]
+    },
+    {
+      "pass": true,
+      "name": "Main-hand item owns its attack set",
+      "details": "Assets/GamePlay/Weapons/Bow.asset"
+    },
+    {
+      "pass": true,
+      "name": "Main-hand item owns its attack set",
+      "details": "Assets/GamePlay/Weapons/Sword-Iron.asset"
+    },
+    {
+      "pass": true,
+      "name": "Main-hand item owns its attack set",
+      "details": "Assets/GamePlay/Weapons/Sword-Wood.asset"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one gear owner and explicit innate attacks",
+      "details": "Assets/Prefabs/Player/PlayerHolder.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one animation owner",
+      "details": "Assets/Prefabs/Player/PlayerHolder.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one gear owner and explicit innate attacks",
+      "details": "Assets/Prefabs/Player/Player_Main.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one animation owner",
+      "details": "Assets/Prefabs/Player/Player_Main.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one gear owner and explicit innate attacks",
+      "details": "Assets/Prefabs/Enemies/Enemy_Main.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Aggregate has one animation owner",
+      "details": "Assets/Prefabs/Enemies/Enemy_Main.prefab"
+    },
+    {
+      "pass": true,
+      "name": "Production player/enemy prefab references resolve",
+      "details": []
+    },
+    {
+      "pass": true,
+      "name": "All five renamed runtime scripts retain their original GUIDs",
+      "details": [
+        {
+          "name": "CharacterEquipment",
+          "path": "Assets/Scripts/Inventory/Equipment/CharacterEquipment.cs",
+          "guid": "990beb6f313183749b5b8dd1865a6561"
+        },
+        {
+          "name": "PlayerEquipment",
+          "path": "Assets/Scripts/Inventory/Equipment/PlayerEquipment.cs",
+          "guid": "355efe35842d9a041b327454ea9ac481"
+        },
+        {
+          "name": "EnemyEquipment",
+          "path": "Assets/Scripts/Inventory/Equipment/EnemyEquipment.cs",
+          "guid": "a8806f61581328b41a0510147e1c3f51"
+        },
+        {
+          "name": "CharacterAnimation",
+          "path": "Assets/Scripts/Combat/Animation/CharacterAnimation.cs",
+          "guid": "39bb38027607b4d4b9eea10523f314c9"
+        },
+        {
+          "name": "WeaponAttackSet",
+          "path": "Assets/Scripts/Combat/Data/WeaponAttackSet.cs",
+          "guid": "3aba2028d2950264590c2b2a1776f37f"
+        }
+      ]
+    }
+  ],
+  "scene": {
+    "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "isDirty": true
+  },
+  "playMode": false,
+  "compiling": false,
+  "playModeStartScene": null
+}

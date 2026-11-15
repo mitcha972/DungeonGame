@@ -1,0 +1,84 @@
+{
+  "updatedUtc": "2026-11-15 21:44:22 UTC",
+  "editor": {
+    "status": "ready",
+    "compiling": false,
+    "domainReloadInProgress": false,
+    "codeLoadCount": 45,
+    "autoRefresh": "enabled",
+    "playMode": "stopped",
+    "runInBackground": true,
+    "lastHeartbeat": "2026-11-15T21:44:22.2182627Z",
+    "projectPath": "C:\\Users\\mitch\\Documents\\Unity\\My_Projects\\Dungeon Game",
+    "unityVersion": "6000.3.28f1",
+    "role": "main",
+    "instanceName": "Main Editor"
+  },
+  "compilation": {
+    "status": "completed",
+    "failed": false,
+    "errors": [],
+    "compilationFailed": false
+  },
+  "scene": {
+    "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "isDirty": true
+  },
+  "diskPreserved": true,
+  "autoTick": false,
+  "playModeStartScene": null,
+  "temporaryAssetsRemoved": true,
+  "sourceReverts": [
+    {
+      "path": "Assets/Scripts/World/Dungeon/DungeonGenerator.cs",
+      "restored": true
+    },
+    {
+      "path": "Assets/Scripts/MaterialTilingOffset.cs",
+      "restored": true
+    },
+    {
+      "path": "Assets/Plugins/NavMeshComponents-master/Assets/Tests/Editor/NavMeshSurfaceInPrefabTests.cs",
+      "restored": true
+    },
+    {
+      "path": "Assets/Plugins/NavMeshComponents-master/Assets/Tests/Editor/NavMeshModifierVolumeInPrefabTests.cs",
+      "restored": true
+    }
+  ],
+  "buildSettings": {
+    "active-build-target": "StandaloneWindows64",
+    "active-build-target-group": "Standalone",
+    "development-build": false,
+    "allow-debugging": false,
+    "connect-with-profiler": false,
+    "build-scripts-only": false,
+    "symlink-sources": false,
+    "il2cpp-code-generation": "OptimizeSpeed",
+    "scenes": [
+      {
+        "path": "Assets/Scenes/Game/Start.unity",
+        "guid": "35865f7d325b21f4b9d9f158c5076743",
+        "enabled": true
+      },
+      {
+        "path": "Assets/Scenes/Game/Loading.unity",
+        "guid": "3bfd05882f6fe554182bc5607c7af60c",
+        "enabled": true
+      },
+      {
+        "path": "Assets/Scenes/Game/Main.unity",
+        "guid": "3a843169fcbd7674ebd69dd5aab48be6",
+        "enabled": true
+      },
+      {
+        "path": "Assets/Scenes/Test_Scenes/Gameplay_Test.unity",
+        "guid": "11d90511ed2ed61438b796ee25a5820c",
+        "enabled": true
+      }
+    ]
+  },
+  "scope": "Equipment and animation cleanup; unrelated investigation stopped and reverted per user request",
+  "recovery": "AgentScripts/EquipmentAnimation/Recovery/Combat_Test.unsaved.unity.backup",
+  "notes": "../MAINTENANCE.md#broader-tests-deferred--2026-11-15"
+}

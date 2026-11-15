@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "result": "Failed",
+  "totalErrors": 2,
+  "totalWarnings": 1,
+  "errors": [
+    {
+      "message": "error CS1061: 'Light' does not contain a definition for 'lightmapBakeType' and no accessible extension method 'lightmapBakeType' accepting a first argument of type 'Light' could be found (are you missing a using directive or an assembly reference?)",
+      "file": "Assets\\Scripts\\World\\Dungeon\\DungeonGenerator.cs"
+    },
+    {
+      "message": "Error building Player because scripts had compiler errors"
+    }
+  ],
+  "warnings": [
+    {
+      "message": "warning CS0414: The field 'CharacterCombat._attackRoutine' is assigned but its value is never used",
+      "file": "Assets\\Scripts\\Combat\\CharacterCombat.cs"
+    }
+  ],
+  "buildTimeMs": 24876
+}

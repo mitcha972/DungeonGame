@@ -16,10 +16,14 @@ Tests require owned Play Mode fixtures; migration helpers require stopped Play M
 
 Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](ARCHITECTURE.md) owns relationships; this index owns file paths/responsibilities. Imported vendor/package sources are excluded; adapted Camera code and legacy shells are identified.
 
-## Imported custom/adapted source (118 files)
+## Imported custom/adapted source
 
 | File | Responsibility |
 | --- | --- |
+| [Assets/Editor/Characters/WeaponAnimationAuthoring.cs](<../Editor/Characters/WeaponAnimationAuthoring.cs>) | Bakes stable weapon/ability states into authored controllers; build-time content validation. |
+| [Assets/Editor/Validation/EquipmentAnimationValidation.cs](<../Editor/Validation/EquipmentAnimationValidation.cs>) | Owned Play Mode gear/attack suite and regression entry point. |
+| [Assets/Editor/Validation/EquipmentAnimationRegressionChecks.cs](<../Editor/Validation/EquipmentAnimationRegressionChecks.cs>) | Native synthetic input, NPC, modal and death regression fixtures. |
+| [Assets/Editor/Validation/EquipmentAnimationAssetValidation.cs](<../Editor/Validation/EquipmentAnimationAssetValidation.cs>) | Stopped-Editor state bindings, GUIDs and production prefab references audit. |
 | [Assets/Editor/Validation/CombatCheckpointRunner.cs](<../Editor/Validation/CombatCheckpointRunner.cs>) | Editor combat checkpoint runner; mutates live fixture. |
 | [Assets/Editor/Validation/GameplayModernizationValidation.cs](<../Editor/Validation/GameplayModernizationValidation.cs>) | Editor scene/XP/interval/300-graph checks. |
 | [Assets/Scripts/Camera/CameraShakeInstance.cs](<../Scripts/Camera/CameraShakeInstance.cs>) | Adapted EZCameraShake state/fade simulation. |
@@ -27,18 +31,17 @@ Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/Camera/CameraShaker1.cs](<../Scripts/Camera/CameraShaker1.cs>) | Retained compatibility shake component. |
 | [Assets/Scripts/Camera/CameraUtilities.cs](<../Scripts/Camera/CameraUtilities.cs>) | Adapted EZCameraShake math helpers. |
 | [Assets/Scripts/Camera/ShakeDemo.cs](<../Scripts/Camera/ShakeDemo.cs>) | Game-facing shake entry point/demo adapter. |
-| [Assets/Scripts/Combat/Animation/CharacterAnimationEventReceiver.cs](<../Scripts/Combat/Animation/CharacterAnimationEventReceiver.cs>) | Retained animation event receiver component. |
-| [Assets/Scripts/Combat/Animation/CharacterAnimator.cs](<../Scripts/Combat/Animation/CharacterAnimator.cs>) | Weapon clips and equip/busy/hit/death presentation. |
+| [Assets/Scripts/Combat/Animation/CharacterAnimation.cs](<../Scripts/Combat/Animation/CharacterAnimation.cs>) | Authored attack/action playback, temporary layer weights, gear poses and gathering presentation. |
 | [Assets/Scripts/Combat/Animation/ResetAnimatorBool.cs](<../Scripts/Combat/Animation/ResetAnimatorBool.cs>) | Animator state behavior resetting a bool. |
 | [Assets/Scripts/Combat/AttackHitBox.cs](<../Scripts/Combat/AttackHitBox.cs>) | Melee overlap sampling and per-attack deduplication. |
 | [Assets/Scripts/Combat/BlockHitBox.cs](<../Scripts/Combat/BlockHitBox.cs>) | Shield volume and incomplete projectile/durability bookkeeping. |
 | [Assets/Scripts/Combat/CharacterCombat.cs](<../Scripts/Combat/CharacterCombat.cs>) | Attack timeline, cancellation, damage/block/cooldown owner. |
 | [Assets/Scripts/Combat/Data/Abilities.cs](<../Scripts/Combat/Data/Abilities.cs>) | ScriptableObject ability configuration; some fields unused. |
-| [Assets/Scripts/Combat/Data/WeaponClass.cs](<../Scripts/Combat/Data/WeaponClass.cs>) | ScriptableObject weapon clips/timing/projectile data. |
+| [Assets/Scripts/Combat/Data/WeaponAttackSet.cs](<../Scripts/Combat/Data/WeaponAttackSet.cs>) | ScriptableObject weapon clips/timing/projectile data. |
 | [Assets/Scripts/Combat/EnemyCombat.cs](<../Scripts/Combat/EnemyCombat.cs>) | Enemy attack gating and projectile/ability adapter. |
 | [Assets/Scripts/Combat/PlayerCombat.cs](<../Scripts/Combat/PlayerCombat.cs>) | Player block eligibility and projectile/ability adapter. |
 | [Assets/Scripts/Combat/Projectile.cs](<../Scripts/Combat/Projectile.cs>) | Swept nearest-hit projectile collision and range. |
-| [Assets/Scripts/Combat/Stats/CharacterStats.cs](<../Scripts/Combat/Stats/CharacterStats.cs>) | Shared armor/health/modifiers and death state. |
+| [Assets/Scripts/Combat/Stats/CharacterStats.cs](<../Scripts/Combat/Stats/CharacterStats.cs>) | Shared health/healing, equipment subscriptions/modifiers, armor and death state. |
 | [Assets/Scripts/Combat/Stats/Stat.cs](<../Scripts/Combat/Stats/Stat.cs>) | Generic integer modifier collection. |
 | [Assets/Scripts/Core/GameController.cs](<../Scripts/Core/GameController.cs>) | Session name/class/floor/difficulty and player setup. |
 | [Assets/Scripts/Core/Legacy/Controller.cs](<../Scripts/Core/Legacy/Controller.cs>) | Empty compatibility component; serialized identity retained. |
@@ -54,11 +57,9 @@ Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/Inventory/Chests/ChestInventorySlot.cs](<../Scripts/Inventory/Chests/ChestInventorySlot.cs>) | Failure-aware chest-to-player transfer. |
 | [Assets/Scripts/Inventory/Chests/ChestInventoryUI.cs](<../Scripts/Inventory/Chests/ChestInventoryUI.cs>) | Chest slot binding and close behavior. |
 | [Assets/Scripts/Inventory/Chests/ChestScript.cs](<../Scripts/Inventory/Chests/ChestScript.cs>) | Chest loot generation and Interactable opening. |
-| [Assets/Scripts/Inventory/Equipment/EnemyEquipmentManager.cs](<../Scripts/Inventory/Equipment/EnemyEquipmentManager.cs>) | Probabilistic enemy default equipment. |
-| [Assets/Scripts/Inventory/Equipment/EquipmentManager.cs](<../Scripts/Inventory/Equipment/EquipmentManager.cs>) | Equipment state/meshes/events/reset/unequip/drop. |
-| [Assets/Scripts/Inventory/Equipment/EquipmentManager1.cs](<../Scripts/Inventory/Equipment/EquipmentManager1.cs>) | Empty compatibility component. |
-| [Assets/Scripts/Inventory/Equipment/EquipmentManagerUI.cs](<../Scripts/Inventory/Equipment/EquipmentManagerUI.cs>) | Retained EquipmentManager specialization. |
-| [Assets/Scripts/Inventory/Equipment/PlayerEquipmentManager.cs](<../Scripts/Inventory/Equipment/PlayerEquipmentManager.cs>) | Player equipment UI and equip guards. |
+| [Assets/Scripts/Inventory/Equipment/EnemyEquipment.cs](<../Scripts/Inventory/Equipment/EnemyEquipment.cs>) | Probabilistic enemy default equipment. |
+| [Assets/Scripts/Inventory/Equipment/CharacterEquipment.cs](<../Scripts/Inventory/Equipment/CharacterEquipment.cs>) | Equipment state/meshes/events/reset/unequip/drop. |
+| [Assets/Scripts/Inventory/Equipment/PlayerEquipment.cs](<../Scripts/Inventory/Equipment/PlayerEquipment.cs>) | Player equipment UI and equip guards. |
 | [Assets/Scripts/Inventory/Inventory.cs](<../Scripts/Inventory/Inventory.cs>) | Fixed slot storage, transfers and notifications. |
 | [Assets/Scripts/Inventory/Items/Consumable.cs](<../Scripts/Inventory/Items/Consumable.cs>) | Validated health consumable effect and slot removal. |
 | [Assets/Scripts/Inventory/Items/Equipment.cs](<../Scripts/Inventory/Items/Equipment.cs>) | Equipment slot/mesh/stat data and equip adapter. |
@@ -67,40 +68,32 @@ Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/Inventory/Items/Loot.cs](<../Scripts/Inventory/Items/Loot.cs>) | Serializable pickup/chance configuration. |
 | [Assets/Scripts/Inventory/Items/Potion.cs](<../Scripts/Inventory/Items/Potion.cs>) | Retained compatibility component. |
 | [Assets/Scripts/Inventory/UI/EquipmentSlotUI.cs](<../Scripts/Inventory/UI/EquipmentSlotUI.cs>) | Equipment display and guarded inventory transfer. |
-| [Assets/Scripts/Inventory/UI/HotKeySlot.cs](<../Scripts/Inventory/UI/HotKeySlot.cs>) | Inventory slot hotkey adapter. |
 | [Assets/Scripts/Inventory/UI/InventorySlot.cs](<../Scripts/Inventory/UI/InventorySlot.cs>) | Native pointer inventory-item use adapter. |
 | [Assets/Scripts/Inventory/UI/InventoryUI.cs](<../Scripts/Inventory/UI/InventoryUI.cs>) | Discover/render player inventory slots. |
 | [Assets/Scripts/Inventory/UI/UISlot.cs](<../Scripts/Inventory/UI/UISlot.cs>) | Shared item display/use/drop/drag behavior. |
 | [Assets/Scripts/NPC/Enemies/Enemy.cs](<../Scripts/NPC/Enemies/Enemy.cs>) | ScriptableObject enemy tuning/equipment/loot data. |
 | [Assets/Scripts/NPC/Enemies/EnemyAi.cs](<../Scripts/NPC/Enemies/EnemyAi.cs>) | Update-driven perception/navigation/combat FSM. |
-| [Assets/Scripts/NPC/Enemies/EnemyAnimator.cs](<../Scripts/NPC/Enemies/EnemyAnimator.cs>) | CharacterAnimator specialization for enemy. |
 | [Assets/Scripts/NPC/Enemies/EnemyInteract.cs](<../Scripts/NPC/Enemies/EnemyInteract.cs>) | Enemy focus/Outline presentation. |
 | [Assets/Scripts/NPC/Enemies/EnemyStats.cs](<../Scripts/NPC/Enemies/EnemyStats.cs>) | Enemy stats, damage/death, XP and loot. |
 | [Assets/Scripts/NPC/Legacy/EnemyAiTutorial.cs](<../Scripts/NPC/Legacy/EnemyAiTutorial.cs>) | Retained tutorial AI implementation. |
 | [Assets/Scripts/NPC/Legacy/EnemyManager.cs](<../Scripts/NPC/Legacy/EnemyManager.cs>) | Retained enemy-instance placeholder. |
 | [Assets/Scripts/Player/Data/Class.cs](<../Scripts/Player/Data/Class.cs>) | ScriptableObject starting health/equipment data. |
 | [Assets/Scripts/Player/Legacy/CameraController.cs](<../Scripts/Player/Legacy/CameraController.cs>) | Legacy orbit/zoom camera controller. |
-| [Assets/Scripts/Player/Legacy/FPC.cs](<../Scripts/Player/Legacy/FPC.cs>) | Legacy first-person controller with Standard Assets input. |
 | [Assets/Scripts/Player/Legacy/PlayerManager.cs](<../Scripts/Player/Legacy/PlayerManager.cs>) | Legacy singleton build-index reload. |
 | [Assets/Scripts/Player/Legacy/PlayerMotor.cs](<../Scripts/Player/Legacy/PlayerMotor.cs>) | Legacy NavMeshAgent movement/follow controller. |
-| [Assets/Scripts/Player/PlayerAim.cs](<../Scripts/Player/PlayerAim.cs>) | Orient player aim from main camera. |
-| [Assets/Scripts/Player/PlayerAnimator.cs](<../Scripts/Player/PlayerAnimator.cs>) | CharacterAnimator specialization for player. |
-| [Assets/Scripts/Player/PlayerCameraController.cs](<../Scripts/Player/PlayerCameraController.cs>) | Camera mode selection and player renderer visibility. |
 | [Assets/Scripts/Player/PlayerContent.cs](<../Scripts/Player/PlayerContent.cs>) | Apply player identity/class and class changes. |
-| [Assets/Scripts/Player/PlayerControlState.cs](<../Scripts/Player/PlayerControlState.cs>) | Central gameplay eligibility, cursor and modal input. |
+| [Assets/Scripts/Player/PlayerControlState.cs](<../Scripts/Player/PlayerControlState.cs>) | Sole gameplay input subscriber, intentions, eligibility, cursor and modal/action routing. |
 | [Assets/Scripts/Player/PlayerController.cs](<../Scripts/Player/PlayerController.cs>) | Combat input, focus and Interactable raycast dispatch. |
 | [Assets/Scripts/Player/PlayerDamageFlash.cs](<../Scripts/Player/PlayerDamageFlash.cs>) | Player screen damage flash presentation. |
 | [Assets/Scripts/Player/PlayerStats.cs](<../Scripts/Player/PlayerStats.cs>) | Health/class gear, XP/skills and death restart. |
+| [Assets/Scripts/Player/ThirdPersonController.cs](<../Scripts/Player/ThirdPersonController.cs>) | Sole player movement, mouse-facing yaw, grounding/gravity and shared camera-target/view-mode owner; writes directional locomotion parameters; original StarterAssets namespace/GUID retained. |
 | [Assets/Scripts/Progression/Leveling/ExperienceBar.cs](<../Scripts/Progression/Leveling/ExperienceBar.cs>) | XP bar display and retained demo setup. |
 | [Assets/Scripts/Progression/Leveling/LevelSystem.cs](<../Scripts/Progression/Leveling/LevelSystem.cs>) | Bounded XP thresholds/levels/events model. |
 | [Assets/Scripts/Progression/Leveling/LevelSystemAnimated.cs](<../Scripts/Progression/Leveling/LevelSystemAnimated.cs>) | Displayed XP interpolation and owned subscriptions. |
 | [Assets/Scripts/Progression/Leveling/LevelSystemAnimatedUpdater.cs](<../Scripts/Progression/Leveling/LevelSystemAnimatedUpdater.cs>) | Local runtime interpolation/lifecycle driver. |
 | [Assets/Scripts/Progression/Leveling/LevelWindow.cs](<../Scripts/Progression/Leveling/LevelWindow.cs>) | Level/XP display and example callbacks. |
 | [Assets/Scripts/Progression/Skills/MaterialTintColor.cs](<../Scripts/Progression/Skills/MaterialTintColor.cs>) | Owned material tint/fade for skills presentation. |
-| [Assets/Scripts/Progression/Skills/Player.cs](<../Scripts/Progression/Skills/Player.cs>) | PlayerStats progression delegation; standalone demo fallback. |
 | [Assets/Scripts/Progression/Skills/PlayerSkills.cs](<../Scripts/Progression/Skills/PlayerSkills.cs>) | Skill points/prerequisites/unlock model. |
-| [Assets/Scripts/Progression/Skills/PlayerSword.cs](<../Scripts/Progression/Skills/PlayerSword.cs>) | Legacy E-polling log-only skill prototype. |
-| [Assets/Scripts/Progression/Skills/Testing.cs](<../Scripts/Progression/Skills/Testing.cs>) | Skill-tree bootstrap using selected Player wrapper. |
 | [Assets/Scripts/Progression/Skills/UI_SkillTree.cs](<../Scripts/Progression/Skills/UI_SkillTree.cs>) | Skill selection, visual links and pointer callbacks. |
 | [Assets/Scripts/Shops/ShopInventory.cs](<../Scripts/Shops/ShopInventory.cs>) | Merchant stock list and compatibility singleton. |
 | [Assets/Scripts/Shops/ShopInventorySlot.cs](<../Scripts/Shops/ShopInventorySlot.cs>) | Price/icon and prototype free item grant. |
@@ -113,7 +106,7 @@ Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/UI/HUD/ScreenDamage.cs](<../Scripts/UI/HUD/ScreenDamage.cs>) | HUD damage image feedback. |
 | [Assets/Scripts/UI/Inventory/DragDrop.cs](<../Scripts/UI/Inventory/DragDrop.cs>) | Inventory drag event forwarding. |
 | [Assets/Scripts/UI/Inventory/Drop.cs](<../Scripts/UI/Inventory/Drop.cs>) | Retained UI drop callback. |
-| [Assets/Scripts/UI/Inventory/HotKeysUI.cs](<../Scripts/UI/Inventory/HotKeysUI.cs>) | Inventory hotkey icon/event refresh. |
+| [Assets/Scripts/UI/Inventory/HotKeysUI.cs](<../Scripts/UI/Inventory/HotKeysUI.cs>) | Quick-slot configuration/use and icon refresh; requests come from the active player. |
 | [Assets/Scripts/UI/Menus/MenuController.cs](<../Scripts/UI/Menus/MenuController.cs>) | Character selection and Start→Loading transition. |
 | [Assets/Scripts/UI/Menus/SettingsMenu.cs](<../Scripts/UI/Menus/SettingsMenu.cs>) | Pause/resume tabs and return to Start menu. |
 | [Assets/Scripts/UI/Tooltips/ItemInfo.cs](<../Scripts/UI/Tooltips/ItemInfo.cs>) | Retained item/tooltip demo component. |
@@ -132,7 +125,6 @@ Current 2026-11-13 locations. Classes/namespaces/GUIDs retained. [Architecture](
 | [Assets/Scripts/World/Dungeon/DungeonExit.cs](<../Scripts/World/Dungeon/DungeonExit.cs>) | Request generator floor advancement. |
 | [Assets/Scripts/World/Dungeon/DungeonGenerator.cs](<../Scripts/World/Dungeon/DungeonGenerator.cs>) | Connected maze, room/NavMesh assembly and rollback. |
 | [Assets/Scripts/World/Grabbing/ObjectGrabbable.cs](<../Scripts/World/Grabbing/ObjectGrabbable.cs>) | Physics grab-point movement and release. |
-| [Assets/Scripts/World/Grabbing/PlayerPickUpDrop.cs](<../Scripts/World/Grabbing/PlayerPickUpDrop.cs>) | Separate raycast rigidbody-grab prototype. |
 | [Assets/Scripts/World/Interactions/DoorScript.cs](<../Scripts/World/Interactions/DoorScript.cs>) | Interactable door opening/closing. |
 | [Assets/Scripts/World/Interactions/Interactable.cs](<../Scripts/World/Interactions/Interactable.cs>) | Shared focus and Interact(owner) contract. |
 | [Assets/Scripts/World/Interactions/ItemInteract.cs](<../Scripts/World/Interactions/ItemInteract.cs>) | Guarded world pickup/add-before-destroy. |
@@ -145,7 +137,6 @@ Not moved; do not treat these as deletion candidates.
 
 | File | Responsibility |
 | --- | --- |
-| [Assets/GamePlay/Character/InputSystem/StarterAssetsInputs.cs](<../GamePlay/Character/InputSystem/StarterAssetsInputs.cs>) | PlayerInput callback bridge and input reset/gating. |
 | [Assets/GamePlay/Character/LowPoly Characters/Characters/LowPoly/Editor/MaterialTilingOffset.cs](<../GamePlay/Character/LowPoly Characters/Characters/LowPoly/Editor/MaterialTilingOffset.cs>) | Imported BLINK editor helper, kept under Editor. |
 | [Assets/Prefabs/Player/DemoPlayer/MouseCamLook.cs](<../Prefabs/Player/DemoPlayer/MouseCamLook.cs>) | Imported demo mouse-look. |
 | [Assets/Prefabs/Player/DemoPlayer/PlayerMovement.cs](<../Prefabs/Player/DemoPlayer/PlayerMovement.cs>) | Imported demo movement. |
@@ -226,3 +217,11 @@ Combat simplification validation (2026-11-13): `AgentScripts/Combat/SimpleCombat
 - Assets/Scripts/Combat/StatusEffectController.cs: active instances, timers, modifiers and application results.
 - Assets/Scripts/Combat/StatusEffectTestSupply.cs: explicit Combat_Test potion fixture.
 - Assets/Scripts/UI/HUD/StatusEffectHUD.cs: icons, TMP countdowns and hover tooltip.
+
+2026-11-15 player cleanup: twelve obsolete scripts removed; ThirdPersonController moved via AssetDatabase with its GUID/class/namespace retained. [Current architecture](Player_Architecture.md) and [inventory/report](Player_Cleanup_Report.md) describe consolidated responsibilities and validation. No runtime script was added.
+
+Equipment/animation follow-up (2026-11-15): five runtime scripts renamed with GUIDs preserved; two empty compatibility scripts removed after migrating Start's preview component. CharacterEquipment owns gear/visual transactions, CharacterAnimation plays authored actions and WeaponAttackSet is referenced by the item. Added Editor-only [WeaponAnimationAuthoring](../Editor/Characters/WeaponAnimationAuthoring.cs), [EquipmentAnimationValidation](../Editor/Validation/EquipmentAnimationValidation.cs) compiled [regression checks](../Editor/Validation/EquipmentAnimationRegressionChecks.cs) and [asset validation](../Editor/Validation/EquipmentAnimationAssetValidation.cs). Current contracts: [Inventory](SYSTEMS/Inventory.md), [Animation](SYSTEMS/Animation.md).
+
+Equipment-scope closeout (2026-11-15): the temporary Assets/Tests/EquipmentCompletion/EquipmentPackagedValidation.cs, generated scene/runner and external extension builders were removed after broader build work was stopped at the user's request. The equipment authoring and focused Editor validation tools listed above remain. No runtime script was added by that extension. [Scope and deferred findings](MAINTENANCE.md#broader-tests-deferred--2026-11-15).
+
+Camera follow-up (2026-11-15): no runtime script added/moved/renamed. Updated ThirdPersonController and camera/locomotion assets. AgentScripts/Camera/{Configure,StartupDiagnostic,Verify}.cs are outside Assets; Configure is a migration helper, not a runtime bootstrap. [Current camera contract](SYSTEMS/Player.md#mouse-facing-third-person-camera--implemented-2026-11-15).

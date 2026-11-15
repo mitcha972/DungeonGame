@@ -4,8 +4,8 @@ One active backlog. Distinguish **implemented**, **partially implemented**, **pl
 
 ## Established foundation — implemented
 
-- CharacterController locomotion with bounded acceleration/braking, jump buffering/coyote time, substeps and first/third-person support.
-- PlayerControlState, project-owned input actions and shared combat/interaction integration.
+- CharacterController walking/gravity with bounded acceleration/braking, substeps and first/third-person support. Jumping removed in the 2026-11-15 cleanup; see [player architecture](Player_Architecture.md).
+- PlayerControlState as the sole gameplay input/eligibility boundary, one movement/facing/view owner, project-owned actions and shared character combat/animation/stats. [Cleanup report](Player_Cleanup_Report.md).
 - Fixed inventory slots; guarded pickups/chest transfers; equipment state-before-event ordering; class health and local progression updater.
 - Shared combat, initialized ordinary projectiles, contact deduplication and skipped-window sampling. Single-click player light attacks, visible damage volumes, mobile combat and shield-value active reduction verified across unarmed/swords/bow in Combat_Test; see [combat](SYSTEMS/Combat.md).
 - Positive/overflow-safe XP awards and level-cap behavior.
@@ -18,7 +18,7 @@ These describe retained implementations, not every scene passing. [Maintenance](
 ## Next milestone — dependable primary loop
 
 1. **Packaged-player verification — next:** build/run the intended platform after the runtime collision-mesh Read/Write fix. Editor Start → Loading → Main, selection/equipment, controls, death reload and return-to-menu now pass; no standalone build is certified. [Audit results](MAINTENANCE.md#gameplay-audit--2026-11-13).
-2. **Normal stair/jump traversal — partial:** all room centers/exits have complete paths across 20 seeded floors and four end entrances. DEnd's missing exit, closed inner walls and misplaced corridors are fixed. Controlled CharacterController traces reached four exits, but seed 4 required upward clearance at Stairs_Low (1). Test real locomotion/gravity/timed jumping, stairs/slopes/door feel and frame rates; NavMesh readiness is not a walking guarantee.
+2. **Normal stair traversal without jumping — partial:** all room centers/exits have complete paths across 20 seeded floors and four end entrances. DEnd's missing exit, closed inner walls and misplaced corridors are fixed. Controlled CharacterController traces reached four exits, but seed 4 required upward clearance at Stairs_Low (1). Jump is now intentionally absent. Test real walking/gravity/step clearance, stairs/slopes/door feel and frame rates; NavMesh readiness is not a walking guarantee.
 3. **Failure UX — planned:** initial failure, bad configuration, partial assembly, unreachable-exit/native-data rollback, three cancellations and duplicate requests now pass. Design a visible retry/return path for initial-generation failure; there is no previous floor to restore then.
 4. **Remaining prefab/content coverage — unverified:** production PlayerHolder modal/focus/death controls and merchant fixtures pass. Alternate PlayerContent/legacy prefabs, hardware/controller input and monster-specific rigs remain separate coverage; prioritize the animation gaps below before expanding enemy content.
 
@@ -41,3 +41,9 @@ Retain FSM/generator/shared combat unless evidence justifies replacement. Profil
 Remove completed work from pending lists. Historical approval gates, licensing failures and unavailable-tool statements belong to their original tasks; inspect current instructions and tooling instead.
 
 - **Status effects — starter slice implemented:** shared Poison/Slow/Bleeding, non-refreshing stable IDs, derived movement/damage modifiers, HUD and Poison Potion in Combat_Test. Remaining: production application sources/balance, alternate prefab coverage and coordinated persistence. See [status effects](SYSTEMS/StatusEffects.md).
+
+Equipment/animation consolidation (2026-11-15): explicit item attack sets, authored motion states, atomic gear transactions and shared named equipment/animation owners implemented. Source compilation completed without errors; 95/95 gameplay and 19/19 asset checks passed, with scope and limits in the linked [Inventory](SYSTEMS/Inventory.md) and [Animation](SYSTEMS/Animation.md) references. Full combat policy redesign and native creature animation content remain subsequent work.
+
+Scope decision (2026-11-15): equipment/animation cleanup is complete; broader build, lighting, shader and imported-navigation work is deferred at the user's request. The attempted standalone verification identified separate compiler/fixture blockers and was cancelled; this does not complete the packaged-player milestone above. See [recorded follow-ups](MAINTENANCE.md#broader-tests-deferred--2026-11-15).
+
+- **Mouse-facing third-person camera — implemented (2026-11-15):** view-relative strafe/backpedal, shared driven camera anchor/startup binding repair and directional locomotion blending; 36 focused Editor checks passed. Manual hardware and visual polish remain unverified. [Player](SYSTEMS/Player.md#mouse-facing-third-person-camera--implemented-2026-11-15).

@@ -1,0 +1,167 @@
+using UnityEngine;
+using UnityEngine.Rendering;
+
+namespace StarterAssets
+{
+    /// <summary>Owns player movement, facing and view. PlayerControlState supplies intentions.</summary>
+    [DisallowMultipleComponent, RequireComponent(typeof(CharacterController), typeof(PlayerControlState))]
+    public class ThirdPersonController : MonoBehaviour
+    {
+        public bool canMove = true, canRotate = true;
+        public float MoveSpeed = 2f, SprintSpeed = 5.335f;
+        [Range(0f, .3f)] public float RotationSmoothTime = .12f;
+        public float SpeedChangeRate = 10f, Sensitivity = 1f;
+        [SerializeField] private float _braking = 50f, _airAcceleration = 15f;
+        public float Gravity = -15f, FallTimeout = .15f;
+        public bool Grounded { get; private set; }
+        public float GroundedRadius = .28f;
+        public LayerMask GroundLayers;
+        public GameObject CinemachineCameraTarget;
+        public float TopClamp = 70f, BottomClamp = -30f, CameraAngleOverride;
+        public bool LockCameraPosition;
+        [Header("View modes")]
+        public GameObject tpCamera, fpCamera;
+        public bool isFirstPerson;
+        [SerializeField] private Renderer[] _firstPersonHiddenRenderers = System.Array.Empty<Renderer>();
+        public Transform FacingTarget { get; set; }
+        public bool FirstPerson { get => isFirstPerson; set => SetCameraMode(value); }
+        public float ViewYaw => _yaw;
+        private CharacterController _controller;
+        private PlayerControlState _input;
+        private CharacterStats _stats;
+        private Animator _animator;
+        private ShadowCastingMode[] _shadowModes;
+        private Vector3 _horizontalVelocity;
+        private float _verticalVelocity, _yaw, _pitch, _rotationVelocity, _animationBlend, _fallTime;
+        private bool _viewInitialized;
+        private static readonly int SpeedId = Animator.StringToHash("Speed"), MotionId = Animator.StringToHash("MotionSpeed"), GroundId = Animator.StringToHash("Grounded"), FallId = Animator.StringToHash("FreeFall");
+        private void Awake()
+        {
+            _controller = GetComponent<CharacterController>();
+            _input = GetComponent<PlayerControlState>();
+            _stats = GetComponent<CharacterStats>();
+            _animator = GetComponentInChildren<Animator>();
+            _shadowModes = new ShadowCastingMode[_firstPersonHiddenRenderers.Length];
+            for (int i = 0; i < _shadowModes.Length; i++)
+                if (_firstPersonHiddenRenderers[i] != null) _shadowModes[i] = _firstPersonHiddenRenderers[i].shadowCastingMode;
+        }
+        private void OnEnable()
+        {
+            if (_input != null) _input.GameplayActionRequested += OnAction;
+            if (_viewInitialized) SetCameraMode(isFirstPerson);
+        }
+        private void OnDisable()
+        {
+            if (_input != null) _input.GameplayActionRequested -= OnAction;
+            _horizontalVelocity = Vector3.zero;
+            RestoreRenderers();
+        }
+        private void Start()
+        {
+            if (CinemachineCameraTarget == null) { Debug.LogError("Player movement requires a camera target.", this); enabled = false; return; }
+            _yaw = CinemachineCameraTarget.transform.eulerAngles.y;
+            _pitch = Mathf.DeltaAngle(0f, CinemachineCameraTarget.transform.eulerAngles.x);
+            _viewInitialized = true;
+            SetCameraMode(isFirstPerson);
+        }
+        private void OnAction(string action) { if (action == "ToggleCamera") SetCameraMode(!isFirstPerson); }
+        public void SetCameraMode(bool firstPerson)
+        {
+            if (tpCamera == null || fpCamera == null) return;
+            isFirstPerson = firstPerson;
+            tpCamera.SetActive(!firstPerson);
+            fpCamera.SetActive(firstPerson);
+            if (_shadowModes == null) return;
+            for (int i = 0; i < _shadowModes.Length; i++)
+                if (_firstPersonHiddenRenderers[i] != null) _firstPersonHiddenRenderers[i].shadowCastingMode = firstPerson ? ShadowCastingMode.ShadowsOnly : _shadowModes[i];
+        }
+        private void RestoreRenderers()
+        {
+            if (_shadowModes == null) return;
+            for (int i = 0; i < _shadowModes.Length; i++)
+                if (_firstPersonHiddenRenderers[i] != null) _firstPersonHiddenRenderers[i].shadowCastingMode = _shadowModes[i];
+        }
+        private void Update()
+        {
+            if (!_controller.enabled || Time.deltaTime <= 0f) return;
+            bool allowed = _input.GameplayAllowed && (_stats == null || !_stats.IsDead);
+            UpdateView(allowed);
+            CheckGround();
+            Move(allowed && canMove);
+            UpdateFacing(allowed);
+            CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_pitch + CameraAngleOverride, _yaw, 0f);
+            UpdateAnimation();
+        }
+        private void UpdateView(bool allowed)
+        {
+            if (allowed && !LockCameraPosition)
+            {
+                float scale = _input.LookIsMouse ? Sensitivity : Time.deltaTime;
+                _yaw = Mathf.Repeat(_yaw + _input.Look.x * scale + 180f, 360f) - 180f;
+                _pitch = Mathf.Clamp(_pitch - _input.Look.y * scale, BottomClamp, TopClamp);
+            }
+        }
+        private void CheckGround()
+        {
+            Vector3 foot = transform.TransformPoint(_controller.center) - Vector3.up * (_controller.height * transform.lossyScale.y * .5f);
+            float radius = Mathf.Min(GroundedRadius, _controller.radius * .9f);
+            Vector3 origin = foot + Vector3.up * (radius + _controller.skinWidth + .04f);
+            Grounded = _verticalVelocity <= 0f && Physics.SphereCast(origin, radius, Vector3.down, out var hit, _controller.skinWidth + .08f, GroundLayers, QueryTriggerInteraction.Ignore)
+                && !hit.collider.transform.IsChildOf(transform) && Vector3.Angle(hit.normal, Vector3.up) <= _controller.slopeLimit;
+            if (Grounded) { _fallTime = 0f; if (_verticalVelocity < 0f) _verticalVelocity = -2f; }
+            else _fallTime += Time.deltaTime;
+        }
+        private void Move(bool allowed)
+        {
+            Vector2 move = allowed ? Vector2.ClampMagnitude(_input.Move, 1f) : Vector2.zero;
+            float magnitude = _input.AnalogMovement ? move.magnitude : (move.sqrMagnitude > .0001f ? 1f : 0f);
+            float speed = (_input.Sprint ? SprintSpeed : MoveSpeed) * magnitude * (_stats != null ? _stats.MovementMultiplier : 1f);
+            Vector3 desired = Quaternion.Euler(0f, _yaw, 0f) * new Vector3(move.x, 0f, move.y).normalized * speed;
+            float acceleration = magnitude == 0f || Vector3.Dot(_horizontalVelocity, desired) < 0f ? _braking : SpeedChangeRate;
+            if (!Grounded && magnitude > 0f) acceleration = _airAcceleration;
+            _horizontalVelocity = allowed ? Vector3.MoveTowards(_horizontalVelocity, desired, acceleration * Time.deltaTime) : Vector3.zero;
+            Vector3 start = transform.position;
+            CollisionFlags flags = CollisionFlags.None;
+            int steps = Mathf.Max(1, Mathf.CeilToInt(Time.deltaTime * 60f));
+            float step = Time.deltaTime / steps;
+            for (int i = 0; i < steps; i++)
+            {
+                float nextVertical = Mathf.Max(_verticalVelocity + Mathf.Min(0f, Gravity) * step, -53f);
+                var collision = _controller.Move((_horizontalVelocity + Vector3.up * ((_verticalVelocity + nextVertical) * .5f)) * step);
+                _verticalVelocity = nextVertical;
+                flags |= collision;
+                if ((collision & CollisionFlags.Above) != 0 && _verticalVelocity > 0f) _verticalVelocity = 0f;
+                if ((collision & CollisionFlags.Below) != 0 && _verticalVelocity < 0f) _verticalVelocity = -2f;
+            }
+            if ((flags & CollisionFlags.Sides) != 0)
+            {
+                Vector3 actual = (transform.position - start) / Time.deltaTime;
+                _horizontalVelocity = new Vector3(actual.x, 0f, actual.z);
+            }
+        }
+        private void UpdateFacing(bool allowed)
+        {
+            if (!allowed || !canRotate) return;
+            if (isFirstPerson) { transform.rotation = Quaternion.Euler(0f, _yaw, 0f); return; }
+            float yaw = Mathf.SmoothDampAngle(transform.eulerAngles.y, _yaw, ref _rotationVelocity, RotationSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+        }
+
+        private void UpdateAnimation()
+        {
+            if (_animator == null) return;
+            _animationBlend = Mathf.Lerp(_animationBlend, _horizontalVelocity.magnitude, 1f - Mathf.Exp(-SpeedChangeRate * Time.deltaTime));
+            _animator.SetFloat(SpeedId, _animationBlend);
+            Vector3 localMovement = transform.InverseTransformDirection(_horizontalVelocity);
+            Vector2 direction = new Vector2(localMovement.x, localMovement.z).normalized;
+            _animator.SetFloat("MoveX", direction.x);
+            _animator.SetFloat("MoveY", direction.y);
+            _animator.SetFloat(MotionId, _input.GameplayAllowed && canMove ? (_input.AnalogMovement ? _input.Move.magnitude : (_input.Move.sqrMagnitude > .0001f ? 1f : 0f)) : 0f);
+            _animator.SetBool(GroundId, Grounded);
+            _animator.SetBool(FallId, !Grounded && _fallTime >= FallTimeout);
+        }
+        public void SetSensitivity(float sensitivity) => Sensitivity = sensitivity;
+        // Retained for existing UnityEvent references; directional input no longer chooses facing.
+        public void SetRotateOnMove(bool rotate) { }
+    }
+}

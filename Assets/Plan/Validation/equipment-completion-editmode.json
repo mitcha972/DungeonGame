@@ -1,0 +1,195 @@
+{
+  "status": "completed",
+  "duration": 107.73,
+  "summary": {
+    "total": 26,
+    "passed": 23,
+    "failed": 0,
+    "skipped": 3,
+    "inconclusive": 0
+  },
+  "results": [
+    {
+      "fullName": "NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenInsidePrefabMode_DoesNotAffectTheNavMeshInMainScene",
+      "status": "Passed",
+      "duration": 6.1271387,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenInsidePrefabMode_ModifiesTheNavMeshInPrefab",
+      "status": "Passed",
+      "duration": 3.2274139,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenOutsidePrefabMode_DoesNotAffectTheNavMeshInPrefab",
+      "status": "Passed",
+      "duration": 3.2529844,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterBakingInPrefabMode_DoesNotActivateItsNavMesh",
+      "status": "Passed",
+      "duration": 4.9408753,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterBakingInPrefabMode_LeavesMainSceneUntouched",
+      "status": "Passed",
+      "duration": 3.9863517,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterClearedInstanceAppliedBack_HasEmptyData",
+      "status": "Passed",
+      "duration": 3.6487273,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_TheOldAssetNoLongerExists",
+      "status": "Skipped",
+      "duration": 0.000797,
+      "message": "Currently the deletion of the old asset must be done manually.",
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_UpdatedAccordingToInstance",
+      "status": "Passed",
+      "duration": 5.0071333,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenBakesNewNavMesh_UpdatesTheInstance",
+      "status": "Passed",
+      "duration": 5.1945801,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenBakingInPreviewScene_CollectsOnlyPreviewSceneObjects",
+      "status": "Passed",
+      "duration": 4.730801,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenDeleted_InstancesMakeCopiesOfData",
+      "status": "Skipped",
+      "duration": 0.0000028,
+      "message": "The expected behaviour has not been decided.",
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenEmptyAndInstantiated_InstanceHasEmptyNavMeshData",
+      "status": "Passed",
+      "duration": 3.633775,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceCleared_InstanceHasEmptyNavMeshData",
+      "status": "Passed",
+      "duration": 2.7887903,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceCleared_PrefabKeepsNavMeshData",
+      "status": "Passed",
+      "duration": 2.9568614,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRebaked_HasDifferentNavMeshData",
+      "status": "Passed",
+      "duration": 3.8087661,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRevertsBack_InstanceIsLikePrefab",
+      "status": "Passed",
+      "duration": 2.9716284,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRevertsBack_TheInstanceAssetNoLongerExists",
+      "status": "Skipped",
+      "duration": 0.0000035,
+      "message": "Deletion of the old asset is expected to be done manually for the time being.",
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstantiated_ReferencesTheSameNavMeshData",
+      "status": "Passed",
+      "duration": 3.0187663,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenOpenedInPrefabMode_DoesNotActivateItsNavMesh",
+      "status": "Passed",
+      "duration": 2.7501388,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebaked_TheOldAssetExistsUntilSavingAndNotAfter",
+      "status": "Passed",
+      "duration": 4.7967184,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedAndAutoSaved_InstanceHasTheNewNavMeshData",
+      "status": "Passed",
+      "duration": 5.322929,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButInstanceModified_DoesNotChangeInstance",
+      "status": "Passed",
+      "duration": 5.4712001,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButNotSaved_RevertsToTheInitialNavMeshData",
+      "status": "Passed",
+      "duration": 4.8129161,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButNotSaved_TheRebakedAssetNoLongerExists",
+      "status": "Passed",
+      "duration": 3.7442721,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabVariantTests.NavMeshSurfacePrefabVariant_WhenCustomizedAndRebaked_OldAssetDiscardedAndParentAssetUnchanged",
+      "status": "Passed",
+      "duration": 6.2850965,
+      "message": null,
+      "stackTrace": null
+    },
+    {
+      "fullName": "NavMeshSurfaceInPrefabVariantTests.NavMeshSurfacePrefabVariant_WhenFreshAndRebaked_ParentAssetUnchanged",
+      "status": "Passed",
+      "duration": 5.2775181,
+      "message": null,
+      "stackTrace": null
+    }
+  ]
+}

@@ -6,7 +6,7 @@ public class CharacterCombat : MonoBehaviour
 {
     public event System.Action<bool> OnAttack;
     public CharacterStats myStats;
-    public GameObject currentProjectile, bloodSplat;
+    public GameObject bloodSplat;
     public AttackHitBox attackHitBox;
     public Abilities abilities;
     public bool InCombat, canAttack, attackIsReady;
@@ -14,31 +14,57 @@ public class CharacterCombat : MonoBehaviour
     public bool isBlocking, canBlock;
     public float cooldownTime;
     [SerializeField] private float hitRecoveryTime = 0.3f;
-    private CharacterAnimator _combatAnimator;
+    private CharacterAnimation _combatAnimator;
     private Coroutine _attackRoutine;
     private bool _damageWindow, _projectileReleased, _ranged;
     private int _attackDamage;
     public int AttackDamage => _attackDamage;
     public bool IsExecutingAttack { get; private set; }
-    protected WeaponClass ActiveWeapon => _combatAnimator != null ? _combatAnimator.CurrentWeapon : null;
+    private CharacterEquipment equipment;
+    protected CharacterEquipment Equipment => equipment;
+    public WeaponAttackSet CurrentAttackSet { get; private set; }
+    public AttackMotion CurrentAttackMotion { get; private set; }
+    public float AttackDuration { get; private set; }
+    protected GameObject AttackProjectile { get; private set; }
+    protected float AttackProjectileSpeed { get; private set; }
+    protected float AttackProjectileRange { get; private set; }
+    private float damageStart, damageEnd, attackInterval;
 
     protected virtual void Awake()
     {
         myStats = GetComponent<CharacterStats>();
-        _combatAnimator = GetComponent<CharacterAnimator>();
+        _combatAnimator = GetComponent<CharacterAnimation>();
+        equipment = GetComponentInChildren<CharacterEquipment>(true);
         if (attackHitBox == null) attackHitBox = GetComponentInChildren<AttackHitBox>(true);
         if (blockHitBox == null) blockHitBox = GetComponentInChildren<BlockHitBox>(true);
         if (attackHitBox != null) { attackHitBox.owner = gameObject; attackHitBox.myStats = myStats; attackHitBox.DisableDamage(); }
     }
-    protected virtual float AttackCooldown => ActiveWeapon != null ? ActiveWeapon.cooldown : 0.8f;
+    protected virtual float GetAttackInterval(WeaponAttackSet attacks) => attacks.attackInterval;
     private void Start() { canAttack = canBlock = attackIsReady = !myStats.IsDead; }
-    protected virtual void OnEnable() { if (myStats != null && !myStats.IsDead) attackIsReady = true; }
-    protected virtual void OnDisable() => CancelAttack();
+    protected virtual void OnEnable()
+    {
+        if (myStats != null && !myStats.IsDead) attackIsReady = true;
+        if (equipment != null) equipment.EquipmentChanged += OnEquipmentChanged;
+    }
+    protected virtual void OnDisable()
+    {
+        if (equipment != null) equipment.EquipmentChanged -= OnEquipmentChanged;
+        CancelAttack();
+    }
+    private void OnEquipmentChanged(Equipment item, Equipment previous)
+    {
+        if ((item != null && item.equipSlot == EquipmentSlot.MainHand) || (previous != null && previous.equipSlot == EquipmentSlot.MainHand)) CancelAttack();
+        if ((item != null && item.equipSlot == EquipmentSlot.OffHand) || (previous != null && previous.equipSlot == EquipmentSlot.OffHand)) BlockDrop();
+    }
     public void CancelAttack()
     {
         StopAllCoroutines();
         _attackRoutine = null;
         IsExecutingAttack = false;
+        _combatAnimator?.CancelAttackMotion(CurrentAttackMotion);
+        CurrentAttackSet = null;
+        CurrentAttackMotion = null;
+        AttackProjectile = null;
         _damageWindow = false;
         InCombat = isBlocking = false;
         DisableDamage();
@@ -48,24 +74,38 @@ public class CharacterCombat : MonoBehaviour
     }
     public virtual void Attack(bool heavy)
     {
-        if (!isActiveAndEnabled || !canAttack || !attackIsReady || myStats.IsDead || myStats.currentHealth <= 0 || _combatAnimator == null || _combatAnimator.AnimationIsBusy()) return;
-        var weapon = ActiveWeapon;
-        _ranged = weapon != null && weapon.isRanged;
+        if (!isActiveAndEnabled || !canAttack || !attackIsReady || myStats.IsDead || myStats.currentHealth <= 0 || _combatAnimator == null || _combatAnimator.IsBusy) return;
+        if (equipment != null && equipment.IsChanging) return;
+        var attacks = equipment != null ? equipment.ActiveAttackSet : null;
+        var motion = attacks != null ? attacks.SelectMotion(heavy) : null;
+        if (!_combatAnimator.CanPlayAttack(motion)) return;
+        // Capture all execution values now; equipment/animation changes cannot retarget an in-flight hit.
+        CurrentAttackSet = attacks;
+        CurrentAttackMotion = motion;
+        AttackDuration = Mathf.Max(.1f, motion.clip.length);
+        damageStart = Mathf.Clamp01(attacks.damageWindowStart);
+        damageEnd = Mathf.Clamp(attacks.damageWindowEnd, damageStart, 1f);
+        attackInterval = Mathf.Max(0f, GetAttackInterval(attacks));
+        _ranged = attacks.launchesProjectile;
+        AttackProjectile = attacks.projectilePrefab;
+        AttackProjectileSpeed = attacks.projectileSpeed;
+        AttackProjectileRange = attacks.projectileRange;
+        if (_ranged && AttackProjectile == null) return;
         _projectileReleased = false;
-        _attackDamage = Mathf.Max(1, Mathf.RoundToInt(myStats.EffectiveDamage * (heavy && weapon != null ? weapon.heavyDamageMultiplier : 1f)));
+        _attackDamage = Mathf.Max(1, Mathf.RoundToInt(myStats.EffectiveDamage * (heavy ? attacks.heavyDamageMultiplier : 1f)));
         attackIsReady = false;
         IsExecutingAttack = true;
         InCombat = true;
         if (attackHitBox != null) attackHitBox.BeginAttack();
-        OnAttack?.Invoke(heavy);
         _combatAnimator.SetBusy(true);
-        float duration = Mathf.Max(0.1f, _combatAnimator.CurrentAttackDuration);
-        _attackRoutine = StartCoroutine(ExecuteAttack(weapon, duration));
+        _combatAnimator.PlayAttack(motion);
+        OnAttack?.Invoke(heavy);
+        if (IsExecutingAttack) StartCoroutine(ExecuteAttack());
     }
-    private IEnumerator ExecuteAttack(WeaponClass weapon, float duration)
+    private IEnumerator ExecuteAttack()
     {
-        float hitStart = weapon != null ? Mathf.Clamp01(weapon.hitStart) : 0.3f;
-        float hitEnd = weapon != null ? Mathf.Clamp(Mathf.Max(hitStart, weapon.hitEnd), hitStart, 1f) : 0.6f;
+        float duration = AttackDuration;
+        float hitStart = damageStart, hitEnd = damageEnd;
         float elapsed = 0f;
         float previousPhase = -1f;
         while (true)
@@ -92,7 +132,7 @@ public class CharacterCombat : MonoBehaviour
         _damageWindow = false;
         DisableDamage();
         if (!myStats.IsDead) _combatAnimator.SetBusy(false);
-        cooldownTime = Mathf.Max(0f, AttackCooldown - duration);
+        cooldownTime = Mathf.Max(0f, attackInterval - duration);
         while (cooldownTime > 0f) { cooldownTime -= Time.deltaTime; yield return null; }
         attackIsReady = !myStats.IsDead;
         _attackRoutine = null;
@@ -110,8 +150,8 @@ public class CharacterCombat : MonoBehaviour
     }
     public void Ability()
     {
-        if (!isActiveAndEnabled || abilities == null || _combatAnimator == null || _combatAnimator.AnimationIsBusy() || myStats.IsDead) return;
-        _combatAnimator.PlayAbilityAnimation(abilities.startAnimation);
+        if (!isActiveAndEnabled || abilities == null || _combatAnimator == null || _combatAnimator.IsBusy || myStats.IsDead) return;
+        if (!_combatAnimator.PlayAbilityAnimation(abilities)) return;
         if (abilities.projectile != null) EnableProjectile(abilities, abilities.damage);
         StartCoroutine(RecoverHit(abilities.startAnimation != null ? Mathf.Max(hitRecoveryTime, abilities.startAnimation.length) : hitRecoveryTime));
     }
@@ -119,9 +159,8 @@ public class CharacterCombat : MonoBehaviour
     {
         if (!isActiveAndEnabled || myStats.IsDead || damageTaken <= 0) return;
         int previousHealth = myStats.currentHealth;
-        var equipment = GetComponent<EquipmentManager>();
         Equipment shield = null;
-        bool hasShield = equipment != null && equipment.currentEquipment.TryGetValue(EquipmentSlot.OffHand, out shield)
+        bool hasShield = equipment != null && equipment.Items.TryGetValue(EquipmentSlot.OffHand, out shield)
             && shield != null && shield.itemType == ItemType.Shield;
         blocked = blocked && isBlocking && hasShield;
         // Shield armor is passive equipment armor; an active frontal block adds its value again.
@@ -144,7 +183,7 @@ public class CharacterCombat : MonoBehaviour
         if (_combatAnimator != null)
         {
             _combatAnimator.SetBusy(true);
-            if (blocked) _combatAnimator.PlayTargetAnimation("BlockImpact", true); else _combatAnimator.GetHit(direction);
+            if (blocked) _combatAnimator.PlayAction("BlockImpact", true); else _combatAnimator.GetHit(direction);
         }
         StartCoroutine(RecoverHit());
         if (!blocked && bloodSplat != null) Destroy(Instantiate(bloodSplat, position, Quaternion.identity), 2f);
@@ -156,17 +195,17 @@ public class CharacterCombat : MonoBehaviour
     }
     public void BlockStart()
     {
-        if (!isActiveAndEnabled || !canBlock || isBlocking || _combatAnimator == null || _combatAnimator.AnimationIsBusy() || myStats.IsDead) return;
+        if (!isActiveAndEnabled || !canBlock || isBlocking || _combatAnimator == null || _combatAnimator.IsBusy || myStats.IsDead) return;
         isBlocking = true;
         if (blockHitBox != null) blockHitBox.EnableBlock();
-        _combatAnimator.PlayTargetAnimation("BlockStart", false);
+        _combatAnimator.PlayAction("BlockStart", false);
     }
     public void BlockDrop()
     {
         if (!isBlocking) return;
         isBlocking = false;
         if (blockHitBox != null) blockHitBox.DisableBlock();
-        if (_combatAnimator != null) _combatAnimator.PlayTargetAnimation("BlockDrop", false);
+        if (_combatAnimator != null) _combatAnimator.PlayAction("BlockDrop", false);
     }
     public virtual void EnableProjectile() { }
     public virtual void EnableProjectile(Abilities ability, int damage) { }

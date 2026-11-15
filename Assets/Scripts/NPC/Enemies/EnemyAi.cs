@@ -23,7 +23,7 @@ public class EnemyAi : MonoBehaviour
     private NavMeshAgent _agent;
     private CharacterCombat _combat;
     private EnemyStats _stats;
-    private CharacterAnimator _presentation;
+    private CharacterAnimation _presentation;
     private Animator _animator;
     private CharacterStats _targetStats;
     private Transform _cachedTarget;
@@ -46,7 +46,7 @@ public class EnemyAi : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _combat = GetComponent<CharacterCombat>();
         _stats = GetComponent<EnemyStats>();
-        _presentation = GetComponent<CharacterAnimator>();
+        _presentation = GetComponent<CharacterAnimation>();
         _animator = GetComponentInChildren<Animator>(true);
         _path = new NavMeshPath();
         if (_animator != null)

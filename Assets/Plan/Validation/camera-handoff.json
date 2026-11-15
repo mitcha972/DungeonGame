@@ -1,0 +1,44 @@
+{
+  "implemented": true,
+  "checks": 36,
+  "passed": true,
+  "evidence": "camera-runtime.json",
+  "compiler": {
+    "status": "completed",
+    "failed": false,
+    "errors": [],
+    "compilationFailed": false
+  },
+  "editor": {
+    "status": "ready",
+    "compiling": false,
+    "domainReloadInProgress": false,
+    "codeLoadCount": 53,
+    "autoRefresh": "enabled",
+    "playMode": "stopped",
+    "runInBackground": true,
+    "lastHeartbeat": "2026-11-15T22:35:53.3684793Z",
+    "projectPath": "C:\\Users\\mitch\\Documents\\Unity\\My_Projects\\Dungeon Game",
+    "unityVersion": "6000.3.28f1",
+    "role": "main",
+    "instanceName": "Main Editor"
+  },
+  "scene": {
+    "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "dirty": true
+  },
+  "autoTick": false,
+  "savedAssets": [
+    "Assets/Scripts/Player/ThirdPersonController.cs",
+    "Assets/Prefabs/Player/Player_Main.prefab",
+    "Assets/Prefabs/Player/PlayerHolder.prefab",
+    "Assets/Animations/Animators/Characters/Player Animator.controller"
+  ],
+  "sceneSaved": false,
+  "sceneSaveReview": "Rejected by automatic review to avoid committing unrelated unsaved edits; safer prefab-only persistence used",
+  "recovery": "AgentScripts/Camera/Recovery/Camera-start.unsaved.unity",
+  "limits": [
+    "Synthetic Editor input; manual hardware and animation foot-contact polish not certified",
+    "No builds, shader, lighting or navigation work"
+  ]
+}

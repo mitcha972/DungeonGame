@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="26" result="Skipped:Ignored" total="26" passed="23" failed="0" inconclusive="0" skipped="3" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-15 21:01:51Z" end-time="2026-11-15 21:03:38Z" duration="107.7338015">
+  <test-suite type="TestSuite" id="1039" name="ThirdPersonTest" fullname="ThirdPersonTest" runstate="Runnable" testcasecount="26" result="Skipped" label="Ignored" start-time="2026-11-15 21:01:51Z" end-time="2026-11-15 21:03:38Z" duration="107.733802" total="26" passed="23" failed="0" inconclusive="0" skipped="3" asserts="0">
+    <properties>
+      <property name="platform" value="EditMode" />
+    </properties>
+    <reason>
+      <message><![CDATA[One or more child tests were ignored]]></message>
+    </reason>
+    <test-suite type="Assembly" id="1030" name="NavMeshComponentsTestsEditmode.dll" fullname="C:/Users/mitch/Documents/Unity/My_Projects/Dungeon Game/Library/ScriptAssemblies/NavMeshComponentsTestsEditmode.dll" runstate="Runnable" testcasecount="26" result="Skipped" label="Ignored" start-time="2026-11-15 21:01:51Z" end-time="2026-11-15 21:03:38Z" duration="107.681238" total="26" passed="23" failed="0" inconclusive="0" skipped="3" asserts="0">
+      <properties>
+        <property name="_PID" value="31116" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="EditMode" />
+        <property name="EditorOnly" value="True" />
+      </properties>
+      <reason>
+        <message><![CDATA[One or more child tests were ignored]]></message>
+      </reason>
+      <test-suite type="TestFixture" id="1001" name="NavMeshModifierVolumeInPrefabTests" fullname="NavMeshModifierVolumeInPrefabTests" classname="NavMeshModifierVolumeInPrefabTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-15 21:01:51Z" end-time="2026-11-15 21:02:06Z" duration="15.726178" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties>
+          <property name="Category" value="PrefabsWithNavMeshModifierVolume" />
+        </properties>
+        <test-case id="1003" name="ModifierVolume_WhenInsidePrefabMode_DoesNotAffectTheNavMeshInMainScene" fullname="NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenInsidePrefabMode_DoesNotAffectTheNavMeshInMainScene" methodname="ModifierVolume_WhenInsidePrefabMode_DoesNotAffectTheNavMeshInMainScene" classname="NavMeshModifierVolumeInPrefabTests" runstate="Runnable" seed="979810985" result="Passed" start-time="2026-11-15 21:01:53Z" end-time="2026-11-15 21:01:59Z" duration="6.127139" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="ModifierVolume_WhenInsidePrefabMode_ModifiesTheNavMeshInPrefab" fullname="NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenInsidePrefabMode_ModifiesTheNavMeshInPrefab" methodname="ModifierVolume_WhenInsidePrefabMode_ModifiesTheNavMeshInPrefab" classname="NavMeshModifierVolumeInPrefabTests" runstate="Runnable" seed="474184561" result="Passed" start-time="2026-11-15 21:01:59Z" end-time="2026-11-15 21:02:02Z" duration="3.227414" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1004" name="ModifierVolume_WhenOutsidePrefabMode_DoesNotAffectTheNavMeshInPrefab" fullname="NavMeshModifierVolumeInPrefabTests.ModifierVolume_WhenOutsidePrefabMode_DoesNotAffectTheNavMeshInPrefab" methodname="ModifierVolume_WhenOutsidePrefabMode_DoesNotAffectTheNavMeshInPrefab" classname="NavMeshModifierVolumeInPrefabTests" runstate="Runnable" seed="794056632" result="Passed" start-time="2026-11-15 21:02:02Z" end-time="2026-11-15 21:02:06Z" duration="3.252984" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1005" name="NavMeshSurfaceInPrefabTests" fullname="NavMeshSurfaceInPrefabTests" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" testcasecount="21" result="Skipped" label="Ignored" start-time="2026-11-15 21:02:06Z" end-time="2026-11-15 21:03:23Z" duration="76.782955" total="21" passed="18" failed="0" inconclusive="0" skipped="3" asserts="0">
+        <properties>
+          <property name="Category" value="PrefabsWithNavMeshComponents" />
+        </properties>
+        <reason>
+          <message><![CDATA[One or more child tests were ignored]]></message>
+        </reason>
+        <test-case id="1007" name="NavMeshSurfacePrefab_AfterBakingInPrefabMode_DoesNotActivateItsNavMesh" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterBakingInPrefabMode_DoesNotActivateItsNavMesh" methodname="NavMeshSurfacePrefab_AfterBakingInPrefabMode_DoesNotActivateItsNavMesh" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1666004524" result="Passed" start-time="2026-11-15 21:02:09Z" end-time="2026-11-15 21:02:13Z" duration="4.940875" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="NavMeshSurfacePrefab_AfterBakingInPrefabMode_LeavesMainSceneUntouched" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterBakingInPrefabMode_LeavesMainSceneUntouched" methodname="NavMeshSurfacePrefab_AfterBakingInPrefabMode_LeavesMainSceneUntouched" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1831365274" result="Passed" start-time="2026-11-15 21:02:13Z" end-time="2026-11-15 21:02:17Z" duration="3.986352" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1022" name="NavMeshSurfacePrefab_AfterClearedInstanceAppliedBack_HasEmptyData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterClearedInstanceAppliedBack_HasEmptyData" methodname="NavMeshSurfacePrefab_AfterClearedInstanceAppliedBack_HasEmptyData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1568657049" result="Passed" start-time="2026-11-15 21:02:17Z" end-time="2026-11-15 21:02:21Z" duration="3.648727" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1020" name="NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_TheOldAssetNoLongerExists" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_TheOldAssetNoLongerExists" methodname="NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_TheOldAssetNoLongerExists" classname="NavMeshSurfaceInPrefabTests" runstate="Ignored" seed="445969785" result="Skipped" label="Ignored" start-time="2026-11-15 21:02:21Z" end-time="2026-11-15 21:02:21Z" duration="0.000797" asserts="0">
+          <properties>
+            <property name="_SKIPREASON" value="Currently the deletion of the old asset must be done manually." />
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <reason>
+            <message><![CDATA[Currently the deletion of the old asset must be done manually.]]></message>
+          </reason>
+        </test-case>
+        <test-case id="1021" name="NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_UpdatedAccordingToInstance" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_UpdatedAccordingToInstance" methodname="NavMeshSurfacePrefab_AfterModifiedInstanceAppliedBack_UpdatedAccordingToInstance" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="226632556" result="Passed" start-time="2026-11-15 21:02:21Z" end-time="2026-11-15 21:02:26Z" duration="5.007133" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="NavMeshSurfacePrefab_WhenBakesNewNavMesh_UpdatesTheInstance" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenBakesNewNavMesh_UpdatesTheInstance" methodname="NavMeshSurfacePrefab_WhenBakesNewNavMesh_UpdatesTheInstance" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1754393214" result="Passed" start-time="2026-11-15 21:02:26Z" end-time="2026-11-15 21:02:31Z" duration="5.194580" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1026" name="NavMeshSurfacePrefab_WhenBakingInPreviewScene_CollectsOnlyPreviewSceneObjects" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenBakingInPreviewScene_CollectsOnlyPreviewSceneObjects" methodname="NavMeshSurfacePrefab_WhenBakingInPreviewScene_CollectsOnlyPreviewSceneObjects" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="982179920" result="Passed" start-time="2026-11-15 21:02:31Z" end-time="2026-11-15 21:02:36Z" duration="4.730801" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="NavMeshSurfacePrefab_WhenDeleted_InstancesMakeCopiesOfData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenDeleted_InstancesMakeCopiesOfData" methodname="NavMeshSurfacePrefab_WhenDeleted_InstancesMakeCopiesOfData" classname="NavMeshSurfaceInPrefabTests" runstate="Ignored" seed="494685632" result="Skipped" label="Ignored" start-time="2026-11-15 21:02:36Z" end-time="2026-11-15 21:02:36Z" duration="0.000003" asserts="0">
+          <properties>
+            <property name="_SKIPREASON" value="The expected behaviour has not been decided." />
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <reason>
+            <message><![CDATA[The expected behaviour has not been decided.]]></message>
+          </reason>
+        </test-case>
+        <test-case id="1010" name="NavMeshSurfacePrefab_WhenEmptyAndInstantiated_InstanceHasEmptyNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenEmptyAndInstantiated_InstanceHasEmptyNavMeshData" methodname="NavMeshSurfacePrefab_WhenEmptyAndInstantiated_InstanceHasEmptyNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="673639959" result="Passed" start-time="2026-11-15 21:02:36Z" end-time="2026-11-15 21:02:40Z" duration="3.633775" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1013" name="NavMeshSurfacePrefab_WhenInstanceCleared_InstanceHasEmptyNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceCleared_InstanceHasEmptyNavMeshData" methodname="NavMeshSurfacePrefab_WhenInstanceCleared_InstanceHasEmptyNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="814316999" result="Passed" start-time="2026-11-15 21:02:40Z" end-time="2026-11-15 21:02:42Z" duration="2.788790" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1014" name="NavMeshSurfacePrefab_WhenInstanceCleared_PrefabKeepsNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceCleared_PrefabKeepsNavMeshData" methodname="NavMeshSurfacePrefab_WhenInstanceCleared_PrefabKeepsNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1138180555" result="Passed" start-time="2026-11-15 21:02:42Z" end-time="2026-11-15 21:02:45Z" duration="2.956861" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="NavMeshSurfacePrefab_WhenInstanceRebaked_HasDifferentNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRebaked_HasDifferentNavMeshData" methodname="NavMeshSurfacePrefab_WhenInstanceRebaked_HasDifferentNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1762392923" result="Passed" start-time="2026-11-15 21:02:45Z" end-time="2026-11-15 21:02:49Z" duration="3.808766" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1023" name="NavMeshSurfacePrefab_WhenInstanceRevertsBack_InstanceIsLikePrefab" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRevertsBack_InstanceIsLikePrefab" methodname="NavMeshSurfacePrefab_WhenInstanceRevertsBack_InstanceIsLikePrefab" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1993120104" result="Passed" start-time="2026-11-15 21:02:49Z" end-time="2026-11-15 21:02:52Z" duration="2.971628" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1024" name="NavMeshSurfacePrefab_WhenInstanceRevertsBack_TheInstanceAssetNoLongerExists" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstanceRevertsBack_TheInstanceAssetNoLongerExists" methodname="NavMeshSurfacePrefab_WhenInstanceRevertsBack_TheInstanceAssetNoLongerExists" classname="NavMeshSurfaceInPrefabTests" runstate="Ignored" seed="224716097" result="Skipped" label="Ignored" start-time="2026-11-15 21:02:52Z" end-time="2026-11-15 21:02:52Z" duration="0.000004" asserts="0">
+          <properties>
+            <property name="_SKIPREASON" value="Deletion of the old asset is expected to be done manually for the time being." />
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+          </properties>
+          <reason>
+            <message><![CDATA[Deletion of the old asset is expected to be done manually for the time being.]]></message>
+          </reason>
+        </test-case>
+        <test-case id="1009" name="NavMeshSurfacePrefab_WhenInstantiated_ReferencesTheSameNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenInstantiated_ReferencesTheSameNavMeshData" methodname="NavMeshSurfacePrefab_WhenInstantiated_ReferencesTheSameNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1778763713" result="Passed" start-time="2026-11-15 21:02:52Z" end-time="2026-11-15 21:02:55Z" duration="3.018766" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1006" name="NavMeshSurfacePrefab_WhenOpenedInPrefabMode_DoesNotActivateItsNavMesh" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenOpenedInPrefabMode_DoesNotActivateItsNavMesh" methodname="NavMeshSurfacePrefab_WhenOpenedInPrefabMode_DoesNotActivateItsNavMesh" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="290649330" result="Passed" start-time="2026-11-15 21:02:55Z" end-time="2026-11-15 21:02:58Z" duration="2.750139" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="NavMeshSurfacePrefab_WhenRebaked_TheOldAssetExistsUntilSavingAndNotAfter" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebaked_TheOldAssetExistsUntilSavingAndNotAfter" methodname="NavMeshSurfacePrefab_WhenRebaked_TheOldAssetExistsUntilSavingAndNotAfter" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1886051755" result="Passed" start-time="2026-11-15 21:02:58Z" end-time="2026-11-15 21:03:03Z" duration="4.796718" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1019" name="NavMeshSurfacePrefab_WhenRebakedAndAutoSaved_InstanceHasTheNewNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedAndAutoSaved_InstanceHasTheNewNavMeshData" methodname="NavMeshSurfacePrefab_WhenRebakedAndAutoSaved_InstanceHasTheNewNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="245483886" result="Passed" start-time="2026-11-15 21:03:03Z" end-time="2026-11-15 21:03:08Z" duration="5.322929" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1015" name="NavMeshSurfacePrefab_WhenRebakedButInstanceModified_DoesNotChangeInstance" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButInstanceModified_DoesNotChangeInstance" methodname="NavMeshSurfacePrefab_WhenRebakedButInstanceModified_DoesNotChangeInstance" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1057441804" result="Passed" start-time="2026-11-15 21:03:08Z" end-time="2026-11-15 21:03:14Z" duration="5.471200" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="NavMeshSurfacePrefab_WhenRebakedButNotSaved_RevertsToTheInitialNavMeshData" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButNotSaved_RevertsToTheInitialNavMeshData" methodname="NavMeshSurfacePrefab_WhenRebakedButNotSaved_RevertsToTheInitialNavMeshData" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1997171836" result="Passed" start-time="2026-11-15 21:03:14Z" end-time="2026-11-15 21:03:18Z" duration="4.812916" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="NavMeshSurfacePrefab_WhenRebakedButNotSaved_TheRebakedAssetNoLongerExists" fullname="NavMeshSurfaceInPrefabTests.NavMeshSurfacePrefab_WhenRebakedButNotSaved_TheRebakedAssetNoLongerExists" methodname="NavMeshSurfacePrefab_WhenRebakedButNotSaved_TheRebakedAssetNoLongerExists" classname="NavMeshSurfaceInPrefabTests" runstate="Runnable" seed="1130476070" result="Passed" start-time="2026-11-15 21:03:18Z" end-time="2026-11-15 21:03:22Z" duration="3.744272" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1027" name="NavMeshSurfaceInPrefabVariantTests" fullname="NavMeshSurfaceInPrefabVariantTests" classname="NavMeshSurfaceInPrefabVariantTests" runstate="Runnable" testcasecount="2" result="Passed" start-time="2026-11-15 21:03:23Z" end-time="2026-11-15 21:03:38Z" duration="15.167051" total="2" passed="2" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties>
+          <property name="Category" value="PrefabsWithNavMeshComponents" />
+        </properties>
+        <test-case id="1029" name="NavMeshSurfacePrefabVariant_WhenCustomizedAndRebaked_OldAssetDiscardedAndParentAssetUnchanged" fullname="NavMeshSurfaceInPrefabVariantTests.NavMeshSurfacePrefabVariant_WhenCustomizedAndRebaked_OldAssetDiscardedAndParentAssetUnchanged" methodname="NavMeshSurfacePrefabVariant_WhenCustomizedAndRebaked_OldAssetDiscardedAndParentAssetUnchanged" classname="NavMeshSurfaceInPrefabVariantTests" runstate="Runnable" seed="410643819" result="Passed" start-time="2026-11-15 21:03:26Z" end-time="2026-11-15 21:03:32Z" duration="6.285097" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1028" name="NavMeshSurfacePrefabVariant_WhenFreshAndRebaked_ParentAssetUnchanged" fullname="NavMeshSurfaceInPrefabVariantTests.NavMeshSurfacePrefabVariant_WhenFreshAndRebaked_ParentAssetUnchanged" methodname="NavMeshSurfacePrefabVariant_WhenFreshAndRebaked_ParentAssetUnchanged" classname="NavMeshSurfaceInPrefabVariantTests" runstate="Runnable" seed="1059647345" result="Passed" start-time="2026-11-15 21:03:32Z" end-time="2026-11-15 21:03:37Z" duration="5.277518" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/mitch/AppData/LocalLow/DefaultCompany/ThirdPersonTest\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

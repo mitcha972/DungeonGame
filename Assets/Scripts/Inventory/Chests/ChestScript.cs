@@ -23,9 +23,9 @@ public class ChestScript : Interactable
 	public override void Interact(Transform interactOwner)
 	{
         if (interactOwner == null || inventory == null) return;
-        var player = interactOwner.GetComponent<Player>();
-        if (player == null || player.uiCanvasController == null || player.uiCanvasController.chestInventoryUI == null) return;
-        var canvas = player.uiCanvasController;
+        var controls = interactOwner.GetComponent<PlayerControlState>();
+        var canvas = controls != null ? controls.InventoryUI : null;
+        if (canvas == null || canvas.chestInventoryUI == null) return;
         if (canvas.inv == null || !canvas.inv.activeSelf) canvas.ToogleInvetoryUI();
 
         //Set cehct ui to active

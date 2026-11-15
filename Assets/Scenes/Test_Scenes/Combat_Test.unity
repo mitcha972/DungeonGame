@@ -956,19 +956,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8023817529708054574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses:
-  - {fileID: 11400000, guid: 39a90d1c4d6bb1e4db73acbafc5b8044, type: 2}
-  - {fileID: 11400000, guid: bd102690b3fbfe34b9ffa9e2c3bece3c, type: 2}
-  replaceableLightAttackAnim: {fileID: 7400000, guid: cb032138a9419cf4cb93f019fddf349e,
-    type: 2}
-  replaceableHeavyAttackAnim: {fileID: 7400000, guid: b6b77768740796f4bb6bf78064789708,
-    type: 2}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!1 &239433892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7129316381372556900, guid: 59bc5420ddcfcb54087cd2093792e409,
@@ -1439,7 +1430,7 @@ PrefabInstance:
     - target: {fileID: 5160646311569419609, guid: ef999144eb5a92949af42b34bdd7022e,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5160646311569419612, guid: ef999144eb5a92949af42b34bdd7022e,
         type: 3}
@@ -3048,19 +3039,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8806f61581328b41a0510147e1c3f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 1842587423}
-  itemDrop: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
+  bodyRenderer: {fileID: 1842587423}
+  itemDropPrefab: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
     type: 3}
-  attackHitBox: {fileID: 0}
+  weaponHitboxObject: {fileID: 0}
+  innateAttacks: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
   inventory: {fileID: 0}
-  currentEquipmentArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 0}
   enemy: {fileID: 11400000, guid: 8a3a38d8221650640962cc1f24062f70, type: 2}
 --- !u!4 &558959265 stripped
 Transform:
@@ -4086,15 +4070,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 957491815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses: []
-  replaceableLightAttackAnim: {fileID: 0}
-  replaceableHeavyAttackAnim: {fileID: 0}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!114 &957491820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4213,8 +4192,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 957491826}
-  currentProjectile: {fileID: 8303955909878210039, guid: a1178a081f1ade44e9cc8c6371ef9fbc,
-    type: 3}
   bloodSplat: {fileID: 0}
   attackHitBox: {fileID: 0}
   abilities: {fileID: 0}
@@ -5870,15 +5847,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422218524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses: []
-  replaceableLightAttackAnim: {fileID: 0}
-  replaceableHeavyAttackAnim: {fileID: 0}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!114 &1422218529
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5997,8 +5969,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 1422218535}
-  currentProjectile: {fileID: 8303955909878210039, guid: a1178a081f1ade44e9cc8c6371ef9fbc,
-    type: 3}
   bloodSplat: {fileID: 0}
   attackHitBox: {fileID: 0}
   abilities: {fileID: 0}
@@ -6420,19 +6390,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8806f61581328b41a0510147e1c3f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 1986163847}
-  itemDrop: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
+  bodyRenderer: {fileID: 1986163847}
+  itemDropPrefab: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
     type: 3}
-  attackHitBox: {fileID: 0}
+  weaponHitboxObject: {fileID: 0}
+  innateAttacks: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
   inventory: {fileID: 0}
-  currentEquipmentArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 0}
   enemy: {fileID: 11400000, guid: 8a3a38d8221650640962cc1f24062f70, type: 2}
 --- !u!1 &1546872022 stripped
 GameObject:
@@ -10038,10 +10001,35 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1343495237, guid: 6089726a9811c8549855919014719cfb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.7552762
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343495237, guid: 6089726a9811c8549855919014719cfb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.8637037
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343495237, guid: 6089726a9811c8549855919014719cfb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9914449
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343495237, guid: 6089726a9811c8549855919014719cfb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1305262
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343495237, guid: 6089726a9811c8549855919014719cfb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 415924307934927166, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: field of view
       value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 415924307934927166, guid: 6089726a9811c8549855919014719cfb,
+        type: 3}
+      propertyPath: far clip plane
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 415924307934927166, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -10056,22 +10044,22 @@ PrefabInstance:
     - target: {fileID: 415924307935479612, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.72
+      value: 2.7552762
       objectReference: {fileID: 0}
     - target: {fileID: 415924307935479612, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5
+      value: -4.8637037
       objectReference: {fileID: 0}
     - target: {fileID: 415924307935479612, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9914449
       objectReference: {fileID: 0}
     - target: {fileID: 415924307935479612, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.1305262
       objectReference: {fileID: 0}
     - target: {fileID: 788213229451491378, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -10921,17 +10909,17 @@ PrefabInstance:
     - target: {fileID: 8797746200444965350, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746200444965350, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746200444965350, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746200652467412, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -11006,17 +10994,17 @@ PrefabInstance:
     - target: {fileID: 8797746201175187553, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201175187553, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201175187553, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201434140726, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -11031,17 +11019,17 @@ PrefabInstance:
     - target: {fileID: 8797746201469794783, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201469794783, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201469794783, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201568017240, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -11166,17 +11154,17 @@ PrefabInstance:
     - target: {fileID: 8797746201979624837, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201979624837, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746201979624837, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8797746202015956314, guid: 6089726a9811c8549855919014719cfb,
         type: 3}
@@ -11977,8 +11965,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 8023817529708054548}
-  currentProjectile: {fileID: 8303955909878210039, guid: a1178a081f1ade44e9cc8c6371ef9fbc,
-    type: 3}
   bloodSplat: {fileID: 613433886817584986, guid: 750cc3637a1326b4ba1caf53dbe49704,
     type: 3}
   attackHitBox: {fileID: 519525607}
@@ -12016,19 +12002,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8806f61581328b41a0510147e1c3f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 6658274272314622575}
-  itemDrop: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
+  bodyRenderer: {fileID: 6658274272314622575}
+  itemDropPrefab: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
     type: 3}
-  attackHitBox: {fileID: 519525605}
+  weaponHitboxObject: {fileID: 519525605}
+  innateAttacks: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
   inventory: {fileID: 0}
-  currentEquipmentArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 0}
   enemy: {fileID: 11400000, guid: 8a3a38d8221650640962cc1f24062f70, type: 2}
 --- !u!54 &8023817529708054578
 Rigidbody:

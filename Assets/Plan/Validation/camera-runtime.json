@@ -1,0 +1,192 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "Gameplay look eligible at cold start",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Cold start selects configured third-person camera",
+      "details": "PlayerFollowCamera"
+    },
+    {
+      "pass": true,
+      "name": "Both modes follow the motor-driven view anchor",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Legacy third-person camera cannot win a startup priority tie",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native mouse X changes view yaw on first enable",
+      "details": {
+        "before": 0.0,
+        "after": 3.0
+      }
+    },
+    {
+      "pass": true,
+      "name": "Native mouse Y changes the real camera on first enable",
+      "details": {
+        "before": 15.0000038,
+        "after": 13.5000048
+      }
+    },
+    {
+      "pass": true,
+      "name": "Idle body facing follows mouse yaw",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Displayed pitch follows the driven target",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Upward look respects lower pitch limit",
+      "details": -30.0
+    },
+    {
+      "pass": true,
+      "name": "Downward look respects upper pitch limit",
+      "details": 70.00003
+    },
+    {
+      "pass": true,
+      "name": "Vertical aim keeps the body upright",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native forward movement follows view-relative direction",
+      "details": "(0.04, 0.00, 0.72)"
+    },
+    {
+      "pass": true,
+      "name": "Native forward input does not steer body facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native backward movement follows view-relative direction",
+      "details": "(-0.04, 0.00, -0.69)"
+    },
+    {
+      "pass": true,
+      "name": "Native backward input does not steer body facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Directional backward animation plays",
+      "details": "RunBackward:0.4285716,RunLeft:6.386216E-09,RunBackward:0.5714284,RunLeft:8.514947E-09"
+    },
+    {
+      "pass": true,
+      "name": "Native left movement follows view-relative direction",
+      "details": "(-0.63, 0.00, 0.03)"
+    },
+    {
+      "pass": true,
+      "name": "Native left input does not steer body facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Directional left animation plays",
+      "details": "WalkForwards:4.10988E-09,RunLeft:0.4285718,RunForwards:5.479832E-09,RunLeft:0.5714282"
+    },
+    {
+      "pass": true,
+      "name": "Native right movement follows view-relative direction",
+      "details": "(0.60, 0.00, -0.03)"
+    },
+    {
+      "pass": true,
+      "name": "Native right input does not steer body facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Directional right animation plays",
+      "details": "RunBackward:4.109879E-09,RunRight:0.4285717,RunBackward:5.479833E-09,RunRight:0.5714283"
+    },
+    {
+      "pass": true,
+      "name": "Diagonal movement keeps the configured speed",
+      "details": 3.99999976
+    },
+    {
+      "pass": true,
+      "name": "Diagonal movement does not steer facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native sprint retains configured speed",
+      "details": 7.0
+    },
+    {
+      "pass": true,
+      "name": "Enemy focus cannot override mouse-facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "V activates first-person camera",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "First-person vertical look uses the same driven anchor",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "V restores third-person camera",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Inventory blocks gameplay look",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Closing inventory restores fresh mouse look",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Focus loss blocks view input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Focus regain restores view input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Attack retains mouse-facing and movement",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Shield block retains mouse-facing",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Re-enable preserves camera selection and vertical input",
+      "details": null
+    }
+  ],
+  "errors": []
+}

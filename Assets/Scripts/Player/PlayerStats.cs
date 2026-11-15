@@ -26,13 +26,12 @@ public class PlayerStats : CharacterStats
     public int QuestLevel => (levelSystem?.GetLevelNumber() ?? 0) + 1;
     public int CurrentExperience => levelSystem?.GetExperience() ?? 0;
 
-    //private EquipmentManager equipmentManager;
+    //private CharacterEquipment equipmentManager;
     public Inventory inventory;	// Reference to our inventory
 
-    void Awake() 
+    protected override void Awake()
     {
-        equipmentManager = GetComponent<EquipmentManager>();
-        if (equipmentManager != null) equipmentManager.onEquipmentChanged += OnEquipmentChanged;
+        base.Awake();
         inventory = GetComponent<Inventory>();
 
         levelSystem = new LevelSystem();
@@ -55,9 +54,9 @@ public class PlayerStats : CharacterStats
         if (nameText != null) nameText.text = name;
     }
 
-    void OnDestroy()
+    protected override void OnDestroy()
     {
-        if (equipmentManager != null) equipmentManager.onEquipmentChanged -= OnEquipmentChanged;
+        base.OnDestroy();
         if (levelSystemAnimated == null) return;
         levelSystemAnimated.OnExperienceChanged -= LevelSystemAnimated_OnExperienceChanged;
         levelSystemAnimated.OnLevelChanged -= LevelSystemAnimated_OnLevelChanged;
@@ -99,10 +98,10 @@ public class PlayerStats : CharacterStats
         TakeDamage(damageTaken, null, 0f);
     }
 
-    public void Heal(int healamount)
+    public override void Heal(int healamount)
     {
         if (IsDead || healamount <= 0) return;
-        currentHealth = Mathf.Min(maxHealth, currentHealth + healamount);
+        base.Heal(healamount);
         RefreshHealthUI();
     }
 

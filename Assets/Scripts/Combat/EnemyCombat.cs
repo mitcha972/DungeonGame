@@ -9,7 +9,7 @@ public class EnemyCombat : CharacterCombat
         _ai = GetComponent<EnemyAi>();
     }
     // Existing attackSpeed is interpreted as attacks per second; zero uses the weapon cooldown.
-    protected override float AttackCooldown => myStats.attackSpeed > 0 ? 1f / myStats.attackSpeed : base.AttackCooldown;
+    protected override float GetAttackInterval(WeaponAttackSet attacks) => myStats.attackSpeed > 0 ? 1f / myStats.attackSpeed : base.GetAttackInterval(attacks);
     private bool HasValidAttackTarget()
     {
         if (!isActiveAndEnabled || _ai == null || !_ai.isActiveAndEnabled || _ai.target == null || myStats.IsDead) return false;
@@ -24,9 +24,8 @@ public class EnemyCombat : CharacterCombat
     }
     public override void EnableProjectile()
     {
-        if (!HasValidAttackTarget() || ActiveWeapon == null || ActiveWeapon.projectile == null || !TryReleaseProjectile()) return;
-        currentProjectile = ActiveWeapon.projectile;
-        SpawnProjectile(currentProjectile, AttackDamage, ActiveWeapon.projectileRange, ActiveWeapon.projectileSpeed);
+        if (!HasValidAttackTarget() || AttackProjectile == null || !TryReleaseProjectile()) return;
+        SpawnProjectile(AttackProjectile, AttackDamage, AttackProjectileRange, AttackProjectileSpeed);
     }
     public override void EnableProjectile(Abilities ability, int damage)
     {

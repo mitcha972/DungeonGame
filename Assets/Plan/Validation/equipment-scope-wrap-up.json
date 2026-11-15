@@ -1,0 +1,13 @@
+{
+  "scope": "Equipment and animation only; broader test/build investigation stopped at user request",
+  "scene": {
+    "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "isDirty": true
+  },
+  "diskPreserved": true,
+  "recovery": "AgentScripts/EquipmentAnimation/Recovery/Combat_Test.unsaved.unity.backup",
+  "temporaryAssetsRemoved": true,
+  "testsRootRemaining": [],
+  "removedBuild": false,
+  "buildNote": "No partial output directory."
+}

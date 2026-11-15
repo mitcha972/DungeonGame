@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class UI_SkillTree : MonoBehaviour 
 {
+    [SerializeField] private PlayerStats playerStats;
 
     [SerializeField] private Material skillLockedMaterial;
     [SerializeField] private Material skillUnlockableMaterial;
@@ -28,6 +29,8 @@ public class UI_SkillTree : MonoBehaviour
         var label = transform.Find("skillPointsText");
         skillPointsText = label != null ? label.GetComponent<TMPro.TextMeshProUGUI>() : null;
     }
+
+    private void Start() => SetPlayerSkills(playerStats != null ? playerStats.GetPlayerSkills() : new PlayerSkills());
 
     public void SetPlayerSkills(PlayerSkills playerSkills) 
     {

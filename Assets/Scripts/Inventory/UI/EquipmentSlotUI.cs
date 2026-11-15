@@ -13,13 +13,12 @@ public class EquipmentSlotUI : UISlot
     public override void ItemSelect()
     {
         if (item == null || inventory == null || equipmentManager == null) return;
-        if (!equipmentManager.currentEquipment.TryGetValue(equipmentSlot, out Equipment equipped) || equipped != item)
+        if (!equipmentManager.Items.TryGetValue(equipmentSlot, out Equipment equipped) || equipped != item)
         {
             ClearSlot();
             return;
         }
-        if (!inventory.Add(equipped)) return;
-        equipmentManager.Unequip(equipmentSlot);
+        if (!equipmentManager.TryUnequipToInventory(equipmentSlot)) return;
         ClearSlot();
     }
 

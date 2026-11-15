@@ -26,3 +26,4 @@ MonoBehaviour:
   startAnimation: {fileID: -203655887218126122, guid: 3847be2a50d451e4f9bd516592e8f818,
     type: 3}
   castAnimation: {fileID: 0}
+  animationState: Ability_Casting_3847be2a50d451e4f9bd516592e8f818_-203655887218126122

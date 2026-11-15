@@ -1,0 +1,13 @@
+{
+  "changes": [
+    "Player_Main: shared view target=StablePlayerViewTarget",
+    "PlayerHolder: shared view target=StablePlayerViewTarget",
+    "PlayerHolder: shared view target=StablePlayerViewTarget"
+  ],
+  "scene": {
+    "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "isDirty": true
+  },
+  "savedPrefabs": true,
+  "sceneSaved": false
+}

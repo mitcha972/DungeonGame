@@ -1,0 +1,16 @@
+{
+  "playing": false,
+  "compiling": false,
+  "compilationFailed": false,
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "isDirty": true,
+      "isLoaded": true
+    }
+  ],
+  "prefabStage": null,
+  "prefabStageDirty": false,
+  "selection": "",
+  "playModeStartScene": null
+}

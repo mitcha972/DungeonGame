@@ -9,10 +9,9 @@ public class EnemyStats : CharacterStats
     public Enemy Definition => enemy;
     public event System.Action<Transform> OnDeath;
 
-    private void Awake()
+    protected override void Awake()
     {
-        equipmentManager = GetComponentInChildren<EquipmentManager>(true);
-        if (equipmentManager != null) equipmentManager.onEquipmentChanged += OnEquipmentChanged;
+        base.Awake();
         _enemyAi = GetComponent<EnemyAi>();
         if (enemy == null)
         {
@@ -31,9 +30,10 @@ public class EnemyStats : CharacterStats
         StartUP();
     }
 
-    private void OnDestroy()
+    public override void OnEquipmentChanged(Equipment newItem, Equipment oldItem)
     {
-        if (equipmentManager != null) equipmentManager.onEquipmentChanged -= OnEquipmentChanged;
+        base.OnEquipmentChanged(newItem, oldItem);
+        if (_enemyAi != null) _enemyAi.UpdateEquipment();
     }
 
     public override void TakeDamage(int damageTaken, Transform attackOwner, float attackDirection)

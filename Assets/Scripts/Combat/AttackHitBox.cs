@@ -10,17 +10,26 @@ public class AttackHitBox : MonoBehaviour
     public List<CharacterStats> collidedCharacters = new List<CharacterStats>();
     private BoxCollider _collider;
     private CharacterCombat _combat;
+    private Vector3 defaultCenter, defaultSize;
     private readonly Collider[] _overlaps = new Collider[64];
     private readonly HashSet<DestructibleObject> _destructibles = new HashSet<DestructibleObject>();
     private void Awake()
     {
-        _collider = GetComponent<BoxCollider>();
+        InitializeCollider();
         _collider.isTrigger = true;
         _collider.enabled = false;
         _combat = GetComponentInParent<CharacterCombat>();
         if (myStats == null && _combat != null) myStats = _combat.myStats;
         if (owner == null && _combat != null) owner = _combat.gameObject;
     }
+    private void InitializeCollider()
+    {
+        if (_collider != null) return;
+        _collider = GetComponent<BoxCollider>();
+        defaultCenter = _collider.center;
+        defaultSize = _collider.size;
+    }
+    public SkinnedMeshRenderer WeaponVisual => _weaponMesh;
     private void FixedUpdate()
     {
         SampleDamage();
@@ -76,14 +85,22 @@ public class AttackHitBox : MonoBehaviour
     private Mesh _bakedMesh;
     public void ConfigureWeapon(SkinnedMeshRenderer mesh)
     {
+        InitializeCollider();
+        DisableDamage();
+        // Keep the debug volume alive when the previous weapon visual is destroyed.
+        if (_visual != null) _visual.transform.SetParent(transform, false);
         _weaponMesh = mesh;
-        if (_bakedMesh == null) _bakedMesh = new Mesh();
+        _collider.center = defaultCenter;
+        _collider.size = defaultSize;
+        if (mesh != null && mesh.TryGetComponent<BoxCollider>(out var authoredBounds))
+        { _collider.center = authoredBounds.center; _collider.size = authoredBounds.size; }
+        if (mesh != null && _bakedMesh == null) _bakedMesh = new Mesh();
     }
     private void OnDestroy() { if (_bakedMesh != null) Destroy(_bakedMesh); if (_visual != null) Destroy(_visual); if (_visualMaterial != null) Destroy(_visualMaterial); }
     private void OnTriggerEnter(Collider other) { if (_collider.enabled && _weaponMesh == null) Hit(other); }
     private void Hit(Collider other)
     {
-        if (owner == null || other.transform.IsChildOf(owner.transform)) return;
+        if (_collider == null || !_collider.enabled || _combat == null || !_combat.IsExecutingAttack || owner == null || other.transform.IsChildOf(owner.transform)) return;
         var stats = other.GetComponentInParent<CharacterStats>();
         if (stats != null)
         {

@@ -1,0 +1,114 @@
+{
+  "cold": {
+    "frame": 5419,
+    "look": "(0.00, 0.00)",
+    "pitch": 15.0000019,
+    "target": "(15.00, 0.00, 0.00)",
+    "realCamera": "(0.00, 0.00, 0.00)",
+    "live": "PlayerFollowCamera",
+    "cameras": [
+      {
+        "name": "PlayerCameraRoot",
+        "active": false,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      },
+      {
+        "name": "ThirdPersonFollowCamera",
+        "active": true,
+        "follow": "ThirdPersonCameraTarget",
+        "followRotation": "(15.00, 0.00, 0.00)"
+      },
+      {
+        "name": "PlayerFollowCamera",
+        "active": true,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      }
+    ]
+  },
+  "coldLook": {
+    "frame": 5427,
+    "look": "(0.00, 0.00)",
+    "pitch": 15.0000019,
+    "target": "(15.00, 0.00, 0.00)",
+    "realCamera": "(0.00, 0.00, 0.00)",
+    "live": "PlayerFollowCamera",
+    "cameras": [
+      {
+        "name": "PlayerCameraRoot",
+        "active": false,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      },
+      {
+        "name": "ThirdPersonFollowCamera",
+        "active": true,
+        "follow": "ThirdPersonCameraTarget",
+        "followRotation": "(15.00, 0.00, 0.00)"
+      },
+      {
+        "name": "PlayerFollowCamera",
+        "active": true,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      }
+    ]
+  },
+  "enabled": {
+    "frame": 5439,
+    "look": "(0.00, 0.00)",
+    "pitch": 15.0000019,
+    "target": "(15.00, 0.00, 0.00)",
+    "realCamera": "(0.00, 0.00, 0.00)",
+    "live": "PlayerFollowCamera",
+    "cameras": [
+      {
+        "name": "PlayerCameraRoot",
+        "active": false,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      },
+      {
+        "name": "ThirdPersonFollowCamera",
+        "active": true,
+        "follow": "ThirdPersonCameraTarget",
+        "followRotation": "(15.00, 0.00, 0.00)"
+      },
+      {
+        "name": "PlayerFollowCamera",
+        "active": true,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      }
+    ]
+  },
+  "enabledLook": {
+    "frame": 5447,
+    "look": "(0.00, 0.00)",
+    "pitch": 15.0000019,
+    "target": "(15.00, 0.00, 0.00)",
+    "realCamera": "(0.00, 0.00, 0.00)",
+    "live": "PlayerFollowCamera",
+    "cameras": [
+      {
+        "name": "PlayerCameraRoot",
+        "active": false,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      },
+      {
+        "name": "ThirdPersonFollowCamera",
+        "active": true,
+        "follow": "ThirdPersonCameraTarget",
+        "followRotation": "(15.00, 0.00, 0.00)"
+      },
+      {
+        "name": "PlayerFollowCamera",
+        "active": true,
+        "follow": "StablePlayerViewTarget",
+        "followRotation": "(0.00, 0.00, 0.00)"
+      }
+    ]
+  }
+}

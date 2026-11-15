@@ -310,7 +310,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 1
   m_VoxelSize: 0.05
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 85475e5e66391a64b96dda1e2440c61b, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1 &164767870 stripped
 GameObject:
@@ -518,19 +518,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8023817529708054574}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses:
-  - {fileID: 11400000, guid: 39a90d1c4d6bb1e4db73acbafc5b8044, type: 2}
-  - {fileID: 11400000, guid: bd102690b3fbfe34b9ffa9e2c3bece3c, type: 2}
-  replaceableLightAttackAnim: {fileID: 7400000, guid: cb032138a9419cf4cb93f019fddf349e,
-    type: 2}
-  replaceableHeavyAttackAnim: {fileID: 7400000, guid: b6b77768740796f4bb6bf78064789708,
-    type: 2}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!1 &239433892 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7129316381372556900, guid: 59bc5420ddcfcb54087cd2093792e409,
@@ -2277,27 +2268,78 @@ MonoBehaviour:
   m_GameObject: {fileID: 957491815}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses: []
-  replaceableLightAttackAnim: {fileID: 0}
-  replaceableHeavyAttackAnim: {fileID: 0}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!114 &957491820 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 902382179930685491, guid: 84da4102c56346e4399c946fe8377828,
     type: 3}
   m_PrefabInstance: {fileID: 1198855234}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 957491815}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d071713cca80614dbb39669d72eab6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &957491821
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d83c35a32837248b8b1c07bbf9f503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  equipmentManager: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+  damage: 0
+  armor: 0
+  range: 0
+  attackSpeed: 0
+  movementSpeed: 0
+  sightRange: 0
+  enemy: {fileID: 0}
+--- !u!114 &957491822
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
+--- !u!195 &957491823
+NavMeshAgent:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1001 &979561293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3059,27 +3101,78 @@ MonoBehaviour:
   m_GameObject: {fileID: 1422218524}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses: []
-  replaceableLightAttackAnim: {fileID: 0}
-  replaceableHeavyAttackAnim: {fileID: 0}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!114 &1422218529 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 902382179930685491, guid: 84da4102c56346e4399c946fe8377828,
     type: 3}
   m_PrefabInstance: {fileID: 1678952799}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422218524}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d071713cca80614dbb39669d72eab6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1422218530
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d83c35a32837248b8b1c07bbf9f503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
+  equipmentManager: {fileID: 0}
+  maxHealth: 0
+  currentHealth: 0
+  damage: 0
+  armor: 0
+  range: 0
+  attackSpeed: 0
+  movementSpeed: 0
+  sightRange: 0
+  enemy: {fileID: 0}
+--- !u!114 &1422218531
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
+--- !u!195 &1422218532
+NavMeshAgent:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!4 &1487071877 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9074594807982636234, guid: 1cf481c8086eef543b596c97f600fa2e,
@@ -7610,6 +7703,7 @@ GameObject:
   - component: {fileID: 8023817529708054551}
   - component: {fileID: 546425363246745836}
   - component: {fileID: 8023817529708054576}
+  - component: {fileID: 8023817529708054579}
   m_Layer: 7
   m_Name: Enemy-Test 1
   m_TagString: Enemy
@@ -7630,8 +7724,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 8023817529708054548}
-  currentProjectile: {fileID: 8303955909878210039, guid: a1178a081f1ade44e9cc8c6371ef9fbc,
-    type: 3}
   bloodSplat: {fileID: 613433886817584986, guid: 750cc3637a1326b4ba1caf53dbe49704,
     type: 3}
   attackHitBox: {fileID: 519525607}
@@ -7643,7 +7735,6 @@ MonoBehaviour:
   isBlocking: 0
   canBlock: 0
   cooldownTime: 0
-  blockDamageMultiplier: 0.35
   hitRecoveryTime: 0.3
 --- !u!114 &8023817529708054576
 MonoBehaviour:
@@ -7670,19 +7761,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8806f61581328b41a0510147e1c3f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 6658274272314622575}
-  itemDrop: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
+  bodyRenderer: {fileID: 6658274272314622575}
+  itemDropPrefab: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
     type: 3}
-  attackHitBox: {fileID: 519525605}
+  weaponHitboxObject: {fileID: 519525605}
+  innateAttacks: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
   inventory: {fileID: 0}
-  currentEquipmentArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 0}
   enemy: {fileID: 11400000, guid: 8a3a38d8221650640962cc1f24062f70, type: 2}
 --- !u!54 &8023817529708054578
 Rigidbody:
@@ -7711,6 +7795,18 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8023817529708054579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023817529708054574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3c650ff5428cbc47a04abf615808619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::StatusEffectController
 --- !u!4 &8126712510230720746
 Transform:
   m_ObjectHideFlags: 0

@@ -12,16 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3aba2028d2950264590c2b2a1776f37f, type: 3}
   m_Name: Giant-Stomp
   m_EditorClassIdentifier: 
-  itemType: 5
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 13375
-  clips:
-  - {fileID: 7400000, guid: 6a2beb6cdd35134478ad1c2e65fb0dfa, type: 2}
-  - {fileID: 7400000, guid: 4ecb079fd35dc3240a61d03fb99a4fb8, type: 2}
-  projectile: {fileID: 8303955909878210039, guid: bba6fe8a805a2b54a9bb5ddf41b4cf6f,
+  lightAttacks:
+  - clip: {fileID: 7400000, guid: cb032138a9419cf4cb93f019fddf349e, type: 2}
+    animatorState: Weapon_Punch___Right_cb032138a9419cf4cb93f019fddf349e_7400000
+  heavyAttacks:
+  - clip: {fileID: 7400000, guid: b6b77768740796f4bb6bf78064789708, type: 2}
+    animatorState: Weapon_Punch___Left_b6b77768740796f4bb6bf78064789708_7400000
+  damageWindowStart: 0.3
+  damageWindowEnd: 0.6
+  attackInterval: 0.8
+  heavyDamageMultiplier: 1.5
+  launchesProjectile: 0
+  projectilePrefab: {fileID: 8303955909878210039, guid: bba6fe8a805a2b54a9bb5ddf41b4cf6f,
     type: 3}
-  range: 6
-  speed: 8
-  rangeEnd: 1
-  destroyOnCollide: 0
+  projectileSpeed: 25
+  projectileRange: 40

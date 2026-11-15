@@ -14,7 +14,7 @@ public class PlayerGathering : MonoBehaviour
     private Inventory inventory;
     private PlayerStats stats;
     private PlayerController player;
-    private CharacterAnimator animationOwner;
+    private CharacterAnimation animationOwner;
     private CharacterCombat combat;
     private float startedAt, duration, feedbackUntil;
     private int initialHealth;
@@ -23,7 +23,7 @@ public class PlayerGathering : MonoBehaviour
     {
         controls = GetComponent<PlayerControlState>(); inventory = GetComponent<Inventory>();
         stats = GetComponent<PlayerStats>(); player = GetComponent<PlayerController>();
-        animationOwner = GetComponent<CharacterAnimator>(); combat = GetComponent<CharacterCombat>();
+        animationOwner = GetComponent<CharacterAnimation>(); combat = GetComponent<CharacterCombat>();
     }
     private void OnEnable() { controls.ActionCancelRequested += OnCancelRequested; }
     private void OnDisable() { controls.ActionCancelRequested -= OnCancelRequested; Cancel(""); }
@@ -36,7 +36,7 @@ public class PlayerGathering : MonoBehaviour
         if (node.IsDepleted) { ShowFeedback("This resource is depleted."); return false; }
         if (!InRange(node)) return false;
         if (combat != null && (combat.IsExecutingAttack || combat.isBlocking)) { ShowFeedback("Finish your current action first."); return false; }
-        if (animationOwner != null && animationOwner.AnimationIsBusy()) return false;
+        if (animationOwner != null && animationOwner.IsBusy) return false;
         if (!node.definition.RequirementsMet(transform, inventory, out string reason)) { ShowFeedback(reason); return false; }
         if (!inventory.CanExchange(Array.Empty<InventoryItemAmount>(), node.definition.Rewards)) { ShowFeedback("Your inventory is full."); return false; }
         if (!node.TryReserve(this)) { ShowFeedback("This resource is in use."); return false; }

@@ -37,15 +37,15 @@ public class Consumable : Item
                 return;
             }
             bag.NotifyExchange();
-            owner.GetComponent<CharacterAnimator>()?.PlayTargetAnimation("Drink", true);
+            owner.GetComponent<CharacterAnimation>()?.PlayAction("Drink", true);
             return;
         }
         if (owner == null || StatAmount <= 0 || statModifier != StatModifier.Health) return;
         var PS = owner.GetComponent<PlayerStats>();
         var inventory = owner.GetComponent<Inventory>();
         if (PS == null || PS.IsDead || PS.currentHealth >= PS.maxHealth || inventory == null || SlotIndex < 0 || SlotIndex >= inventory.items.Count || inventory.items[SlotIndex] != this) return;
-        var animator = owner.GetComponent<CharacterAnimator>();
-        if (animator != null) animator.PlayTargetAnimation("Drink", true);
+        var animator = owner.GetComponent<CharacterAnimation>();
+        if (animator != null) animator.PlayAction("Drink", true);
         PS.Heal(StatAmount);
         inventory.Remove(SlotIndex);
 

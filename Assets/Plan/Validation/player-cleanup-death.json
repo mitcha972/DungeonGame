@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "deathBlocksInputAndMovement": true,
+  "reloadsCurrentSceneWithLivingPlayer": true,
+  "scene": "Combat_Test"
+}

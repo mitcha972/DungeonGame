@@ -24,4 +24,6 @@ public class Abilities : ScriptableObject
     [Header("Animation")]
     public AnimationClip startAnimation;
     public AnimationClip castAnimation;
+    [SerializeField, HideInInspector] private string animationState;
+    public string AnimationState => animationState;
 }

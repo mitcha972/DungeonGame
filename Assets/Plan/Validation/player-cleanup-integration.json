@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "Enemy AI follows player on a native NavMesh",
+      "details": 3.84272766
+    },
+    {
+      "pass": true,
+      "name": "Enemy accepts an attack through its existing AI target gates",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Shared CharacterAnimator selects the enemy punch clip",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Enemy cancellation clears animation and attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player sword hit removes enemy health through the shared damage path",
+      "details": 5
+    },
+    {
+      "pass": true,
+      "name": "Player attack recovers normally",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Bow releases an initialized projectile that damages the NPC",
+      "details": 4
+    },
+    {
+      "pass": true,
+      "name": "Shared healing also works for humanoid NPC stats",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "NPC retains shared status effects",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "NPC status removal restores derived movement",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Friendly humanoid keeps animation with hostile AI/combat disabled",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Quick slot 1 uses its item through centralized input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "U returns player equipment to inventory",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "U never unequips NPC equipment",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Enemy death preserves attributed death notifications",
+      "details": null
+    }
+  ],
+  "errors": []
+}

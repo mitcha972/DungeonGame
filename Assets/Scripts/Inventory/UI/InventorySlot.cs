@@ -8,7 +8,7 @@ public class InventorySlot : UISlot
         if (ui != null)
         {
             if (inventory == null) inventory = ui.inventory;
-            if (ui.owner != null) equipmentManager = ui.owner.GetComponent<EquipmentManager>();
+            if (ui.owner != null) equipmentManager = ui.owner.GetComponent<CharacterEquipment>();
         }
         var button = UIPointerEvents.GetOrAdd(this);
         if (button == null) return;

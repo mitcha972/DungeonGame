@@ -1,0 +1,180 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "Bare hands resolve explicit innate attacks",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player uses the authored controller without runtime overrides",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Animation has no weapon-class search or replaceable clip fields",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "All authored main-hand items explicitly reference attack sets",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Equipment observers cannot begin a half-committed attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Equipment/bag state commits before observers and rejects reentrant gear changes",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Weapon modifiers apply exactly once",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Sword selects its item's attack set",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Weapon visual and sampled hit volume agree",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Equipment enables the grip without changing the attack layer",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Indexed weapon swap returns the old weapon to its exact bag slot",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Weapon swap replaces rather than stacks modifiers",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Bow uses its explicit projectile settings",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Full inventory retains equipped gear and its visual",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Unequip atomically commits the item into available bag space",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Unequip restores innate attacks and clears the previous weapon binding",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Unequip clears the grip while preserving attack-layer weight",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Unequip restores base damage",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Overlapping armor coverage survives removal of just one covering item",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Last covering item restores the visible body region",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "NPC also uses an authored controller without runtime overrides",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Finished equip action restores its authored overlay weight",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Combat captures the item's selected attack and motion",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Direct authored state plays the selected sword clip",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "An accepted attack keeps its captured window and cooldown after profile changes",
+      "details": {
+        "capturedWindow": true,
+        "attackIsReady": true,
+        "IsExecutingAttack": false,
+        "duration": 1.33333337
+      }
+    },
+    {
+      "pass": true,
+      "name": "Programmatic weapon swap cancels the old attack and its animation",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Cancellation clears even a just-requested weapon motion",
+      "details": {
+        "current": -1459219776,
+        "next": 0,
+        "expected": -1459219776
+      }
+    },
+    {
+      "pass": true,
+      "name": "Interactive equipment swap is rejected while the action is busy",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Different attack sets work independently of the same item category",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Projectile delivery retains the accepted prefab/speed/range snapshot",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player legacy heavy request remains light-only after unequip",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Existing ability animation plays its authored state without a replacement slot",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Ability recovery remains tied to its authored clip",
+      "details": null
+    }
+  ],
+  "errors": []
+}

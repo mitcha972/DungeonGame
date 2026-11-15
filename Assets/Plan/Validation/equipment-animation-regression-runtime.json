@@ -1,0 +1,199 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "Player loop advances",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Gameplay input initially allowed",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native W moves the real CharacterController",
+      "details": 0.6261444
+    },
+    {
+      "pass": true,
+      "name": "Native sprint raises the motor movement speed",
+      "details": {
+        "sprintHeld": true,
+        "requestedSprint": 7.0,
+        "sampledTravelSpeed": 2.40279341,
+        "walk": 4.0,
+        "multiplier": 1.0
+      }
+    },
+    {
+      "pass": true,
+      "name": "Mouse delta rotates view",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "V changes camera mode",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "V restores camera mode",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Space cannot jump",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Inventory owns input and cursor",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Inventory blocks movement and attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Inventory close restores input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Pause freezes gameplay",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Resume restores gameplay",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Journal gates input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Journal releases input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Expanded map gates input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Expanded map releases input",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "One mouse press starts one light attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player can move during a light attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Holding attack never repeats or charges",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Attack release never attacks",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Legacy heavy request executes a light attack",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native right mouse raises equipped shield",
+      "details": {
+        "BlockHeld": true,
+        "HasShield": true,
+        "canBlock": true,
+        "busy": false,
+        "GameplayAllowed": true
+      }
+    },
+    {
+      "pass": true,
+      "name": "Modal opening clears shield intent",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Held shield cannot leak across a modal boundary",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Shield works again after release and fresh press",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Shield release lowers block",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Focus loss clears intentions",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Focus regain restores eligibility",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player damage uses shared health resolution",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Player healing remains functional",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Skill tree binds directly to PlayerStats when its panel opens",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Gathering acquires exclusive action ownership",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Gathering completes through existing inventory reward path",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Native E uses the shared camera-center interaction ray",
+      "details": null
+    },
+    {
+      "pass": true,
+      "name": "Escape cancels gathering and releases only its action lease",
+      "details": null
+    }
+  ],
+  "errors": [],
+  "frameCount": 1662
+}

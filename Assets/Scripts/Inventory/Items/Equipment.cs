@@ -11,7 +11,9 @@ public class Equipment : Item
 	[Header("Equipment")]
 	public EquipmentSlot equipSlot;	// Slot to store equipment in
 	public SkinnedMeshRenderer mesh;
-    public EquipmentManager.MeshBlendShape[] coveredMeshRegions;
+    [Tooltip("Explicit attacks for this main-hand weapon. Armor and shields leave this empty.")]
+    public WeaponAttackSet weaponAttacks;
+    public CharacterEquipment.BodyRegion[] coveredMeshRegions;
 
 	//Fix chage to dictonary of names and ints
 	[Header("Modifiers")]
@@ -48,7 +50,7 @@ public class Equipment : Item
 
 		//Find equipmentManager And Equip Item 
 		if (owner == null) return;
-        EquipmentManager equipmentManager = owner.GetComponent<EquipmentManager>();
+        CharacterEquipment equipmentManager = owner.GetComponent<CharacterEquipment>();
         if (equipmentManager != null) equipmentManager.Equip(this, slotIndex);
 	}
 

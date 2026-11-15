@@ -121,7 +121,7 @@ internal static class CombatCheckpointRunner
                 var generator = Find("DungeonGenerator");
                 if (generator == null || !(bool)generator.GetType().GetProperty("IsReady").GetValue(generator)) return;
                 _player = (GameObject)Field(generator, "player");
-                _stats = _player.GetComponent("PlayerStats"); _combat = _player.GetComponent("PlayerCombat"); _equipment = _player.GetComponent("PlayerEquipmentManager");
+                _stats = _player.GetComponent("PlayerStats"); _combat = _player.GetComponent("PlayerCombat"); _equipment = _player.GetComponent("PlayerEquipment");
                 _ui = Find("UICanvasController"); _movement = _player.GetComponent("ThirdPersonController");
                 _position = _player.transform.position;
                 Key(UnityEngine.InputSystem.Key.I, true); Advance(1); return;
@@ -152,8 +152,8 @@ internal static class CombatCheckpointRunner
             if (_phase == 8 && age > 0.1) { Click(false); Advance(9); return; }
             if (_phase == 9 && age > 0.2 && (bool)Field(_combat, "attackIsReady"))
             {
-                var presentation = _player.GetComponent("PlayerAnimator");
-                Debug.Log("[CombatTest] Sword execution damage=" + _combat.GetType().GetProperty("AttackDamage").GetValue(_combat) + " duration=" + presentation.GetType().GetProperty("CurrentAttackDuration").GetValue(presentation) + " gameTime=" + Time.time + " animation=" + _player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash);
+                var presentation = _player.GetComponent("CharacterAnimation");
+                Debug.Log("[CombatTest] Sword execution damage=" + _combat.GetType().GetProperty("AttackDamage").GetValue(_combat) + " duration=" + _combat.GetType().GetProperty("AttackDuration").GetValue(_combat) + " gameTime=" + Time.time + " animation=" + _player.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).shortNameHash);
                 int lost = _healthBefore - Stat(_enemyStats, "currentHealth");
                 Check(lost == _expectedDamage, "Sword deals exactly one hit: lost=" + lost + " expected=" + _expectedDamage);
                 Set(_enemyStats, "currentHealth", _expectedDamage); Click(true); Advance(10); return;
@@ -169,14 +169,14 @@ internal static class CombatCheckpointRunner
             }
             if (_phase == 12 && age > 1.2)
             {
-                var presentation = _player.GetComponent("PlayerAnimator"); var weapon = presentation.GetType().GetProperty("CurrentWeapon").GetValue(presentation) as UnityEngine.Object;
+                var presentation = _player.GetComponent("CharacterAnimation"); var weapon = _equipment.GetType().GetProperty("ActiveAttackSet").GetValue(_equipment) as UnityEngine.Object;
                 Debug.Log("[CombatTest] Selected weapon=" + (weapon != null ? weapon.name : "NULL") + " busy=" + _player.GetComponent<Animator>().GetBool("isBusy") + " inventory0=" + ((System.Collections.IList)Field(_player.GetComponent("Inventory"), "items"))[0]);
-                Check(weapon != null && weapon.name == "Arrow", "Bow equipment selects ranged weapon data");
+                Check(weapon != null && weapon.name == "Bow_Attacks", "Bow equipment selects ranged weapon data");
                 var candidates = UnityEngine.SceneManagement.SceneManager.GetActiveScene().GetRootGameObjects().SelectMany(r=>r.GetComponentsInChildren<NavMeshAgent>()).Where(a=>a.isActiveAndEnabled && a.gameObject.GetComponent("EnemyStats") != null && !Dead(a.gameObject.GetComponent("EnemyStats"))).ToArray();
                 _enemy = candidates.First(); _enemyAi = _enemy.GetComponent("EnemyAi"); _enemyStats = _enemy.GetComponent("EnemyStats"); PlaceEnemy(4f);
                 Set(_enemyStats, "currentHealth", Mathf.Max(1, Stat(_stats, "damage") - Stat(_enemyStats, "armor")));
-                _movement.GetType().GetField("_cinemachineTargetYaw", BindingFlags.Instance|BindingFlags.NonPublic).SetValue(_movement, 0f);
-                _movement.GetType().GetField("_cinemachineTargetPitch", BindingFlags.Instance|BindingFlags.NonPublic).SetValue(_movement, 6f);
+                _movement.GetType().GetField("_yaw", BindingFlags.Instance|BindingFlags.NonPublic).SetValue(_movement, 0f);
+                _movement.GetType().GetField("_pitch", BindingFlags.Instance|BindingFlags.NonPublic).SetValue(_movement, 6f);
                 Advance(13); return;
             }
             if (_phase == 13 && age > 0.3) { Click(true); Advance(14); return; }

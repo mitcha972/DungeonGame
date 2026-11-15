@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterStats : MonoBehaviour 
 {
 	//equipmentManager
-	public EquipmentManager equipmentManager; //Make private
+	public CharacterEquipment equipmentManager; //Make private
 	//public GameObject bloodSplat;
 
 	// Stats
@@ -24,6 +24,22 @@ public class CharacterStats : MonoBehaviour
 	{
 		currentHealth = maxHealth;
 	}
+
+    protected virtual void Awake()
+    {
+        equipmentManager = GetComponentInChildren<CharacterEquipment>(true);
+        if (equipmentManager != null) equipmentManager.EquipmentChanged += OnEquipmentChanged;
+    }
+    protected virtual void OnDestroy()
+    {
+        if (equipmentManager != null) equipmentManager.EquipmentChanged -= OnEquipmentChanged;
+    }
+    public virtual void Heal(int amount)
+    {
+        if (IsDead || amount <= 0 || currentHealth >= maxHealth) return;
+        currentHealth += (int)System.Math.Min((long)amount, (long)maxHealth - currentHealth);
+        OnHealthChanged?.Invoke(maxHealth, currentHealth);
+    }
 
 	// Called when an item gets equipped/unequipped
 	public virtual void OnEquipmentChanged (Equipment newItem, Equipment oldItem)
@@ -44,11 +60,6 @@ public class CharacterStats : MonoBehaviour
 			range -= oldItem.rangeModifier;
 		}	
 
-		//Update Enemy equip
-		EnemyAi enemyAi = this.gameObject.GetComponent<EnemyAi>();
-		if(enemyAi)
-			enemyAi.UpdateEquipment();
-			//enemyAi.attackRange = range;	
 	}
 
 	public bool IsDead { get; private set; }

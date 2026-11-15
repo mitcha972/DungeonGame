@@ -9,9 +9,8 @@ flowchart TD
     Menu[Start / MenuController] --> Session[GameController selection]
     Session --> Loading[LoadingScript]
     Loading --> Dungeon[Main / DungeonGenerator]
-    Input[PlayerInput / mehh] --> Bridge[StarterAssetsInputs]
-    Input --> State[PlayerControlState]
-    Bridge --> Move[ThirdPersonController]
+    Input[PlayerInput / mehh] --> State[PlayerControlState]
+    State -->|intentions| Move[ThirdPersonController movement / facing / view]
     State -->|eligibility| Move
     State -->|E request| Actions[PlayerController]
     Actions -->|camera-center raycast| Interaction[Interactable]
@@ -21,18 +20,18 @@ flowchart TD
     Dialogue --> State
     Dialogue -->|OpenShop before Close| Shop[ShopScript / ShopInventoryUI]
     Shop --> State
-    Shop --> Inventory[Inventory / EquipmentManager]
+    Shop --> Inventory[Inventory / CharacterEquipment]
     Combat --> Stats[CharacterStats / PlayerStats / EnemyStats]
     Stats --> Progression[LevelSystem / PlayerSkills]
 ```
 
-PlayerControlState owns cursor visibility/lock and gameplay eligibility, considering focus, death, timeScale, inventory, chest, shop and dialogue. Consumers retain subscriptions but respect that state. Dialogue also cancels in-flight player combat. Do not add a competing locomotion/camera/input owner or duplicate E polling for NPC interaction. Retained legacy/demo pollers are not templates for new input.
+PlayerControlState is the sole gameplay subscriber to PlayerInput.onActionTriggered. It collects Move/Look/Sprint/BlockHeld and routes action requests, cursor and gameplay eligibility for focus, death, timeScale, inventory, chest, shop, dialogue, journal, expanded map and gathering leases. Consumers receive intentions or domain events rather than polling hardware. Dialogue also cancels in-flight player combat. Do not add a competing locomotion/camera/input owner or duplicate E polling for NPC interaction. Retained legacy/demo pollers are not templates for new input.
 
 Pause is separate from modal UI: SettingsMenu uses timeScale=0; dialogue/inventory/trading block player input while the world continues. During dialogue, E/Tab are ignored and Escape closes. Shop/chest interaction closes on E or Escape without also pausing in that press. Older plans requiring Escape always to pause are superseded for these contexts.
 
 ## Data and interaction
 
-Item/Equipment/Consumable, Class, Enemy, WeaponClass/Abilities and DialogueConversation/actions are ScriptableObject definitions. Inventory/equipment/conversation/progression runtime state belongs to components/models, not shared dialogue assets. A runtime item-instance/quantity/persistence model is not implemented.
+Item/Equipment/Consumable, Class, Enemy, WeaponAttackSet/Abilities and DialogueConversation/actions are ScriptableObject definitions. Inventory/equipment/conversation/progression runtime state belongs to components/models, not shared dialogue assets. A runtime item-instance/quantity/persistence model is not implemented.
 
 Interactable is shared by pickups, doors, chests, shops, enemies, exits and dialogue adapters. PlayerController looks from camera center, ignores trigger hits and its own layer, resolves GetComponentInParent<Interactable>, checks the configured player distance (default 4), focuses and calls Interact(owner). Interactable.radius is not that raycast's distance authority.
 
@@ -42,11 +41,11 @@ OpenBank/StartQuest/OpenService are **request hooks only**. Future modal handler
 
 ## Combat, world and progression
 
-CharacterCombat owns timelines/cooldowns/block/recovery. PlayerCombat exposes light attacks only; animation busy state no longer owns player locomotion. Active shield reduction remains in CharacterCombat, with final armor/minimum health loss in CharacterStats; see [combat](SYSTEMS/Combat.md). AttackHitBox/Projectile acquire contacts; CharacterStats owns final armor/health/death; CharacterAnimator owns presentation. EnemyAi is an Update-driven FSM with throttled perception/pathfinding, configured by EnemyStats.Definition. Preserve these responsibilities rather than adding competing damage/movement authorities.
+CharacterCombat owns timelines/cooldowns/block/recovery. PlayerCombat exposes light attacks only; animation busy state no longer owns player locomotion. Active shield reduction remains in CharacterCombat, with final armor/minimum health loss in CharacterStats; see [combat](SYSTEMS/Combat.md). AttackHitBox/Projectile acquire contacts; CharacterStats owns final armor/health/death; CharacterAnimation owns presentation. EnemyAi is an Update-driven FSM with throttled perception/pathfinding, configured by EnemyStats.Definition. Preserve these responsibilities rather than adding competing damage/movement authorities.
 
 DungeonGenerator owns the graph, room assembly, current NavMesh, generation state and floor advancement/rollback. A replacement must have an active DungeonExit and a complete path from PlayerSpawn to its interaction range before commit. Queries use the surface/agent type and area mask. The generator releases only native NavMeshData it built, preserving previous data until commit/rollback; scene-authored data is not destroyed. Runtime custom navigation uses Unity.AI.Navigation; legacy NavMeshComponents stays separate. Native paths and controlled capsule probes are distinct from normal walking/jumping certification; see [world](SYSTEMS/World.md).
 
-PlayerStats owns player XP/skills. Player delegates to co-located PlayerStats, retaining a standalone demo fallback. LevelSystemAnimatedUpdater is local and disposed explicitly; CodeMonkey FunctionUpdater no longer drives it.
+PlayerStats owns player XP/skills. UI_SkillTree binds directly to PlayerStats; its UI-only demo creates a local PlayerSkills model. The redundant Player/Testing facade components were removed. LevelSystemAnimatedUpdater is local and disposed explicitly; CodeMonkey FunctionUpdater no longer drives it.
 
 ## Serialization and tooling
 
@@ -62,7 +61,7 @@ Merchant integration (2026-11-13): immutable ShopDefinition assets configure rul
 
 ## Resource gathering (2026-11-13)
 
-ResourceNode extends Interactable; ResourceNodeDefinition and ResourceNodeRequirement hold configuration, while each node owns reservations, charges and scaled respawn deadlines. PlayerGathering owns a timed action on the existing player and acquires an exclusive PlayerControlState action lease. Gameplay eligibility still includes all existing modal/focus/death checks, so releasing a gathering lease cannot release another system's lock. CharacterAnimator owns gathering-state presentation and restoration; PlayerController and GatheringProgressHUD present feedback on the existing Canvas. Inventory.TryExchange commits the whole reward before state/observer notifications. Existing quest possession objectives receive the normal inventory notification; cumulative gathering is an event extension point, not a new quest owner. See [resource nodes](SYSTEMS/ResourceNodes.md) for setup, validation and session-only persistence limits.
+ResourceNode extends Interactable; ResourceNodeDefinition and ResourceNodeRequirement hold configuration, while each node owns reservations, charges and scaled respawn deadlines. PlayerGathering owns a timed action on the existing player and acquires an exclusive PlayerControlState action lease. Gameplay eligibility still includes all existing modal/focus/death checks, so releasing a gathering lease cannot release another system's lock. CharacterAnimation owns gathering-state presentation and restoration; PlayerController and GatheringProgressHUD present feedback on the existing Canvas. Inventory.TryExchange commits the whole reward before state/observer notifications. Existing quest possession objectives receive the normal inventory notification; cumulative gathering is an event extension point, not a new quest owner. See [resource nodes](SYSTEMS/ResourceNodes.md) for setup, validation and session-only persistence limits.
 
 Resource-delivery quest integration (2026-11-13) retains those boundaries: ResourceNode -> Inventory.NotifyExchange -> QuestController/QuestService PossessItem facts -> existing dialogue/journal. No gathering dependency is added to QuestService and no quest dependency is added to ResourceNode. PlayerHolder registers both authored adventures; Quartermaster_Nessa derives from NPC_Main. Dialogue buttons carry their originating node and presentation version so deferred old-stage/session callbacks cannot execute a different current-stage action. See [quests](SYSTEMS/Quests.md#gathering-adventure-integration-2026-11-13) and [dialogue](SYSTEMS/Dialogue.md).
 
@@ -74,4 +73,12 @@ PlayerSkillProgress is the per-player owner of ten independent XP totals alongsi
 
 StatusEffectDefinition is shared configuration; StatusEffectController owns per-entity snapshots/timers and exposes events/query APIs. CharacterStats retains health/armor/death and exposes derived modifiers; CharacterCombat consumes effective damage, ThirdPersonController and EnemyAi consume effective movement. Consumable optionally applies effects through the shared controller; StatusEffectHUD presents them on the existing UICanvas without input ownership. PlayerHolder/Enemy_Main and Combat_Test are wired; temporary effects are session-only. See [status effects](SYSTEMS/StatusEffects.md).
 
-Item.worldPrefab optionally supplies a complete world pickup for EquipmentManager.TryDropItem; UISlot removes its exact source entry only after successful creation. Equipment retains the original mesh-based fallback. Poison Potion owns an independent pickup prefab while reusing potion art; see [inventory](SYSTEMS/Inventory.md).
+Item.worldPrefab optionally supplies a complete world pickup for CharacterEquipment.TryDropItem; UISlot removes its exact source entry only after successful creation. Equipment retains the original mesh-based fallback. Poison Potion owns an independent pickup prefab while reusing potion art; see [inventory](SYSTEMS/Inventory.md).
+
+
+## Equipment and authored actions — 2026-11-15
+
+Equipment.weaponAttacks / CharacterEquipment.innateAttacks → CharacterCombat attack selection and captured execution values → CharacterAnimation authored-state playback. Gear/visual dictionaries are read-only externally; bag/gear transactions publish committed state. PlayerEquipment and EnemyEquipment retain their UI/startup duties. No animator-owned weapon category lookup or runtime replacement controller remains. WeaponAnimationAuthoring is Editor-only and bakes clip states into existing controllers; [Inventory](SYSTEMS/Inventory.md) and [Animation](SYSTEMS/Animation.md) own the full contracts.
+
+
+Player camera integration (2026-11-15): ThirdPersonController owns mouse/view yaw, upright body facing and StablePlayerViewTarget pitch/yaw. PlayerController retains interaction focus but cannot steer facing through it. The selected first-/third-person Cinemachine cameras follow that same target; the duplicate third-person component is disabled. Player Animator consumes local MoveX/MoveY direction alongside Speed/MotionSpeed. [Player](SYSTEMS/Player.md) owns configuration and focused validation.

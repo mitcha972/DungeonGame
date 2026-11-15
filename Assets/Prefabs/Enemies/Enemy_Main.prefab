@@ -1314,7 +1314,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5160646311146067393}
   - component: {fileID: 5160646311155628643}
-  - component: {fileID: 5160646310307642552}
   - component: {fileID: 5160646311146228192}
   m_Layer: 0
   m_Name: Enemy Animator
@@ -1362,18 +1361,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5160646310307642552
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5160646311146228193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ad290558507f4a6a8f9b1d609740a1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1818360608 &5160646311146228192
 PositionConstraint:
   m_ObjectHideFlags: 0
@@ -1534,8 +1521,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myStats: {fileID: 5160646311569419619}
-  currentProjectile: {fileID: 8303955909878210039, guid: a1178a081f1ade44e9cc8c6371ef9fbc,
-    type: 3}
   bloodSplat: {fileID: 0}
   attackHitBox: {fileID: 660236079984671334}
   abilities: {fileID: 0}
@@ -1603,18 +1588,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 5160646311569419609}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9234c1ed5a060b04ba69c5e9a85ce80d, type: 3}
+  m_Script: {fileID: 11500000, guid: 39bb38027607b4d4b9eea10523f314c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponClass: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
-  availableWeaponClasses:
-  - {fileID: 11400000, guid: 39a90d1c4d6bb1e4db73acbafc5b8044, type: 2}
-  replaceableLightAttackAnim: {fileID: 7400000, guid: cb032138a9419cf4cb93f019fddf349e,
-    type: 2}
-  replaceableHeavyAttackAnim: {fileID: 7400000, guid: b6b77768740796f4bb6bf78064789708,
-    type: 2}
-  replaceableAbilityAnim: {fileID: 0}
-  overrideController: {fileID: 0}
+  attackLayer: Override
 --- !u!114 &2102378818591635495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1875,19 +1852,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8806f61581328b41a0510147e1c3f51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetMesh: {fileID: 8404542492248434456}
-  itemDrop: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
+  bodyRenderer: {fileID: 8404542492248434456}
+  itemDropPrefab: {fileID: 1507267273125530937, guid: 5a6ad69d457fc3a4b80587f3b09f5075,
     type: 3}
-  attackHitBox: {fileID: 1647899051041675415}
+  weaponHitboxObject: {fileID: 1647899051041675415}
+  innateAttacks: {fileID: 11400000, guid: 6ae1ddd644fc7294e8e74995f96d6ee0, type: 2}
   inventory: {fileID: 0}
-  currentEquipmentArray:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  animator: {fileID: 6753919449685918973}
   enemy: {fileID: 11400000, guid: 8a3a38d8221650640962cc1f24062f70, type: 2}
 --- !u!114 &4013671591790690624
 MonoBehaviour:

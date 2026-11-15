@@ -1,6 +1,6 @@
 # Dungeon Game — project context
 
-Authoritative current overview, audited against source/assets on **2026-11-13** (America/New_York). Read [architecture](ARCHITECTURE.md), [roadmap](DEVELOPMENT_ROADMAP.md), the relevant system and actual code before changing anything. [Maintenance](MAINTENANCE.md) records consolidation and validation. Historical reports are evidence, not active requirements.
+Authoritative current overview, player architecture updated on **2026-11-15** (America/New_York). Read [architecture](ARCHITECTURE.md), [roadmap](DEVELOPMENT_ROADMAP.md), the relevant system and actual code before changing anything. [Maintenance](MAINTENANCE.md) records consolidation and validation. Historical reports are evidence, not active requirements.
 
 ## Direction and environment
 
@@ -12,12 +12,12 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 
 | System | Actual status and authority |
 | --- | --- |
-| [Player](SYSTEMS/Player.md) | Implemented: StarterAssets ThirdPersonController + PlayerInput/StarterAssetsInputs; PlayerController handles actions and PlayerControlState owns gameplay/UI eligibility. Camera wiring varies by scene. |
+| [Player](SYSTEMS/Player.md) | Implemented: PlayerHolder + nested Player_Main; PlayerControlState collects input/owns eligibility, ThirdPersonController owns movement/facing/view, PlayerController dispatches actions. Mouse-facing strafe/backpedal and shared camera anchor with startup vertical look repaired (36 focused checks). Shared CharacterAnimation/stats; explicit equipment-owned attack sets and authored motion states; jumping/heavy/sliding removed. See [architecture](Player_Architecture.md). |
 | [Dialogue](SYSTEMS/Dialogue.md) | Implemented branching data, reusable TMP/uGUI panel, E interaction, keyboard/mouse responses, lifecycle and shop handoff. Merchant has historical passing Play Mode evidence. |
-| [Inventory](SYSTEMS/Inventory.md) | Implemented slot initialization, pickups, equipment, chest transfer and health consumables. No runtime item-instance/stack/save contract. |
+| [Inventory](SYSTEMS/Inventory.md) | Implemented slot initialization, pickups, atomic equipment exchanges, explicit weapon attack sets, chest transfer and health consumables. No runtime item-instance/stack/save contract. |
 | [Shops](SYSTEMS/Shops.md) | Implemented finite per-merchant stock, configurable restocking/restrictions/prices, gold transactions and 3x3 buy/sell UI; session-only economy. |
 | [Combat/NPCs](SYSTEMS/Combat.md) | Single-click light attacks, visible damage volumes, mobile player combat, shield-value active block reduction, shared melee/projectile execution, stats and enemy FSM implemented. Shield durability and some exposed collision-mask fields remain incomplete. |
-| [Animation/models](SYSTEMS/Animation.md) | Live assessment of combat, gathering and skill-tree fixtures; obsolete clip events, equipment grip-layer routing and casting recovery repaired. Monster rig/controller gaps and animation folder identities are recorded in the subsystem reference. |
+| [Animation/models](SYSTEMS/Animation.md) | Explicit weapon attack sets, authored state playback and shared action-layer lifecycle implemented; 95 gameplay/19 asset checks passed. Obsolete clip events, grip-layer routing and casting recovery repaired. Monster rig/controller gaps and animation folder identities are recorded in the subsystem reference. |
 | [World](SYSTEMS/World.md) | Connected maze, transactional regeneration, reachable-exit guard and owned native NavMesh lifetime implemented. DEnd exits/entrances repaired; 20 seeded floors have complete paths. Controlled capsule traversal still identifies a stair requiring upward clearance; normal movement/build coverage remains partial. |
 | [Progression](SYSTEMS/Progression.md) / [RPG skills](SYSTEMS/Skills.md) | Existing character XP/unlock tree retained; ten independent skills (levels 1–30), 100-XP skillbooks, success-based mining/melee/ranged/block XP and pooled TMP feedback implemented. Legacy ability effects remain prototypes. |
 | [UI](SYSTEMS/UI.md) | Canvas/uGUI, TMP and some legacy Text, menus, inventory/HUD; PlayerHolder north-up minimap and M expanded map ([details](SYSTEMS/Minimap.md)). No runtime UI Toolkit migration. |
@@ -29,8 +29,8 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 
 - Custom source: `Assets/Scripts/{Core,Player,NPC,Dialogue,Inventory,Shops,Combat,World,Progression,UI,Tests}`; [full script index](SCRIPT_INDEX.md).
 - Editor validation: `Assets/Editor/Validation/`. Ephemeral tooling: `AgentScripts/Dialogue/` and `AgentScripts/Organization/`, intentionally outside Assets.
-- Player: `Assets/Prefabs/Player/PlayerHolder.prefab`. PlayerContent/backup variants also remain; inspect their actual wiring.
-- Input: `Assets/GamePlay/Character/InputSystem/mehh.inputactions`. Adapted Starter Assets remain under `Assets/GamePlay/Character/`.
+- Player: `Assets/Prefabs/Player/PlayerHolder.prefab`. Player_Main is the nested character source; older PlayerContent is now in Player/Variants. Inspect holder overrides when reusing the character.
+- Input: `Assets/Input/mehh.inputactions`. Project-owned movement remains StarterAssets.ThirdPersonController in `Assets/Scripts/Player/`; the StarterAssetsInputs bridge was removed.
 - Dialogue data: `Assets/Dialogue/`; panel: `Assets/Prefabs/Dialogue/DialoguePanel.prefab`; merchant: `Assets/Prefabs/WorldInteract/DialogueMerchant.prefab` (Shop variant).
 - Production flow: `Assets/Scenes/Game/Start.unity` (menu) → `Loading.unity` → `Main.unity` (dungeon).
 - Tests: `Assets/Scenes/Test_Scenes/{DialogueMerchant_Test,Combat_Test,DungeonGeneration_Test,SkillTree_Test}.unity`. Presence is not proof of a passing test.
@@ -40,6 +40,6 @@ Unity **6000.3.28f1**. Active renderer: **Built-in**; URP 17.3.0 is installed bu
 
 ## Immediate handoff
 
-Follow [the roadmap](DEVELOPMENT_ROADMAP.md). The production loop and native exit/rollback audit now have passing Editor evidence; next verify a packaged player, normal stair/jump traversal and remaining prefab/content coverage. Preserve current economy/shield/skill limitations. [Maintenance validation](MAINTENANCE.md#gameplay-audit--2026-11-13) distinguishes executed checks from remaining gaps. Do not reapply old inventory/input/progression fixes already present in code.
+Follow [the roadmap](DEVELOPMENT_ROADMAP.md). The production loop and native exit/rollback audit now have passing Editor evidence; next verify a packaged player, normal stair traversal without jumping and remaining prefab/content coverage. Preserve current economy/shield/skill limitations. [Maintenance validation](MAINTENANCE.md#gameplay-audit--2026-11-13) distinguishes executed checks from remaining gaps. Do not reapply old inventory/input/progression fixes already present in code.
 
 Status effects (2026-11-13): shared Poison/Slow/Bleeding, derived movement/damage modifiers, player HUD countdowns/tooltips and Poison Potion implemented on PlayerHolder/Enemy_Main. Combat_Test supplies three potions. Session-only; validation scope and remaining prefab/production coverage are in [StatusEffects](SYSTEMS/StatusEffects.md).

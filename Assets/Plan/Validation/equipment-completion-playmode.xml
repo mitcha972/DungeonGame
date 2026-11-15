@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<test-run id="2" testcasecount="33" result="Skipped:Ignored" total="33" passed="32" failed="0" inconclusive="0" skipped="1" asserts="0" engine-version="3.5.0.0" clr-version="4.0.30319.42000" start-time="2026-11-15 20:55:24Z" end-time="2026-11-15 20:55:25Z" duration="0.9995752">
+  <test-suite type="TestSuite" id="1043" name="ThirdPersonTest" fullname="ThirdPersonTest" runstate="Runnable" testcasecount="33" result="Skipped" label="Ignored" start-time="2026-11-15 20:55:24Z" end-time="2026-11-15 20:55:25Z" duration="0.999575" total="33" passed="32" failed="0" inconclusive="0" skipped="1" asserts="0">
+    <properties>
+      <property name="platform" value="PlayMode" />
+    </properties>
+    <reason>
+      <message><![CDATA[One or more child tests were ignored]]></message>
+    </reason>
+    <test-suite type="Assembly" id="1039" name="NavMeshComponentsTestsPlaymode.dll" fullname="C:/Users/mitch/Documents/Unity/My_Projects/Dungeon Game/Library/ScriptAssemblies/NavMeshComponentsTestsPlaymode.dll" runstate="Runnable" testcasecount="33" result="Skipped" label="Ignored" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.939692" total="33" passed="32" failed="0" inconclusive="0" skipped="1" asserts="0">
+      <properties>
+        <property name="_PID" value="31116" />
+        <property name="_APPDOMAIN" value="Unity Child Domain" />
+        <property name="platform" value="PlayMode" />
+        <property name="EditorOnly" value="False" />
+      </properties>
+      <reason>
+        <message><![CDATA[One or more child tests were ignored]]></message>
+      </reason>
+      <test-suite type="TestFixture" id="1001" name="NavMeshSurfaceAgentTests" fullname="NavMeshSurfaceAgentTests" classname="NavMeshSurfaceAgentTests" runstate="Runnable" testcasecount="4" result="Skipped" label="Ignored" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.458835" total="4" passed="3" failed="0" inconclusive="0" skipped="1" asserts="0">
+        <properties />
+        <reason>
+          <message><![CDATA[One or more child tests were ignored]]></message>
+        </reason>
+        <test-case id="1004" name="AgentAlignsToSurfaceNextFrame" fullname="NavMeshSurfaceAgentTests.AgentAlignsToSurfaceNextFrame" methodname="AgentAlignsToSurfaceNextFrame" classname="NavMeshSurfaceAgentTests" runstate="Runnable" seed="1022188903" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.192189" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1003" name="AgentDetachesAndAttachesToSurface" fullname="NavMeshSurfaceAgentTests.AgentDetachesAndAttachesToSurface" methodname="AgentDetachesAndAttachesToSurface" classname="NavMeshSurfaceAgentTests" runstate="Ignored" seed="1090924388" result="Skipped" label="Ignored" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.002714" asserts="0">
+          <properties>
+            <property name="_SKIPREASON" value="1012991 : Missing functionality for notifying the NavMeshAgent about the removal of the NavMesh." />
+          </properties>
+          <reason>
+            <message><![CDATA[1012991 : Missing functionality for notifying the NavMeshAgent about the removal of the NavMesh.]]></message>
+          </reason>
+        </test-case>
+        <test-case id="1005" name="AgentDoesNotAlignToSurfaceNextFrame" fullname="NavMeshSurfaceAgentTests.AgentDoesNotAlignToSurfaceNextFrame" methodname="AgentDoesNotAlignToSurfaceNextFrame" classname="NavMeshSurfaceAgentTests" runstate="Runnable" seed="728075052" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.163281" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1002" name="AgentIdentifiesSurfaceOwner" fullname="NavMeshSurfaceAgentTests.AgentIdentifiesSurfaceOwner" methodname="AgentIdentifiesSurfaceOwner" classname="NavMeshSurfaceAgentTests" runstate="Runnable" seed="310207733" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.042815" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1006" name="NavMeshSurfaceLinkTests" fullname="NavMeshSurfaceLinkTests" classname="NavMeshSurfaceLinkTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.179649" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1009" name="ChangingAreaTypeCanBlockPath" fullname="NavMeshSurfaceLinkTests.ChangingAreaTypeCanBlockPath" methodname="ChangingAreaTypeCanBlockPath" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="1308138045" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.033118" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1012" name="ChangingCostModifierAffectsRoute" fullname="NavMeshSurfaceLinkTests.ChangingCostModifierAffectsRoute" methodname="ChangingCostModifierAffectsRoute" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="494067586" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.011019" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1008" name="DisablingBidirectionalMakesTheLinkOneWay" fullname="NavMeshSurfaceLinkTests.DisablingBidirectionalMakesTheLinkOneWay" methodname="DisablingBidirectionalMakesTheLinkOneWay" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="1016233002" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.007477" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1011" name="EndpointsMoveRelativeToLinkNextFrameWhenAutoUpdating" fullname="NavMeshSurfaceLinkTests.EndpointsMoveRelativeToLinkNextFrameWhenAutoUpdating" methodname="EndpointsMoveRelativeToLinkNextFrameWhenAutoUpdating" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="1261541088" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.095423" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1010" name="EndpointsMoveRelativeToLinkOnUpdate" fullname="NavMeshSurfaceLinkTests.EndpointsMoveRelativeToLinkOnUpdate" methodname="EndpointsMoveRelativeToLinkOnUpdate" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="2019146764" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.007701" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1007" name="NavMeshLinkCanConnectTwoSurfaces" fullname="NavMeshSurfaceLinkTests.NavMeshLinkCanConnectTwoSurfaces" methodname="NavMeshLinkCanConnectTwoSurfaces" classname="NavMeshSurfaceLinkTests" runstate="Runnable" seed="1595537582" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.006530" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1013" name="NavMeshSurfaceModifierTests" fullname="NavMeshSurfaceModifierTests" classname="NavMeshSurfaceModifierTests" runstate="Runnable" testcasecount="6" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.078178" total="6" passed="6" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1015" name="ModifierIgnoreAffectsChild" fullname="NavMeshSurfaceModifierTests.ModifierIgnoreAffectsChild" methodname="ModifierIgnoreAffectsChild" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="728749577" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.007018" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1014" name="ModifierIgnoreAffectsSelf" fullname="NavMeshSurfaceModifierTests.ModifierIgnoreAffectsSelf" methodname="ModifierIgnoreAffectsSelf" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="1305537550" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.043337" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1016" name="ModifierIgnoreDoesNotAffectSibling" fullname="NavMeshSurfaceModifierTests.ModifierIgnoreDoesNotAffectSibling" methodname="ModifierIgnoreDoesNotAffectSibling" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="286181583" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003900" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1018" name="ModifierOverrideAreaAffectsChild" fullname="NavMeshSurfaceModifierTests.ModifierOverrideAreaAffectsChild" methodname="ModifierOverrideAreaAffectsChild" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="1873711457" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003968" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1017" name="ModifierOverrideAreaAffectsSelf" fullname="NavMeshSurfaceModifierTests.ModifierOverrideAreaAffectsSelf" methodname="ModifierOverrideAreaAffectsSelf" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="612464072" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003399" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1019" name="ModifierOverrideAreaDoesNotAffectSibling" fullname="NavMeshSurfaceModifierTests.ModifierOverrideAreaDoesNotAffectSibling" methodname="ModifierOverrideAreaDoesNotAffectSibling" classname="NavMeshSurfaceModifierTests" runstate="Runnable" seed="1400417032" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.004277" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1020" name="NavMeshSurfaceModifierVolumeTests" fullname="NavMeshSurfaceModifierVolumeTests" classname="NavMeshSurfaceModifierVolumeTests" runstate="Runnable" testcasecount="3" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.029554" total="3" passed="3" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1021" name="AreaAffectsNavMeshOverlapping" fullname="NavMeshSurfaceModifierVolumeTests.AreaAffectsNavMeshOverlapping" methodname="AreaAffectsNavMeshOverlapping" classname="NavMeshSurfaceModifierVolumeTests" runstate="Runnable" seed="621613736" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.007454" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1022" name="AreaDoesNotAffectsNavMeshWhenNotOverlapping" fullname="NavMeshSurfaceModifierVolumeTests.AreaDoesNotAffectsNavMeshWhenNotOverlapping" methodname="AreaDoesNotAffectsNavMeshWhenNotOverlapping" classname="NavMeshSurfaceModifierVolumeTests" runstate="Runnable" seed="410847404" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003880" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1023" name="BuildUsesOnlyIncludedModifierVolume" fullname="NavMeshSurfaceModifierVolumeTests.BuildUsesOnlyIncludedModifierVolume" methodname="BuildUsesOnlyIncludedModifierVolume" classname="NavMeshSurfaceModifierVolumeTests" runstate="Runnable" seed="42125499" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.004394" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+      </test-suite>
+      <test-suite type="TestFixture" id="1024" name="NavMeshSurfaceTests" fullname="NavMeshSurfaceTests" classname="NavMeshSurfaceTests" runstate="Runnable" testcasecount="14" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.152166" total="14" passed="14" failed="0" inconclusive="0" skipped="0" asserts="0">
+        <properties />
+        <test-case id="1036" name="ActiveSurfacesContainsOnlyActiveAndEnabledSurface" fullname="NavMeshSurfaceTests.ActiveSurfacesContainsOnlyActiveAndEnabledSurface" methodname="ActiveSurfacesContainsOnlyActiveAndEnabledSurface" classname="NavMeshSurfaceTests" runstate="Runnable" seed="527886268" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003406" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1032" name="BuildIgnoresGeometryOutsideBounds" fullname="NavMeshSurfaceTests.BuildIgnoresGeometryOutsideBounds" methodname="BuildIgnoresGeometryOutsideBounds" classname="NavMeshSurfaceTests" runstate="Runnable" seed="340959045" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.001807" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1033" name="BuildIgnoresGeometrySiblings" fullname="NavMeshSurfaceTests.BuildIgnoresGeometrySiblings" methodname="BuildIgnoresGeometrySiblings" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1768732373" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.001978" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1034" name="BuildUsesOnlyIncludedLayers" fullname="NavMeshSurfaceTests.BuildUsesOnlyIncludedLayers" methodname="BuildUsesOnlyIncludedLayers" classname="NavMeshSurfaceTests" runstate="Runnable" seed="249682979" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.001331" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1030" name="CanBuildCollidersAndIgnoreRenderMeshes" fullname="NavMeshSurfaceTests.CanBuildCollidersAndIgnoreRenderMeshes" methodname="CanBuildCollidersAndIgnoreRenderMeshes" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1769145408" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003687" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1031" name="CanBuildRenderMeshesAndIgnoreColliders" fullname="NavMeshSurfaceTests.CanBuildRenderMeshesAndIgnoreColliders" methodname="CanBuildRenderMeshesAndIgnoreColliders" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1082189465" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.004643" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1029" name="CanBuildWithCustomAgentTypeID" fullname="NavMeshSurfaceTests.CanBuildWithCustomAgentTypeID" methodname="CanBuildWithCustomAgentTypeID" classname="NavMeshSurfaceTests" runstate="Runnable" seed="975740082" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.007041" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[No build settings for agent type ID 1234
+]]></output>
+        </test-case>
+        <test-case id="1028" name="CanBuildWithCustomArea" fullname="NavMeshSurfaceTests.CanBuildWithCustomArea" methodname="CanBuildWithCustomArea" classname="NavMeshSurfaceTests" runstate="Runnable" seed="179951675" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003663" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1035" name="DefaultSettingsMatchBuiltinSettings" fullname="NavMeshSurfaceTests.DefaultSettingsMatchBuiltinSettings" methodname="DefaultSettingsMatchBuiltinSettings" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1717874695" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.004685" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1026" name="NavMeshCanBeRemovedAndAdded" fullname="NavMeshSurfaceTests.NavMeshCanBeRemovedAndAdded" methodname="NavMeshCanBeRemovedAndAdded" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1608031954" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003992" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1025" name="NavMeshIsAvailableAfterBuild" fullname="NavMeshSurfaceTests.NavMeshIsAvailableAfterBuild" methodname="NavMeshIsAvailableAfterBuild" classname="NavMeshSurfaceTests" runstate="Runnable" seed="702509086" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003766" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1027" name="NavMeshIsNotAvailableWhenDisabled" fullname="NavMeshSurfaceTests.NavMeshIsNotAvailableWhenDisabled" methodname="NavMeshIsNotAvailableWhenDisabled" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1127490612" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.003995" asserts="0">
+          <properties>
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1037" name="NavMeshMovesToSurfacePositionNextFrame" fullname="NavMeshSurfaceTests.NavMeshMovesToSurfacePositionNextFrame" methodname="NavMeshMovesToSurfacePositionNextFrame" classname="NavMeshSurfaceTests" runstate="Runnable" seed="185314444" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.050919" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+        </test-case>
+        <test-case id="1038" name="UpdatingAndAddingNavMesh" fullname="NavMeshSurfaceTests.UpdatingAndAddingNavMesh" methodname="UpdatingAndAddingNavMesh" classname="NavMeshSurfaceTests" runstate="Runnable" seed="1154325575" result="Passed" start-time="2026-11-15 20:55:25Z" end-time="2026-11-15 20:55:25Z" duration="0.038716" asserts="0">
+          <properties>
+            <property name="_JOINTYPE" value="UnityCombinatorial" />
+            <property name="retryIteration" value="0" />
+            <property name="repeatIteration" value="0" />
+          </properties>
+          <output><![CDATA[Saving results to: C:/Users/mitch/AppData/LocalLow/DefaultCompany/ThirdPersonTest\TestResults.xml
+]]></output>
+        </test-case>
+      </test-suite>
+    </test-suite>
+  </test-suite>
+</test-run>

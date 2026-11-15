@@ -2,19 +2,15 @@ using UnityEngine;
 
 public class PlayerCombat : CharacterCombat
 {
-    [SerializeField] private Transform aim;
     private Camera _camera;
-    private EquipmentManager _equipment;
     private PlayerControlState _state;
     private Animator _animator;
-    public bool HasShield => _equipment != null && _equipment.currentEquipment.TryGetValue(EquipmentSlot.OffHand, out Equipment item) && item != null && item.itemType == ItemType.Shield && blockHitBox != null;
-    public bool SupportsPowerAttack => false;
+    public bool HasShield => Equipment != null && Equipment.Items.TryGetValue(EquipmentSlot.OffHand, out Equipment item) && item != null && item.itemType == ItemType.Shield && blockHitBox != null;
     public override void Attack(bool heavy) => base.Attack(false);
     protected override void Awake()
     {
         base.Awake();
         _camera = Camera.main;
-        _equipment = GetComponent<EquipmentManager>();
         _state = GetComponent<PlayerControlState>();
         _animator = GetComponentInChildren<Animator>();
     }
@@ -31,8 +27,8 @@ public class PlayerCombat : CharacterCombat
     }
     public override void EnableProjectile()
     {
-        if (!TryReleaseProjectile() || ActiveWeapon == null || ActiveWeapon.projectile == null) return;
-        SpawnProjectile(ActiveWeapon.projectile, AttackDamage, ActiveWeapon.projectileRange, ActiveWeapon.projectileSpeed);
+        if (!TryReleaseProjectile() || AttackProjectile == null) return;
+        SpawnProjectile(AttackProjectile, AttackDamage, AttackProjectileRange, AttackProjectileSpeed);
     }
     public override void EnableProjectile(Abilities ability, int damage)
     {

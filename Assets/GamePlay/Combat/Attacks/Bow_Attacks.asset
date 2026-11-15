@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aba2028d2950264590c2b2a1776f37f, type: 3}
+  m_Name: Bow_Attacks
+  m_EditorClassIdentifier: 
+  lightAttacks:
+  - clip: {fileID: 7400000, guid: cbcc2ac0d7332cf47857e7809fe426a7, type: 2}
+    animatorState: Weapon_BowShot_cbcc2ac0d7332cf47857e7809fe426a7_7400000
+  heavyAttacks: []
+  damageWindowStart: 0.3
+  damageWindowEnd: 0.6
+  attackInterval: 0.8
+  heavyDamageMultiplier: 1.5
+  launchesProjectile: 1
+  projectilePrefab: {fileID: 8303955909878210039, guid: 5588390f6f8ee324ea131269ed8c4529,
+    type: 3}
+  projectileSpeed: 35
+  projectileRange: 40

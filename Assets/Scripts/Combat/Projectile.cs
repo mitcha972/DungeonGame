@@ -7,7 +7,6 @@ public class Projectile : MonoBehaviour
     [HideInInspector] public CharacterStats myStats;
     [HideInInspector] public CharacterCombat target;
     [HideInInspector] public GameObject owner;
-    public WeaponClass weaponClass;
     public GameObject collisionEffect;
     [HideInInspector] public float speed;
     public bool rangeEnd = true;

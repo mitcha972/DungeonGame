@@ -1,0 +1,72 @@
+{
+  "updatedUtc": "2026-11-15 20:39:19 UTC",
+  "scope": "PlayerHolder and its nested Player_Main; shared equipment, attack selection and authored animation playback",
+  "implemented": [
+    "Five runtime script renames with original GUIDs preserved; two empty shells removed after migrating the Start preview",
+    "Equipment-owned explicit WeaponAttackSet references replace animator weapon-category searches",
+    "Normal authored weapon/ability states replace runtime placeholder overrides",
+    "Atomic bag/gear exchanges, reentrancy guards, overlapping armor coverage, weapon-hitbox reset",
+    "Captured attack settings, same-frame weapon cancellation and temporary action-layer restoration"
+  ],
+  "validation": {
+    "gameplay": {
+      "passed": true,
+      "total": 95,
+      "focused": 33,
+      "player": 36,
+      "npcIntegration": 15,
+      "modals": 9,
+      "death": 2,
+      "evidence": "equipment-animation-suite.json"
+    },
+    "assets": {
+      "passed": true,
+      "total": 19,
+      "evidence": "equipment-animation-assets.json"
+    },
+    "compilation": {
+      "status": "completed",
+      "failed": false,
+      "errors": [],
+      "compilationFailed": false
+    }
+  },
+  "testCorrections": [
+    "Use game-clock waits with real-time bounds",
+    "Pair each synthetic input fixture to its own devices",
+    "Check selected NPC motion instead of assuming randomized gear always punches",
+    "Restore authored UpperBody weight 0.8 rather than assuming zero",
+    "Verify the accepted damage window via the active damage volume; physical hit coverage is separate",
+    "Native Shift reaches motor velocity 7. CharacterController.velocity and asynchronous travel samples do not certify physical sprint rate."
+  ],
+  "initialEvidence": "equipment-animation-suite-initial.json",
+  "limitations": [
+    "No completed standalone build certification or manual hardware session; later build attempts were cancelled and unrelated fixes reverted at user request.",
+    "No complete monster rig/controller repair; the previous human punch fallback for empty creature attack sets was made explicit",
+    "Retained Editor Graphs.Edge.WakeUp exceptions during reload and a pre-existing dangling NavMeshAgent migration diagnostic are not claimed repaired",
+    "Shell/CLI checks were unavailable during this follow-up; Editor compilation/runtime/asset checks were used"
+  ],
+  "handoff": {
+    "scene": {
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "isDirty": true
+    },
+    "stopped": true,
+    "autoTick": false,
+    "playModeStartScene": null,
+    "initialUnsavedSnapshot": "Temp/EquipmentAnimation/initial-unsaved.unity",
+    "saved": "Source scripts, prefabs, unopened affected scenes, attack assets and authored controllers",
+    "preserved": "Open Combat_Test remains dirty; unrelated scene edits were neither saved nor discarded"
+  },
+  "integration": "Assign Equipment.weaponAttacks, author light/NPC-heavy clips and timing/projectile data in WeaponAttackSet, then synchronize via Tools/Characters/Synchronize Weapon Animations (also automatic on asset import and before builds). Keep gear, combat execution and animation playback as separate owners.",
+  "followup": {
+    "scope": "Equipment/animation only; broader investigation stopped and changes reverted at user request",
+    "evidence": "equipment-scope-wrap-up.json",
+    "notes": "../MAINTENANCE.md#broader-tests-deferred--2026-11-15",
+    "finalAssetChecks": 19,
+    "finalCompilation": "completed, no errors",
+    "unrelatedSourceEditsReverted": true,
+    "temporaryPackagedAssetsRemoved": true,
+    "standaloneCertified": false
+  }
+}

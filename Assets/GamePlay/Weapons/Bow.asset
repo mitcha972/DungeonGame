@@ -16,12 +16,13 @@ MonoBehaviour:
   description: Item Description
   itemType: 4
   icon: {fileID: 21300000, guid: c97a44b610db37442bcc39529ebd9759, type: 3}
-  weight: 0
+  worldPrefab: {fileID: 0}
   price: 0
+  tradeRestricted: 0
+  equipSlot: 4
+  mesh: {fileID: -6292305878025739790, guid: 7feb243ed2303d940b5b411f6786139f, type: 3}
+  weaponAttacks: {fileID: 11400000, guid: bd102690b3fbfe34b9ffa9e2c3bece3c, type: 2}
+  coveredMeshRegions: 
   armorModifier: 0
   damageModifier: 4
   rangeModifier: 10
-  modifier: 0
-  equipSlot: 4
-  mesh: {fileID: -6292305878025739790, guid: 7feb243ed2303d940b5b411f6786139f, type: 3}
-  coveredMeshRegions: 

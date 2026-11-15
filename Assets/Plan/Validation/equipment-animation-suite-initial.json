@@ -1,0 +1,494 @@
+{
+  "passed": false,
+  "reports": [
+    {
+      "passed": false,
+      "checks": [
+        {
+          "pass": true,
+          "name": "Bare hands resolve explicit innate attacks",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player uses the authored controller without runtime overrides",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Animation has no weapon-class search or replaceable clip fields",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "All authored main-hand items explicitly reference attack sets",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Equipment observers cannot begin a half-committed attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Equipment/bag state commits before observers and rejects reentrant gear changes",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Weapon modifiers apply exactly once",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Sword selects its item's attack set",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Weapon visual and sampled hit volume agree",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Equipment enables the grip without changing the attack layer",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Indexed weapon swap returns the old weapon to its exact bag slot",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Weapon swap replaces rather than stacks modifiers",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Bow uses its explicit projectile settings",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Full inventory retains equipped gear and its visual",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Unequip atomically commits the item into available bag space",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Unequip restores innate attacks and clears the previous weapon binding",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Unequip clears the grip while preserving attack-layer weight",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Unequip restores base damage",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Overlapping armor coverage survives removal of just one covering item",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Last covering item restores the visible body region",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "NPC also uses an authored controller without runtime overrides",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Combat captures the item's selected attack and motion",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Direct authored state plays the selected sword clip",
+          "details": null
+        },
+        {
+          "pass": false,
+          "name": "An accepted attack keeps its captured window and cooldown after profile changes",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Programmatic weapon swap cancels the old attack and its animation",
+          "details": null
+        },
+        {
+          "pass": false,
+          "name": "Cancellation clears even a just-requested weapon motion",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Interactive equipment swap is rejected while the action is busy",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Different attack sets work independently of the same item category",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Projectile delivery retains the accepted prefab/speed/range snapshot",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player legacy heavy request remains light-only after unequip",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Existing ability animation plays its authored state without a replacement slot",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Ability recovery remains tied to its authored clip",
+          "details": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "passed": false,
+      "checks": [
+        {
+          "pass": true,
+          "name": "Player loop advances",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Gameplay input initially allowed",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Native W moves the real CharacterController",
+          "details": 0.876312256
+        },
+        {
+          "pass": false,
+          "name": "Sprint exceeds walk speed",
+          "details": 3.49989033
+        },
+        {
+          "pass": true,
+          "name": "Mouse delta rotates view",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "V changes camera mode",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "V restores camera mode",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Space cannot jump",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Inventory owns input and cursor",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Inventory blocks movement and attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Inventory close restores input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Pause freezes gameplay",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Resume restores gameplay",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Journal gates input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Journal releases input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Expanded map gates input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Expanded map releases input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "One mouse press starts one light attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player can move during a light attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Holding attack never repeats or charges",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Attack release never attacks",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Legacy heavy request executes a light attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Native right mouse raises equipped shield",
+          "details": {
+            "BlockHeld": true,
+            "HasShield": true,
+            "canBlock": true,
+            "busy": false,
+            "GameplayAllowed": true
+          }
+        },
+        {
+          "pass": true,
+          "name": "Modal opening clears shield intent",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Held shield cannot leak across a modal boundary",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Shield works again after release and fresh press",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Shield release lowers block",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Focus loss clears intentions",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Focus regain restores eligibility",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player damage uses shared health resolution",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player healing remains functional",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Skill tree binds directly to PlayerStats when its panel opens",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Gathering acquires exclusive action ownership",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Gathering completes through existing inventory reward path",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Native E uses the shared camera-center interaction ray",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Escape cancels gathering and releases only its action lease",
+          "details": null
+        }
+      ],
+      "errors": [],
+      "frameCount": 937
+    },
+    {
+      "passed": false,
+      "checks": [
+        {
+          "pass": true,
+          "name": "Enemy AI follows player on a native NavMesh",
+          "details": 3.32832336
+        },
+        {
+          "pass": true,
+          "name": "Enemy accepts an attack through its existing AI target gates",
+          "details": null
+        },
+        {
+          "pass": false,
+          "name": "Shared CharacterAnimation selects the enemy punch clip",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Enemy cancellation clears animation and attack",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Player sword hit removes enemy health through the shared damage path",
+          "details": 5
+        },
+        {
+          "pass": true,
+          "name": "Player attack recovers normally",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Bow releases an initialized projectile that damages the NPC",
+          "details": 4
+        },
+        {
+          "pass": true,
+          "name": "Shared healing also works for humanoid NPC stats",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "NPC retains shared status effects",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "NPC status removal restores derived movement",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Friendly humanoid keeps animation with hostile AI/combat disabled",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Quick slot 1 uses its item through centralized input",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "U returns player equipment to inventory",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "U never unequips NPC equipment",
+          "details": null
+        },
+        {
+          "pass": true,
+          "name": "Enemy death preserves attributed death notifications",
+          "details": null
+        }
+      ],
+      "errors": []
+    },
+    {
+      "passed": true,
+      "checks": [
+        {
+          "pass": true,
+          "name": "An attack is active before dialogue opens"
+        },
+        {
+          "pass": true,
+          "name": "Dialogue owns input and cancels an in-flight attack"
+        },
+        {
+          "pass": true,
+          "name": "E and Tab are ignored while talking"
+        },
+        {
+          "pass": true,
+          "name": "Escape closes dialogue without pausing the world"
+        },
+        {
+          "pass": true,
+          "name": "Chest interaction resolves canvas through PlayerControlState"
+        },
+        {
+          "pass": true,
+          "name": "Existing chest-to-player item transfer still works"
+        },
+        {
+          "pass": true,
+          "name": "E closes chest and restores gameplay"
+        },
+        {
+          "pass": true,
+          "name": "Existing shop opens using the same modal owner"
+        },
+        {
+          "pass": true,
+          "name": "Escape closes shop without opening pause"
+        }
+      ],
+      "errors": []
+    },
+    {
+      "passed": true,
+      "deathBlocksInputAndMovement": true,
+      "reloadsCurrentSceneWithLivingPlayer": true,
+      "scene": "Combat_Test"
+    }
+  ],
+  "failures": []
+}

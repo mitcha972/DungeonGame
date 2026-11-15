@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "pass": true,
+      "name": "An attack is active before dialogue opens"
+    },
+    {
+      "pass": true,
+      "name": "Dialogue owns input and cancels an in-flight attack"
+    },
+    {
+      "pass": true,
+      "name": "E and Tab are ignored while talking"
+    },
+    {
+      "pass": true,
+      "name": "Escape closes dialogue without pausing the world"
+    },
+    {
+      "pass": true,
+      "name": "Chest interaction resolves canvas through PlayerControlState"
+    },
+    {
+      "pass": true,
+      "name": "Existing chest-to-player item transfer still works"
+    },
+    {
+      "pass": true,
+      "name": "E closes chest and restores gameplay"
+    },
+    {
+      "pass": true,
+      "name": "Existing shop opens using the same modal owner"
+    },
+    {
+      "pass": true,
+      "name": "Escape closes shop without opening pause"
+    }
+  ],
+  "errors": []
+}

@@ -1,0 +1,114 @@
+{
+  "status": "completed",
+  "result": "Failed",
+  "platform": "StandaloneWindows64",
+  "outputPath": "C:/Users/mitch/Documents/Unity/My_Projects/Dungeon Game/Builds/EquipmentValidation/DungeonGame.exe",
+  "totalErrors": 5,
+  "totalWarnings": 0,
+  "errors": [
+    {
+      "message": "error CS0246: The type or namespace name 'EditorWindow' could not be found (are you missing a using directive or an assembly reference?)",
+      "file": "Assets\\Scripts\\MaterialTilingOffset.cs"
+    },
+    {
+      "message": "error CS0246: The type or namespace name 'SerializedObject' could not be found (are you missing a using directive or an assembly reference?)",
+      "file": "Assets\\Scripts\\MaterialTilingOffset.cs"
+    },
+    {
+      "message": "error CS0246: The type or namespace name 'MenuItemAttribute' could not be found (are you missing a using directive or an assembly reference?)",
+      "file": "Assets\\Scripts\\MaterialTilingOffset.cs"
+    },
+    {
+      "message": "error CS0246: The type or namespace name 'MenuItem' could not be found (are you missing a using directive or an assembly reference?)",
+      "file": "Assets\\Scripts\\MaterialTilingOffset.cs"
+    },
+    {
+      "message": "Error building Player because scripts had compiler errors"
+    }
+  ],
+  "buildTimeMs": 268638,
+  "buildSteps": [
+    {
+      "name": "Build player",
+      "durationMs": 266578,
+      "depth": 0,
+      "messages": []
+    },
+    {
+      "name": "Preprocess Player",
+      "durationMs": 9646,
+      "depth": 1,
+      "messages": [
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunInfo.json' (3206 bytes)"
+        },
+        {
+          "type": "Log",
+          "content": "[TestRunBuilder] Creating new file 'Assets/Resources/PerformanceTestRunSettings.json' (23 bytes)"
+        },
+        {
+          "type": "Log",
+          "content": "Pipeline: this build does not include the Pipeline (Project Settings > Pipeline > Runtime), so its assemblies and settings are excluded from it."
+        }
+      ]
+    },
+    {
+      "name": "Back up scenes",
+      "durationMs": 874,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Unload asset bundles",
+      "durationMs": 33,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prepare For Build",
+      "durationMs": 12,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "ProducePlayerScriptAssemblies",
+      "durationMs": 254382,
+      "depth": 1,
+      "messages": []
+    },
+    {
+      "name": "Prebuild Cleanup and Recompile",
+      "durationMs": 187059,
+      "depth": 2,
+      "messages": []
+    },
+    {
+      "name": "Compile scripts",
+      "durationMs": 181062,
+      "depth": 3,
+      "messages": [
+        {
+          "type": "Error",
+          "content": "Assets\\Scripts\\MaterialTilingOffset.cs(6,41): error CS0246: The type or namespace name 'EditorWindow' could not be found (are you missing a using directive or an assembly reference?)"
+        },
+        {
+          "type": "Error",
+          "content": "Assets\\Scripts\\MaterialTilingOffset.cs(10,17): error CS0246: The type or namespace name 'SerializedObject' could not be found (are you missing a using directive or an assembly reference?)"
+        },
+        {
+          "type": "Error",
+          "content": "Assets\\Scripts\\MaterialTilingOffset.cs(22,10): error CS0246: The type or namespace name 'MenuItemAttribute' could not be found (are you missing a using directive or an assembly reference?)"
+        },
+        {
+          "type": "Error",
+          "content": "Assets\\Scripts\\MaterialTilingOffset.cs(22,10): error CS0246: The type or namespace name 'MenuItem' could not be found (are you missing a using directive or an assembly reference?)"
+        },
+        {
+          "type": "Error",
+          "content": "Error building Player because scripts had compiler errors"
+        }
+      ]
+    }
+  ]
+}

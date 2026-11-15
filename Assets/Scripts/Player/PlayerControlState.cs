@@ -12,7 +12,16 @@ public class PlayerControlState : MonoBehaviour
     [SerializeField] private MapController _map;
     public bool DialogueOpen => _dialogue != null && _dialogue.IsOpen;
     private UnityEngine.InputSystem.PlayerInput _playerInput;
-    private StarterAssets.StarterAssetsInputs _inputs;
+    public UICanvasController InventoryUI => _inventoryUI;
+    public Vector2 Move { get; private set; }
+    public Vector2 Look { get; private set; }
+    public bool Sprint { get; private set; }
+    public bool BlockHeld { get; private set; }
+    public bool LookIsMouse { get; private set; }
+    [SerializeField] private bool analogMovement;
+    public bool AnalogMovement => analogMovement;
+    public event System.Action<string> GameplayActionRequested;
+    private readonly System.Collections.Generic.HashSet<UnityEngine.InputSystem.InputAction> suppressedButtons = new System.Collections.Generic.HashSet<UnityEngine.InputSystem.InputAction>();
     private PlayerStats _stats;
     private bool _focused = true;
     private bool _allowed;
@@ -38,7 +47,6 @@ public class PlayerControlState : MonoBehaviour
     private void Awake()
     {
         _playerInput = GetComponent<UnityEngine.InputSystem.PlayerInput>();
-        _inputs = GetComponent<StarterAssets.StarterAssetsInputs>();
         _stats = GetComponent<PlayerStats>();
         if (_dialogue == null) _dialogue = GetComponent<DungeonGame.Dialogue.DialogueController>();
     }
@@ -58,14 +66,35 @@ public class PlayerControlState : MonoBehaviour
         _allowed = false;
         ActionContextAllowed = false;
         ActionCancelRequested?.Invoke();
-        if (_inputs != null) { _inputs.move = _inputs.look = Vector2.zero; _inputs.jump = _inputs.sprint = _inputs.toggleCamera = false; }
+        ResetIntent();
         GameplayChanged?.Invoke(false);
     }
     private void OnApplicationFocus(bool focused) { _focused = focused; Synchronize(); }
     private bool InteractionOpen => (_inventoryUI != null && _inventoryUI.chestInventoryUI != null && _inventoryUI.chestInventoryUI.gameObject.activeInHierarchy) || (_shopUI != null && _shopUI.gameObject.activeInHierarchy);
     private void OnAction(UnityEngine.InputSystem.InputAction.CallbackContext context)
     {
+        Synchronize();
+        string action = context.action.name;
+        if (context.canceled)
+        {
+            suppressedButtons.Remove(context.action);
+            if (action == "Move") Move = Vector2.zero;
+            if (action == "Look") Look = Vector2.zero;
+            if (action == "Sprint") Sprint = false;
+            if (action == "Block") BlockHeld = false;
+            return;
+        }
         if (!context.performed || !_focused) return;
+        switch (action)
+        {
+            case "Move": Move = GameplayAllowed ? context.ReadValue<Vector2>() : Vector2.zero; return;
+            case "Look":
+                Look = GameplayAllowed ? context.ReadValue<Vector2>() : Vector2.zero;
+                LookIsMouse = context.control != null && context.control.device is UnityEngine.InputSystem.Mouse;
+                return;
+            case "Sprint": Sprint = GameplayAllowed && context.ReadValue<float>() > .5f; return;
+            case "Block": BlockHeld = GameplayAllowed && !suppressedButtons.Contains(context.action) && context.ReadValue<float>() > .5f; return;
+        }
         if (ActionLocked)
         {
             if (context.action.name == "Pause") ActionCancelRequested?.Invoke();
@@ -112,6 +141,7 @@ public class PlayerControlState : MonoBehaviour
                 else if (GameplayAllowed) InteractRequested?.Invoke();
                 break;
             default:
+                if (GameplayAllowed && !suppressedButtons.Contains(context.action)) GameplayActionRequested?.Invoke(action);
                 return;
         }
         Synchronize();
@@ -136,9 +166,18 @@ public class PlayerControlState : MonoBehaviour
         if (allowed != _allowed)
         {
             _allowed = allowed;
-            if (_inputs != null) { _inputs.move = _inputs.look = Vector2.zero; _inputs.jump = _inputs.sprint = _inputs.toggleCamera = false; }
+            ResetIntent();
             GameplayChanged?.Invoke(allowed);
         }
         ApplyCursorState();
+    }
+    private void ResetIntent()
+    {
+        Move = Look = Vector2.zero;
+        Sprint = BlockHeld = false;
+        if (_playerInput == null || _playerInput.actions == null) return;
+        // A button held while a modal/focus boundary changes must be released before reuse.
+        foreach (var action in _playerInput.actions)
+            if (action.type == UnityEngine.InputSystem.InputActionType.Button && action.IsPressed()) suppressedButtons.Add(action);
     }
 }

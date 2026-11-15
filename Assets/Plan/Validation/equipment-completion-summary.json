@@ -1,0 +1,51 @@
+{
+  "scopeCompleted": true,
+  "scope": "Equipment and animation cleanup",
+  "broadTestExtension": "Deferred at user request; extra source changes reverted",
+  "scopeGameplayChecks": {
+    "passed": 95,
+    "failed": 0,
+    "evidence": "equipment-animation-suite.json"
+  },
+  "finalAssetChecks": {
+    "passed": 19,
+    "failed": 0,
+    "evidence": "equipment-animation-assets.json"
+  },
+  "restoration": {
+    "scope": "Equipment and animation only; broader test/build investigation stopped at user request",
+    "scene": {
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "isDirty": true
+    },
+    "diskPreserved": true,
+    "recovery": "AgentScripts/EquipmentAnimation/Recovery/Combat_Test.unsaved.unity.backup",
+    "temporaryAssetsRemoved": true,
+    "testsRootRemaining": [],
+    "removedBuild": false,
+    "buildNote": "No partial output directory."
+  },
+  "revertedFiles": [
+    "Assets/Scripts/World/Dungeon/DungeonGenerator.cs",
+    "Assets/Scripts/MaterialTilingOffset.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/Tests/Editor/NavMeshSurfaceInPrefabTests.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/Tests/Editor/NavMeshModifierVolumeInPrefabTests.cs"
+  ],
+  "broaderTests": {
+    "playMode": {
+      "passed": 32,
+      "ignored": 1
+    },
+    "temporaryEditMode": {
+      "passed": 23,
+      "ignored": 3,
+      "fixesReverted": true
+    }
+  },
+  "build": {
+    "status": "completed",
+    "result": "Cancelled",
+    "certified": false
+  },
+  "notes": "../MAINTENANCE.md#broader-tests-deferred--2026-11-15"
+}

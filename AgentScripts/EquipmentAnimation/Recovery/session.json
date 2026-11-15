@@ -1,0 +1,16 @@
+{
+  "scenes": [
+    {
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "snapshot": "Temp/EquipmentAnimation/Completion/scene-0.unsaved.unity",
+      "disk": "Temp/EquipmentAnimation/Completion/scene-0.disk.unity",
+      "dirty": true,
+      "active": true,
+      "diskHash": "4a0a09939249ebe443d33ee15533ef2c"
+    }
+  ],
+  "playStart": null,
+  "testsRoot": false,
+  "testsEditor": false,
+  "selected": "GlobalObjectId_V1-3-6ae1ddd644fc7294e8e74995f96d6ee0-11400000-0"
+}

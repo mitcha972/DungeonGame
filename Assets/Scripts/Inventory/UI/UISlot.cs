@@ -13,7 +13,7 @@ public class UISlot : MonoBehaviour , IDropHandler
 	public int slotIndex;
 	
 	public Inventory inventory;
-	public EquipmentManager equipmentManager;
+	public CharacterEquipment equipmentManager;
 	
 	// Add item to the slot
 	void Awake()
@@ -35,9 +35,9 @@ public class UISlot : MonoBehaviour , IDropHandler
 	{
 		//check if busy
         if (item == null || inventory == null) return;
-        CharacterAnimator ani = equipmentManager != null ? equipmentManager.GetComponentInParent<CharacterAnimator>() : null;
+        CharacterAnimation ani = equipmentManager != null ? equipmentManager.GetComponentInParent<CharacterAnimation>() : null;
 
-        if (ani != null && ani.AnimationIsBusy())
+        if (ani != null && ani.IsBusy)
 			return;
 
 		//Use the Item
