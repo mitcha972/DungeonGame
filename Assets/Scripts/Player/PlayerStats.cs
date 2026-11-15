@@ -8,7 +8,7 @@ using TMPro;
 public class PlayerStats : CharacterStats 
 {
     // Move to Player controller
-    public string name;
+    public new string name;
     public Class playerClass;
     public ShakeDemo SD;
     public Slider healthSlider, healthSlider2; // background

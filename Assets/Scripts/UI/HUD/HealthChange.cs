@@ -36,7 +36,7 @@ public class HealthChange : MonoBehaviour
         //meshRenderer = GetComponent<SkinnedMeshRenderer>(); // Change GetComponent<SpriteRenderer>() to GetComponent<SkinnedMeshRenderer>()
         if (meshRenderer != null) originalColor = meshRenderer.material.color;
 
-        if (uiPrefab != null) foreach (Canvas c in FindObjectsOfType<Canvas>())
+        if (uiPrefab != null) foreach (Canvas c in FindObjectsByType<Canvas>(FindObjectsSortMode.InstanceID))
         {
             if (c.renderMode == RenderMode.WorldSpace)
             {
@@ -81,7 +81,7 @@ public class HealthChange : MonoBehaviour
         /*
         if (textPrefab != null)
         {
-            foreach (Canvas c in FindObjectsOfType<Canvas>())
+            foreach (Canvas c in FindObjectsByType<Canvas>(FindObjectsSortMode.InstanceID))
             {
                 if (c.renderMode == RenderMode.WorldSpace)
                 {

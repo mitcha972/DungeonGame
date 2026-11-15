@@ -1,0 +1,1288 @@
+{
+  "date": "2026-11-14",
+  "unityVersion": "6000.3.28f1",
+  "scope": "Warning maintenance; deferred content/tooling issues are tracked in MAINTENANCE.md, not suppressed.",
+  "initialEditorState": {
+    "scene": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+    "dirty": false,
+    "playMode": "stopped",
+    "visibleConsoleWarnings": 0,
+    "visibleConsoleErrors": 0
+  },
+  "initialRetainedSessionEntries": 137,
+  "initialCompilerWarningSites": 16,
+  "additionalLegacyEditorWarningSites": 11,
+  "dispositions": [
+    {
+      "seq": 1,
+      "level": "warn",
+      "message": "Cannot add menu item 'GameObject/AI/NavMesh Surface' for method 'UnityEditor.AI.NavMeshSurfaceEditor.CreateNavMeshSurface' because a menu item with the same name already exists.",
+      "status": "Fixed",
+      "tracking": "Legacy menu paths separated"
+    },
+    {
+      "seq": 2,
+      "level": "warn",
+      "message": "Cannot add menu item 'GameObject/AI/NavMesh Link' for method 'UnityEditor.AI.NavMeshLinkEditor.CreateNavMeshLink' because a menu item with the same name already exists.",
+      "status": "Fixed",
+      "tracking": "Legacy menu paths separated"
+    },
+    {
+      "seq": 3,
+      "level": "warn",
+      "message": "Cannot add menu item 'GameObject/AI/NavMesh Modifier Volume' for method 'UnityEditor.AI.NavMeshModifierVolumeEditor.CreateNavMeshModifierVolume' because a menu item with the same name already exists.",
+      "status": "Fixed",
+      "tracking": "Legacy menu paths separated"
+    },
+    {
+      "seq": 4,
+      "level": "warn",
+      "message": "Asset 'Character Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 5,
+      "level": "warn",
+      "message": "Asset 'Character Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 6,
+      "level": "warn",
+      "message": "Asset 'Character Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 7,
+      "level": "warn",
+      "message": "This project uses Input Manager, which is marked for deprecation. To manage input in your project, use the <a href=\"https://docs.unity3d.com/Packages/com.unity.inputsystem@latest\">Input System package</a> instead.",
+      "status": "Tracked",
+      "tracking": "W08"
+    },
+    {
+      "seq": 8,
+      "level": "warn",
+      "message": "[Package Manager] com.unity.ide.vscode is deprecated: Visual Studio Code package is not supported anymore. You can continue to use it, but we won't provide any update anymore.",
+      "status": "Tracked",
+      "tracking": "W07"
+    },
+    {
+      "seq": 9,
+      "level": "warn",
+      "message": "Account API did not become accessible within 30 seconds. This may be due to network issues or editor focus.",
+      "status": "Tracked",
+      "tracking": "W09"
+    },
+    {
+      "seq": 10,
+      "level": "error",
+      "message": "connection.state_change\noldState=Connecting newState=Failed error=timeout (500ms) (after 42 attempts over 30.0s)",
+      "status": "Tracked",
+      "tracking": "W09"
+    },
+    {
+      "seq": 11,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 12,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 13,
+      "level": "warn",
+      "message": "ImportFBX Warnings:\nCan't generate normals for blendshape 'Arms' on mesh 'Body', mesh has no smoothing groups.Can't generate normals for blendshape 'Legs' on mesh 'Body', mesh has no smoothing groups.Can't generate normals for blendshape 'Torso' on mesh 'Body', mesh has no smoothing groups.Mesh 'Body.001' has 972 (out of 1372) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 50, 58, 59, 60, 61, 62, 63, 64, 65, 66 and so on...\nMesh 'Eyelashes' has 16 (out of 32) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 and so on...\nMesh 'Skeleton mesh' has 33 (out of 1885) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 790, 792, 794, 796, 798, 799, 800, 802, 804, 807 and so on...\n",
+      "status": "Tracked",
+      "tracking": "W05"
+    },
+    {
+      "seq": 14,
+      "level": "warn",
+      "message": "Rig Error:  Avatar Rig Configuration mis-match. Bone length in configuration does not match position in animation file:\n\t'Upper Leg.L' : position error = 33.482895 mm\n\t'Upper Leg.R' : position error = 21.386578 mm\n",
+      "status": "Tracked",
+      "tracking": "W05"
+    },
+    {
+      "seq": 15,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 16,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 17,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 18,
+      "level": "warn",
+      "message": "File 'RollRight' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 19,
+      "level": "warn",
+      "message": "File 'RunRight' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 20,
+      "level": "warn",
+      "message": "File 'RollLeft' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 21,
+      "level": "warn",
+      "message": "File 'RollBackward' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 22,
+      "level": "warn",
+      "message": "File 'RunForward' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 23,
+      "level": "warn",
+      "message": "File 'Jumps' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 24,
+      "level": "warn",
+      "message": "File 'Sprint' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 25,
+      "level": "warn",
+      "message": "File 'RunLeft' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 26,
+      "level": "warn",
+      "message": "File 'RollForward' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 27,
+      "level": "warn",
+      "message": "File 'PunchRight' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 28,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 29,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 30,
+      "level": "warn",
+      "message": "File 'Gathering' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 31,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 32,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 33,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 34,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 35,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 36,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 37,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 38,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'mixamorig1:Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 39,
+      "level": "warn",
+      "message": "A polygon of Mesh 'Ch40__mod_FIN__V01_01_Ch40' in Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx is self-intersecting and has been discarded.",
+      "status": "Tracked",
+      "tracking": "W02"
+    },
+    {
+      "seq": 40,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 41,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 42,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 43,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 44,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 45,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'Root_M' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 46,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'mixamorig1:Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 47,
+      "level": "error",
+      "message": "Rig Error:  Copied Avatar Rig Configuration mis-match. Transform hierarchy does not match:\n\tTransform 'mixamorig1:Hips' for human bone 'Hips' not found\n",
+      "status": "Tracked",
+      "tracking": "W04"
+    },
+    {
+      "seq": 48,
+      "level": "warn",
+      "message": "File 'Gathering' has animation import warnings. See Import Messages in Animation Import Settings for more details.\n",
+      "status": "Tracked",
+      "tracking": "W03"
+    },
+    {
+      "seq": 49,
+      "level": "log",
+      "message": "Render queue value outside of the allowed range (2501 - 3999) for selected Blend mode, resetting render queue to default",
+      "status": "Tracked",
+      "tracking": "W10"
+    },
+    {
+      "seq": 50,
+      "level": "log",
+      "message": "Render queue value outside of the allowed range (2501 - 3999) for selected Blend mode, resetting render queue to default",
+      "status": "Tracked",
+      "tracking": "W10"
+    },
+    {
+      "seq": 51,
+      "level": "log",
+      "message": "Render queue value outside of the allowed range (2501 - 3999) for selected Blend mode, resetting render queue to default",
+      "status": "Tracked",
+      "tracking": "W10"
+    },
+    {
+      "seq": 52,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 53,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 54,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 55,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 56,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 57,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 58,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 59,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 60,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 61,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 62,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 63,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 64,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 65,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 66,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 67,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 68,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 69,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 70,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 71,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 72,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 73,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 74,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 75,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 76,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 77,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 78,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 79,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 80,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 81,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 82,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 83,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 84,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 85,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 86,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [showhudtext] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 87,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [tooltiptext] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 88,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [SETTINGS] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 89,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [normaldifficultytext] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 90,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 91,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 92,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 93,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [hardcoredifficultytext] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 94,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 95,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 96,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 97,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 98,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 99,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [GAME] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 100,
+      "level": "warn",
+      "message": "Assets\\Plugins\\CodeMonkey\\Utils\\UtilsClass.cs(42,33): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 101,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\Utility\\EventSystemChecker.cs(13,10): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 102,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\Utility\\EventSystemChecker.cs(18,13): warning CS0618: 'StandaloneInputModule.forceModuleActive' is obsolete: 'forceModuleActive has been deprecated. There is no need to force the module awake as StandaloneInputModule works for all platforms'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 103,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\CrossPlatformInput\\Scripts\\AxisTouchButton.cs(38,27): warning CS0618: 'Object.FindObjectsOfType(Type)' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID, but if you do not need this using FindObjectSortMode.None is considerably faster.'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 104,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\CrossPlatformInput\\Scripts\\MobileControlRig.cs(44,63): warning CS0618: 'Object.FindObjectOfType<T>()' is obsolete: 'Object.FindObjectOfType has been deprecated. Use Object.FindFirstObjectByType instead or if finding any instance is acceptable the faster Object.FindAnyObjectByType'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 105,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\Characters\\FirstPersonCharacter\\Scripts\\FirstPersonController.cs(71,18): warning CS0414: The field 'FirstPersonController.m_Jumping' is assigned but its value is never used",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 106,
+      "level": "warn",
+      "message": "Assets\\Plugins\\SlimUI\\Modern Menu 1\\Scripts\\OptionsMenuNew.cs(53,17): warning CS0414: The field 'OptionsMenuNew.sliderValue' is assigned but its value is never used",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 107,
+      "level": "warn",
+      "message": "Assets\\Plugins\\SlimUI\\Modern Menu 1\\Scripts\\MainMenuNew.cs(18,7): warning CS0414: The field 'MainMenuNew.themeIndex' is assigned but its value is never used",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 108,
+      "level": "warn",
+      "message": "Assets\\Plugins\\Standard Assets\\Characters\\FirstPersonCharacter\\Scripts\\FirstPersonController.cs(73,19): warning CS0414: The field 'FirstPersonController._terminalVelocity' is assigned but its value is never used",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 109,
+      "level": "warn",
+      "message": "Assets\\Scripts\\Player\\PlayerStats.cs(11,19): warning CS0108: 'PlayerStats.name' hides inherited member 'Object.name'. Use the new keyword if hiding was intended.",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 110,
+      "level": "warn",
+      "message": "Assets\\Scripts\\Inventory\\Items\\Item.cs(9,20): warning CS0109: The member 'Item.description' does not hide an accessible member. The new keyword is not required.",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 111,
+      "level": "warn",
+      "message": "Assets\\Scripts\\Combat\\Data\\Abilities.cs(9,20): warning CS0109: The member 'Abilities.description' does not hide an accessible member. The new keyword is not required.",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 112,
+      "level": "warn",
+      "message": "Assets\\Scripts\\UI\\Menus\\MenuController.cs(12,19): warning CS0108: 'MenuController.name' hides inherited member 'Object.name'. Use the new keyword if hiding was intended.",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 113,
+      "level": "warn",
+      "message": "Assets\\Scripts\\Player\\Data\\Class.cs(7,20): warning CS0109: The member 'Class.description' does not hide an accessible member. The new keyword is not required.",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 114,
+      "level": "warn",
+      "message": "Assets\\Scripts\\UI\\HUD\\HealthChange.cs(39,52): warning CS0618: 'Object.FindObjectsOfType<T>()' is obsolete: 'Object.FindObjectsOfType has been deprecated. Use Object.FindObjectsByType instead which lets you decide whether you need the results sorted or not.  FindObjectsOfType sorts the results by InstanceID but if you do not need this using FindObjectSortMode.None is considerably faster.'",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 115,
+      "level": "warn",
+      "message": "Assets\\Scripts\\World\\Interactions\\Interactable.cs(9,7): warning CS0414: The field 'Interactable.isFocus' is assigned but its value is never used",
+      "status": "Fixed",
+      "tracking": "C# compatibility/dead-field cleanup"
+    },
+    {
+      "seq": 116,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 117,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 118,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 119,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 120,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 121,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 122,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 123,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [CLASS] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 124,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Ranger] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 125,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Warrior] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 126,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 127,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Character Header] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 128,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 129,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 130,
+      "level": "warn",
+      "message": "Please remove the CanvasRenderer component from the [Text] GameObject as this component is no longer necessary.",
+      "status": "Fixed",
+      "tracking": "325 redundant components removed; reload audit found zero candidates"
+    },
+    {
+      "seq": 131,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockDrop -> Empty' in state 'BlockDrop' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 132,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'BlockAttack -> Empty' in state 'BlockAttack' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 133,
+      "level": "warn",
+      "message": "[Worker0] Asset 'NPC Animator': Transition 'AnyState -> Death' in state 'AnyState' doesn't have an Exit Time or any condition, transition will be ignored",
+      "status": "Tracked",
+      "tracking": "W01"
+    },
+    {
+      "seq": 134,
+      "level": "error",
+      "message": "Bone is a sub-asset of Player_Blender.blend and cannot be used as an external material.",
+      "status": "Tracked",
+      "tracking": "W06"
+    },
+    {
+      "seq": 135,
+      "level": "error",
+      "message": "Bone dark is a sub-asset of Player_Blender.blend and cannot be used as an external material.",
+      "status": "Tracked",
+      "tracking": "W06"
+    },
+    {
+      "seq": 136,
+      "level": "warn",
+      "message": "ImportFBX Warnings:\nCan't generate normals for blendshape 'Arms' on mesh 'Body', mesh has no smoothing groups.Can't generate normals for blendshape 'Legs' on mesh 'Body', mesh has no smoothing groups.Can't generate normals for blendshape 'Torso' on mesh 'Body', mesh has no smoothing groups.Mesh 'Body.001' has 972 (out of 1372) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 50, 58, 59, 60, 61, 62, 63, 64, 65, 66 and so on...\nMesh 'Eyelashes' has 16 (out of 32) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 and so on...\nMesh 'Skeleton mesh' has 33 (out of 1885) vertices with no weight and bone assigned (they will be assigned to bone #0 with weight 1). The list of vertices: 790, 792, 794, 796, 798, 799, 800, 802, 804, 807 and so on...\n",
+      "status": "Tracked",
+      "tracking": "W05"
+    },
+    {
+      "seq": 137,
+      "level": "warn",
+      "message": "Rig Error:  Avatar Rig Configuration mis-match. Bone length in configuration does not match position in animation file:\n\t'Upper Leg.L' : position error = 33.482895 mm\n\t'Upper Leg.R' : position error = 21.386578 mm\n",
+      "status": "Tracked",
+      "tracking": "W05"
+    }
+  ],
+  "serializationChecks": [
+    {
+      "path": "Assets/Plugins/SlimUI/Modern Menu 1/Prefabs/Buttons/Btn_MainMenu.prefab",
+      "removedCanvasRenderers": 1,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Plugins/SlimUI/Modern Menu 1/Prefabs/Main_Menu.prefab",
+      "removedCanvasRenderers": 78,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerContent.prefab",
+      "removedCanvasRenderers": 37,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/Player/PlayerHolder.prefab",
+      "removedCanvasRenderers": 37,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/UI/Main_Menu.prefab",
+      "removedCanvasRenderers": 55,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/UI/Menus/Canv_Main.prefab",
+      "removedCanvasRenderers": 2,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Prefabs/UI/Menus/Canv_Options.prefab",
+      "removedCanvasRenderers": 76,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    },
+    {
+      "path": "Assets/Scenes/Game/Start.unity",
+      "removedCanvasRenderers": 39,
+      "allOtherSerializedDataUnchanged": true,
+      "metaUnchanged": true
+    }
+  ],
+  "editorCanvasReloadAudit": {
+    "remainingCandidates": 0,
+    "removedComponents": 325,
+    "prefabs": 7,
+    "scenes": 1
+  },
+  "newlyReproducedFollowup": {
+    "tracking": "W11",
+    "message": "Creating missing StatusEffectController component for PlayerStats in PlayerObj.",
+    "location": "Start.unity additive-load audit",
+    "saved": false
+  },
+  "changedFiles": [
+    "Assets/Plan/DEVELOPMENT_ROADMAP.md",
+    "Assets/Plan/MAINTENANCE.md",
+    "Assets/Plan/SYSTEMS/Animation.md",
+    "Assets/Plan/SYSTEMS/Dependencies.md",
+    "Assets/Plan/SYSTEMS/UI.md",
+    "Assets/Plan/SYSTEMS/World.md",
+    "Assets/Plugins/CodeMonkey/Utils/UtilsClass.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/NavMeshComponents/Editor/NavMeshLinkEditor.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/NavMeshComponents/Editor/NavMeshModifierEditor.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/NavMeshComponents/Editor/NavMeshModifierVolumeEditor.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/NavMeshComponents/Editor/NavMeshSurfaceEditor.cs",
+    "Assets/Plugins/NavMeshComponents-master/Assets/NavMeshComponents/Scripts/NavMeshLink.cs",
+    "Assets/Plugins/SlimUI/Modern Menu 1/Prefabs/Buttons/Btn_MainMenu.prefab",
+    "Assets/Plugins/SlimUI/Modern Menu 1/Prefabs/Main_Menu.prefab",
+    "Assets/Plugins/SlimUI/Modern Menu 1/Scripts/MainMenuNew.cs",
+    "Assets/Plugins/SlimUI/Modern Menu 1/Scripts/OptionsMenuNew.cs",
+    "Assets/Plugins/Standard Assets/Characters/FirstPersonCharacter/Scripts/FirstPersonController.cs",
+    "Assets/Plugins/Standard Assets/CrossPlatformInput/Scripts/AxisTouchButton.cs",
+    "Assets/Plugins/Standard Assets/CrossPlatformInput/Scripts/MobileControlRig.cs",
+    "Assets/Plugins/Standard Assets/Utility/AutoMobileShaderSwitch.cs",
+    "Assets/Plugins/Standard Assets/Utility/EventSystemChecker.cs",
+    "Assets/Prefabs/Player/PlayerContent.prefab",
+    "Assets/Prefabs/Player/PlayerHolder.prefab",
+    "Assets/Prefabs/UI/Main_Menu.prefab",
+    "Assets/Prefabs/UI/Menus/Canv_Main.prefab",
+    "Assets/Prefabs/UI/Menus/Canv_Options.prefab",
+    "Assets/Scenes/Game/Start.unity",
+    "Assets/Scripts/Combat/Data/Abilities.cs",
+    "Assets/Scripts/Inventory/Items/Item.cs",
+    "Assets/Scripts/Player/Data/Class.cs",
+    "Assets/Scripts/Player/PlayerStats.cs",
+    "Assets/Scripts/UI/HUD/HealthChange.cs",
+    "Assets/Scripts/UI/Menus/MenuController.cs",
+    "Assets/Scripts/World/Interactions/Interactable.cs",
+    "Assets/Plan/Validation/warning-cleanup.json",
+    "Assets/Plan/Validation/warning-cleanup.json.meta"
+  ],
+  "validation": {
+    "gitDiffCheck": "passed",
+    "serializedRecordsAndMeta": "passed",
+    "incrementalCompile": "0 errors/warnings after fixes; stale Console error flag prompted clean rebuild",
+    "cleanRebuild": "Completed after first 120-second CLI wait expired; exposed seven further NavMeshLink warnings, then final strict incremental compilation completed with 0 errors/0 warnings.",
+    "existingRegression": [
+      "PASS: Primary sequence is enabled in Build Settings",
+      "PASS: Dungeon accepted as loading destination",
+      "PASS: Menu and loading recursion rejected",
+      "PASS: Out-of-range destinations rejected",
+      "PASS: Nonpositive awards ignored",
+      "PASS: Exact threshold and events",
+      "PASS: Multi-level award preserves remainder",
+      "PASS: Overflow-sized award reaches bounded cap",
+      "PASS: One level event per threshold and one XP event per award",
+      "PASS: Max-level awards are idempotent",
+      "PASS: Before hit window stays inactive",
+      "PASS: Entering hit window activates",
+      "PASS: Skipped hit window activates",
+      "PASS: Entire attack skipped by one frame still samples",
+      "PASS: After hit window stays inactive",
+      "PASS: Zero-width hit window is crossed",
+      "PASS: Final attack boundary is sampled",
+      "PASS: 300 seeded maze graphs: connected, reciprocal, bounded, unique start/exit, farthest exit, spanning tree",
+      "PASS: all checks completed."
+    ],
+    "playModeTests": "not run",
+    "build": "not run",
+    "mobileConditionalLookup": "not compiled on desktop target",
+    "forcedModelReimport": "not run",
+    "finalStrictCompile": {
+      "success": true,
+      "command": "recompile",
+      "data": {
+        "status": "completed",
+        "compiling": false,
+        "failed": false,
+        "compilationFailed": false,
+        "errors": [],
+        "warnings": [],
+        "summary": {
+          "errors": 0,
+          "warnings": 0
+        }
+      },
+      "errors": [],
+      "warnings": []
+    },
+    "nativeNavMeshLifecycle": [
+      "PASS: Legacy component creates a native link",
+      "PASS: Native link retains component owner",
+      "PASS: Updating geometry removes previous native link",
+      "PASS: Replacement link is valid and owned",
+      "PASS: Disabling component removes native link",
+      "PASS: Re-enabling recreates native link",
+      "PASS: Destroying component releases native link",
+      "PASS: Original active scene and dirty state preserved"
+    ],
+    "finalConsole": {
+      "entries": [],
+      "cursor": 332,
+      "session": "b4f25804fc634ae384ce83e332a26590",
+      "returned": 0,
+      "dropped": false,
+      "reset": false,
+      "counts": {
+        "error": 0,
+        "warn": 0,
+        "log": 1
+      },
+      "groundTruth": {
+        "sampledUtc": "2026-11-14T20:32:58.1742691Z",
+        "ageMs": 198,
+        "compilationFailed": false,
+        "compiling": false,
+        "consoleErrors": 0,
+        "consoleWarnings": 0,
+        "consoleLogs": 1,
+        "seeded": true
+      }
+    },
+    "finalScene": {
+      "name": "Combat_Test",
+      "path": "Assets/Scenes/Test_Scenes/Combat_Test.unity",
+      "isLoaded": true,
+      "isDirty": false,
+      "isActive": true,
+      "rootCount": 12
+    },
+    "finalEditor": {
+      "status": "ready",
+      "compiling": false,
+      "domainReloadInProgress": false,
+      "codeLoadCount": 7,
+      "autoRefresh": "enabled",
+      "playMode": "stopped",
+      "runInBackground": true,
+      "lastHeartbeat": "2026-11-14T20:33:02.4470833Z",
+      "projectPath": "C:\\Users\\mitch\\Documents\\Unity\\My_Projects\\Dungeon Game",
+      "unityVersion": "6000.3.28f1",
+      "role": "main",
+      "instanceName": "Main Editor"
+    },
+    "editorAutoTick": "Restored to disabled at handoff."
+  },
+  "transientValidationFailure": "Attempted showNavMesh API was unavailable; corrected to local legacy inspector counter before final compile.",
+  "limitations": [
+    "Historical model/animation diagnostics inventoried without forced source reimport.",
+    "No manual visual/hardware gameplay certification.",
+    "No entire scripts deleted without reference evidence."
+  ],
+  "references": [
+    "Pipeline Documentation~/commands/scripts.md",
+    "Pipeline Documentation~/commands/editor-lifecycle-and-observability.md",
+    "https://docs.unity.com/en-us/engine/6000.3/script-reference/unityengine/object/findobjectsoftype",
+    "https://docs.unity.cn/Packages/com.unity.ugui%402.0/api/UnityEngine.EventSystems.StandaloneInputModule.html",
+    "https://docs.unity3d.com/6000.3/Documentation/ScriptReference/AI.NavMeshLinkInstance.html"
+  ],
+  "additionalLegacyRuntimeWarningSites": 7,
+  "totalCompilerWarningSitesFixed": 34,
+  "additionalCompilerDiagnostics": [
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshLinkEditor.cs(39,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshLinkEditor.cs(44,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshSurfaceEditor.cs(81,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshSurfaceEditor.cs(86,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshModifierEditor.cs(21,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshModifierEditor.cs(26,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshModifierVolumeEditor.cs(34,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshModifierVolumeEditor.cs(39,13): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshModifierVolumeEditor.cs(91,17): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshLinkEditor.cs(165,17): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Editor\\NavMeshSurfaceEditor.cs(315,17): warning CS0618: 'NavMeshVisualizationSettings.showNavigation' is obsolete: 'showNavigation is no longer supported and will be removed.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(53,41): warning CS0618: 'NavMeshLinkInstance.valid' is obsolete: 'valid has been deprecated. Use NavMesh.IsLinkValid() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(60,13): warning CS0618: 'NavMeshLinkInstance.Remove()' is obsolete: 'Remove() has been deprecated. Use NavMesh.RemoveLink() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(65,13): warning CS0618: 'NavMeshLinkInstance.Remove()' is obsolete: 'Remove() has been deprecated. Use NavMesh.RemoveLink() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(107,17): warning CS0618: 'NavMeshLinkInstance.valid' is obsolete: 'valid has been deprecated. Use NavMesh.IsLinkValid() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(123,17): warning CS0618: 'NavMeshLinkInstance.valid' is obsolete: 'valid has been deprecated. Use NavMesh.IsLinkValid() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(124,17): warning CS0618: 'NavMeshLinkInstance.owner' is obsolete: 'owner has been deprecated. Use NavMesh.GetLinkOwner() and NavMesh.SetLinkOwner() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    },
+    {
+      "message": "Assets\\Plugins\\NavMeshComponents-master\\Assets\\NavMeshComponents\\Scripts\\NavMeshLink.cs(156,18): warning CS0618: 'NavMeshLinkInstance.valid' is obsolete: 'valid has been deprecated. Use NavMesh.IsLinkValid() instead.'",
+      "status": "Fixed",
+      "tracking": "Legacy navigation supported API/counter replacements"
+    }
+  ]
+}

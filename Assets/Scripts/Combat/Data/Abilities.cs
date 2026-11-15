@@ -6,7 +6,7 @@ public enum Target {Self, Cast}
 public class Abilities : ScriptableObject
 {
     new public string name = "New Ability";	
-	new public string description = "Ability Description";
+	public string description = "Ability Description";
     
     [Header("Ability")]
     public Target target;

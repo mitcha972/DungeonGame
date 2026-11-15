@@ -16,6 +16,9 @@ namespace UnityEditor.AI
     [CustomEditor(typeof(NavMeshSurface))]
     class NavMeshSurfaceEditor : Editor
     {
+        // Legacy gizmos track their own active inspectors; Unity 6 no longer supports showNavigation.
+        internal static int ActiveEditors;
+
         SerializedProperty m_AgentTypeID;
         SerializedProperty m_BuildHeightMesh;
         SerializedProperty m_Center;
@@ -78,12 +81,12 @@ namespace UnityEditor.AI
 #if NAVMESHCOMPONENTS_SHOW_NAVMESHDATA_REF
             m_NavMeshData = serializedObject.FindProperty("m_NavMeshData");
 #endif
-            NavMeshVisualizationSettings.showNavigation++;
+            NavMeshSurfaceEditor.ActiveEditors++;
         }
 
         void OnDisable()
         {
-            NavMeshVisualizationSettings.showNavigation--;
+            NavMeshSurfaceEditor.ActiveEditors--;
         }
 
         Bounds GetBounds()
@@ -312,7 +315,7 @@ namespace UnityEditor.AI
         [DrawGizmo(GizmoType.NotInSelectionHierarchy | GizmoType.Pickable)]
         static void RenderBoxGizmoNotSelected(NavMeshSurface navSurface, GizmoType gizmoType)
         {
-            if (NavMeshVisualizationSettings.showNavigation > 0)
+            if (NavMeshSurfaceEditor.ActiveEditors > 0)
                 RenderBoxGizmo(navSurface, gizmoType, false);
             else
                 Gizmos.DrawIcon(navSurface.transform.position, "NavMeshSurface Icon", true);
@@ -386,7 +389,7 @@ namespace UnityEditor.AI
             }
         }
 
-        [MenuItem("GameObject/AI/NavMesh Surface", false, 2000)]
+        [MenuItem("GameObject/AI/Legacy NavMeshComponents/NavMesh Surface", false, 2000)]
         public static void CreateNavMeshSurface(MenuCommand menuCommand)
         {
             var parent = menuCommand.context as GameObject;

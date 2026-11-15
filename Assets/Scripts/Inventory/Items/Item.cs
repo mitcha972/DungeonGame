@@ -6,7 +6,7 @@ public enum ItemType { Head, Chest, Legs, Sword, Bow, Unarmed, Shield, Potion, R
 public class Item : ScriptableObject
 {
 	new public string name = "New Item";
-	new public string description = "Item Description";
+	public string description = "Item Description";
 	public ItemType itemType;
 
 	public Sprite icon = null;

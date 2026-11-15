@@ -9,7 +9,7 @@ public class MenuController : MonoBehaviour
 {
     public GameController GC;
     public Class pClass;
-    public string name;
+    public new string name;
     public TMP_Text classDescriptionText;
     public TMP_Text classNameText;
     public TMP_Text classDamageText, classArmorText;

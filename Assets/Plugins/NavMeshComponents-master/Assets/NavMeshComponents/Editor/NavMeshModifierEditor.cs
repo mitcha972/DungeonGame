@@ -18,12 +18,12 @@ namespace UnityEditor.AI
             m_IgnoreFromBuild = serializedObject.FindProperty("m_IgnoreFromBuild");
             m_OverrideArea = serializedObject.FindProperty("m_OverrideArea");
 
-            NavMeshVisualizationSettings.showNavigation++;
+            NavMeshSurfaceEditor.ActiveEditors++;
         }
 
         void OnDisable()
         {
-            NavMeshVisualizationSettings.showNavigation--;
+            NavMeshSurfaceEditor.ActiveEditors--;
         }
 
         public override void OnInspectorGUI()

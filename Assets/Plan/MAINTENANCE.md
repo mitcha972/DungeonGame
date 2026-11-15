@@ -154,3 +154,40 @@ Assets/Plan/
 Recommended next task: run the production loop and measure actual player-to-exit NavMesh reachability across generated floors. Resolve the historical partial paths before expanding content. The current backlog lives only in DEVELOPMENT_ROADMAP.md.
 
 Final cross-check: all six edited source/tool files match exactly the declared literal path/output replacements against the restore ZIP; archived document metadata and the historical checkpoint image/meta are byte-preserved. The relocated merchant builder also passed an Editor compile-only check.
+
+## Warning cleanup — 2026-11-14
+
+Warning maintenance only; no gameplay redesign. Reviewed the complete retained Editor Console session (137 initial entries), compiler log, actual source and serialized assets. The visible Console had been cleared before this task; historical messages do not prove every import defect still reproduces. [Evidence inventory](Validation/warning-cleanup.json) records individual initial messages, dispositions, changed files and validation.
+
+Implemented fixes:
+
+- **16 initial C# warnings:** updated obsolete searches in CodeMonkey UtilsClass, Standard Assets AxisTouchButton/MobileControlRig/EventSystemChecker and HealthChange. FindFirstObjectByType and FindObjectsByType with InstanceID sorting preserve active-only selection/order. Removed the obsolete forceModuleActive assignment, retaining the module. Also updated AutoMobileShaderSwitch's mobile-only search, uncompiled on the current desktop target.
+- Removed unnecessary `new` on Abilities/Item/Class.description; explicitly retained intentional hiding on PlayerStats/MenuController.name. Serialized names and consumers remain intact.
+- Removed write-only private fields/assignments: SlimUI themeIndex/sliderValue, legacy FirstPersonController.m_Jumping/_terminalVelocity and Interactable.isFocus. Removed Interactable's unread player cache and commented hasInteracted state; public virtual focus callbacks remain. No entire scripts were deleted without reference evidence.
+- **18 additional C# warnings** exposed by recompilation: the four legacy NavMesh inspectors now use their own shared NavMeshSurfaceEditor.ActiveEditors counter instead of Unity's unsupported showNavigation. Existing inspector-driven gizmo counting remains; no new dependency or global setting writes. A full clean rebuild exposed seven more obsolete NavMeshLink calls; replaced valid/Remove/owner with NavMesh.IsLinkValid/RemoveLink/SetLinkOwner, matching the installed navigation package. Native handle lifecycle verification is recorded in the evidence inventory.
+- **Three duplicate menus:** legacy Surface/Link/Modifier Volume commands now live under GameObject/AI/Legacy NavMeshComponents; current AI Navigation keeps ordinary menu paths. No component/assembly/runtime-baking changes.
+- **325 redundant CanvasRenderers:** removed through Editor prefab/scene APIs from SlimUI Main_Menu/Buttons/Btn_MainMenu, PlayerContent, PlayerHolder, UI/Main_Menu, UI/Menus/Canv_Main, Canv_Options and Start.unity. TextMeshProUGUI renderers remain. Discarded unrelated Unity serialization upgrades/automatic component additions; verified every surviving serialized record and .meta unchanged against task-start Git. A fresh Editor audit found zero remaining candidates in these assets.
+
+No script was added, moved, renamed or deleted; SCRIPT_INDEX and system boundaries remain unchanged. Combat_Test stayed open, clean and stopped. No Play Mode was started. Validation details and limitations belong in the evidence inventory, not historical claims elsewhere in this document.
+
+### Remaining diagnostic tracking
+
+These are deferred, not suppressed. Reproduce historical importer messages before changing content; do not guess at transition conditions, avatars or backend migration.
+
+| ID | Observed diagnostic / location | Status and next action |
+| --- | --- | --- |
+| W01 | NPC Animator (formerly Character Animator): AnyState -> Death, BlockAttack -> Empty, BlockDrop -> Empty lack conditions/exit time | Open animation authoring. Inspect `Assets/Animations/Animators/Characters/NPC Animator.controller` against CharacterAnimator direct playback, then design recovery/death edges. Unity currently ignores these edges; enabling them could change behavior. |
+| W02 | Self-intersecting polygon discarded in `Assets/Animations/Humanoid/Combat/2Handed/Ch40_nonPBR@Standing Melee Combo Attack Ver. 1.fbx` | Open source mesh repair/re-export, preserving clips/avatar references and validating topology. |
+| W03 | Import warnings: Gathering, Jumps, PunchRight, RollBackward/Forward/Left/Right, RunForward/Left/Right, Sprint | Historical, current importer state unverified. Under Assets/Animations/Humanoid: Actions/Gathering.fbx; Pack/Combat/PunchRight.fbx; Pack/Movement/{Jumps,RollBackward,RollForward,RollLeft,RollRight,RunForward,RunLeft,RunRight,Sprint}.fbx. Inspect individual import messages/source rigs before retargeting. |
+| W04 | Copied avatar missing Hips / mixamorig1:Hips / Root_M | Historical import errors; some Console entries omit source paths. Correlate importer logs with W03; use source-specific valid avatars rather than assigning one skeleton indiscriminately. |
+| W05 | Player_Blender.blend: missing smoothing groups for Arms/Legs/Torso blendshape normals; unweighted Body.001 (972), Eyelashes (16), Skeleton mesh (33) vertices; upper-leg bone-length mismatch | Open source rig/skin cleanup in `Assets/Models/Player/Player_Blender.blend`, followed by controlled reimport/deformation checks. Importer fallback weights are not a repaired rig. |
+| W06 | Bone/Bone dark internal Player_Blender materials cannot be external remaps | Historical Inspector errors. Reproduce current material remaps before extracting materials or reverting invalid assignments. |
+| W07 | com.unity.ide.vscode 1.2.5 deprecated | Open IDE integration choice. Visual Studio integration is also installed; verify user's editor workflow before removing/replacing legacy integration. No package changes here. |
+| W08 | Input Manager deprecation notice | Intentional Both-backends compatibility. Inventory/migrate remaining legacy/SlimUI/Standard Assets consumers separately before selecting Input System only. |
+| W09 | Account API unavailable after 30s; connection.state_change timeout | Historical external-service/network diagnostics. Reproduce connectivity/focus; no game-code fix. |
+| W10 | Blend-mode render queue reset (log, not warning) | Historical material-editor correction. Identify material/verify settings if repeated; no blanket queue rewrite. |
+| W11 | Start additive audit: Unity creates missing StatusEffectController for PlayerStats on PlayerObj | Reproduced during this task's UI inspection; generated component was not saved. Author menu-preview/alternate-prefab component explicitly and validate lifecycle in a separate content pass. |
+
+No standalone build, mobile compile, manual gameplay/visual sweep, Blender re-export or forced model reimport is claimed. A transient attempted newer NavMesh visibility property failed on this Editor and was corrected. Initial incremental status included stale Console compile-error state; final checks use a cleared diagnostic window and clean rebuild. The first clean-build CLI wait expired after 120 seconds; completion is tracked in the evidence inventory.
+
+Final validation: clean rebuild completed and revealed seven further legacy link warnings, all fixed; subsequent strict compile completed with **0 errors, 0 warnings**, compilationFailed=false. Existing GameplayModernizationValidation.Run passed (scene guards, XP boundaries/events/cap, combat-window cases, 300 seeded maze graphs); eight native legacy link lifecycle/ownership/scene-preservation checks passed. Final live Console: **0 errors, 0 warnings**. Total: **34 C# warning sites fixed**, three menu collisions resolved and 325 redundant renderers removed. Temporary auto-tick restored to disabled. Import/art/tooling follow-ups W01–W11 remain tracked above.

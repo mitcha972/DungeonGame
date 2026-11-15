@@ -68,9 +68,7 @@ public class FirstPersonController : MonoBehaviour
     public LayerMask GroundLayers;
     public float jumpHeight;
     private bool m_Jump;
-    private bool m_Jumping;
     private float _verticalVelocity;
-    private float _terminalVelocity = 53.0f;
 
     // Timeout-related fields
     [Tooltip("Time required to pass before being able to jump again. Set to 0f to instantly jump again")]
@@ -114,8 +112,6 @@ public class FirstPersonController : MonoBehaviour
         m_StepCycle = 0f;
         m_NextStep = m_StepCycle / 2f;
 
-        // Initialize jumping state
-        m_Jumping = false;
 
         // Initialize mouse look
         m_MouseLook.Init(transform, m_Camera.transform);
